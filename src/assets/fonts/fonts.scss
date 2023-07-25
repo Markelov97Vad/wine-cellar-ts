@@ -11,10 +11,10 @@
 
 // "Playfair Display" normal
 @include uploadFonts(
-  $fileTypeOne: './PlayfairDisplay-Regular.woff1',
   $fileTypeTwo: './PlayfairDisplay-Regular.woff2',
-  $formatTypeOne, 'woff',
+  $fileTypeOne: './PlayfairDisplay-Regular.woff',
   $formatTypeTwo: 'woff2',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 1,
   $style: normal
@@ -24,7 +24,7 @@
   $fileTypeTwo: './PlayfairDisplay-Regular.woff2',
   $fileTypeOne: './PlayfairDisplay-Regular.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 400,
   $style: normal
@@ -34,7 +34,7 @@
   $fileTypeTwo: './PlayfairDisplay-Medium.woff2',
   $fileTypeOne: './PlayfairDisplay-Medium.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 500,
   $style: normal
@@ -44,7 +44,7 @@
   $fileTypeTwo: './PlayfairDisplay-SemiBold.woff2',
   $fileTypeOne: './PlayfairDisplay-SemiBold.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 600,
   $style: normal
@@ -54,7 +54,7 @@
   $fileTypeTwo: './PlayfairDisplay-Bold.woff2',
   $fileTypeOne: './PlayfairDisplay-Bold.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 700,
   $style: normal
@@ -64,7 +64,7 @@
   $fileTypeTwo: './PlayfairDisplay-ExtraBold.woff2',
   $fileTypeOne: './PlayfairDisplay-ExtraBold.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 800,
   $style: normal
@@ -74,7 +74,7 @@
   $fileTypeTwo: './PlayfairDisplay-Black.woff2',
   $fileTypeOne: './PlayfairDisplay-Black.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 900,
   $style: normal
@@ -85,7 +85,7 @@
   $fileTypeTwo: './PlayfairDisplay-Italic.woff2',
   $fileTypeOne: './PlayfairDisplay-Italic.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 1,
   $style: italic
@@ -95,7 +95,7 @@
   $fileTypeTwo: './PlayfairDisplay-Italic.woff2',
   $fileTypeOne: './PlayfairDisplay-Italic.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 400,
   $style: italic
@@ -105,7 +105,7 @@
   $fileTypeTwo: './PlayfairDisplay-MediumItalic.woff2',
   $fileTypeOne: './PlayfairDisplay-MediumItalic.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 500,
   $style: italic
@@ -115,7 +115,7 @@
   $fileTypeTwo: './PlayfairDisplay-SemiBoldItalic.woff2',
   $fileTypeOne: './PlayfairDisplay-SemiBoldItalic.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 600,
   $style: italic
@@ -125,7 +125,7 @@
   $fileTypeTwo: './PlayfairDisplay-BoldItalic.woff2',
   $fileTypeOne: './PlayfairDisplay-BoldItalic.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 700,
   $style: italic
@@ -135,7 +135,7 @@
   $fileTypeTwo: './PlayfairDisplay-ExtraBoldItalic.woff2',
   $fileTypeOne: './PlayfairDisplay-ExtraBoldItalic.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 800,
   $style: italic
@@ -145,8 +145,29 @@
   $fileTypeTwo: './PlayfairDisplay-BlackItalic.woff2',
   $fileTypeOne: './PlayfairDisplay-BlackItalic.woff',
   $formatTypeTwo: 'woff2',
-  $formatTypeOne, 'woff',
+  $formatTypeOne: 'woff',
   $family: 'Playfair Display',
   $weight: 900,
   $style: italic
 );
+
+// Montserrat normal
+@include uploadFonts(
+  $fileTypeTwo: './Montserrat-Regular.woff2', 
+  $fileTypeOne: './Montserrat-Regular.woff', 
+  $formatTypeTwo: 'woff2', 
+  $formatTypeOne: 'woff', 
+  $family: 'Montserrat', 
+  $weight: 400, 
+  $style: normal
+);
+
+@include uploadFonts(
+  $fileTypeTwo: './Montserrat-Bold.woff2', 
+  $fileTypeOne: './Montserrat-Bold.woff', 
+  $formatTypeTwo: 'woff2', 
+  $formatTypeOne: 'woff', 
+  $family: 'Montserrat', 
+  $weight: 700, 
+  $style: normal
+  )

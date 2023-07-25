@@ -1,0 +1,42 @@
+@import '../../index.scss';
+
+.promo {
+  // margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.promo__spanText {
+  @include show-font(
+    $family: 'Montserrat',
+    $size: 22px,
+    $weight: 400,
+    $line-heigth: 21px,
+    $color: $color-fonts
+  )
+}
+
+.promo__title {
+  margin-top: 34vh;
+  @include show-font(
+    $family: 'Playfair Display',
+    $size: 3rem,
+    $weight: 700,
+    $line-heigth: 21px,
+    $color: $color-fonts
+  )
+}
+
+.promo__spanLine {
+  display: inline-block;
+  width: 400px;
+  border-bottom: 1px solid white;
+}
+
+.promo__backgroundVideo {
+  position: absolute;
+  z-index: -1;
+  // max-height: 500px;
+}
