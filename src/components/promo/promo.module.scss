@@ -6,6 +6,7 @@
   flex-direction: column;
 
   align-items: center;
+  min-height: 100vh;
 }
 
 .promo__spanText {
@@ -19,19 +20,21 @@
 }
 
 .promo__title {
-  margin-top: 34vh;
+  margin-top: 40vh;
+  // min-height: 50px;
   @include show-font(
     $family: 'Playfair Display',
-    $size: 3rem,
+    $size: 3em,
     $weight: 700,
-    $line-heigth: 21px,
+    $line-heigth: 60px,
     $color: $color-fonts
   )
 }
 
 .promo__spanLine {
   display: inline-block;
-  width: 400px;
+  margin-top: 30px;
+  width: 30vw;
   border-bottom: 1px solid white;
 }
 

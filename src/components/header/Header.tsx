@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import styles from "./header.module.scss"
 import NavigationLinkProfile from "../ui/NavigationLinkProfile/NavigationLinkProfile";
-import logo from '../../assets/images/Group.svg'
+import logo from '../../assets/images/logoWC.svg'
 
 function Header() {
   return ( 

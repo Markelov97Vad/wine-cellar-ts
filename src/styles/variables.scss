@@ -2,4 +2,10 @@
 $color-background: #282828;
 
 // color
-$color-fonts: #fff
+$color-fonts: #fff;
+$color-border-wrapper: #C4C4C4;
+
+%indents-reset {
+  margin: 0;
+  padding: 0;
+}
