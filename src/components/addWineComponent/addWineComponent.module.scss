@@ -1,0 +1,265 @@
+@import '../../index.scss';
+
+.addWine {
+  background-color: $color-background;
+  width: 100%;
+  // min-height: 767px;
+  padding: 140px 0 100px;
+  // тень блока
+  box-shadow: 0 0 10vh 25vh $color-background;
+  // position: absolute;
+  // bottom: 100vh;
+
+  // &__wrapper {
+  //   display: flex;
+  //   // justify-content: center;
+  //   align-items: center;
+  //   flex-direction: column;
+  //   position: relative;
+  //   border: 2px solid $color-border-wrapper;
+  //   margin: 0 auto;
+  //   max-width: 1110px;
+  //   box-sizing: border-box;
+  //   padding-bottom: 80px;
+  // }
+
+  // &__img {
+  //   background-color: $color-background;
+  //   position: absolute;
+
+  //   &--grapes {
+  //     width: 260px;
+  //     height: 260px;
+  //     top: -30px;
+  //     left: -28px;
+  //     // border: 1px solid white;
+  //   }
+
+  //   &--barrel {
+  //     width: 260px;
+  //     height: 200px;
+  //     top: -30px;
+  //     right: -28px;
+  //     // border: 1px solid white;
+  //   }
+  // }
+
+  // &__title {
+  //   position: absolute;
+  //   text-align: center;
+  //   // align-items: center;
+  //   top: -30px;
+  //   // right: 50%;
+  //   left: 50%;
+  //   min-width: 490px;
+  //   transform: translateX(-50%);
+  //   background-color: $color-background;
+  //   // border-bottom: 1px solid $color-fonts;
+  //   @include show-font(
+  //     $family: 'Playfair Display',
+  //     $color: $color-fonts,
+  //     $size: 36px,
+  //     $line-heigth: 54px,
+  //     $weight: 500
+  //   );
+  //   &::after {
+  //     content: '';
+  //     position: absolute;
+  //     height: 1px;
+  //     background: $color-fonts;
+  //     bottom: -30px;
+  //     width: 50%;
+  //     left: 50%;
+  //     transform: translateX(-50%);
+  //   }
+  // }
+
+  // &__subtitle {
+  //   max-width: 539px;
+  //   margin: 105px 0 81px;
+  //   align-items: center;
+  //   text-align: center;
+  //   @include show-font(
+  //     $family: 'Playfair Display',
+  //     $color: $color-fonts,
+  //     $size: 16px,
+  //     $line-heigth: 24px,
+  //     $weight: 400
+  //   )
+  // }
+}
+
+
+.wrapper {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  border: 2px solid $color-border-wrapper;
+  margin: 0 auto;
+  max-width: 1110px;
+  box-sizing: border-box;
+  padding-bottom: 80px;
+}
+
+.imgGrapes {
+  background-color: $color-background;
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: -30px;
+  left: -28px;
+}
+
+// .wineForm__img_type_grapes {
+//   width: 260px;
+//   height: 260px;
+//   top: -30px;
+//   left: -28px;
+//   // border: 1px solid white;
+// }
+.imgBarrel {
+  background-color: $color-background;
+  position: absolute;
+  width: 260px;
+  height: 200px;
+  top: -30px;
+  right: -28px;
+  // border: 1px solid white;
+}
+
+.title {
+  position: absolute;
+  text-align: center;
+  // align-items: center;
+  top: -30px;
+  // right: 50%;
+  left: 50%;
+  min-width: 490px;
+  transform: translateX(-50%);
+  background-color: $color-background;
+  // border-bottom: 1px solid $color-fonts;
+  @include show-font(
+    $family: 'Playfair Display',
+    $color: $color-fonts,
+    $size: 36px,
+    $line-heigth: 54px,
+    $weight: 500
+  );
+  &::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    background: $color-fonts;
+    bottom: -30px;
+    width: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+// .wineForm__title::after {
+//   content: '';
+//   position: absolute;
+//   height: 1px;
+//   background: $color-fonts;
+//   // top: 30px;
+//   bottom: -30px;
+//   width: 50%;
+//   left: 50%;
+//   transform: translateX(-50%);
+// }
+
+.subtitle {
+  max-width: 539px;
+  margin: 105px 0 81px;
+  align-items: center;
+  text-align: center;
+  @include show-font(
+    $family: 'Playfair Display',
+    $color: $color-fonts,
+    $size: 16px,
+    $line-heigth: 24px,
+    $weight: 400
+  )
+}
+
+.wineForm__form {
+  width: 540px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wineForm__fieldest {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  gap: 20px;
+  // margin-bottom: 10px;
+}
+
+.wineForm__column {
+  width: 100%;
+}
+
+.wineForm__input {
+  border: none;
+  box-sizing: border-box;
+  // min-width: 255px;
+  width: 100%;
+  height: 30px;
+  background-color: $color-background;
+  border-bottom: 1px solid $color-fonts;
+  margin-top: 10px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include show-font(
+    $family: 'Montserrat',
+    $weight: 500,
+    $size: 13px,
+    $line-heigth: 19.5px,
+    $color: $color-fonts
+  )
+}
+
+
+.wineForm__input_size_b {
+  margin: 40px 0 0;
+}
+.wineForm__input_type_textarea {
+  max-width: 540px;
+  min-height: 60px;
+  margin-bottom: 30px;
+}
+
+.wineForm__input:focus {
+  outline: none;
+}
+
+.wineForm__input::placeholder {
+  color: $color-fonts;
+}
+
+.wineForm__ratingWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  margin-bottom: 30px;
+  // align-items: center;
+}
+
+.wineForm__spanRating {
+  @include show-font(
+    $family: 'Montserrat',
+    $color: $color-fonts,
+    $size: 20px,
+    $line-heigth: 54px,
+    $weight: 500
+  )
+}
