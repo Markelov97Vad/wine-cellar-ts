@@ -1,0 +1,83 @@
+@import '../../index.scss';
+
+.form {
+  width: 540px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fieldest {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  gap: 20px;
+  // margin-bottom: 10px;
+}
+
+.column {
+  width: 100%;
+}
+
+.selected {
+  @extend %input-value;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include show-font(
+    $family: 'Montserrat',
+    $weight: 500,
+    $size: 13px,
+    $line-heigth: 19.5px,
+    $color: $color-fonts
+  )
+}
+
+
+.form-component__input_size_b {
+  margin: 40px 0 0;
+}
+.textarea {
+  @extend %input-value;
+  margin-top: 20px;
+  max-width: 540px;
+  min-height: 60px;
+  margin-bottom: 30px;
+
+  @include show-font(
+    $family: 'Montserrat',
+    $weight: 500,
+    $size: 13px,
+    $line-heigth: 19.5px,
+    $color: $color-fonts
+  )
+}
+
+.form-component__input:focus {
+  outline: none;
+}
+
+.form-component__input::placeholder {
+  color: $color-fonts;
+}
+
+.ratingWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  margin-bottom: 30px;
+  // align-items: center;
+}
+
+.spanRating {
+  @include show-font(
+    $family: 'Montserrat',
+    $color: $color-fonts,
+    $size: 20px,
+    $line-heigth: 54px,
+    $weight: 500
+  )
+}
