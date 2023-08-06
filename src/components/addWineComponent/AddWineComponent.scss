@@ -1,0 +1,81 @@
+@import '../../index.scss';
+
+.add-wine {
+  background-color: $color-background;
+  width: 100%;
+  padding: 140px 0 100px;
+  // тень блока
+  box-shadow: 0 0 10vh 25vh $color-background;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    border: 2px solid $color-border-wrapper;
+    margin: 0 auto;
+    max-width: 1110px;
+    box-sizing: border-box;
+    padding-bottom: 80px;
+  }
+  &__img-grapes {
+    background-color: $color-background;
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    top: -30px;
+    left: -28px;
+  }
+
+  &__img-barrel {
+    background-color: $color-background;
+    position: absolute;
+    width: 260px;
+    height: 200px;
+    top: -30px;
+    right: -28px;
+  }
+
+  &__title {
+    position: absolute;
+    text-align: center;
+    top: -30px;
+    left: 50%;
+    min-width: 490px;
+    transform: translateX(-50%);
+    background-color: $color-background;
+  
+    @include show-font(
+      $family: 'Playfair Display',
+      $color: $color-fonts,
+      $size: 36px,
+      $line-heigth: 54px,
+      $weight: 500
+    );
+  
+    &::after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background: $color-fonts;
+      bottom: -30px;
+      width: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__subtitle {
+    max-width: 539px;
+    margin: 105px 0 81px;
+    align-items: center;
+    text-align: center;
+    @include show-font(
+      $family: 'Playfair Display',
+      $color: $color-fonts,
+      $size: 16px,
+      $line-heigth: 24px,
+      $weight: 400
+    )
+  }
+}

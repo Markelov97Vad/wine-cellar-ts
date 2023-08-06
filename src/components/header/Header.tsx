@@ -1,24 +1,23 @@
 import { NavLink } from "react-router-dom";
+import './Header.scss';
 
-import styles from "./header.module.scss"
 import NavigationLinkProfile from "../ui/NavigationLinkProfile/NavigationLinkProfile";
 import logo from '../../assets/images/logoWC.svg'
 
 function Header() {
   return ( 
-    <header className={styles.header}>
-      {/* <span className={styles.header__sapn}>ВП</span> */}
-      <img className={styles.header__logo} src={logo} alt="" />
+    <header className='header'>
+      <img className='header__logo' src={logo} alt="" />
       <nav >
-        <ul className={styles.header__list}>
+        <ul className='header__list'>
           <li>
-            <NavLink className={styles.header__link} to={'/'}>text</NavLink>
+            <NavLink className='header__link' to={'/'}>text</NavLink>
           </li>
           <li>
-            <NavLink className={styles.header__link} to={'/'}>text</NavLink>
+            <NavLink className='header__link' to={'/'}>text</NavLink>
           </li>
           <li>
-            <NavLink className={styles.header__link} to={'/'}>text</NavLink>
+            <NavLink className='header__link' to={'/'}>text</NavLink>
           </li>
         </ul>
       </nav>

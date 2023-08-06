@@ -3,8 +3,10 @@ import Promo from "../promo/Promo";
 import backgroundVideo from '../../assets/video/background-video.mp4'
 import styles from "./app.module.scss"
 
-import WineForm from "../addWineComponent/addWineComponent";
+import WineForm from "../AddWineComponent/AddWineComponent";
 import { useRef } from "react";
+import { Route, Routes } from "react-router-dom";
+import Main from "../main/Main";
 
 function App() {
   // const titleRef = useRef<HTMLHeadingElement>(null);
@@ -13,12 +15,15 @@ function App() {
 
   return (
     <div className="App">
-      <video className={styles.video} autoPlay loop muted>
+      <Routes>
+        <Route path="/" element={<Main/>}/>
+      </Routes>
+      {/* <video className={styles.video} autoPlay loop muted>
         <source src={backgroundVideo} type="video/mp4"/>
       </video>
       <Header/>
       <Promo />
-      <WineForm/>
+      <WineForm/> */}
     </div>
   );
 }
