@@ -12,6 +12,10 @@ export const optionsColorWine : optionsWineType[] = [{
   value: 'Розовое',
   label: 'Розовое',
   name: 'colorWine',
+},{
+  value: 'Игристое',
+  label: 'Игристое',
+  name: 'colorWine',
 }];
 
 export const optionsTypeWine : optionsWineType[] = [{
