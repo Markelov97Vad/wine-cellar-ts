@@ -1,20 +1,32 @@
 @import '../../index.scss';
 
 .form {
-  width: 540px;
+  width: 100%;
+  max-width: 540px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+
   &__fieldest {
     display: flex;
     justify-content: space-between;
     border: none;
     gap: 20px;
     // margin-bottom: 10px;
+    @include mobile {
+      justify-content:center;
+      flex-direction: column;
+    }
+
   }
 
   &__column {
     width: 100%;
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      // max-width: 300px
+    }
   }
 
   &__textarea {
@@ -30,7 +42,12 @@
       $size: 13px,
       $line-heigth: 19.5px,
       $color: $color-fonts
-    )
+    );
+
+    @include mobile {
+      align-self: center;
+      width: 95%;
+    }
   }
 
   &__ratingWrapper {
@@ -65,7 +82,7 @@
   &__control {
     border-style: none !important;
     background-color: transparent !important;
-
+    // max-width: 300px !important;
     box-shadow:  none;
 
     &__value-container{

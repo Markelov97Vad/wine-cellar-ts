@@ -17,6 +17,12 @@
     max-width: 1110px;
     box-sizing: border-box;
     padding-bottom: 80px;
+
+    @include mobile{
+      padding-inline: 20px;
+      border: none
+    }
+
   }
   &__img-grapes {
     background-color: $color-background;
@@ -25,6 +31,13 @@
     height: 260px;
     top: -30px;
     left: -28px;
+
+    @media screen and (max-width: 768px) {
+      top: -270px;
+      left: 50%;
+      transform: translateX(-50%);
+      align-self: center;
+    }
   }
 
   &__img-barrel {
@@ -34,6 +47,10 @@
     height: 200px;
     top: -30px;
     right: -28px;
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
   }
 
   &__title {
@@ -62,6 +79,11 @@
       width: 50%;
       left: 50%;
       transform: translateX(-50%);
+    };
+
+    @include mobile {
+      font-size: 20px;
+      line-height: 30px;
     }
   }
 

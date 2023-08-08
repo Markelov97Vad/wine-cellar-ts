@@ -18,11 +18,18 @@
   
   &::placeholder {
     @include show-font(
-    $family: 'Montserrat',
-    $weight: 500,
-    $size: 13px,
-    $line-heigth: 19.5px,
-    $color: $color-fonts-opacity
-  );
+      $family: 'Montserrat',
+      $weight: 500,
+      $size: 13px,
+      $line-heigth: 19.5px,
+      $color: $color-fonts-opacity
+    );
+  }
+
+  @include mobile {
+    align-self: center;
+    width: 95%;
+    // margin-inline: 10px;
+    // max-width: 100;
   }
 }

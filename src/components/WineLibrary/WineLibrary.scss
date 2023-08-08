@@ -3,5 +3,55 @@
 .wine-library {
   padding: 140px 0 100px ;
   background-color: $color-background-milk;
+  // max-width: 1180px;
   min-height: 300px;
+  
+
+  &__wrapper {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 100px min-content;
+    column-gap: 20px;
+    grid-template-areas: 
+    "div sort"
+    "side-bar card-list";
+
+    @media screen and (max-width: 768px) {
+      gap: 0;
+      display: flex;
+      flex-direction: column;
+      padding-inline: 10px;
+    }
+  }
+
+  &__block {
+    grid-area: div;
+    border-bottom: 1px solid $color-background;
+
+    @media screen and (max-width: 768px) {
+      // grid-area: none;
+      display: none;
+    }
+  }
+
+  &__filter-headers {
+    grid-area: sort;
+    border-bottom: 1px solid $color-background;
+
+    @media screen and (max-width: 768px) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__side-bar {
+    grid-area: side-bar;
+
+    @media screen and (max-width: 768px) {
+      // grid-area: none;
+      display: none;
+    }
+  }
 }
