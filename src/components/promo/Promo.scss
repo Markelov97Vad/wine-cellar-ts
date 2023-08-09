@@ -27,7 +27,12 @@
       $weight: 700,
       $line-heigth: 60px,
       $color: $color-fonts
-    )
+    );
+
+    @include mobile {
+      font-size: 2em;
+      line-height: 30px;
+    }
   }
 
   &__span-line {

@@ -6,9 +6,7 @@ const handleResponseCheck = (res: Response) => {
 }
 
 export const createWine = (wine: Wine) => {
-  // console.log(wine);
-  
-  return fetch(`http://localhost:3000/wines`, {
+  return fetch(`${MAIN_API_URL}/wines`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -16,26 +14,20 @@ export const createWine = (wine: Wine) => {
     body: JSON.stringify({...wine})
   })
   .then((res) => {
-    console.log(res);
-    
-    handleResponseCheck(res)
+    return handleResponseCheck(res)
   })
   .catch((err) => console.log(err))
 }
-export const fet = () => {
-  // console.log(wine);
-  
-  return fetch(`http://localhost:3000/wines`, {
-    method: 'GET',
-    // headers: {
-    //   'Content-Type': 'application/json'
-    // },
-    // body: JSON.stringify({...wine})
+
+export const getAllWines = () => {
+  return fetch(`${MAIN_API_URL}/wines`, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }).then(res => {
+      return handleResponseCheck(res)
   })
-  .then((res) => {
-    console.log(res);
-    
-    handleResponseCheck(res)
+  .catch(err => {
+    console.log(err);
   })
-  .catch((err) => console.log(err))
 }

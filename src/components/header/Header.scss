@@ -4,11 +4,20 @@
   display: flex;
   justify-content: space-between;
   padding-inline: 80px;
+
+  @include mobile {
+    padding-inline: 20px;
+  }
 }
 
 .header__logo {
   width: 160px;
   height: 100px;
+
+  @include mobile {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .header__list {
@@ -17,6 +26,10 @@
   margin: 0;
   padding: 0;
   gap: 40px;
+
+  @include mobile {
+    display: none;
+  }
 }
 
 .header__sapn {

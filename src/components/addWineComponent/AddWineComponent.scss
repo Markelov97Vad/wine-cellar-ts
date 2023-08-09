@@ -3,7 +3,7 @@
 .add-wine {
   background-color: $color-background;
   width: 100%;
-  padding: 140px 0 100px;
+  padding: 190px 0 100px;
   // тень блока
   box-shadow: 0 0 10vh 25vh $color-background;
 
@@ -58,7 +58,7 @@
     text-align: center;
     top: -30px;
     left: 50%;
-    min-width: 490px;
+    // min-width: 490px;
     transform: translateX(-50%);
     background-color: $color-background;
   
@@ -84,6 +84,7 @@
     @include mobile {
       font-size: 20px;
       line-height: 30px;
+      min-width: 225px;
     }
   }
 

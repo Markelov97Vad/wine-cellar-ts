@@ -1,7 +1,12 @@
+import { Wine } from '../../types/wine.type';
 import WineCardList from './WineCardList/WineCardList';
 import './WineLibrary.scss';
 
-function WineLibrary() {
+type WineLibraryProps = {
+  wine: Wine[]
+}
+
+function WineLibrary({ wine }: WineLibraryProps) {
   return ( 
     <section className='wine-library'>
       <div className='wine-library__wrapper'>
@@ -11,7 +16,7 @@ function WineLibrary() {
           <div>volume</div>
         </div>
         <div className='wine-library__side-bar'>side-bar</div>
-        <WineCardList/>
+        <WineCardList wine={wine}/>
       </div>
     </section>
    );
