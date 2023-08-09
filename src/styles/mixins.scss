@@ -11,3 +11,9 @@
   line-height: $line-heigth;
   color: $color;
 };
+
+@mixin mobile() {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}

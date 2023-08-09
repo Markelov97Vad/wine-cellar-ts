@@ -19,8 +19,16 @@
   width: 100%;
 }
 
+.custom-select{
+  &__control {
+    background-color: transparent !important;
+    margin-top: 400px
+  }
+}
+
 .selected {
   @extend %input-value;
+  margin-top: 10px;
 
   &:first-child {
     margin-top: 0;

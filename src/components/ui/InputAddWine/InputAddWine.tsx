@@ -1,9 +1,9 @@
+import './InputAddWine.scss'
 import { InputAddWineType } from "../../../types/componentProps.types";
-import styles from './input-add-wine.module.scss'
 
 function InputAddWine({name, type, placeholder, min = undefined, max = undefined, margin = undefined , value, handleChange} : InputAddWineType) {
   return ( 
-    <input name={name} value={value || ''} onChange={handleChange} type={type} placeholder={placeholder} className={`${styles.inputAddWine} ${ margin ? styles.inputAddWine__margin : null}`} min={min} max={max}/>
+    <input name={name} value={value || ''} onChange={handleChange} type={type} placeholder={placeholder} className={`input-add-wine ${ margin ? 'input-add-wine_size_b' : ''}`} min={min} max={max}/>
    );
 }
 
