@@ -1,7 +1,7 @@
 import './Main.scss';
 import Header from "../header/Header";
 import Promo from "../promo/Promo";
-import AddWineComponent from "../AddWineComponent/AddWineComponent";
+import AddWineComponent from "../AddWineComp/addWineComp";
 import backgroundVideo from '../../assets/video/background-video.mp4'
 import * as mainApi from '../../utils/mainApi'
 import { Wine } from "../../types/wine.type";
