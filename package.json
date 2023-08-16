@@ -28,17 +28,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "prettier",
-      "plugin:storybook/recommended"
-    ]
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -53,29 +43,9 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.2.3",
-    "@storybook/addon-interactions": "^7.2.3",
-    "@storybook/addon-links": "^7.2.3",
-    "@storybook/addon-onboarding": "^1.0.8",
-    "@storybook/blocks": "^7.2.3",
-    "@storybook/preset-create-react-app": "^7.2.3",
-    "@storybook/react": "^7.2.3",
-    "@storybook/react-webpack5": "^7.2.3",
-    "@storybook/testing-library": "^0.2.0",
     "babel-plugin-named-exports-order": "^0.0.2",
-    "commitizen": "^4.3.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "eslint-config-prettier": "^8.9.0",
-    "eslint-plugin-storybook": "^0.6.13",
-    "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
-    "prettier": "^3.0.0",
     "prop-types": "^15.8.1",
-    "storybook": "^7.2.3",
     "webpack": "^5.88.2"
-  },
-  "lint-staged": {
-    "*.{ts, jsx}": "npm run lint",
-    "*.{ts,tsx,css,md,html,json}": "npm run format"
   }
 }
