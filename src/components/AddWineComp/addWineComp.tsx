@@ -1,10 +1,10 @@
-import './AddWineComponent.scss';
+import './AddWineComp.scss';
 import grapes from '../../assets/images/image-grape.svg'
 import barrel from '../../assets/images/image-barrel.svg'
 import { addWineComponentType } from '../../types/componentProps.types';
 import FormComponent from '../FormComponent/FormComponent';
 
-function addWineComponent({ handleAddWine } : addWineComponentType) {
+function addWineComp({ handleAddWine } : addWineComponentType) {
   return ( 
     <section className='add-wine'>
       <div className='add-wine__wrapper'>
@@ -18,4 +18,4 @@ function addWineComponent({ handleAddWine } : addWineComponentType) {
    );
 }
 
-export default addWineComponent;
+export default addWineComp;
