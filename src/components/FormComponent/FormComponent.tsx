@@ -1,19 +1,20 @@
 import './FormComponent.scss';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import Select from 'react-select';
 
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import StarReiting from '../StarRating/StarRating';
 import InputAddWine from '../ui/InputAddWine/InputAddWine';
-import { FormComponentType } from '../../types/componentProps.types';
 import { optionsGrapeVariety } from '../../utils/grapeVariety';
 import { optionsColorWine, optionsTypeWine } from '../../utils/optionsWine';
 import { InputValuesType } from '../../types/allTypes.types';
+import { useAppDispatch } from '../../hooks/redux';
+import { addNewWine } from '../../store/wine/wineApi';
 
 
-function FormComponent({ handleSubmit } : FormComponentType) {
+function FormComponent() {
   const [inputValues, setInputValues] = useState<InputValuesType | null >(null);
-  // const [currentColorWine, setCurrentColorWine] = useState('Красное');
+  const dispatch = useAppDispatch()
 
   const handleStoreValue = (name: string, value: string | number) => {
     setInputValues(current => ({
@@ -33,22 +34,10 @@ function FormComponent({ handleSubmit } : FormComponentType) {
     handleStoreValue(name, reiting)
   }
 
-  useEffect(() => {
-    console.log(inputValues);
-  })
-
   const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
-    
-    handleSubmit(inputValues!)
+    dispatch(addNewWine(inputValues!))
   }
-
-  // const getValue = () => {
-  //   const result = optionsColorWine.find(c => c.value === currentColorWine)
-  //   console.log('Результат', result?.value);
-    
-  //   return currentColorWine
-  // }
 
   const handleChangeSelector = (newValue : any) => {
     const { name, value } = newValue
@@ -58,8 +47,6 @@ function FormComponent({ handleSubmit } : FormComponentType) {
       [name]: value,
     }))
   }
-
-
 
   return ( 
       <form onSubmit={onSubmit} name='form-component' className='form' autoComplete='off'>

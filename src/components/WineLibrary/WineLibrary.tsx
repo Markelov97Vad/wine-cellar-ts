@@ -6,7 +6,7 @@ type WineLibraryProps = {
   wine: Wine[]
 }
 
-function WineLibrary({ wine }: WineLibraryProps) {
+function WineLibrary() {
   return ( 
     <section className='wine-library'>
       <div className='wine-library__wrapper'>
@@ -16,7 +16,7 @@ function WineLibrary({ wine }: WineLibraryProps) {
           <div>volume</div>
         </div>
         <div className='wine-library__side-bar'>side-bar</div>
-        <WineCardList wine={wine}/>
+        <WineCardList />
       </div>
     </section>
    );

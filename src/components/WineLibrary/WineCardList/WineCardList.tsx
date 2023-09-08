@@ -1,22 +1,27 @@
-import { Wine } from '../../../types/wine.type';
+import { useEffect } from 'react';
 import WineCard from '../WineCard/WineCard';
 import './WineCardList.scss';
+import { getWines } from '../../../store/wine/wineApi';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 
-type WineCardListProps = {
-  wine: Wine[]
-}
 
-function WineCardList({ wine } : WineCardListProps) {
+function WineCardList() {
+  const dispatch = useAppDispatch()
+  const { wines }= useAppSelector(state => state.wines)
+
+  useEffect(() => {
+    dispatch(getWines());
+    // console.log(1);
+    
+  }, [dispatch]);
+
   return (
      <div className='wine-card-list'>
       { 
-        wine.map(( wineElem, id) => (
+        wines.map(( wineElem, id) => (
           <WineCard key={id} wineElem={wineElem}/>
         ))
       }
-      {/* <WineCard />
-      <WineCard />
-      <WineCard /> */}
      </div>
   );
 }

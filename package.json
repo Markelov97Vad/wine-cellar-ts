@@ -35,9 +35,7 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest",
-      "prettier",
-      "plugin:storybook/recommended"
+      "react-app/jest"
     ]
   },
   "browserslist": {
@@ -69,7 +67,6 @@
     "eslint-plugin-storybook": "^0.6.13",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.3",
-    "prettier": "^3.0.0",
     "prop-types": "^15.8.1",
     "storybook": "^7.2.3",
     "webpack": "^5.88.2"
