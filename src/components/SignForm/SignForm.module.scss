@@ -1,0 +1,47 @@
+@import '../../index.scss';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+
+  &__button {
+    margin-top: 50px;
+    margin: 50px auto 0;
+    max-width: 253px;
+    transition: opacity .2s ease-out;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  &__span {
+    margin-top: 9px;
+    text-align: center;
+    @include show-font(
+      $family: $font-family-type-2,
+      $color: $color-fonts-black,
+      $size: 13px,
+      $line-heigth: 54px,
+      $weight: 400
+    );
+  }
+
+  &__link {
+    text-decoration: none;
+    transition: opacity .2s ease-out;
+    @include show-font(
+      $family: $font-family-type-2,
+      $color: #998431,
+      $size: 13px,
+      $line-heigth: 54px,
+      $weight: 400
+    );
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+}

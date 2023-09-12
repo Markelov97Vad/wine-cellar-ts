@@ -1,0 +1,124 @@
+@import "../../../index.scss";
+
+.input-select {
+  // margin-top: 1px;
+
+  &__span {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+    margin-bottom: 4px;
+    @include show-font($family: "Montserrat", $weight: 500, $size: 16px, $line-heigth: 16.5px, $color: $color-fonts);
+
+    &_active {
+      opacity: 0.5;
+    }
+  }
+}
+
+// REACT-SELECT
+.custom-select {
+  // сам контейнер
+  &__control {
+    border-style: none !important;
+    background-color: transparent !important;
+    // max-width: 300px !important;
+    box-shadow: none;
+
+    &__value-container {
+      // color: $color-fonts !important;
+      padding-bottom: 5px !important;
+    }
+    &:hover {
+      border-color: $color-border-wrapper !important;
+    }
+    &:focus {
+      box-shadow: 0 0 0 1px $color-border-wrapper !important;
+    }
+    &--menu-is-open {
+      box-shadow: 0 0 0 1px $color-border-wrapper !important;
+      border-color: $color-border-wrapper !important;
+    }
+    &--is-focused {
+      border: none !important;
+      box-shadow: 0 0 0 1px $color-border-wrapper !important;
+    }
+  }
+  &__placeholder {
+    // color: #d9d6d667 !important;
+    // margin-bottom: 8px;
+    position: absolute;
+    top: 6px !important;
+    @include show-font(
+      $family: "Montserrat" !important,
+      $weight: 500 !important,
+      $size: 16px !important,
+      $line-heigth: 19.5px !important,
+      $color: $color-fonts-opacity !important
+    );
+    order: 2;
+  }
+
+  // место инпута
+  &__value-container {
+    padding-bottom: 5px !important;
+    cursor: text !important;
+    border-bottom: 1px solid $color-fonts;
+  }
+
+  &__single-value {
+    font-family: "Montserrat" !important;
+    font-weight: 500 !important;
+    font-size: 16px !important;
+    color: white !important;
+    order: 1;
+  }
+
+  &__input-container {
+    @include show-font(
+      $family: "Montserrat" !important,
+      $weight: 500 !important,
+      $size: 13px !important,
+      $line-heigth: 19.5px !important,
+      $color: $color-fonts !important
+    );
+    @extend %input-value;
+    height: 25px;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  &__indicators {
+    cursor: pointer !important;
+  }
+  // значок выплывающего меню
+  &__indicator {
+    color: white !important;
+    &:hover {
+      color: #5c5959 !important;
+    }
+  }
+
+  &__menu {
+    background-color: $color-border-wrapper;
+    @include show-font(
+      $family: "Montserrat" !important,
+      $weight: 500 !important,
+      $size: 13px !important,
+      $line-heigth: 19.5px !important,
+      $color: $color-fonts-black !important
+    );
+  }
+  &__option {
+    cursor: pointer !important;
+    background-color: $color-background-milk !important;
+
+    &--is-focused {
+      background-color: lighten($color: #d9d6d6, $amount: 8%) !important;
+      // background-color: black !important;
+    }
+    &--is-selected {
+      color: $color-font-olive !important;
+    }
+  }
+}

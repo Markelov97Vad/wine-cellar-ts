@@ -11,6 +11,11 @@ $color-fonts-black: #282828;
 $color-border-wrapper: #C4C4C4;
 $color-font-olive: #998431;
 
+// fonts
+$font-family-type-1: 'Playfair Display';
+$font-family-type-2: 'Montserrat';
+$color-fonts-black-opacity: #282828b0;
+
 %indents-reset {
   margin: 0;
   padding: 0;
@@ -22,8 +27,8 @@ $color-font-olive: #998431;
   // min-width: 255px;
   width: 100%;
   height: 30px;
-  background-color: $color-background;
-  border-bottom: 1px solid $color-fonts;
+  // background-color: $color-background;
+  // border-bottom: 1px solid $color-fonts;
 
   &:first-child {
     margin-top: 0;

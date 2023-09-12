@@ -21,7 +21,7 @@ function Header() {
           </li>
         </ul>
       </nav>
-      <NavigationLinkProfile to="/"/>
+      <NavigationLinkProfile to="/login"/>
     </header>
    );
 }

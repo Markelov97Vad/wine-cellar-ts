@@ -5,14 +5,15 @@ export type NavigationLinkProfileType = {
   to: string;
 }
 
-export type InputAddWineType = {
+export type InputFormType = {
   name: string;
   type: string;
   placeholder: string;
-  min?: undefined | number;
-  max?: undefined | number;
-  margin?: undefined | boolean;
-  value: string | undefined;
+  location: string;
+  min?: number;
+  max?: number;
+  margin?: boolean;
+  value?: string;
   handleChange: (event : ChangeEvent<HTMLInputElement>) => void;
 }
 

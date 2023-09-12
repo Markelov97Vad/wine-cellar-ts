@@ -7,5 +7,14 @@ export type InputValuesType = {
   year?: string;
   image?: string;
   comment?: string;
-  reiting?: number
+  reiting?: number;
+  nameUser?: string; 
+  email?: string;
+  password?: string;
+}
+
+export type OptionType = {
+  value: string;
+  label: string;
+  name?: string
 }

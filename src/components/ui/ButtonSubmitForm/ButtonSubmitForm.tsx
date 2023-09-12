@@ -1,8 +1,8 @@
 import styles from './buttonSubmitForm.module.scss'
 
-function ButtonSubmitForm() {
+function ButtonSubmitForm({ extraClass, text } : {extraClass?: string, text: string}) {
   return ( 
-    <button className={styles.buttonSubmitForm}>Добавить</button>
+    <button className={`${styles.buttonSubmitForm} ${extraClass}`}>{text}</button>
    );
 }
 

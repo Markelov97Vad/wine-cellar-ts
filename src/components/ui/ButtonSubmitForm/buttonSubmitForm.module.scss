@@ -1,4 +1,4 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 .buttonSubmitForm {
   border: none;
@@ -9,10 +9,10 @@
   color: $color-fonts;
   cursor: pointer;
   @include show-font(
-    $family: 'Montserrat',
+    $family: $font-family-type-2,
     $weight: 500,
     $size: 16px,
     $line-heigth: 19.5px,
     $color: $color-fonts
-  )
+  );
 }
