@@ -2,80 +2,29 @@
   "name": "wine-cellar-ts",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "next dev --turbo",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.39",
-    "@types/react": "^18.2.16",
-    "@types/react-dom": "^18.2.7",
-    "@types/react-redux": "^7.1.25",
+    "@types/node": "20.6.2",
+    "@types/react": "18.2.21",
+    "@types/react-dom": "18.2.7",
+    "eslint": "8.49.0",
+    "eslint-config-next": "13.4.19",
     "gsap": "^3.12.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "next": "13.4.19",
+    "prettier": "^3.0.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-redux": "^8.1.2",
-    "react-router-dom": "^6.14.2",
-    "react-scripts": "5.0.1",
-    "react-select": "^5.7.4",
-    "redux": "^4.2.1",
-    "sass": "^1.64.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest",
-      "prettier",
-      "plugin:storybook/recommended"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.2.3",
-    "@storybook/addon-interactions": "^7.2.3",
-    "@storybook/addon-links": "^7.2.3",
-    "@storybook/addon-onboarding": "^1.0.8",
-    "@storybook/blocks": "^7.2.3",
-    "@storybook/preset-create-react-app": "^7.2.3",
-    "@storybook/react": "^7.2.3",
-    "@storybook/react-webpack5": "^7.2.3",
-    "@storybook/testing-library": "^0.2.0",
-    "babel-plugin-named-exports-order": "^0.0.2",
-    "commitizen": "^4.3.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "eslint-config-prettier": "^8.9.0",
-    "eslint-plugin-storybook": "^0.6.13",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "prettier": "^3.0.0",
-    "prop-types": "^15.8.1",
-    "storybook": "^7.2.3",
-    "webpack": "^5.88.2"
-  },
-  "lint-staged": {
-    "*.{ts, jsx}": "npm run lint",
-    "*.{ts,tsx,css,md,html,json}": "npm run format"
+    "sass": "^1.67.0",
+    "typescript-plugin-css-modules": "^5.0.1"
   }
 }
