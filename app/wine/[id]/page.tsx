@@ -1,4 +1,3 @@
-
 import Header from '@/components/Header/Header';
 import style from './AboutWine.module.scss';
 import Image from 'next/image';

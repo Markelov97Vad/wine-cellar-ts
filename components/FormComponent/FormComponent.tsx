@@ -1,10 +1,9 @@
+"use client"
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 
 import style from "./FormComponent.module.scss";
 
-// import ButtonSubmitForm from "../ui/ButtonSubmitForm/ButtonSubmitForm";
 import StarReiting from "../StarRating/StarRating";
-import InputAddWine from "../ui/InputForm/InputForm";
 import { optionsGrapeVariety } from "../../utils/grapeVariety";
 import { optionsColorWine, optionsTypeWine } from "../../utils/optionsWine";
 import { InputValuesType, OptionType } from "../../types/allTypes.types";

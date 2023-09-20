@@ -1,3 +1,4 @@
+"use client";
 import { configureStore } from "@reduxjs/toolkit";
 import wineReducer from './wine/wineSlice';
 import userReducer from './user/userSlice';

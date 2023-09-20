@@ -1,3 +1,4 @@
+"use client";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { UserType } from "../../types/user.type";
 import { API } from "../../utils/constans";

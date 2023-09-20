@@ -1,5 +1,7 @@
-import './globals.scss'
-import type { Metadata } from 'next'
+import './globals.scss';
+import type { Metadata } from 'next';
+import { Providers } from '@/store/provider';
+import Header from '@/components/Header/Header';
 // import { Inter } from 'next/font/google'
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -16,11 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* <head>
-        <meta name="description" content="Web site created using create-react-app" />
-        <title>React App</title>
-      </head> */}
-      <body>{children}</body>
+      <body>
+        <Providers>
+          {/* <Header/> */}
+          {children}
+        </Providers>
+      </body>
     </html>
   )
 }

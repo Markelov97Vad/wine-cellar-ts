@@ -1,8 +1,8 @@
 import style from './AddWineComp.module.scss';
 import grapes from '@/public/images/image-grape.svg'
-import barrel from '@/public/assets/images/image-barrel.svg'
-// import FormComponent from '../FormComponent/FormComponent';
+import barrel from '@/public/images/image-barrel.svg'
 import Image from 'next/image';
+import FormComponent from '../FormComponent/FormComponent';
 
 function addWineComp() {
   return ( 
@@ -12,7 +12,7 @@ function addWineComp() {
         <Image className={style['add-wine__img-barrel']} src={barrel} alt="бочка" />
         <h2 className={style['add-wine__title']}>Добавить в библиотеку</h2>
         <p className={style['add-wine__subtitle']}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat enim tortor in hac id imperdiet adipiscing. Pellentesque nisi, mi sit non sit sed fermentum.</p>
-        {/* <FormComponent /> */}
+        <FormComponent />
       </div>
     </section>
    );

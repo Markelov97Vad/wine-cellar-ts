@@ -1,4 +1,4 @@
-import styles from './buttonSubmitForm.module.scss'
+import styles from './ButtonSubmitForm.module.scss'
 
 function ButtonSubmitForm({ extraClass, text } : {extraClass?: string, text: string}) {
   return ( 

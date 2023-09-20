@@ -1,3 +1,4 @@
+"use client";
 import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { addNewWine, getWines } from "./wineApi";
 import { Wine } from "../../types/wine.type";

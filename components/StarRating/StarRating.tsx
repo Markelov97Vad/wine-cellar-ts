@@ -1,9 +1,10 @@
-import './StarRating.scss'
 import { useEffect, useState } from 'react';
-
-import starOff from '../../assets/images/star-off.svg'
-import starOn from '../../assets/images/star-on.svg'
 import Image from 'next/image';
+
+import style from './StarRating.module.scss';
+
+import starOff from '@/public/images/star-off.svg';
+import starOn from '@/public/images/star-on.svg';
 
 type StarRatingType = {
   handleReiting: (reiting: number) => void
@@ -21,20 +22,20 @@ function StarRating({ handleReiting } : StarRatingType ) {
   
 
   return (
-    <div className='star-rating'>
+    <div>
       { [...Array(5)].map((star, i) => {
         const ratingVal = i + 1;
         return (
-          <label key={i} className='star-rating__label'>
+          <label key={i}>
             <input 
-              className='star-rating__input'
+              className={style['star-rating__input']}
               onClick={() => setRating(ratingVal)}
               value={ratingVal}
               type="radio"
               name="rating"
             />
             <Image
-              className='star-rating__img'
+              className={style['star-rating__img']}
               src={ratingVal > ( hover || rating ) ? starOff : starOn} 
               alt="звезда"
               onMouseEnter={() => setHover(ratingVal)}

@@ -1,3 +1,4 @@
+"use client"
 import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { stat } from "fs";
 import { UserType } from '../../types/user.type'
