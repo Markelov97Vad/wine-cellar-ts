@@ -1,0 +1,67 @@
+@import '../../globals.scss';
+
+.form {
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__fieldest {
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    gap: 20px;
+    @include mobile {
+      justify-content:center;
+      flex-direction: column;
+    }
+  }
+
+  &__column {
+    width: 100%;
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__textarea {
+    background-color: inherit;
+    @extend %input-value;
+    margin-top: 20px;
+    max-width: 540px;
+    min-height: 60px;
+    margin-bottom: 30px;
+  
+    @include show-font(
+      $family: 'Montserrat',
+      $weight: 500,
+      $size: 13px,
+      $line-heigth: 19.5px,
+      $color: $color-fonts
+    );
+
+    @include mobile {
+      align-self: center;
+      width: 95%;
+    }
+  }
+
+  &__rating-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  &__span-rating {
+    @include show-font(
+      $family: 'Montserrat',
+      $color: $color-fonts,
+      $size: 20px,
+      $line-heigth: 54px,
+      $weight: 500
+    )
+  }
+}

@@ -1,12 +1,14 @@
 export type Wine = {
+  _id?: string;
   name?: string;
   region?: string;
   grapeVariety?: string;
+  colorWine?: string
   country?: string;
   typeWine?: string;
   year?: string;
   image?: string;
-  reiting?: number;
+  rating?: number;
   comment?: string;
 }
 

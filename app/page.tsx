@@ -8,8 +8,8 @@
 // import AddWineComp from "@/components/AddWineComp/AddWineComp";
 // import WineLibrary from "@/components/WineLibrary/WineLibrary";
 // import Image from "next/image";
-import Home from "@/components/Home/Home";
+import Home from '@/app/components/Home/Home';
 
 export default function HomePage() {
-  return <Home/>
+  return <Home />;
 }

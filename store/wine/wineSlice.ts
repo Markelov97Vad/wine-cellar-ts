@@ -1,16 +1,18 @@
 "use client";
 import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { addNewWine, getWines } from "./wineApi";
+import { addNewWine, getCurrentWine, getWines } from "./wineApi";
 import { Wine } from "../../types/wine.type";
 
 type WineState = {
   wines: Wine[],
+  currentWine: Wine,
   loading: boolean,
   error: string | null
 }
 
 const initialState: WineState = {
   wines: [],
+  currentWine: {},
   loading: false,
   error: null
 }
@@ -33,7 +35,7 @@ const wineSlice = createSlice({
       })
       .addCase(getWines.rejected, (state, action) => {
         state.loading = false;
-        state.error = (action.payload as string);
+        state.error = action.payload as string;
       })
       .addCase(addNewWine.pending, (state, action) => {
         state.loading = true;
@@ -44,7 +46,18 @@ const wineSlice = createSlice({
       })
       .addCase(addNewWine.rejected, (state, action) => {
         state.loading = false;
-        state.error = (action.payload as string);
+        state.error = action.payload as string;
+      })
+      .addCase(getCurrentWine.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getCurrentWine.fulfilled, (state, action) => {
+        state.currentWine = action.payload;
+      })
+      .addCase(getCurrentWine.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string
       })
       // перевод в статус ошибки
       // .addMatcher(isError, (state, action: PayloadAction<string>) => {

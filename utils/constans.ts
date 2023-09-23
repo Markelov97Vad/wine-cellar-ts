@@ -4,7 +4,7 @@ export const API = {
   baseUrl: 'http://localhost:3005',
   endpoints: {
     wine: {
-      data: '/wines',
+      data: '/wines'
     },
     user : {
       register: '/signup',
