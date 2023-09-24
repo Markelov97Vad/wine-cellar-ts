@@ -24,3 +24,12 @@ export type addWineComponentType = {
 export type FormComponentType = {
   handleSubmit: (newWine: Wine) => void
 }
+
+type ItemsType = {
+  label: string;
+  href: string;
+}
+
+export type NavigationType = {
+  items: ItemsType[]
+}

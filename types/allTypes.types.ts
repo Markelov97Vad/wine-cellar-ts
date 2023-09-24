@@ -7,10 +7,11 @@ export type InputValuesType = {
   year?: string;
   image?: string;
   comment?: string;
-  reiting?: number;
   nameUser?: string; 
   email?: string;
   password?: string;
+  brand?: string;
+  region?: string;
 }
 
 export type OptionType = {

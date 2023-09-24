@@ -1,21 +1,21 @@
-"use client";
-import { AnyAction, PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { addNewWine, getCurrentWine, getWines } from "./wineApi";
-import { Wine } from "../../types/wine.type";
+'use client';
+import { AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { addNewWine, getCurrentWine, getWines } from './wineApi';
+import { Wine } from '../../../types/wine.type';
 
 type WineState = {
-  wines: Wine[],
-  currentWine: Wine,
-  loading: boolean,
-  error: string | null
-}
+  wines: Wine[];
+  currentWine: Wine;
+  loading: boolean;
+  error: string | null;
+};
 
 const initialState: WineState = {
   wines: [],
   currentWine: {},
   loading: false,
-  error: null
-}
+  error: null,
+};
 
 const wineSlice = createSlice({
   name: 'wines',
@@ -23,10 +23,10 @@ const wineSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-    // когда делаю запрос
+      // когда делаю запрос
       .addCase(getWines.pending, (state) => {
         state.loading = true;
-        state.error = null
+        state.error = null;
       })
       // если все хорошо
       .addCase(getWines.fulfilled, (state, action) => {
@@ -39,7 +39,7 @@ const wineSlice = createSlice({
       })
       .addCase(addNewWine.pending, (state, action) => {
         state.loading = true;
-        state.error = null
+        state.error = null;
       })
       .addCase(addNewWine.fulfilled, (state, action) => {
         state.wines.push(action.payload);
@@ -57,16 +57,16 @@ const wineSlice = createSlice({
       })
       .addCase(getCurrentWine.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string
-      })
-      // перевод в статус ошибки
-      // .addMatcher(isError, (state, action: PayloadAction<string>) => {
-      //   console.log(action.payload);
-      //   state.error = action.payload;
-      //   state.loading = false;
-      // });
-  }
-})
+        state.error = action.payload as string;
+      });
+    // перевод в статус ошибки
+    // .addMatcher(isError, (state, action: PayloadAction<string>) => {
+    //   console.log(action.payload);
+    //   state.error = action.payload;
+    //   state.loading = false;
+    // });
+  },
+});
 
 function isError(action: AnyAction) {
   return action.type.endsWith('rejected');

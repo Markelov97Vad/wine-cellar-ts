@@ -6,7 +6,7 @@ import SignForm from '@/app/components/SignForm/SignForm';
 function Register() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <section className={style.register}>
         <div className={style.register__wrapper}>
           <h2 className={style.register__title}>Rегистрация</h2>

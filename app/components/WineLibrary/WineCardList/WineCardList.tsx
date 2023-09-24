@@ -2,8 +2,8 @@
 import { useEffect } from 'react';
 import WineCard from '../WineCard/WineCard';
 import style from './WineCardList.module.scss';
-import { getWines } from '../../../../store/wine/wineApi';
-import { useAppDispatch, useAppSelector } from '../../../../hooks/redux';
+import { getWines } from '../../../store/wine/wineApi';
+import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 
 function WineCardList() {
   const dispatch = useAppDispatch();

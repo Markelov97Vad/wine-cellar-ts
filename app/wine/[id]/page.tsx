@@ -5,9 +5,9 @@ import Image from 'next/image';
 import StarRating from '@/app/components/StarRating/StarRating';
 import StarRaitingDisabled from '@/app/components/StarRaitingDisabled/StarRaitingDisabled';
 import wineImg from '@/public/images/wine-img.webp';
-import { useAppDispatch, useAppSelector } from '@/hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { useEffect } from 'react';
-import { getCurrentWine } from '@/store/wine/wineApi';
+import { getCurrentWine } from '@/app/store/wine/wineApi';
 
 function AboutWine({ params }: { params: { id: string } }) {
   console.log('ID', params);
@@ -22,7 +22,7 @@ function AboutWine({ params }: { params: { id: string } }) {
     year,
     comment,
     image,
-    rating
+    rating,
   } = useAppSelector((state) => state.wines.currentWine);
 
   useEffect(() => {
@@ -31,23 +31,27 @@ function AboutWine({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main className={style.aboutWine}>
         <div className={style.aboutWine__imgContainer}>
-          <img className={style.aboutWine__image} src={image!} alt="бутылка вина" />
+          <img
+            className={style.aboutWine__image}
+            src={image!}
+            alt="бутылка вина"
+          />
         </div>
 
         <div className={style['aboutWine__info-wrapper']}>
           <h1 className={style.aboutWine__title}>{name}</h1>
           <p className={style.aboutWine__subtitle}>AUDEANT</p>
-          <StarRaitingDisabled rating={rating}/>
+          <StarRaitingDisabled rating={rating} />
           <div className={style.details}>
             <div className={style.details__wrapper}>
-              <span className={style.details__about}>CLASSIFICATION</span>
-              <span className={style.details__value}>Cru Classe</span>
+              <span className={style.details__about}>ТИП</span>
+              <span className={style.details__value}>{colorWine}</span>
             </div>
             <div className={style.details__wrapper}>
-              <span className={style.details__about}>ТИП</span>
+              <span className={style.details__about}>БРЭНД</span>
               <span className={style.details__value}>{colorWine}</span>
             </div>
             <div className={style.details__wrapper}>
@@ -68,9 +72,7 @@ function AboutWine({ params }: { params: { id: string } }) {
           <span className={style['aboutWine__review-owner']}>
             ROBERT PARKER (99)
           </span>
-          <p className={style.aboutWine__rewiew}>
-            {comment}
-          </p>
+          <p className={style.aboutWine__rewiew}>{comment}</p>
         </div>
       </main>
     </>

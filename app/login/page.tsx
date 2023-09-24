@@ -5,7 +5,7 @@ import SignForm from '@/app/components/SignForm/SignForm';
 function Login() {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <section className={style.login}>
         <div className={style.login__wrapper}>
           <h2 className={style.login__title}>Ваш аккаунт</h2>

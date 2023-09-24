@@ -8,6 +8,7 @@ export type Wine = {
   typeWine?: string;
   year?: string;
   image?: string;
+  brand?: string
   rating?: number;
   comment?: string;
 }

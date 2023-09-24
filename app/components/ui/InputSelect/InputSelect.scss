@@ -6,7 +6,8 @@
     display: inline-block;
     opacity: 0;
     transition: opacity 0.1s ease-out;
-    margin-bottom: 4px;
+    margin-top: 4px;
+    // margin-bottom: 4px;
     @include show-font($family: "Montserrat", $weight: 500, $size: 16px, $line-heigth: 16.5px, $color: $color-fonts);
 
     &_active {
@@ -20,6 +21,7 @@
   margin: 0;
   // сам контейнер
   &__control {
+    transform: translateY(5px) !important;
     border-style: none !important;
     background-color: transparent !important;
     // max-width: 300px !important;
@@ -27,7 +29,7 @@
 
     &__value-container {
       // color: $color-fonts !important;
-      padding-bottom: 5px !important;
+      // padding-bottom: 5px !important;
     }
     &:hover {
       border-color: $color-border-wrapper !important;
@@ -52,7 +54,7 @@
     @include show-font(
       $family: "Montserrat" !important,
       $weight: 500 !important,
-      $size: 16px !important,
+      $size: 13px !important,
       $line-heigth: 19.5px !important,
       $color: $color-fonts-opacity !important
     );
@@ -61,17 +63,20 @@
 
   // место инпута
   &__value-container {
-    padding-bottom: 5px !important;
+    padding-left: 2px !important;
     cursor: text !important;
     border-bottom: 1px solid $color-fonts;
   }
 
   &__single-value {
-    font-family: "Montserrat" !important;
-    font-weight: 500 !important;
-    font-size: 16px !important;
-    color: white !important;
     order: 1;
+    @include show-font(
+      $family: "Montserrat" !important,
+      $weight: 500 !important,
+      $size: 13px !important,
+      $line-heigth: 19.5px !important,
+      $color: $color-fonts !important
+    );
   }
 
   &__input-container {

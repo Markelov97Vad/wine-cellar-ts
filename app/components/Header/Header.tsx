@@ -3,26 +3,33 @@ import logo from '@/public/images/logoWC.svg';
 import Link from 'next/link';
 import Image from 'next/image';
 import NavigationLinkProfile from '../ui/NavigationLinkProfile/NavigationLinkProfile';
+import Navigation from '../Navigation/Navigation';
 
 function Header() {
+
+
+  const navItems = [
+    {
+      label: 'Главная',
+      href: '/'
+    },
+    {
+      label: 'Библиотека',
+      href: '/library'
+    },
+    {
+      label: 'Мои вина',
+      href: '/my-wines'
+    }
+
+  ]
+
   return ( 
     <header className={style.header}>
       <Link href='/'>
         <Image className={style.header__logo} src={logo} alt="Логотип" />
       </Link>
-      <nav>
-        <ul className={style.header__list}>
-          <li>
-            <Link className={style.header__link} href={'/'}>text</Link>
-          </li>
-          <li>
-            <Link className={style.header__link} href={'/'}>text</Link>
-          </li> 
-          <li>
-            <Link className={style.header__link} href={'/'}>text</Link>
-          </li>
-        </ul>
-      </nav>
+      <Navigation items={navItems}/>
       <NavigationLinkProfile to="/login"/>
     </header>
    );

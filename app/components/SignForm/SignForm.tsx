@@ -4,8 +4,8 @@ import Link from 'next/link';
 
 import style from './SignForm.module.scss';
 
-import { useAppDispatch } from '../../../hooks/redux';
-import { loginUser, registerUser } from '../../../store/user/userApi';
+import { useAppDispatch } from '../../hooks/redux';
+import { loginUser, registerUser } from '../../store/user/userApi';
 import { InputValuesType } from '../../../types/allTypes.types';
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import InputForm from '../ui/InputForm/InputForm';

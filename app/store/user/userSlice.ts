@@ -1,22 +1,22 @@
-"use client"
-import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { stat } from "fs";
-import { UserType } from '../../types/user.type'
-import {  loginUser, registerUser } from "./userApi";
+'use client';
+import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { stat } from 'fs';
+import { UserType } from '../../../types/user.type';
+import { loginUser, registerUser } from './userApi';
 
 type UserState = {
   user: UserType | null;
   isLoggedIn: boolean;
   loading: boolean;
   error: string | null;
-}
+};
 
-const initialState: UserState  = {
+const initialState: UserState = {
   user: null,
   isLoggedIn: false,
   loading: false,
   error: null,
-}
+};
 
 const userSlice = createSlice({
   name: 'user',
@@ -28,7 +28,7 @@ const userSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state , action) => {
+      .addCase(registerUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.loading = false;
         state.error = null;
@@ -54,8 +54,8 @@ const userSlice = createSlice({
         state.error = action.payload as string;
       })
       .addDefaultCase((state) => state);
-  }
-})
+  },
+});
 // function isError(action: AnyAction) {
 //   return action.type.endsWith('rejected');
 // }

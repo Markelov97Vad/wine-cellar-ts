@@ -2,9 +2,10 @@
 $color-background: #282828;
 $color-background-olive: #998431;
 $color-background-milk: #E6E3C4;
+$color-background-milk-opacity: #e6e3c415;
 $color-background-white: #fff;
 
-// color
+// color-fonts
 $color-fonts: #fff;
 $color-fonts-opacity: #fff;
 $color-fonts-black: #282828;
@@ -15,6 +16,14 @@ $color-font-olive: #998431;
 $font-family-type-Playfair: 'Playfair Display';
 $font-family-type-Montserrat: 'Montserrat';
 $color-fonts-black-opacity: #282828b0;
+
+//color
+$main-color-black: #282828;
+$main-color-black-opacity: #2828283e;
+$main-color-white: #fff;
+$main-color-milk: #E6E3C4;
+$main-color-olive: #998431;
+
 
 %indents-reset {
   margin: 0;

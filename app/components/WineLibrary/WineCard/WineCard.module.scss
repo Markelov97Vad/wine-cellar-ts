@@ -1,5 +1,9 @@
 @import '../../../globals.scss';
 
+.link {
+  text-decoration: none;
+}
+
 .wine-card {
   background-color: $color-background-white;
   width: 100%;
@@ -37,6 +41,7 @@
 
   &__country {
     margin-top: 20px;
+    text-align: center;
     @include show-font(
       $color: $color-font-olive,
       $size: 20px,
@@ -79,11 +84,6 @@
     margin-top: 25px;
     cursor: pointer;
 
-    &:hover {
-      background-color: $color-background;
-      color: $color-fonts;
-    }
-
     @include show-font(
       $family: 'Montserrat',
       $color: $color-fonts-black,
@@ -92,4 +92,9 @@
       $weight: 300,
     )
   }
+}
+
+.wine-card:hover .wine-card__button-info {
+  background-color: $color-background;
+  color: $color-fonts;
 }

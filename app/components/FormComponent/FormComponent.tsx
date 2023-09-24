@@ -7,8 +7,8 @@ import StarReiting from '../StarRating/StarRating';
 import { optionsGrapeVariety } from '../../../utils/grapeVariety';
 import { optionsColorWine, optionsTypeWine } from '../../../utils/optionsWine';
 import { InputValuesType, OptionType } from '../../../types/allTypes.types';
-import { useAppDispatch } from '../../../hooks/redux';
-import { addNewWine } from '../../../store/wine/wineApi';
+import { useAppDispatch } from '../../hooks/redux';
+import { addNewWine } from '../../store/wine/wineApi';
 import InputSelect from '../ui/InputSelect/InputSelect';
 import InputForm from '../ui/InputForm/InputForm';
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
@@ -66,13 +66,21 @@ function FormComponent() {
       autoComplete="off"
     >
       <fieldset className={style.form__fieldest}>
-        <div className="form__column">
+        <div className={style.form__column}>
           <InputForm
             location="add-wine"
             name="name"
             placeholder="Название"
             type="text"
             value={inputValues?.name}
+            handleChange={handleChange}
+          />
+          <InputForm
+            location="add-wine"
+            name="brand"
+            placeholder="Брэнд"
+            type="text"
+            value={inputValues?.brand}
             handleChange={handleChange}
           />
           <InputForm
@@ -95,6 +103,14 @@ function FormComponent() {
           />
         </div>
         <div className={style.form__column}>
+          <InputForm
+            location="add-wine"
+            name="region"
+            placeholder="Регион"
+            type="text"
+            value={inputValues?.region}
+            handleChange={handleChange}
+          />
           <InputSelect
             value={inputValues?.typeWine}
             onChange={handleChangeSelector}
@@ -142,7 +158,10 @@ function FormComponent() {
         <span className={style['form__span-rating']}>Рейтинг</span>
         <StarReiting handleReiting={handleReiting} />
       </div>
-      <ButtonSubmitForm text="Добавить" />
+      <ButtonSubmitForm
+        extraClass={style['form__button-form']}
+        text="Добавить"
+      />
     </form>
   );
 }

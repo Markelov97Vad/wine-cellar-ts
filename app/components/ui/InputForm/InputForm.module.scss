@@ -39,6 +39,7 @@
   &__input {
     @extend %input-value;
     background-color: inherit;
+    padding-left: 4px;
 
     &_sign {
       border-bottom: 1px solid $color-fonts-black;
