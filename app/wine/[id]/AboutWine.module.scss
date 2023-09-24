@@ -1,0 +1,114 @@
+@import '../../globals.scss';
+
+.aboutWine {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1140px;
+  background-color: $color-background-white;
+  
+  &__imgContainer {
+    min-width: 550px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 450px;
+    height: calc(88vh - 170px);
+    object-fit: contain;
+  }
+
+  &__info-wrapper {
+    border-left: 1px solid $color-fonts-black-opacity;
+    padding: 20px 40px 20px;
+  }
+
+  &__title {
+    font-family: $font-family-type-Playfair;
+    font-size: 35px;
+    letter-spacing: .14rem;
+    line-height: 1.3;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 27px */
+    margin: 0 0 15px;
+  }
+
+  &__subtitle {
+    font-family: $font-family-type-Montserrat;
+    font-size: 15px;
+    letter-spacing: .14rem;
+    line-height: 1.3;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+    margin: 0 0 34px;
+  }
+
+  &__reviwe-title {
+    font-family: $font-family-type-Playfair;
+    font-size: 35px;
+    letter-spacing: .14rem;
+    line-height: 1.3;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+  }
+
+  &__review-owner {
+    font-family: $font-family-type-Montserrat;
+    font-size: 15px;
+    letter-spacing: .14rem;
+    line-height: 1.3;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+    margin: 0;
+  }
+
+  &__rewiew {
+    font-family: $font-family-type-Playfair;
+    text-align: justify;
+    font-size: 12px;
+    letter-spacing: .14rem;
+    line-height: 1.3;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+  }
+
+}
+
+.details {
+  display: flex;
+  max-width: 300px;
+  flex-direction: column;
+  margin-top: 40px;
+  &__wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  &__about {
+    display: inline-block;
+    // width: 235px;
+    font-family: $font-family-type-Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 21px */
+    padding-right: 60px;
+  }
+
+  &__value {
+    font-family: $font-family-type-Playfair;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 27px */
+  }
+}

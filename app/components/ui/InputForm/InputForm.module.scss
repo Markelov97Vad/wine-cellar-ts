@@ -1,0 +1,123 @@
+@import "../../../globals.scss";
+
+.input-from {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &_size_b {
+    margin-top: 30px;
+  }
+
+  &__label {
+    opacity: 0;
+    transition: opacity 0.1s ease-out;
+    @include show-font(
+      $family: $font-family-type-Montserrat,
+      $weight: 500,
+      $size: 13px,
+      $line-heigth: 19.5px,
+      $color: $color-fonts-black
+    );
+
+    &_active {
+      opacity: 0.5;
+    }
+
+    &_sign {
+      @include show-font(
+        $family: $font-family-type-Montserrat,
+        $weight: 500,
+        $size: 13px,
+        $line-heigth: 19.5px,
+        $color: $color-fonts-black
+      );
+    }
+
+    &_add-wine {
+      @include show-font(
+        $family: $font-family-type-Montserrat,
+        $weight: 500,
+        $size: 13px,
+        $line-heigth: 19.5px,
+        $color: $color-fonts
+      );
+    }
+  }
+  &__input {
+    @extend %input-value;
+    background-color: inherit;
+    padding-left: 4px;
+
+    &_sign {
+      border-bottom: 1px solid $color-fonts-black;
+      @include show-font(
+        $family: $font-family-type-Montserrat,
+        $weight: 500,
+        $size: 15px,
+        $line-heigth: 19.5px,
+        $color: $color-fonts-black
+      );
+
+      &::placeholder {
+        @include show-font(
+          $family: $font-family-type-Montserrat,
+          $weight: 500,
+          $size: 13px,
+          $line-heigth: 19.5px,
+          $color: $color-fonts-black-opacity
+        );
+      }
+    }
+
+    &_add-wine {
+      border-bottom: 1px solid $color-fonts;
+      @include show-font(
+        $family: $font-family-type-Montserrat,
+        $weight: 500,
+        $size: 13px,
+        $line-heigth: 19.5px,
+        $color: $color-fonts
+      );
+
+      &::placeholder {
+        @include show-font(
+          $family: $font-family-type-Montserrat,
+          $weight: 500,
+          $size: 13px,
+          $line-heigth: 19.5px,
+          $color: $color-fonts-opacity
+        );
+      }
+    }
+
+    &_settings {
+      border-bottom: 1px solid $color-fonts-black;
+      @include show-font(
+        $family: $font-family-type-Montserrat,
+        $weight: 500,
+        $size: 15px,
+        $line-heigth: 19.5px,
+        $color: $color-fonts-black
+      );
+
+      &::placeholder {
+        @include show-font(
+          $family: $font-family-type-Montserrat,
+          $weight: 500,
+          $size: 13px,
+          $line-heigth: 19.5px,
+          $color: $color-fonts-black-opacity
+        );
+      }
+    }
+  }
+
+  @include mobile {
+    align-self: center;
+    width: 95%;
+    // margin-inline: 10px;
+    // max-width: 100;
+  }
+}

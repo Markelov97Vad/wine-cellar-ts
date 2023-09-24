@@ -1,0 +1,53 @@
+// background-color
+$color-background: #282828;
+$color-background-olive: #998431;
+$color-background-milk: #E6E3C4;
+$color-background-milk-opacity: #e6e3c415;
+$color-background-white: #fff;
+
+// color-fonts
+$color-fonts: #fff;
+$color-fonts-opacity: #ffffff72;
+$color-fonts-black: #282828;
+$color-border-wrapper: #C4C4C4;
+$color-font-olive: #998431;
+
+// fonts
+$font-family-type-Playfair: 'Playfair Display';
+$font-family-type-Montserrat: 'Montserrat';
+$color-fonts-black-opacity: #282828b0;
+
+//color
+$main-color-black: #282828;
+$main-color-black-opacity: #2828283e;
+$main-color-white: #fff;
+$main-color-milk: #E6E3C4;
+$main-color-olive: #998431;
+
+
+%indents-reset {
+  margin: 0;
+  padding: 0;
+}
+
+%input-value {
+  border: none;
+  box-sizing: border-box;
+  // min-width: 255px;
+  width: 100%;
+  height: 30px;
+  // background-color: $color-background;
+  // border-bottom: 1px solid $color-fonts;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $color-fonts;
+  }
+}
