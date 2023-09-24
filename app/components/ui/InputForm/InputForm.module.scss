@@ -1,7 +1,10 @@
-@import '../../../globals.scss';
+@import "../../../globals.scss";
 
 .input-from {
   margin-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 
   &_size_b {
     margin-top: 30px;
@@ -9,32 +12,38 @@
 
   &__label {
     opacity: 0;
-    transition: opacity .1s ease-out;
+    transition: opacity 0.1s ease-out;
+    @include show-font(
+      $family: $font-family-type-Montserrat,
+      $weight: 500,
+      $size: 13px,
+      $line-heigth: 19.5px,
+      $color: $color-fonts-black
+    );
 
     &_active {
-      opacity: .5;
+      opacity: 0.5;
     }
 
     &_sign {
       @include show-font(
-          $family: $font-family-type-Montserrat,
-          $weight: 500,
-          $size: 13px,
-          $line-heigth: 19.5px,
-          $color:  $color-fonts-black
-        );
+        $family: $font-family-type-Montserrat,
+        $weight: 500,
+        $size: 13px,
+        $line-heigth: 19.5px,
+        $color: $color-fonts-black
+      );
     }
 
     &_add-wine {
       @include show-font(
-          $family: $font-family-type-Montserrat,
-          $weight: 500,
-          $size: 1rem,
-          $line-heigth: 19.5px,
-          $color:  $color-fonts
-        );
+        $family: $font-family-type-Montserrat,
+        $weight: 500,
+        $size: 13px,
+        $line-heigth: 19.5px,
+        $color: $color-fonts
+      );
     }
-
   }
   &__input {
     @extend %input-value;
@@ -46,7 +55,7 @@
       @include show-font(
         $family: $font-family-type-Montserrat,
         $weight: 500,
-        $size: 16px,
+        $size: 15px,
         $line-heigth: 19.5px,
         $color: $color-fonts-black
       );
@@ -78,14 +87,32 @@
           $weight: 500,
           $size: 13px,
           $line-heigth: 19.5px,
-          $color: $color-fonts
+          $color: $color-fonts-opacity
+        );
+      }
+    }
+
+    &_settings {
+      border-bottom: 1px solid $color-fonts-black;
+      @include show-font(
+        $family: $font-family-type-Montserrat,
+        $weight: 500,
+        $size: 15px,
+        $line-heigth: 19.5px,
+        $color: $color-fonts-black
+      );
+
+      &::placeholder {
+        @include show-font(
+          $family: $font-family-type-Montserrat,
+          $weight: 500,
+          $size: 13px,
+          $line-heigth: 19.5px,
+          $color: $color-fonts-black-opacity
         );
       }
     }
   }
-
-
-  
 
   @include mobile {
     align-self: center;

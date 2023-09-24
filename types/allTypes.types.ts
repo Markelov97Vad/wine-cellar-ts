@@ -1,5 +1,6 @@
 export type InputValuesType = {
   name?: string;
+  surname?: string
   colorWine?: string;
   grapeVariety?: string;
   country?: string;

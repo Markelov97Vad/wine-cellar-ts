@@ -4,16 +4,29 @@
   background-color: $color-background-milk;
   width: 100%;
   height: 600px;
+  padding: 20px 0 0;
+
+  &__wrapper {
+    max-width: 1140px;
+    gap: 25px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
 
   &__nav {
     background-color: $color-background-white;
     max-width: 260px;
+    display: flex;
+    align-items: center;
+    max-height: 100px;
     padding: 20px 40px 40px;
   }
 
   &__list {
+    padding: 0;
+    margin: 0;
     list-style: none;
-    
   }
   
   &__link {
@@ -22,6 +35,8 @@
     padding: 14px 0 8px;
     box-sizing: border-box;
     border-bottom: 1px solid $main-color-black-opacity;
+    transition: all .1s ease-in-out;
+    min-width: 200px;
     @include show-font(
       $family: $font-family-type-Montserrat,
       $weight: null,
@@ -30,10 +45,18 @@
       $color: $color-fonts-black
     );
 
+    &:hover {
+      opacity: .7;
+      color: $main-color-olive;
+    }
+
     &_active {
       border-bottom: 1px solid $main-color-olive;
       color: $color-background-olive;
     }
+  }
 
+  &__layout {
+    background-color: $color-background-white;
   }
 }

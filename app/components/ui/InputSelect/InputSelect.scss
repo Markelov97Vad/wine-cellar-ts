@@ -1,14 +1,18 @@
 @import "../../../globals.scss";
 
 .input-select {
-
   &__span {
     display: inline-block;
     opacity: 0;
     transition: opacity 0.1s ease-out;
     margin-top: 4px;
-    // margin-bottom: 4px;
-    @include show-font($family: "Montserrat", $weight: 500, $size: 16px, $line-heigth: 16.5px, $color: $color-fonts);
+    @include show-font(
+      $family: "Montserrat",
+      $weight: 500,
+      $size: 13px,
+      $line-heigth: 16.5px,
+      $color: $color-fonts
+    );
 
     &_active {
       opacity: 0.5;
@@ -24,7 +28,6 @@
     transform: translateY(5px) !important;
     border-style: none !important;
     background-color: transparent !important;
-    // max-width: 300px !important;
     box-shadow: none;
 
     &__value-container {

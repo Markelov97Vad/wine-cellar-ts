@@ -12,3 +12,29 @@ export const API = {
     }
   }
 }
+
+export const navItemsHeader = [
+  {
+    label: 'Главная',
+    href: '/'
+  },
+  {
+    label: 'Библиотека',
+    href: '/library'
+  },
+  {
+    label: 'Мои вина',
+    href: '/my-wines'
+  }
+]
+
+export const navItemAccount = [
+  {
+    label: 'Мои данные',
+    href: '/account/settings',
+  },
+  {
+    label: 'Избранное',
+    href: '/account/favorites',
+  },
+];

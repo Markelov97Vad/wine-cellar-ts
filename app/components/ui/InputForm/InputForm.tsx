@@ -28,6 +28,8 @@ function InputForm({
         return style['input-from__input_sign'];
       case 'add-wine':
         return style['input-from__input_add-wine'];
+      case 'settings':
+        return style['input-from__input_settings'];
       default:
         return;
     }

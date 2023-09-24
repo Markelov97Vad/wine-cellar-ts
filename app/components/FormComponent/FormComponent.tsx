@@ -12,50 +12,43 @@ import { addNewWine } from '../../store/wine/wineApi';
 import InputSelect from '../ui/InputSelect/InputSelect';
 import InputForm from '../ui/InputForm/InputForm';
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
+import { useFormValid } from '@/app/hooks/useFormValid';
 
 function FormComponent() {
-  const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
+  // const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
+  const { inputValues, handleChange, handleChangeSelector, handleReiting } =
+    useFormValid();
   const dispatch = useAppDispatch();
 
-  const handleStoreValue = (name: string, value: string | number) => {
-    setInputValues((current) => ({
-      ...current,
-      [name]: value,
-    }));
-  };
+  // const handleStoreValue = (name: string, value: string | number) => {
+  //   setInputValues((current) => ({
+  //     ...current,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const handleChange = (
-    event: ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-  ) => {
-    const { name, value } = event.target;
+  // const handleChange = (
+  //   event: ChangeEvent<
+  //     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+  //   >,
+  // ) => {
+  //   const { name, value } = event.target;
 
-    handleStoreValue(name, value);
-  };
+  //   handleStoreValue(name, value);
+  // };
 
-  const handleReiting = (rating: number) => {
-    const name = 'rating';
-    handleStoreValue(name, rating);
-  };
+  // const handleReiting = (rating: number) => {
+  //   const name = 'rating';
+  //   handleStoreValue(name, rating);
+  // };
 
   const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(addNewWine(inputValues!));
   };
 
-  const handleChangeSelector = (selectedOption: OptionType | null) => {
-    // const { label: name, value } = selectedOption;
-
-    setInputValues((current) => ({
-      ...current,
-      [selectedOption?.name!]: selectedOption?.value,
-    }));
-    console.log(selectedOption?.label);
-  };
-
   useEffect(() => {
-    console.log(inputValues?.typeWine);
+    console.log(inputValues);
   }, [inputValues]);
 
   return (

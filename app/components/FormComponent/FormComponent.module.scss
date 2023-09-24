@@ -47,6 +47,10 @@
       $color: $color-fonts
     );
 
+    &::placeholder {
+      color: $color-fonts-opacity;
+    }
+
     @include mobile {
       align-self: center;
       width: 95%;
