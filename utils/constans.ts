@@ -8,7 +8,8 @@ export const API = {
     },
     user : {
       register: '/signup',
-      login: '/signin'
+      login: '/signin',
+      auth: '/users/me'
     }
   }
 }

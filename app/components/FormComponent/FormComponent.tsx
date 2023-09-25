@@ -15,32 +15,9 @@ import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import { useFormValid } from '@/app/hooks/useFormValid';
 
 function FormComponent() {
-  // const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
   const { inputValues, handleChange, handleChangeSelector, handleReiting } =
     useFormValid();
   const dispatch = useAppDispatch();
-
-  // const handleStoreValue = (name: string, value: string | number) => {
-  //   setInputValues((current) => ({
-  //     ...current,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleChange = (
-  //   event: ChangeEvent<
-  //     HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-  //   >,
-  // ) => {
-  //   const { name, value } = event.target;
-
-  //   handleStoreValue(name, value);
-  // };
-
-  // const handleReiting = (rating: number) => {
-  //   const name = 'rating';
-  //   handleStoreValue(name, rating);
-  // };
 
   const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();

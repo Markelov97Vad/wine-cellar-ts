@@ -58,7 +58,8 @@ const wineSlice = createSlice({
       .addCase(getCurrentWine.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
-      });
+      })
+      .addDefaultCase((state) => state);
     // перевод в статус ошибки
     // .addMatcher(isError, (state, action: PayloadAction<string>) => {
     //   console.log(action.payload);
