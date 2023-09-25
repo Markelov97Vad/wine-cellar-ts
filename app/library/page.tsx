@@ -3,7 +3,7 @@ import AddWineComp from '../components/AddWineComp/AddWineComp'
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'New wine',
+  title: 'Library',
   description: 'Add new wine in library',
 };
 

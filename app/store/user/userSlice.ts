@@ -2,7 +2,7 @@
 import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { stat } from 'fs';
 import { UserType } from '../../../types/user.type';
-import { loginUser, registerUser } from './userApi';
+import { checkAuthUser, loginUser, registerUser } from './userApi';
 
 type UserState = {
   user: UserType | null;
@@ -49,7 +49,20 @@ const userSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(loginUser.rejected, (state, action) => {
-        console.log(action.payload);
+        state.loading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(checkAuthUser.pending, (state, action) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(checkAuthUser.fulfilled, (state, action) => {
+        state.user = (action.payload as unknown as UserType);
+        state.isLoggedIn = true;
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(checkAuthUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })

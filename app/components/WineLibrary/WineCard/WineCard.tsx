@@ -12,7 +12,7 @@ function WineCard({ wineElem }: WineCardProps) {
   const { country, brand, image, name, year, _id } = wineElem;
 
   return (
-    <Link className={style.link} href={`/wine/${_id}`}>
+    <Link className={style.link} href={`/wine/${_id}/`}>
       <article className={style['wine-card']}>
         <span className={style['wine-card__country']}>{brand}</span>
         <button className={style['wine-card__button-like']}>

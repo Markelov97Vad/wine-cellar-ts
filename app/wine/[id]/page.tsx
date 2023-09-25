@@ -9,6 +9,13 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { useEffect } from 'react';
 import { getCurrentWine } from '@/app/store/wine/wineApi';
 
+// export function generateMetadata({ params }: { params: { id: string } }) {
+//   // const { name } = useAppSelector((state) => state.wines.currentWine);
+//   return {
+//     title: params.id
+//   }
+// }
+
 function AboutWine({ params }: { params: { id: string } }) {
   console.log('ID', params);
   const dispatch = useAppDispatch();
@@ -17,6 +24,7 @@ function AboutWine({ params }: { params: { id: string } }) {
     colorWine,
     country,
     region,
+    brand,
     grapeVariety,
     typeWine,
     year,
@@ -31,7 +39,6 @@ function AboutWine({ params }: { params: { id: string } }) {
 
   return (
     <>
-      {/* <Header /> */}
       <main className={style.aboutWine}>
         <div className={style.aboutWine__imgContainer}>
           <img
@@ -43,7 +50,7 @@ function AboutWine({ params }: { params: { id: string } }) {
 
         <div className={style['aboutWine__info-wrapper']}>
           <h1 className={style.aboutWine__title}>{name}</h1>
-          <p className={style.aboutWine__subtitle}>AUDEANT</p>
+          <p className={style.aboutWine__subtitle}>{brand}</p>
           <StarRaitingDisabled rating={rating} />
           <div className={style.details}>
             <div className={style.details__wrapper}>
@@ -52,7 +59,7 @@ function AboutWine({ params }: { params: { id: string } }) {
             </div>
             <div className={style.details__wrapper}>
               <span className={style.details__about}>БРЭНД</span>
-              <span className={style.details__value}>{colorWine}</span>
+              <span className={style.details__value}>{brand}</span>
             </div>
             <div className={style.details__wrapper}>
               <span className={style.details__about}>ГОД</span>
@@ -61,6 +68,10 @@ function AboutWine({ params }: { params: { id: string } }) {
             <div className={style.details__wrapper}>
               <span className={style.details__about}>СТРАНА</span>
               <span className={style.details__value}>{country}</span>
+            </div>
+            <div className={style.details__wrapper}>
+              <span className={style.details__about}>РЕГИОН</span>
+              <span className={style.details__value}>{region}</span>
             </div>
             <div className={style.details__wrapper}>
               <span className={style.details__about}>ВИНОГРАД</span>

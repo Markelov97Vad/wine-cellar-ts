@@ -1,6 +1,10 @@
+import WineCard from "@/app/components/WineLibrary/WineCard/WineCard";
+
 function Favorites() {
   return (
-    <div>Favorites Page</div>
+    <div className="">
+      {/* <WineCard /> */}
+    </div>
   );
 }
 

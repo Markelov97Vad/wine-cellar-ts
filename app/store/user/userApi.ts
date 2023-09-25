@@ -18,32 +18,25 @@ export const registerUser = createAsyncThunk<
         body: JSON.stringify(data),
       },
     );
-
-    console.log('нихуяZZZ', response.ok);
     if (!response.ok) {
-      console.log('нихуя');
       return await Promise.reject(new Error(`Status ${response.status}`));
     }
     return (await response.json()) as UserType;
   } catch (err) {
-    console.log('Зашел');
-
     return rejectWithValue(`Ошибка при регистрации пользователя ${err}`);
   }
 });
 
-export const loginUser = createAsyncThunk<
-  UserType,
-  UserType,
-  { rejectValue: string }
->('user/login', async (data, { rejectWithValue }) => {
-  // console.log(data);
+export const loginUser = createAsyncThunk<UserType, UserType,{ rejectValue: string }>(
+  'user/login',
+  async (data, { rejectWithValue }) => {
 
   try {
     const response: Response = await fetch(
       `${API.baseUrl}${API.endpoints.user.login}`,
       {
         method: 'POST',
+        credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       },
@@ -51,16 +44,28 @@ export const loginUser = createAsyncThunk<
     console.log(response.ok);
 
     if (!response.ok) {
-      // console.log(Error);
-
-      // return Promise.reject(new Error(`Error ${response.status}`))
       return await Promise.reject(new Error(`Status ${response.status}`));
-      // return rejectWithValue(`Ошибка при авторизации пользователя ${response.status}`)
     }
     return (await response.json()) as UserType;
   } catch (err) {
-    console.log('OUT');
-
     return rejectWithValue(`Ошибка при авторизации пользователя ${err}`);
   }
 });
+
+export const checkAuthUser = createAsyncThunk(
+  'use/auth',
+  async (_, { rejectWithValue}) => {
+    try {
+      const response: Response = await fetch(`${API.baseUrl}${API.endpoints.user.auth}`,{
+        method: "GET",
+        credentials: "include"
+      })
+
+      if(!response.ok) {
+        return await Promise.reject(new Error(`Status ${response.status}`))
+      }
+    } catch (error) {
+      return rejectWithValue(`Ошибка при аутентификации пользователя ${error}`);
+    }
+  }
+)
