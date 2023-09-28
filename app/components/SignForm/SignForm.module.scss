@@ -21,7 +21,6 @@
     margin-top: 9px;
     text-align: center;
     @include show-font(
-      $family: $font-family-type-Montserrat,
       $color: $color-fonts-black,
       $size: 13px,
       $line-heigth: 54px,
@@ -33,7 +32,6 @@
     text-decoration: none;
     transition: opacity .2s ease-out;
     @include show-font(
-      $family: $font-family-type-Montserrat,
       $color: #998431,
       $size: 13px,
       $line-heigth: 54px,

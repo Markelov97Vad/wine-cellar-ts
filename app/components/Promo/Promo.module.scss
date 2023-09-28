@@ -9,7 +9,6 @@
 
   &__spanText {
     @include show-font(
-      $family: 'Montserrat',
       $size: 22px,
       $weight: 400,
       $line-heigth: 21px,
@@ -20,7 +19,6 @@
   &__title {
     margin-top: 40vh;
     @include show-font(
-      $family: 'Playfair Display',
       $size: 3em,
       $weight: 700,
       $line-heigth: 60px,

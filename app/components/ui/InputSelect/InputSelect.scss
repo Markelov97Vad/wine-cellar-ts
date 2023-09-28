@@ -7,7 +7,6 @@
     transition: opacity 0.1s ease-out;
     margin-top: 4px;
     @include show-font(
-      $family: "Montserrat",
       $weight: 500,
       $size: 13px,
       $line-heigth: 16.5px,
@@ -55,7 +54,6 @@
     position: absolute;
     top: 6px !important;
     @include show-font(
-      $family: "Montserrat" !important,
       $weight: 500 !important,
       $size: 13px !important,
       $line-heigth: 19.5px !important,
@@ -74,7 +72,6 @@
   &__single-value {
     order: 1;
     @include show-font(
-      $family: "Montserrat" !important,
       $weight: 500 !important,
       $size: 13px !important,
       $line-heigth: 19.5px !important,
@@ -84,7 +81,6 @@
 
   &__input-container {
     @include show-font(
-      $family: "Montserrat" !important,
       $weight: 500 !important,
       $size: 13px !important,
       $line-heigth: 19.5px !important,
@@ -110,7 +106,6 @@
   &__menu {
     background-color: $color-border-wrapper;
     @include show-font(
-      $family: "Montserrat" !important,
       $weight: 500 !important,
       $size: 13px !important,
       $line-heigth: 19.5px !important,

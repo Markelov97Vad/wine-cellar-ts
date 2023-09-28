@@ -14,7 +14,6 @@
     opacity: 0;
     transition: opacity 0.1s ease-out;
     @include show-font(
-      $family: $font-family-type-Montserrat,
       $weight: 500,
       $size: 13px,
       $line-heigth: 19.5px,
@@ -27,7 +26,6 @@
 
     &_sign {
       @include show-font(
-        $family: $font-family-type-Montserrat,
         $weight: 500,
         $size: 13px,
         $line-heigth: 19.5px,
@@ -37,7 +35,6 @@
 
     &_add-wine {
       @include show-font(
-        $family: $font-family-type-Montserrat,
         $weight: 500,
         $size: 13px,
         $line-heigth: 19.5px,
@@ -53,7 +50,6 @@
     &_sign {
       border-bottom: 1px solid $color-fonts-black;
       @include show-font(
-        $family: $font-family-type-Montserrat,
         $weight: 500,
         $size: 15px,
         $line-heigth: 19.5px,
@@ -62,7 +58,6 @@
 
       &::placeholder {
         @include show-font(
-          $family: $font-family-type-Montserrat,
           $weight: 500,
           $size: 13px,
           $line-heigth: 19.5px,
@@ -74,7 +69,6 @@
     &_add-wine {
       border-bottom: 1px solid $color-fonts;
       @include show-font(
-        $family: $font-family-type-Montserrat,
         $weight: 500,
         $size: 13px,
         $line-heigth: 19.5px,
@@ -83,7 +77,6 @@
 
       &::placeholder {
         @include show-font(
-          $family: $font-family-type-Montserrat,
           $weight: 500,
           $size: 13px,
           $line-heigth: 19.5px,
@@ -95,7 +88,6 @@
     &_settings {
       border-bottom: 1px solid $color-fonts-black;
       @include show-font(
-        $family: $font-family-type-Montserrat,
         $weight: 500,
         $size: 15px,
         $line-heigth: 19.5px,
@@ -104,7 +96,6 @@
 
       &::placeholder {
         @include show-font(
-          $family: $font-family-type-Montserrat,
           $weight: 500,
           $size: 13px,
           $line-heigth: 19.5px,

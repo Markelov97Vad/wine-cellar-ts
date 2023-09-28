@@ -1,12 +1,12 @@
 @mixin show-font(
-  $family: 'Playfair Display',
+  $style: normal,
   $weight,
   $size,
   $line-heigth,
-  $color
+  $color: $color-fonts-black
 ) {
-  font-family: $family;
   font-weight: $weight;
+  font-style: $style;
   font-size: $size;
   line-height: $line-heigth;
   color: $color;

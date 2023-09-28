@@ -1,173 +1,174 @@
-@mixin uploadFonts($fileTypeOne,$fileTypeTwo, $family, $formatTypeOne, $formatTypeTwo, $weight, $style) {
-  @font-face {
-    font-family: $family;
-    font-weight: $weight;
-    font-style: $style;
-    font-display: swap;
-    src: url(#{$fileTypeTwo}) format($formatTypeTwo),
-    url(#{$fileTypeOne}) format($formatTypeOne);
-  }
-}
+// @mixin uploadFonts($fileTypeOne,$fileTypeTwo, $family, $formatTypeOne, $formatTypeTwo, $weight, $style) {
+//   @font-face {
+//     font-family: $family;
+//     font-weight: $weight;
+//     font-style: $style;
+//     font-display: swap;
+//     // src: url($fileTypeTwo) format($formatTypeTwo),
+//     // url($fileTypeOne) format($formatTypeOne);
+//   }
+// }
 
-// "Playfair Display" normal
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Regular.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-Regular.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 1,
-  $style: normal
-);
+// // "Playfair Display" normal
+// @include uploadFonts(
+//   // $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Regular.woff2',
+//   $fileTypeTwo: '../public/fonts/PlayfairDisplay-Regular.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-Regular.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 1,
+//   $style: normal
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Regular.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-Regular.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 400,
-  $style: normal
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Regular.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-Regular.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 400,
+//   $style: normal
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Medium.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-Medium.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 500,
-  $style: normal
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Medium.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-Medium.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 500,
+//   $style: normal
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-SemiBold.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-SemiBold.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 600,
-  $style: normal
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-SemiBold.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-SemiBold.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 600,
+//   $style: normal
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Bold.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-Bold.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 700,
-  $style: normal
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Bold.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-Bold.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 700,
+//   $style: normal
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-ExtraBold.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-ExtraBold.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 800,
-  $style: normal
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-ExtraBold.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-ExtraBold.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 800,
+//   $style: normal
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Black.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-Black.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 900,
-  $style: normal
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Black.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-Black.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 900,
+//   $style: normal
+// );
 
-// "Playfair Display" Italic
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Italic.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-Italic.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 1,
-  $style: italic
-);
+// // "Playfair Display" Italic
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Italic.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-Italic.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 1,
+//   $style: italic
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Italic.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-Italic.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 400,
-  $style: italic
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-Italic.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-Italic.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 400,
+//   $style: italic
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-MediumItalic.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-MediumItalic.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 500,
-  $style: italic
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-MediumItalic.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-MediumItalic.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 500,
+//   $style: italic
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-SemiBoldItalic.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-SemiBoldItalic.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 600,
-  $style: italic
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-SemiBoldItalic.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-SemiBoldItalic.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 600,
+//   $style: italic
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-BoldItalic.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-BoldItalic.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 700,
-  $style: italic
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-BoldItalic.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-BoldItalic.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 700,
+//   $style: italic
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-ExtraBoldItalic.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-ExtraBoldItalic.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 800,
-  $style: italic
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-ExtraBoldItalic.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-ExtraBoldItalic.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 800,
+//   $style: italic
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/PlayfairDisplay-BlackItalic.woff2',
-  $fileTypeOne: '@/public/fonts/PlayfairDisplay-BlackItalic.woff',
-  $formatTypeTwo: 'woff2',
-  $formatTypeOne: 'woff',
-  $family: 'Playfair Display',
-  $weight: 900,
-  $style: italic
-);
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/PlayfairDisplay-BlackItalic.woff2',
+//   $fileTypeOne: '@/public/fonts/PlayfairDisplay-BlackItalic.woff',
+//   $formatTypeTwo: 'woff2',
+//   $formatTypeOne: 'woff',
+//   $family: 'Playfair Display',
+//   $weight: 900,
+//   $style: italic
+// );
 
-// Montserrat normal
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/Montserrat-Regular.woff2', 
-  $fileTypeOne: '@/public/fonts/Montserrat-Regular.woff', 
-  $formatTypeTwo: 'woff2', 
-  $formatTypeOne: 'woff', 
-  $family: 'Montserrat', 
-  $weight: 400, 
-  $style: normal
-);
+// // Montserrat normal
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/Montserrat-Regular.woff2', 
+//   $fileTypeOne: '@/public/fonts/Montserrat-Regular.woff', 
+//   $formatTypeTwo: 'woff2', 
+//   $formatTypeOne: 'woff', 
+//   $family: 'Montserrat', 
+//   $weight: 400, 
+//   $style: normal
+// );
 
-@include uploadFonts(
-  $fileTypeTwo: '@/public/fonts/Montserrat-Bold.woff2', 
-  $fileTypeOne: '@/public/fonts/Montserrat-Bold.woff', 
-  $formatTypeTwo: 'woff2', 
-  $formatTypeOne: 'woff', 
-  $family: 'Montserrat', 
-  $weight: 700, 
-  $style: normal
-  )
+// @include uploadFonts(
+//   $fileTypeTwo: '@/public/fonts/Montserrat-Bold.woff2', 
+//   $fileTypeOne: '@/public/fonts/Montserrat-Bold.woff', 
+//   $formatTypeTwo: 'woff2', 
+//   $formatTypeOne: 'woff', 
+//   $family: 'Montserrat', 
+//   $weight: 700, 
+//   $style: normal
+//   )
