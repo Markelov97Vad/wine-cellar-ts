@@ -40,7 +40,6 @@
     margin-bottom: 30px;
   
     @include show-font(
-      $family: 'Montserrat',
       $weight: 500,
       $size: 13px,
       $line-heigth: 19.5px,
@@ -66,7 +65,6 @@
 
   &__span-rating {
     @include show-font(
-      $family: 'Montserrat',
       $color: $color-fonts,
       $size: 20px,
       $line-heigth: 54px,

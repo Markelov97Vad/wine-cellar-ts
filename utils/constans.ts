@@ -21,7 +21,7 @@ export const navItemsHeader = [
   },
   {
     label: 'Библиотека',
-    href: '/library'
+    href: '/new-wine'
   },
   {
     label: 'Мои вина',

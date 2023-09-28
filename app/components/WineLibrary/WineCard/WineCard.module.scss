@@ -85,7 +85,6 @@
     cursor: pointer;
 
     @include show-font(
-      $family: 'Montserrat',
       $color: $color-fonts-black,
       $size: 1.1rem,
       $line-heigth: 1.1,

@@ -30,7 +30,6 @@ function Home() {
           className={style.root__video}
         />
         <Promo />
-        {/* <AddWineComp /> */}
         <WineLibrary />
       </main>
     </>

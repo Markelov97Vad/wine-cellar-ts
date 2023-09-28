@@ -60,9 +60,9 @@
     left: 50%;
     transform: translateX(-50%);
     background-color: $color-background;
+    margin: 0;
   
     @include show-font(
-      $family: 'Playfair Display',
       $color: $color-fonts,
       $size: 36px,
       $line-heigth: 54px,
@@ -93,7 +93,6 @@
     align-items: center;
     text-align: center;
     @include show-font(
-      $family: 'Playfair Display',
       $color: $color-fonts,
       $size: 16px,
       $line-heigth: 24px,

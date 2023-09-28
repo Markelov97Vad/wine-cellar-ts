@@ -1,4 +1,4 @@
-@import '../../globals.scss';
+@import "../../globals.scss";
 
 .aboutWine {
   display: flex;
@@ -6,7 +6,7 @@
   margin: 0 auto;
   max-width: 1140px;
   background-color: $color-background-white;
-  
+
   &__imgContainer {
     min-width: 550px;
     display: flex;
@@ -26,59 +26,60 @@
   }
 
   &__title {
-    font-family: $font-family-type-Playfair;
+    // font-family: $font-family-type-Montserrat;
     font-size: 35px;
-    letter-spacing: .14rem;
+    letter-spacing: 0.14rem;
     line-height: 1.3;
     font-style: normal;
     font-weight: 500;
-    line-height: 150%; /* 27px */
+    line-height: 150%;
+    /* 27px */
     margin: 0 0 15px;
   }
 
   &__subtitle {
-    font-family: $font-family-type-Montserrat;
+    // font-family: $font-family-type-Montserrat;
     font-size: 15px;
-    letter-spacing: .14rem;
+    letter-spacing: 0.14rem;
     line-height: 1.3;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 27px */
+    line-height: 150%;
+    /* 27px */
     margin: 0 0 34px;
   }
 
   &__reviwe-title {
-    font-family: $font-family-type-Playfair;
     font-size: 35px;
-    letter-spacing: .14rem;
+    letter-spacing: 0.14rem;
     line-height: 1.3;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 27px */
+    line-height: 150%;
+    /* 27px */
   }
 
   &__review-owner {
-    font-family: $font-family-type-Montserrat;
     font-size: 15px;
-    letter-spacing: .14rem;
+    letter-spacing: 0.14rem;
     line-height: 1.3;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 27px */
+    line-height: 150%;
+    /* 27px */
     margin: 0;
   }
 
   &__rewiew {
-    font-family: $font-family-type-Playfair;
     text-align: justify;
     font-size: 12px;
-    letter-spacing: .14rem;
+    letter-spacing: 0.14rem;
     line-height: 1.3;
     font-style: normal;
     font-weight: 400;
-    line-height: 150%; /* 27px */
+    line-height: 150%;
+    /* 27px */
   }
-
 }
 
 .details {
@@ -86,6 +87,7 @@
   max-width: 300px;
   flex-direction: column;
   margin-top: 40px;
+
   &__wrapper {
     display: flex;
     width: 100%;
@@ -95,20 +97,12 @@
 
   &__about {
     display: inline-block;
-    // width: 235px;
-    font-family: $font-family-type-Montserrat;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; /* 21px */
+    width: 235px;
     padding-right: 60px;
+    @include show-font($weight: 400, $size: 14px, $line-heigth: 150%, $color: $color-fonts-black);
   }
 
   &__value {
-    font-family: $font-family-type-Playfair;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; /* 27px */
+    @include show-font($weight: 500, $size: 14px, $line-heigth: 150%, $color: $color-fonts-black);
   }
 }

@@ -21,7 +21,6 @@
   
   &__sapn {
     @include show-font(
-      $family: 'Playfair Display',
       $size: 30px,
       $weight: 500,
       $line-heigth: 21px,

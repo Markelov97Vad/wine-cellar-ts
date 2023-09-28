@@ -13,6 +13,7 @@ import InputSelect from '../ui/InputSelect/InputSelect';
 import InputForm from '../ui/InputForm/InputForm';
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import { useFormValid } from '@/app/hooks/useFormValid';
+import { montserrat } from '@/app/fonts';
 
 function FormComponent() {
   const { inputValues, handleChange, handleChangeSelector, handleReiting } =
@@ -32,7 +33,7 @@ function FormComponent() {
     <form
       onSubmit={onSubmit}
       name="form-component"
-      className={style.form}
+      className={`${style.form} ${montserrat.className}`}
       autoComplete="off"
     >
       <fieldset className={style.form__fieldest}>
@@ -117,7 +118,7 @@ function FormComponent() {
         handleChange={handleChange}
       />
       <textarea
-        className={style.form__textarea}
+        className={`${style.form__textarea} ${montserrat.className}`}
         name="comment"
         id="textarea"
         value={inputValues?.comment}

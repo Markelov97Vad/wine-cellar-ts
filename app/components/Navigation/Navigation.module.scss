@@ -19,7 +19,6 @@
   &__link {
     text-decoration: none;
     @include show-font(
-      $family: 'Montserrat',
       $size: 13px,
       $weight: 500,
       $line-heigth: 21px,
