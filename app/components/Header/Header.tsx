@@ -14,7 +14,7 @@ function Header() {
         <Image className={style.header__logo} src={logo} alt="Логотип" />
       </Link>
       <Navigation items={navItemsHeader}/>
-      <NavigationLinkProfile to="/login"/>
+      <NavigationLinkProfile to="/account/favorites"/>
     </header>
    );
 }

@@ -2,19 +2,6 @@ import './globals.scss';
 import type { Metadata } from 'next';
 import { Providers } from '@/app/store/provider';
 import Header from '@/app/components/Header/Header';
-// import { Playfair_Display } from 'next/font/google';
-// import { Montserrat } from 'next/font/google';
-
-// export const playfairDisplay = Playfair_Display({
-//   subsets: ['cyrillic','latin'],
-//   weight: ['400', '500', '600', '700', '800', '900'],
-//   style: ['italic', 'normal'],
-// })
-// export const montserrat = Montserrat({ 
-//   subsets: ['cyrillic','latin'],
-//   weight: ['400', '500', '600', '700', '800', '900'],
-//   style: ['italic', 'normal'],
-// })
 
 export const metadata: Metadata = {
   title: 'Wine cellar',

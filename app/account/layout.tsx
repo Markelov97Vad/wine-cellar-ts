@@ -4,6 +4,7 @@ import { ReactNode } from 'react';
 import style from './page.module.scss';
 import { usePathname } from 'next/navigation';
 import { navItemAccount } from '@/utils/constans';
+import { montserrat } from '../fonts';
 
 export default function AboutLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -11,7 +12,7 @@ export default function AboutLayout({ children }: { children: ReactNode }) {
     <section className={style.account}>
       <div className={style.account__wrapper}>
         <nav className={style.account__nav}>
-          <ul className={style.account__list}>
+          <ul className={`${style.account__list} ${montserrat.className}`}>
             {navItemAccount.map((item, id) => {
               const isActive = pathname === item.href;
               return (

@@ -7,15 +7,16 @@ import AddWineComp from '@/app/components/AddWineComp/AddWineComp';
 import glass from '@/public/images/wine-glass.jpeg';
 import style from './Home.module.scss';
 import { useEffect } from 'react';
-import { useAppDispatch } from '@/app/hooks/redux';
+import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { checkAuthUser } from '@/app/store/user/userApi';
 
 function Home() {
   const dispatch = useAppDispatch();
+  const { isLoggedIn } = useAppSelector(state => state.user)
 
   useEffect(() => {
     dispatch(checkAuthUser());
-  },[])
+  },[isLoggedIn])
   return (
     <>
       {/* <Header /> */}

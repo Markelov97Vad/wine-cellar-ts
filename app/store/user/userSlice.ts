@@ -3,6 +3,7 @@ import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { stat } from 'fs';
 import { UserType } from '../../../types/user.type';
 import { checkAuthUser, loginUser, registerUser } from './userApi';
+import { useRouter } from 'next/router';
 
 type UserState = {
   user: UserType | null;
@@ -51,6 +52,7 @@ const userSlice = createSlice({
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+
       })
       .addCase(checkAuthUser.pending, (state, action) => {
         state.loading = true;
@@ -65,6 +67,7 @@ const userSlice = createSlice({
       .addCase(checkAuthUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
+        state.isLoggedIn = false
       })
       .addDefaultCase((state) => state);
   },

@@ -8,7 +8,7 @@ function NavigationLinkProfile({ to }: {to: string}) {
   const { push } = useRouter();
 
   return ( 
-    <button onClick={() => push('/login')} className={style.navigationLinkProfile}>
+    <button onClick={() => push(to)} className={style.navigationLinkProfile}>
       <Image className={style.navigationLinkProfile__img} src={icon} alt='Иконка профиля'/>
       Аккаунт
     </button>

@@ -22,6 +22,7 @@ export const addNewWine = createAsyncThunk<Wine, Wine, { rejectValue: string }>(
   async function (wine, { rejectWithValue }) {
     const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
