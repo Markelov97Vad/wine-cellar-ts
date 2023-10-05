@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextRequest } from 'next/server';
 import { withAuth } from "next-auth/middleware";
 
 export function middleware(request: NextRequest) {
@@ -18,14 +18,22 @@ export function middleware(request: NextRequest) {
   const url = request.url
 
   console.log(url.includes('/new-wine'), !request.cookies.has('jwt'));
+  if(!request.cookies.has('jwt')) {
+    console.log('to login');
+    
+    return NextResponse.redirect(new URL('/login', url))
+  }
   // if(request.nextUrl.pathname.startsWith('/login') && !request.cookies.has('jwt')) {
   //   return
   // }
   // if(request.nextUrl.pathname.startsWith('/account/settings') && !request.cookies.has('jwt')) {
   //   return
   // }
-  // if(request.nextUrl.pathname.startsWith('/new-wine') && !request.cookies.has('jwt')) {
-  //   return
+  // if(request.nextUrl.pathname.startsWith('/new-wine') && request.cookies.has('jwt')) {
+  //   console.log('resonse');
+    
+  //   return console.log('response');
+  //   ;
   // }
 
 
@@ -39,9 +47,6 @@ export function middleware(request: NextRequest) {
   // if(url.includes('/new-wine') && !request.cookies.has('jwt')) {
   //   return NextResponse.redirect(new URL('/login', url))
   // }
-  if(!request.cookies.has('jwt')) {
-    return NextResponse.redirect(new URL('/', url))
-  }
 
   // return NextResponse.next();
 }
@@ -58,5 +63,5 @@ export function middleware(request: NextRequest) {
 // })
 
 export const config = {
-  matcher: ['/account/:path*', '/new-wine', 'login'],
+  matcher: ['/account/:path*', '/account', '/new-wine'],
 };

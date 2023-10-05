@@ -1,14 +1,16 @@
 'use client';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import style from './SignForm.module.scss';
 
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { loginUser, registerUser } from '../../store/user/userApi';
 import { InputValuesType } from '../../../types/allTypes.types';
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import InputForm from '../ui/InputForm/InputForm';
+import { useRouter } from 'next/navigation';
+import { error } from 'console';
 
 type SignFormType = {
   register?: boolean;
@@ -17,6 +19,8 @@ type SignFormType = {
 function SignForm({ register = false }: SignFormType) {
   const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
   const dispatch = useAppDispatch();
+  const { isLoggedIn, error } = useAppSelector( state => state.user);
+  const { back } = useRouter();
 
   const handleStoreValue = (name: string, value: string | number) => {
     setInputValues((current) => ({
@@ -46,10 +50,23 @@ function SignForm({ register = false }: SignFormType) {
         loginUser({
           email: inputValues?.email,
           password: inputValues?.password,
-        }),
+        })
       );
+      if (error === null) {
+            console.log('вход разрешен', isLoggedIn);
+            
+            back();
+          }
     }
   };
+  useEffect(() => {
+    if (isLoggedIn) {
+      back();
+    }
+    console.log(isLoggedIn);
+    
+  }, [isLoggedIn, handleSubmit]);
+
   return (
     <form onSubmit={handleSubmit} className={style.form}>
       {register && (

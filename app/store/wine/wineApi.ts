@@ -9,7 +9,6 @@ export const getWines = createAsyncThunk<
   { rejectValue: string }
 >('wines', async function (_, { rejectWithValue }) {
   const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`);
-  console.log(response);
 
   if (!response.ok) {
     throw rejectWithValue('Не удалось получить список вин');
@@ -22,6 +21,7 @@ export const addNewWine = createAsyncThunk<Wine, Wine, { rejectValue: string }>(
   async function (wine, { rejectWithValue }) {
     const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -41,7 +41,7 @@ export const getCurrentWine = createAsyncThunk<
   { rejectValue: string }
 >('wines/getCurrentWine', async function (id, { rejectWithValue }) {
   const response = await fetch(
-    `${API.baseUrl}${API.endpoints.wine.data}/${id}`,
+    `${API.baseUrl}${API.endpoints.wine.currentWine}${id}`,
   );
 
   if (!response.ok) {
