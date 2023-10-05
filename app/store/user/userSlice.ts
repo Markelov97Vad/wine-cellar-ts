@@ -4,13 +4,7 @@ import { stat } from 'fs';
 import { UserType } from '../../../types/user.type';
 import { checkAuthUser, loginUser, registerUser } from './userApi';
 import { useRouter } from 'next/router';
-
-type UserState = {
-  user: UserType | null;
-  isLoggedIn: boolean;
-  loading: boolean;
-  error: string | null;
-};
+import { UserState } from '@/types/slice.types';
 
 const initialState: UserState = {
   user: null,

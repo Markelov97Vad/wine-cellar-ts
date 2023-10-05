@@ -17,7 +17,6 @@ function StarRating({ handleReiting } : StarRatingType ) {
   const [hover, setHover ] = useState<number>(0)
 
   useEffect(() => {
-    console.log(rating);
     handleReiting(rating)
   }, [rating])
   

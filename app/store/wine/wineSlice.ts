@@ -1,14 +1,14 @@
 'use client';
 import { AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { addNewWine, getCurrentWine, getWines } from './wineApi';
-import { Wine } from '../../../types/wine.type';
+import { WineState } from '@/types/slice.types';
 
-type WineState = {
-  wines: Wine[];
-  currentWine: Wine;
-  loading: boolean;
-  error: string | null;
-};
+// type WineState = {
+//   wines: Wine[];
+//   currentWine: Wine;
+//   loading: boolean;
+//   error: string | null;
+// };
 
 const initialState: WineState = {
   wines: [],

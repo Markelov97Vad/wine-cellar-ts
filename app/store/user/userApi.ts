@@ -52,7 +52,7 @@ export const loginUser = createAsyncThunk<UserType, UserType,{ rejectValue: stri
   }
 });
 
-export const checkAuthUser = createAsyncThunk(
+export const checkAuthUser = createAsyncThunk<UserType, undefined, { rejectValue: string}>(
   'use/auth',
   async (_, { rejectWithValue}) => {
     try {
@@ -64,6 +64,8 @@ export const checkAuthUser = createAsyncThunk(
       if(!response.ok) {
         return await Promise.reject(new Error(`Status ${response.status}`))
       }
+
+      return (await response.json()) as UserType;
     } catch (error) {
       return rejectWithValue(`Ошибка при аутентификации пользователя ${error}`);
     }

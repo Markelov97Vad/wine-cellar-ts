@@ -25,9 +25,9 @@ function FormComponent() {
     dispatch(addNewWine(inputValues!));
   };
 
-  useEffect(() => {
-    console.log(inputValues);
-  }, [inputValues]);
+  // useEffect(() => {
+  //   // console.log(inputValues);
+  // }, [inputValues]);
 
   return (
     <form

@@ -59,14 +59,14 @@ function SignForm({ register = false }: SignFormType) {
           }
     }
   };
+  useEffect(() => {
+    if (isLoggedIn) {
+      back();
+    }
+    console.log(isLoggedIn);
+    
+  }, [isLoggedIn, handleSubmit]);
 
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     console.log('вход разрешен', isLoggedIn);
-      
-  //     back();
-  //   }
-  // }, [isLoggedIn]);
   return (
     <form onSubmit={handleSubmit} className={style.form}>
       {register && (
