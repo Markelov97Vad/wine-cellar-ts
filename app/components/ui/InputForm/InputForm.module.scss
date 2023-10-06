@@ -42,6 +42,14 @@
         $color: $color-fonts
       );
     }
+    &_settings{
+      @include show-font(
+        $weight: 500,
+        $size: 15px,
+        $line-heigth: 19.5px,
+        $color: $color-fonts-black
+      );
+    }
   }
   &__input {
     @extend %input-value;
@@ -98,7 +106,7 @@
       &::placeholder {
         @include show-font(
           $weight: 500,
-          $size: 13px,
+          $size: 15px,
           $line-heigth: 19.5px,
           $color: $color-fonts-black-opacity
         );

@@ -73,11 +73,21 @@
     )
   }
 
+  &__error-message {
+    text-align: center;
+    padding-bottom: 10px;
+    @include show-font(
+      $color: $color-fonts-error,
+      $size: 16px,
+      $line-heigth: 24px,
+      $weight: 400
+    )
+  }
+
   &__button-form {
     transition: all .3s ease-in-out;
     &:hover {
       background-color: $color-background-milk;
-      color: $color-fonts-black;
     }
   }
 }

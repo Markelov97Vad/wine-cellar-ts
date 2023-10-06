@@ -16,7 +16,8 @@ import { montserrat } from '@/app/fonts';
 import NotificationPopup from '../NotificationPopup/NotificationPopup';
 
 function FormComponent() {
-  const { inputValues,
+  const { 
+    inputValues,
     errorMessages,
     handleInputChange,
     handleChangeSelector,
@@ -25,7 +26,7 @@ function FormComponent() {
   } =
     useFormValid();
   const dispatch = useAppDispatch();
-  const { loading } = useAppSelector(state => state.wines);
+  const { loading, error } = useAppSelector(state => state.wines);
   const isSubmitBattonDisabled = formIsValid &&
   (inputValues?.typeWine !== undefined) &&
   (inputValues?.colorWine !== undefined) &&
@@ -163,6 +164,12 @@ function FormComponent() {
         <span className={style['form__span-rating']}>Рейтинг</span>
         <StarReiting handleReiting={handleReiting} />
       </div>
+      {
+        error && 
+        <span className={style['form__error-message']}>
+          Что то пошло не так..
+        </span>
+      }
       <ButtonSubmitForm
         extraClass={style['form__button-form']}
         disabled={!isSubmitBattonDisabled}

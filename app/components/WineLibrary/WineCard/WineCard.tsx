@@ -13,20 +13,22 @@ function WineCard({ wineElem }: WineCardProps) {
   const { country, brand, image, name, year, _id } = wineElem;
 
   return (
-    <Link className={style.link} href={`/wine/${_id}/`}>
-      <article className={`${style['wine-card']} ${montserrat.className}`}>
-        <span className={style['wine-card__country']}>{brand}</span>
+    <article className={`${style['wine-card']} ${montserrat.className}`}>
         <button className={style['wine-card__button-like']}>
           <LikeIcon />
         </button>
-        <img className={style['wine-card__image']} src={image!} />
-        <h3 className={`${style['wine-card__title']} ${playfairDisplay.className}`}>{name}</h3>
-        <span className={style['wine-card__year']}>{brand}</span>
+        <Link className={style['wine-card__link']} href={`/wine/${_id}/`}>
+        <div className={style['wine-card__container']}>
+          <span className={style['wine-card__brand']}>{brand}</span>
+          <img className={style['wine-card__image']} src={image!} />
+        </div>
+        <h3 className={`${style['wine-card__title']}`}>{name}</h3>
+        {/* <span className={style['wine-card__year']}>{brand}</span> */}
         <span className={style['wine-card__year']}>{year}</span>
-        <span className={style['wine-card__rating']}>4 звезды</span>
-        <button className={style['wine-card__button-info']}>Ещё</button>
+        {/* <span className={style['wine-card__rating']}>4 звезды</span> */}
+        <button className={style['wine-card__button-info']}>Подробнее</button>
+        </Link>
       </article>
-    </Link>
   );
 }
 

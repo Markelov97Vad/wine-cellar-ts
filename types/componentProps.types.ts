@@ -55,7 +55,7 @@ export type validationConfigDataProps = {
 export type ButtonSubmitFormProps = {
   extraClass?: string;
   text: string;
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export type ButtonCrossProps = {

@@ -18,10 +18,12 @@
 
   &__link {
     text-decoration: none;
+    padding-bottom: 4px;
+     letter-spacing: 1px;
     @include show-font(
-      $size: 13px,
+      $size: 16px,
       $weight: 500,
-      $line-heigth: 21px,
+      $line-heigth: 30px,
       $color: $color-fonts
     );
 
