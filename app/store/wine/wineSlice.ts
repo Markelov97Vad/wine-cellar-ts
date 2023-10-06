@@ -3,17 +3,11 @@ import { AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { addNewWine, getCurrentWine, getWines } from './wineApi';
 import { WineState } from '@/types/slice.types';
 
-// type WineState = {
-//   wines: Wine[];
-//   currentWine: Wine;
-//   loading: boolean;
-//   error: string | null;
-// };
-
 const initialState: WineState = {
   wines: [],
   currentWine: {},
   loading: false,
+  isSuccess: false,
   error: null,
 };
 
@@ -39,9 +33,12 @@ const wineSlice = createSlice({
       })
       .addCase(addNewWine.pending, (state, action) => {
         state.loading = true;
+        state.isSuccess = false;
         state.error = null;
       })
       .addCase(addNewWine.fulfilled, (state, action) => {
+        state.isSuccess = true;
+        state.loading = false;
         state.wines.push(action.payload);
       })
       .addCase(addNewWine.rejected, (state, action) => {
@@ -60,12 +57,6 @@ const wineSlice = createSlice({
         state.error = action.payload as string;
       })
       .addDefaultCase((state) => state);
-    // перевод в статус ошибки
-    // .addMatcher(isError, (state, action: PayloadAction<string>) => {
-    //   console.log(action.payload);
-    //   state.error = action.payload;
-    //   state.loading = false;
-    // });
   },
 });
 

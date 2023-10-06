@@ -14,4 +14,13 @@
     $line-heigth: 19.5px,
     $color: $color-fonts
   );
+
+  &_disabled {
+    opacity: .2;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $color-background;
+    }
+  }
 }

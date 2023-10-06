@@ -1,4 +1,3 @@
-'use client';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { API } from '../../../utils/constans';
 import { Wine } from '../../../types/wine.type';

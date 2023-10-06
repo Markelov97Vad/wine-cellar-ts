@@ -9,8 +9,10 @@ function InputForm({
   max = undefined,
   margin = undefined,
   value,
+  error,
   handleChange,
   location,
+  required = false
 }: InputFormType) {
   const handleLicationTypeLabel = (value: string) => {
     switch (value) {
@@ -58,9 +60,13 @@ function InputForm({
         className={`${style['input-from__input']} ${handleLicationTypeInput(
           location,
         )}`}
-        min={min}
-        max={max}
+        minLength={min}
+        maxLength={max}
+        required={required}
       />
+      <span className={style['input-from__error']}>
+        {error}
+      </span>
     </div>
   );
 }
