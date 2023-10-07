@@ -6,7 +6,8 @@ export const API = {
     wine: {
       data: '/wines',
       myWines: '/wines/my',
-      currentWine: '/wines/current/'
+      currentWine: '/wines/current/',
+      addFavorite: '/wines/favorite/'
     },
     user : {
       register: '/signup',

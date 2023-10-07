@@ -53,3 +53,4 @@ export const getCurrentWine = createAsyncThunk<
   }
   return (await response.json()) as Wine;
 });
+

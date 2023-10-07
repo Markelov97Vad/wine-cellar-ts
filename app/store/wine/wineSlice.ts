@@ -27,6 +27,7 @@ const wineSlice = createSlice({
         state.wines = action.payload;
         state.loading = false;
       })
+      // если ошибка
       .addCase(getWines.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;

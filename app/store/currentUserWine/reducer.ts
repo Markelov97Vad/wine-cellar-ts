@@ -9,15 +9,31 @@ export const getCurrentUserWines = createApi({
     baseUrl: `${API.baseUrl}`
   }),
   endpoints: (build) => ({
-    // GET запрос //           ответ от сервера, 
+    // GET запрос //           ответ от сервера, параметр который передаем
     fetchUserWines: build.query<Wine[], string>({
       query: () => ({
         url: `${API.endpoints.wine.myWines}`,
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include'
       })
+    }),
+    addFavoriteWine: build.mutation<Wine, string>({
+      query: (id: string) => ({
+        url: `${API.endpoints.wine.addFavorite}${id}`,
+        headers: { 'Content-Type': 'application/json' },
+        method: 'PUT',
+        credentials: 'include'
+      })
+    }),
+    deleteFavoriteWine: build.mutation<Wine, string>({
+      query: (id: string) => ({
+        url: `${API.endpoints.wine.addFavorite}${id}`,
+        headers: { 'Content-Type': 'application/json' },
+        method: 'DELETE',
+        credentials: 'include'
+      })
     })
   })
 })
 
-export const {useFetchUserWinesQuery} = getCurrentUserWines
+export const {useFetchUserWinesQuery, useAddFavoriteWineMutation, useDeleteFavoriteWineMutation } = getCurrentUserWines

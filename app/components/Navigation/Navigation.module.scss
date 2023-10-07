@@ -21,7 +21,7 @@
     padding-bottom: 4px;
      letter-spacing: 1px;
     @include show-font(
-      $size: 16px,
+      $size: 14px,
       $weight: 500,
       $line-heigth: 30px,
       $color: $color-fonts
@@ -32,7 +32,7 @@
     }
 
     &_active {
-      border-bottom: 2px solid $main-color-white;
+      border-bottom: 1px solid $main-color-white;
     }
   }
 }

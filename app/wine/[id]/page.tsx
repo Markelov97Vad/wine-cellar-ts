@@ -13,7 +13,7 @@ import { montserrat, playfairDisplay } from '@/app/fonts';
 // export function generateMetadata({ params }: { params: { id: string } }) {
 //   // const { name } = useAppSelector((state) => state.wines.currentWine);
 //   return {
-//     title: params.id
+//     title: 'LLLLL'
 //   }
 // }
 
@@ -50,8 +50,7 @@ function AboutWine({ params }: { params: { id: string } }) {
 
         <div className={style['aboutWine__info-wrapper']}>
           <h1 className={`${style.aboutWine__title} ${playfairDisplay.className}`}>{name}</h1>
-          {/* <p className={style.aboutWine__subtitle}>{brand}</p> */}
-          <p className={`${style.aboutWine__subtitle} ${montserrat.className}`}>Брэнд</p>
+          <p className={style.aboutWine__subtitle}>{brand?.toLocaleUpperCase()}</p>
           <StarRaitingDisabled rating={rating} />
           <div className={style.details}>
             <div className={style.details__wrapper}>
@@ -76,7 +75,7 @@ function AboutWine({ params }: { params: { id: string } }) {
             </div>
             <div className={style.details__wrapper}>
               <span className={`${style.details__about} ${montserrat.className}`}>ВИНОГРАД</span>
-              <span className={`${style.details__value} ${playfairDisplay.className}`}>{grapeVariety}</span>
+              <span className={`${style.details__value} ${playfairDisplay.className}`}>	Bordeaux Blend, Cabernet Franc,</span>
             </div>
           </div>
 

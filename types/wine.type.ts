@@ -1,3 +1,5 @@
+import { UserType } from "./user.type";
+
 export type Wine = {
   _id?: string;
   name?: string;
@@ -11,6 +13,8 @@ export type Wine = {
   brand?: string
   rating?: number;
   comment?: string;
+  owner?: UserType
+  likes?: UserType[]
 }
 
 export type optionsWineType = {
