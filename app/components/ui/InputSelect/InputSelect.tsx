@@ -18,7 +18,6 @@ function InputSelect({
   options,
   placeholder,
   name,
-  classNamePrefix,
 }: InputSelectType) {
   return (
     <div>

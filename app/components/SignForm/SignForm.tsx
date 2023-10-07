@@ -11,29 +11,19 @@ import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import InputForm from '../ui/InputForm/InputForm';
 import { useRouter } from 'next/navigation';
 import { error } from 'console';
+import { useFormValid } from '@/app/hooks/useFormValid';
 
 type SignFormType = {
   register?: boolean;
 };
 
 function SignForm({ register = false }: SignFormType) {
-  const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
+  // const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
+  const { inputValues, handleInputChange} = useFormValid();
   const dispatch = useAppDispatch();
   const { isLoggedIn, error } = useAppSelector( state => state.user);
   const { back } = useRouter();
 
-  const handleStoreValue = (name: string, value: string | number) => {
-    setInputValues((current) => ({
-      ...current,
-      [name]: value,
-    }));
-  };
-
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-
-    handleStoreValue(name, value);
-  };
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -68,7 +58,7 @@ function SignForm({ register = false }: SignFormType) {
   }, [isLoggedIn, handleSubmit]);
 
   return (
-    <form onSubmit={handleSubmit} className={style.form}>
+    <form onSubmit={handleSubmit} className={style.form} noValidate>
       {register && (
         <InputForm
           location="sign"
@@ -76,7 +66,8 @@ function SignForm({ register = false }: SignFormType) {
           type="text"
           placeholder="Имя"
           value={inputValues?.nameUser}
-          handleChange={handleChange}
+          handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+          required={true}
         />
       )}
       <InputForm
@@ -85,7 +76,8 @@ function SignForm({ register = false }: SignFormType) {
         type="email"
         placeholder="Email"
         value={inputValues?.email}
-        handleChange={handleChange}
+        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+        required={true}
       />
       <InputForm
         location="sign"
@@ -93,7 +85,8 @@ function SignForm({ register = false }: SignFormType) {
         type="password"
         placeholder="Пароль"
         value={inputValues?.password}
-        handleChange={handleChange}
+        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+        required={true}
       />
       <ButtonSubmitForm
         extraClass={style.form__button}

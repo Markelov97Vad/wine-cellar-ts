@@ -15,6 +15,10 @@ export type InputValuesType = {
   region?: string;
 }
 
+export type ErrorMessageType = {
+  [index: string]: string;
+}
+
 export type OptionType = {
   value: string;
   label: string;

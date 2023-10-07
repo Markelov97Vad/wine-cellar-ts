@@ -5,7 +5,7 @@ import { useFormValid } from '@/app/hooks/useFormValid';
 import ButtonSubmitForm from '@/app/components/ui/ButtonSubmitForm/ButtonSubmitForm';
 
 function Settings() {
-  const { inputValues, handleChange } = useFormValid();
+  const { inputValues, handleInputChange } = useFormValid();
   return (
     <div className={style.settings}>
       <form className={style.settings__form}>
@@ -16,7 +16,8 @@ function Settings() {
             placeholder="Имя"
             location="settings"
             value={inputValues?.name}
-            handleChange={handleChange}
+            handleChange={handleInputChange}
+            required={false}
           />
           <InputForm
             name="surname"
@@ -24,7 +25,8 @@ function Settings() {
             placeholder="Фамилия"
             location="settings"
             value={inputValues?.surname}
-            handleChange={handleChange}
+            handleChange={handleInputChange}
+            required={false}
           />
         </fieldset>
         <InputForm
@@ -33,8 +35,9 @@ function Settings() {
           placeholder="Email"
           location="settings"
           value={inputValues?.email}
-          handleChange={handleChange}
+          handleChange={handleInputChange}
           margin={true}
+          required={false}
         />
 
         <ButtonSubmitForm

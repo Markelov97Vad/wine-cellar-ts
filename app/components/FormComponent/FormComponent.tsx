@@ -6,19 +6,31 @@ import style from './FormComponent.module.scss';
 import StarReiting from '../StarRating/StarRating';
 import { optionsGrapeVariety } from '../../../utils/grapeVariety';
 import { optionsColorWine, optionsTypeWine } from '../../../utils/optionsWine';
-import { InputValuesType, OptionType } from '../../../types/allTypes.types';
-import { useAppDispatch } from '../../hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { addNewWine } from '../../store/wine/wineApi';
 import InputSelect from '../ui/InputSelect/InputSelect';
 import InputForm from '../ui/InputForm/InputForm';
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import { useFormValid } from '@/app/hooks/useFormValid';
 import { montserrat } from '@/app/fonts';
+import NotificationPopup from '../NotificationPopup/NotificationPopup';
 
 function FormComponent() {
-  const { inputValues, handleChange, handleChangeSelector, handleReiting } =
+  const { 
+    inputValues,
+    errorMessages,
+    handleInputChange,
+    handleChangeSelector,
+    handleReiting,
+    formIsValid
+  } =
     useFormValid();
   const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector(state => state.wines);
+  const isSubmitBattonDisabled = formIsValid &&
+  (inputValues?.typeWine !== undefined) &&
+  (inputValues?.colorWine !== undefined) &&
+  (inputValues?.grapeVariety !== undefined)
 
   const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -26,15 +38,22 @@ function FormComponent() {
   };
 
   // useEffect(() => {
-  //   // console.log(inputValues);
-  // }, [inputValues]);
+  //   console.log(errorMessages.name);
+  //   console.log(inputValues?.name);
+  //   console.log('formisvalid',formIsValid);
+  //   console.log(isSubmitBattonDisabled);
+    
+    
+  // }, [inputValues, errorMessages]);
 
   return (
+    <>
     <form
       onSubmit={onSubmit}
       name="form-component"
       className={`${style.form} ${montserrat.className}`}
       autoComplete="off"
+      noValidate
     >
       <fieldset className={style.form__fieldest}>
         <div className={style.form__column}>
@@ -44,7 +63,11 @@ function FormComponent() {
             placeholder="Название"
             type="text"
             value={inputValues?.name}
-            handleChange={handleChange}
+            error={errorMessages?.name}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            min={2}
+            max={30}
+            required={true}
           />
           <InputForm
             location="add-wine"
@@ -52,7 +75,9 @@ function FormComponent() {
             placeholder="Брэнд"
             type="text"
             value={inputValues?.brand}
-            handleChange={handleChange}
+            error={errorMessages?.brand}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            required={true}
           />
           <InputForm
             location="add-wine"
@@ -60,7 +85,9 @@ function FormComponent() {
             placeholder="Страна"
             type="text"
             value={inputValues?.country}
-            handleChange={handleChange}
+            error={errorMessages.country}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            required={true}
           />
           <InputForm
             location="add-wine"
@@ -70,7 +97,9 @@ function FormComponent() {
             min={1900}
             max={new Date().getFullYear()}
             value={inputValues?.year}
-            handleChange={handleChange}
+            error={errorMessages?.year}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            required={true}
           />
         </div>
         <div className={style.form__column}>
@@ -80,7 +109,11 @@ function FormComponent() {
             placeholder="Регион"
             type="text"
             value={inputValues?.region}
-            handleChange={handleChange}
+            error={errorMessages.region}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            min={2}
+            max={30}
+            required={true}
           />
           <InputSelect
             value={inputValues?.typeWine}
@@ -111,29 +144,40 @@ function FormComponent() {
       <InputForm
         location="add-wine"
         name="image"
-        placeholder="Ссылка"
+        placeholder="Ссылка на изображение"
         type="url"
         margin={true}
         value={inputValues?.image}
-        handleChange={handleChange}
+        error={errorMessages?.image}
+        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+        required={true}
       />
       <textarea
         className={`${style.form__textarea} ${montserrat.className}`}
         name="comment"
         id="textarea"
         value={inputValues?.comment}
-        onChange={handleChange}
+        onChange={handleInputChange}
         placeholder="Комментарии к напитку"
       ></textarea>
       <div className={style['form__rating-wrapper']}>
         <span className={style['form__span-rating']}>Рейтинг</span>
         <StarReiting handleReiting={handleReiting} />
       </div>
+      {
+        error && 
+        <span className={style['form__error-message']}>
+          Что то пошло не так..
+        </span>
+      }
       <ButtonSubmitForm
         extraClass={style['form__button-form']}
-        text="Добавить"
+        disabled={!isSubmitBattonDisabled}
+        text={loading ? 'Добавление..' : 'Добавить'}
       />
     </form>
+    <NotificationPopup/>
+    </>
   );
 }
 

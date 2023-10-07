@@ -1,0 +1,88 @@
+@import '../../globals.scss';
+
+.notification-popup {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  background-color: $color-background;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.567);
+  transition: visibility .3s, opacity .3s ease-in;
+
+  &_opened {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color-background;
+    border: 2px solid $color-border-wrapper;
+    width: 600px;
+    height: 400px;
+    box-sizing: border-box;
+  }
+
+  &__cross-button {
+    position: absolute;
+    cursor: pointer;
+    top: 30px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+
+    &:hover {
+      opacity: .5;
+    }
+  }
+
+  &__title {
+    position: relative;
+    margin: 70px 0 30px;
+    @include show-font(
+      $weight: 700,
+      $size: 30px,
+      $line-heigth: 54px,
+      $color: $color-fonts
+    );
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background: $color-fonts;
+      bottom: -20px;
+      width: 50%;
+      left: 50%;
+      transform: translateX(-50%);
+    };
+  }
+
+  &__subtitle {
+    max-width: 500px;
+    text-align: center;
+    color: $color-background-milk;
+    margin: 20px 0 38px;
+    @include show-font(
+      $weight: 400,
+      $size: 16px,
+      $line-heigth: 24px,
+      $color: $color-fonts
+    );
+  }
+
+  &__img {
+    width: 100px;
+    height: auto;
+    object-fit: contain;
+  }
+}

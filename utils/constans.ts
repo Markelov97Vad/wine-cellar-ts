@@ -6,7 +6,8 @@ export const API = {
     wine: {
       data: '/wines',
       myWines: '/wines/my',
-      currentWine: '/wines/current/'
+      currentWine: '/wines/current/',
+      addFavorite: '/wines/favorite/'
     },
     user : {
       register: '/signup',
@@ -24,10 +25,6 @@ export const navItemsHeader = [
   {
     label: 'Библиотека',
     href: '/new-wine'
-  },
-  {
-    label: 'Мои вина',
-    href: '/my-wines'
   }
 ]
 

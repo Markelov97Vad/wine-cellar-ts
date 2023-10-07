@@ -1,4 +1,3 @@
-'use client';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { API } from '../../../utils/constans';
 import { Wine } from '../../../types/wine.type';
@@ -19,19 +18,24 @@ export const getWines = createAsyncThunk<
 export const addNewWine = createAsyncThunk<Wine, Wine, { rejectValue: string }>(
   'wines/addWines',
   async function (wine, { rejectWithValue }) {
-    const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`, {
-      method: 'POST',
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ ...wine }),
-    });
+    try {
 
-    if (!response.ok) {
-      return rejectWithValue('Не удалось добавить вино');
+      const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ ...wine }),
+      });
+  
+      if (!response.ok) {
+        return rejectWithValue('Не удалось добавить вино');
+      }
+      return (await response.json()) as Wine;
+    } catch (err) {
+      return rejectWithValue(`Не удалось добавить вино ${err}`);
     }
-    return (await response.json()) as Wine;
   },
 );
 
@@ -49,3 +53,4 @@ export const getCurrentWine = createAsyncThunk<
   }
   return (await response.json()) as Wine;
 });
+

@@ -5,6 +5,7 @@ export type WineState = {
   wines: Wine[];
   currentWine: Wine;
   loading: boolean;
+  isSuccess: boolean;
   error: string | null;
 };
 
