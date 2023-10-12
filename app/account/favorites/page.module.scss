@@ -1,5 +1,37 @@
-@import '../../globals.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .favorites {
-  
+  margin: 0;
+
+  &__info {
+    grid-area: info;
+    background-color: $color-background-white;
+  }
+
+  &__title {
+    text-align: center;
+    @include show-font(
+      $weight: 500,
+      $size: 16px,
+      $line-heigth: 30px,
+      $color: $color-fonts-black)
+  }
+
+  &__subtitle {
+
+    @include show-font(
+      $weight: 400,
+      $size: 14px,
+      $line-heigth: 24px,
+      $color: $color-fonts-black)
+  }
+
+  &__list-container {
+    grid-area: list;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
+    gap: 25px;
+  }
 }

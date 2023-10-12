@@ -1,4 +1,4 @@
-@import '../globals.scss';
+@use '../styles/variables' as *;
 
 .account {
   background-color: $color-background-milk;
@@ -11,13 +11,10 @@
     gap: 25px;
     margin: 0 auto;
     display: grid;
-    // grid-template-columns: repeat(2, 1fr);
-    // grid-template-columns: repeat(auto-fit, minmax(min-content, max-content));
     grid-template-columns: 260px minmax(430px, 830px);
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-areas: 
-    "nav-bar info"
-    "list list";
+    grid-template-areas:
+      "nav-bar info"
+      "list list";
   }
 
   &__layout {

@@ -1,4 +1,5 @@
-@import '../../globals.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .navigation {
   display: flex;
@@ -10,7 +11,7 @@
     margin: 0;
     padding: 0;
     gap: 40px;
-  
+
     @include mobile {
       display: none;
     }

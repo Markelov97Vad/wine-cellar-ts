@@ -25,7 +25,6 @@ $main-color-white: #fff;
 $main-color-milk: #E6E3C4;
 $main-color-olive: #998431;
 
-
 %indents-reset {
   margin: 0;
   padding: 0;
@@ -34,11 +33,8 @@ $main-color-olive: #998431;
 %input-value {
   border: none;
   box-sizing: border-box;
-  // min-width: 255px;
   width: 100%;
   height: 30px;
-  // background-color: $color-background;
-  // border-bottom: 1px solid $color-fonts;
 
   &:first-child {
     margin-top: 0;

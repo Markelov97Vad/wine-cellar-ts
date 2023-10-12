@@ -1,4 +1,5 @@
-@import '../../../globals.scss';
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .wine-card {
   background-color: $color-background-white;
@@ -7,7 +8,7 @@
   border-radius: 4px;
   position: relative;
   z-index: 1;
-  
+
   &__link {
     box-sizing: border-box;
     padding: 10px 20px 20px;
@@ -63,7 +64,7 @@
     width: 100%;
     height: 200px;
   }
-  
+
   &__title {
     margin: 0;
     text-align: center;

@@ -1,4 +1,5 @@
-import './globals.scss';
+import './styles/_index.scss';
+import 'normalize.css';
 import type { Metadata } from 'next';
 import { Providers } from '@/app/store/provider';
 import Header from '@/app/components/Header/Header';
@@ -16,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className='body'>
+      <body>
         <Providers>
           <Header/>
           {children}

@@ -1,14 +1,11 @@
 "use client"
-import FavoriteCardList from "@/app/components/FavoritCardList/FavoriteCardList";
-import WineCard from "@/app/components/WineLibrary/WineCard/WineCard";
-import WineCardList from "@/app/components/WineLibrary/WineCardList/WineCardList";
-import { useAppDispatch, useAppSelector } from "@/app/hooks/redux";
-import { useAddFavoriteWineMutation, useDeleteFavoriteWineMutation, useGetFavoriteWineQuery, useLazyGetFavoriteWineQuery } from "@/app/store/currentUserWine/reducer";
-import { checkAuthUser } from "@/app/store/user/userApi";
-import { getWines } from "@/app/store/wine/wineApi";
-import { Wine } from "@/types/wine.type";
-import { Metadata } from "next";
 import { useEffect, useState } from "react";
+import styles from './page.module.scss'
+import WineCard from "@/app/components/WineLibrary/WineCard/WineCard";
+import { useAppDispatch, useAppSelector } from "@/app/hooks/redux";
+import { useGetFavoriteWineQuery, useLazyGetFavoriteWineQuery } from "@/app/store/currentUserWine/reducer";
+import { Wine } from "@/types/wine.type";
+import { playfairDisplay } from "@/app/fonts";
 
 // export const metadata: Metadata = {
 //   title: 'Favorite'
@@ -16,37 +13,39 @@ import { useEffect, useState } from "react";
 
 function Favorites() {
   const dispatch = useAppDispatch();
-  // const { wines , loading, isSuccess } = useAppSelector(state => state.wines);
   const { user } = useAppSelector(state => state.user);
   const { data } = useGetFavoriteWineQuery('', {
     // refetchOnFocus: true
     // refetchOnMountOrArgChange: true
   });
-  const [getFavorites, {}] = useLazyGetFavoriteWineQuery();
   const [favoriteWines, setFavoritesWines] = useState<Wine[]>([]);
 
   useEffect(() => {
-    // const getFaf = async () => {
-    //   await getFavorites('')
-    // }
-    // getFaf();
-    // getFavorites()
-    // dispatch(checkAuthUser());
     setFavoritesWines(data)
-    console.log('Data', data);
   }, [data])
-  console.log('Look', favoriteWines);
-  
 
   return (
-    <div >
-      <span>AAAAA</span>
-      {
-        favoriteWines?.map((wine: Wine)=> (
-          <WineCard key={wine._id} wineElem={wine}/>
-        ))
-      }
-    </div>
+    // <section className={styles.favorites}>
+    <>
+      <div className={`${styles.favorites__info} ${playfairDisplay.className}`}>
+        <h3 className={styles.favorites__title}>My favorites</h3>
+        <p className={styles.favorites__subtitle}>Your list of your favourite wines or whiskies. Click on the heart symbol of a wine anywhere on the website to add a wine to this list and click again to remove it.</p>
+      </div>
+
+      <div className={styles["favorites__list-container"]}>
+        {
+          favoriteWines?.map((wine: Wine)=> (
+            <WineCard key={wine._id} wineElem={wine}/>
+          ))
+        }
+        {
+          favoriteWines?.map((wine: Wine)=> (
+            <WineCard key={wine._id} wineElem={wine}/>
+          ))
+        }
+      </div>
+    </>
+    // </section>
   );
 }
 

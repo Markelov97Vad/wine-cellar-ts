@@ -1,4 +1,4 @@
-@import '../../globals.scss';
+@use '../styles/variables' as *;
 
 .settings {
   grid-area: info;
