@@ -4,7 +4,7 @@ import Image from 'next/image';
 import LikeIcon from '@/app/components/Icons/LikeIcon';
 import Link from 'next/link';
 import { montserrat, playfairDisplay } from '@/app/fonts';
-import { useAddFavoriteWineMutation, useDeleteFavoriteWineMutation } from '@/app/store/currentUserWine/reducer';
+import { useAddFavoriteWineMutation, useDeleteFavoriteWineMutation, useLazyGetFavoriteWineQuery } from '@/app/store/currentUserWine/reducer';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { useEffect, useState } from 'react';
 import Dislike from '../../Icons/Dislike';
@@ -17,20 +17,25 @@ type WineCardProps = {
 
 function WineCard({ wineElem }: WineCardProps) {
   const { rating, brand, image, name, year, _id, likes } = wineElem;
-  const [addFavorite, {}] = useAddFavoriteWineMutation();
-  const [deleteFavorite, {}] = useDeleteFavoriteWineMutation();
+  const [addFavorite, { isSuccess: isSuccessAdd}] = useAddFavoriteWineMutation();
+  const [deleteFavorite, {isSuccess: isSuccessDel}] = useDeleteFavoriteWineMutation();
   const { isLoggedIn } = useAppSelector(state => state.user);
   const [isLiked, setIsLiked] = useState<boolean | undefined>(false);
   const dispatch = useAppDispatch();
+  // const [getFavorites, {}] = useLazyGetFavoriteWineQuery()
 
   const handleClick = async () => {
+    
+    // getFavorites('');
+    console.log('click');
     if (isLoggedIn) {
+      console.log('Logget');
       if (!isLiked) {
         await addFavorite(_id!).unwrap() // корректная работа пропсов (isError, isLoading..)
-        dispatch(getWines());
+        // await dispatch(getWines());
       } else {
         await deleteFavorite(_id!).unwrap();
-        dispatch(getWines());
+        // await dispatch(getWines());
       }
     }
   }
@@ -38,6 +43,10 @@ function WineCard({ wineElem }: WineCardProps) {
   useEffect(() => {
     setIsLiked(likes?.some(user => user._id === user._id))
   }, [likes]);
+
+  useEffect(() => {
+    dispatch(getWines());
+  }, [isSuccessAdd, isSuccessDel])
 
   return (
     <article className={`${style['wine-card']} ${montserrat.className}`}>

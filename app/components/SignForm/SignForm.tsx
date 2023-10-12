@@ -42,20 +42,20 @@ function SignForm({ register = false }: SignFormType) {
           password: inputValues?.password,
         })
       );
-      if (error === null) {
-            console.log('вход разрешен', isLoggedIn);
+      // if (error === null) {
+      //       console.log('вход разрешен', isLoggedIn);
             
-            back();
-          }
+      //       back();
+      //     }
     }
   };
   useEffect(() => {
     if (isLoggedIn) {
       back();
+      console.log('isLoggetIn',isLoggedIn);
     }
-    console.log(isLoggedIn);
     
-  }, [isLoggedIn, handleSubmit]);
+  }, [isLoggedIn]);
 
   return (
     <form onSubmit={handleSubmit} className={style.form} noValidate>

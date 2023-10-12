@@ -1,6 +1,4 @@
 import style from './WineLibrary.module.scss';
-
-// import { Wine } from '../../types/wine.type';
 import WineCardList from './WineCardList/WineCardList';
 import { montserrat } from '@/app/fonts';
 
