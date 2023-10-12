@@ -6,20 +6,27 @@ import StarRating from '@/app/components/StarRating/StarRating';
 import StarRaitingDisabled from '@/app/components/StarRaitingDisabled/StarRaitingDisabled';
 import wineImg from '@/public/images/wine-img.webp';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
-import { useEffect } from 'react';
-import { getCurrentWine } from '@/app/store/wine/wineApi';
+import { useEffect, useState } from 'react';
+import { getCurrentWine, getWines } from '@/app/store/wine/wineApi';
 import { montserrat, playfairDisplay } from '@/app/fonts';
-
-// export function generateMetadata({ params }: { params: { id: string } }) {
-//   // const { name } = useAppSelector((state) => state.wines.currentWine);
-//   return {
-//     title: 'LLLLL'
-//   }
-// }
+import HeaderTypeSecond from '@/app/components/HeaderTypeSecond/HeaderTypeSecond';
+import ButtonLike from '@/app/components/ui/ButtonLike/ButtonLike';
+import { useAddFavoriteWineMutation, useDeleteFavoriteWineMutation } from '@/app/store/currentUserWine/reducer';
+import { checkAuthUser } from '@/app/store/user/userApi';
+import { useRouter } from 'next/navigation';
+import CrossIcon from '@/app/components/Icons/CrossIcon';
 
 function AboutWine({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
+  const { isLoggedIn } = useAppSelector((state) => state.user);
+  const [addFavorite, { isSuccess: isSuccessAdd }] =
+    useAddFavoriteWineMutation();
+  const [deleteFavorite, { isSuccess: isSuccessDel }] =
+    useDeleteFavoriteWineMutation();
+  const { back, push } = useRouter()
+  const [isLiked, setIsLiked] = useState<boolean | undefined>(false);
   const {
+    _id,
     name,
     colorWine,
     country,
@@ -31,21 +38,47 @@ function AboutWine({ params }: { params: { id: string } }) {
     comment,
     image,
     rating,
+    likes
   } = useAppSelector((state) => state.wines.currentWine);
 
   useEffect(() => {
     dispatch(getCurrentWine(params.id));
+  }, [isSuccessAdd, isSuccessDel]);
+
+  useEffect(() => {
+    dispatch(checkAuthUser())
   }, []);
+
+  useEffect(() => {
+    setIsLiked(likes?.some((user) => user._id === user._id));
+  }, [likes]);
+
+  const handleClick = async () => {
+    if (isLoggedIn) {
+      if (!isLiked) {
+        await addFavorite(_id!).unwrap(); // корректная работа пропсов (isError, isLoading..)
+      } else {
+        await deleteFavorite(_id!).unwrap();
+      }
+    } else {
+      push('/login')
+    }
+  };
 
   return (
     <>
+      <HeaderTypeSecond/>
       <main className={style.aboutWine}>
+        <button onClick={back} className={style['aboutWine__button-back']}>
+          <CrossIcon dark/>
+        </button>
         <div className={style.aboutWine__imgContainer}>
           <img
             className={style.aboutWine__image}
             src={image!}
             alt="бутылка вина"
           />
+          <ButtonLike handleClick={handleClick} isLiked={isLiked}/>
         </div>
 
         <div className={style['aboutWine__info-wrapper']}>

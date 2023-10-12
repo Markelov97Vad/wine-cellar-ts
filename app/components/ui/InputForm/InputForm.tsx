@@ -1,6 +1,5 @@
 import style from './InputForm.module.scss';
 import { InputFormType } from '../../../../types/componentProps.types';
-import { montserrat } from '@/app/fonts';
 
 function InputForm({
   name,
@@ -49,7 +48,7 @@ function InputForm({
       <label
         className={`${style['input-from__label']} ${handleLicationTypeLabel(
           location
-        )} ${value?.length! > 0 ? style['input-from__label_active'] : ''} ${montserrat.className}`}
+        )} ${value?.length! > 0 ? style['input-from__label_active'] : ''}`}
         htmlFor={name}
       >
         {placeholder}

@@ -4,14 +4,31 @@
 .aboutWine {
   display: flex;
   justify-content: center;
+  padding: 40px 0 0;
   margin: 0 auto;
   max-width: 1140px;
   background-color: $color-background-white;
+  position: relative;
+
+  &__button-back {
+    position: absolute;
+    border: none;
+    background: inherit;
+    top: 40px;
+    right: 10px;
+    height: 20px;
+    z-index: 2;
+
+    &:hover {
+      opacity: .6;
+    }
+  }
 
   &__imgContainer {
-    min-width: 550px;
+    min-width: 570px;
     display: flex;
     justify-content: center;
+    position: relative;
   }
 
   &__image {

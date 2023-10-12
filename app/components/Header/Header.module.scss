@@ -10,16 +10,6 @@
     padding-inline: 20px;
   }
 
-  &__logo {
-    width: 160px;
-    height: 100px;
-
-    @include mobile {
-      width: 80px;
-      height: 80px;
-    }
-  }
-
   &__sapn {
     @include show-font(
       $size: 30px,

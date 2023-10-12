@@ -8,7 +8,6 @@ import { montserrat } from '@/app/fonts';
 
 function Navigation({ items }: NavigationType) {
   const pathname = usePathname();
-  // console.log(pathname);
 
   return (
     <nav className={`${style.navigation} ${montserrat.className}`}>

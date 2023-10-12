@@ -2,14 +2,15 @@
 @use '../../styles/mixins' as *;
 
 .favorites {
-  margin: 0;
 
   &__info {
+    padding: 40px;
     grid-area: info;
     background-color: $color-background-white;
   }
 
   &__title {
+    margin-bottom: 5px;
     text-align: center;
     @include show-font(
       $weight: 500,

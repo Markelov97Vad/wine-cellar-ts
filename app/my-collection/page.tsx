@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 function AddNewWine () {
   return (
       <ProtectedRoute>
+        <Header/>
         <main>
           <AddWineComp />
           <WineLibrary/>

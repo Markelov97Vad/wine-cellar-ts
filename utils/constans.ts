@@ -19,12 +19,12 @@ export const API = {
 
 export const navItemsHeader = [
   {
-    label: 'Главная',
+    label: 'Библиотека',
     href: '/'
   },
   {
-    label: 'Библиотека',
-    href: '/new-wine'
+    label: 'Моя коллекция',
+    href: '/my-collection'
   }
 ]
 

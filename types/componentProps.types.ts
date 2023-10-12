@@ -62,3 +62,13 @@ export type ButtonCrossProps = {
   extraClass?: string;
   handleClick: () => void;
 }
+
+export type ButtonLikeProps = {
+  handleClick: () => void;
+  isLiked?: boolean;
+}
+
+export type CrossIconProps = {
+  dark?: boolean;
+  light?: boolean;
+}
