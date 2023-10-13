@@ -1,4 +1,5 @@
-@import '../../app/globals.scss';
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
 
 .register {
   background-color: $color-background-milk;

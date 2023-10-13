@@ -19,6 +19,10 @@ export const addNewWine = createAsyncThunk<Wine, Wine, { rejectValue: string }>(
   'wines/addWines',
   async function (wine, { rejectWithValue }) {
     try {
+      
+      if (wine.image === '') {
+        wine.image = 'https://p0.pxfuel.com/preview/569/587/724/bottle-wine-red-drink.jpg'
+      }
 
       const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`, {
         method: 'POST',
@@ -28,7 +32,7 @@ export const addNewWine = createAsyncThunk<Wine, Wine, { rejectValue: string }>(
         },
         body: JSON.stringify({ ...wine }),
       });
-  
+
       if (!response.ok) {
         return rejectWithValue('Не удалось добавить вино');
       }

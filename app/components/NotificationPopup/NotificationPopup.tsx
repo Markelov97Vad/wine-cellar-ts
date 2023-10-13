@@ -9,7 +9,7 @@ import { useAppSelector } from '@/app/hooks/redux';
 function NotificationPopup() {
   const { isSuccess } = useAppSelector(state => state.wines);
   const [isNotificationPopupOpen, setIsNotificationPopupOpen] = useState(false);
-  
+
   const handleClick = () => {
     setIsNotificationPopupOpen(false)
   }

@@ -16,7 +16,7 @@ import { montserrat } from '@/app/fonts';
 import NotificationPopup from '../NotificationPopup/NotificationPopup';
 
 function FormComponent() {
-  const { 
+  const {
     inputValues,
     errorMessages,
     handleInputChange,
@@ -42,8 +42,8 @@ function FormComponent() {
   //   console.log(inputValues?.name);
   //   console.log('formisvalid',formIsValid);
   //   console.log(isSubmitBattonDisabled);
-    
-    
+
+
   // }, [inputValues, errorMessages]);
 
   return (
@@ -150,7 +150,7 @@ function FormComponent() {
         value={inputValues?.image}
         error={errorMessages?.image}
         handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
-        required={true}
+        required={false}
       />
       <textarea
         className={`${style.form__textarea} ${montserrat.className}`}
@@ -165,7 +165,7 @@ function FormComponent() {
         <StarReiting handleReiting={handleReiting} />
       </div>
       {
-        error && 
+        error &&
         <span className={style['form__error-message']}>
           Что то пошло не так..
         </span>

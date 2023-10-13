@@ -8,7 +8,7 @@ export type InputValuesType = {
   year?: string;
   image?: string;
   comment?: string;
-  nameUser?: string; 
+  nameUser?: string;
   email?: string;
   password?: string;
   brand?: string;
@@ -23,4 +23,16 @@ export type OptionType = {
   value: string;
   label: string;
   name?: string
+}
+
+export type CheckboxsType = {
+  dry?: string;
+  semisweet?: string;
+  semidry?: string;
+  sweet?: string;
+  dessert?: string;
+  red?: string;
+  white?: string;
+  rose?: string;
+  sparkling?: string;
 }

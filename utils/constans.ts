@@ -38,3 +38,44 @@ export const navItemAccount = [
     href: '/account/favorites',
   },
 ];
+
+export const TypeData = [
+  {
+    id: 'dry',
+    text: 'Cухое',
+  },
+  {
+    id: 'semisweet',
+    text: 'Полусладкое',
+  },
+  {
+    id: 'semidry',
+    text: 'Полусухое',
+  },
+  {
+    id: 'sweet',
+    text: 'Сладкое',
+  },
+  {
+    id: 'dessert',
+    text: 'Десертное',
+  },
+];
+export const ColorData = [
+  {
+    id: 'red',
+    text: 'Красное',
+  },
+  {
+    id: 'white',
+    text: 'Белое',
+  },
+  {
+    id: 'rose',
+    text: 'Розовое',
+  },
+  {
+    id: 'sparkling',
+    text: 'Игристое',
+  }
+];
