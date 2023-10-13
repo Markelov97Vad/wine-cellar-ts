@@ -1,0 +1,35 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.header-type-second {
+  background-color: $color-background-white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 0;
+  border-bottom: 1px solid $main-color-black;
+
+  &__wrapper {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
+
+  &__link {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    @include show-font(
+      $size: 14px,
+      $weight: 500,
+      $line-heigth: 21px,
+      $color: $color-fonts-black
+    );
+    &:hover {
+      color: $color-fonts-black;
+      -webkit-text-shadow: 2px 2px 2px #00000021;
+      -moz-text-shadow: 2px 2px 2px #00000028;
+      text-shadow: 2px 2px 2px #00000029;
+    }
+  }
+}

@@ -1,4 +1,5 @@
-@import '../../globals.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .navigation {
   display: flex;
@@ -10,7 +11,7 @@
     margin: 0;
     padding: 0;
     gap: 40px;
-  
+
     @include mobile {
       display: none;
     }
@@ -19,7 +20,9 @@
   &__link {
     text-decoration: none;
     padding-bottom: 4px;
-     letter-spacing: 1px;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
     @include show-font(
       $size: 14px,
       $weight: 500,
@@ -28,7 +31,10 @@
     );
 
     &:hover {
-      opacity: .7;
+      color: $color-fonts;
+      -webkit-text-shadow: 1px 1px 10px #ffffffb6;
+      -moz-text-shadow: 1px 1px 10px #ffffffb6;
+      text-shadow: 1px 1px 10px #ffffffb6;
     }
 
     &_active {

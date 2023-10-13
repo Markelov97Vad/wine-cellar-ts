@@ -8,6 +8,7 @@ export const getCurrentUserWines = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${API.baseUrl}`
   }),
+  tagTypes: ['Wine'],
   endpoints: (build) => ({
     // GET запрос //           ответ от сервера, параметр который передаем
     fetchUserWines: build.query<Wine[], string>({
@@ -19,21 +20,36 @@ export const getCurrentUserWines = createApi({
     }),
     addFavoriteWine: build.mutation<Wine, string>({
       query: (id: string) => ({
-        url: `${API.endpoints.wine.addFavorite}${id}`,
+        url: `${API.endpoints.wine.favorite}/${id}`,
         headers: { 'Content-Type': 'application/json' },
         method: 'PUT',
         credentials: 'include'
-      })
+      }),
+      invalidatesTags: ['Wine']
     }),
     deleteFavoriteWine: build.mutation<Wine, string>({
       query: (id: string) => ({
-        url: `${API.endpoints.wine.addFavorite}${id}`,
+        url: `${API.endpoints.wine.favorite}/${id}`,
         headers: { 'Content-Type': 'application/json' },
         method: 'DELETE',
         credentials: 'include'
-      })
+      }),
+      invalidatesTags: ['Wine']
+    }),
+    getFavoriteWine: build.query({
+      query: () => ({
+        url: `${API.endpoints.wine.favorite}`,
+        credentials: 'include'
+      }),
+      providesTags: ['Wine']
     })
   })
 })
 
-export const {useFetchUserWinesQuery, useAddFavoriteWineMutation, useDeleteFavoriteWineMutation } = getCurrentUserWines
+export const {
+  useFetchUserWinesQuery,
+  useAddFavoriteWineMutation,
+  useDeleteFavoriteWineMutation,
+  useGetFavoriteWineQuery,
+  useLazyGetFavoriteWineQuery
+} = getCurrentUserWines

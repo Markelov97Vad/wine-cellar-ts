@@ -1,4 +1,5 @@
-@import '../../globals.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .form {
   display: flex;

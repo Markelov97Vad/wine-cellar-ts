@@ -9,7 +9,9 @@ import { useFetchUserWinesQuery } from '@/app/store/currentUserWine/reducer';
 function WineCardList() {
   const dispatch = useAppDispatch();
   const { wines } = useAppSelector((state) => state.wines);
-  const { isLoading , data, isError, error } = useFetchUserWinesQuery('');
+  const { isLoading , data, isError, error } = useFetchUserWinesQuery('', {
+    // refetchOnFocus: true
+  });
 
   useEffect(() => {
     dispatch(getWines());

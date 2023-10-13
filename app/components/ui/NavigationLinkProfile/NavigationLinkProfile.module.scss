@@ -1,24 +1,32 @@
-@import '../../../globals.scss';
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 
 .navigationLinkProfile {
   border: none;
-  cursor: pointer;
   background-color: inherit;
   text-decoration: none;
-  width: 98px;
+  gap: 4px;
   height: 24px;
   display: inline-block;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   @include show-font(
     $size: 14px,
     $weight: 700,
     $line-heigth: 21px,
     $color: $color-fonts
-  )
+  );
+
+  &:hover {
+    color: $color-fonts;
+    -webkit-text-shadow: 1px 1px 10px #ffffffb6;
+    -moz-text-shadow: 1px 1px 10px #ffffffb6;
+    text-shadow: 1px 1px 10px #ffffffb6;
+  }
 }
 
 .navigationLinkProfile__img {

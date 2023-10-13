@@ -2,10 +2,12 @@
 import { AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { addNewWine, getCurrentWine, getWines } from './wineApi';
 import { WineState } from '@/types/slice.types';
+import { Wine } from '@/types/wine.type';
 
 const initialState: WineState = {
   wines: [],
   currentWine: {},
+  favoriteWines: [],
   loading: false,
   isSuccess: false,
   error: null,
@@ -14,11 +16,21 @@ const initialState: WineState = {
 const wineSlice = createSlice({
   name: 'wines',
   initialState,
-  reducers: {},
+  reducers: {
+    addFavorite(state, action) {
+      state.favoriteWines.push(action.payload);
+    },
+    deleteFavorite(state, action) {
+      state.favoriteWines = state.favoriteWines.filter( wine => {
+        return wine._id !== action.payload
+      })
+    }
+  },
   extraReducers: (builder) => {
     builder
       // когда делаю запрос
       .addCase(getWines.pending, (state) => {
+        state.isSuccess = false;
         state.loading = true;
         state.error = null;
       })
@@ -66,3 +78,4 @@ function isError(action: AnyAction) {
 }
 
 export default wineSlice.reducer;
+export const {addFavorite, deleteFavorite} = wineSlice.actions;

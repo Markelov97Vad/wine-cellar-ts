@@ -1,4 +1,5 @@
-@import '../../globals.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .form {
   width: 100%;
@@ -39,7 +40,7 @@
     min-height: 60px;
     margin-bottom: 30px;
     padding: 10px 10px;
-  
+
     @include show-font(
       $weight: 500,
       $size: 13px,

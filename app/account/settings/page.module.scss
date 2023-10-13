@@ -1,9 +1,11 @@
-@import '../../globals.scss';
+@use '../../styles/variables' as *;
 
 .settings {
+  grid-area: info;
   background-color: $color-background-white;
   padding: 40px;
   width: 100%;
+  box-sizing: border-box;
 
   &__form {
     display: flex;

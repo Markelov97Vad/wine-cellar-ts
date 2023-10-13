@@ -32,8 +32,9 @@ export const validationConfig: Record<validationConfigKeyProps, validationConfig
     emptyError: 'Заполните это поле',
   },
   'image': {
-    pattern: /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/,
-    validationError: 'Некорректный URL адресс',
+    // pattern: /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/,
+    pattern: /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?.(jpeg|jpg|gif|png)$/,
+    validationError: 'Некорректный URL адресс, он должен оканчиваться на .jpeg | jpg | gif | png',
     emptyError: 'Заполните это поле',
   },
   'email': {

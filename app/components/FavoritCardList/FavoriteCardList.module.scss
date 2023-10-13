@@ -1,0 +1,13 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.favorite-card-list {
+  grid-area: list;
+  display: grid;
+  width: 100%;
+  background-color: $color-background;
+  display: grid;
+  gap: 25px;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 300px));
+}

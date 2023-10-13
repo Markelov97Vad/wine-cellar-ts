@@ -1,4 +1,5 @@
-@import "../../../globals.scss";
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .input-from {
   margin-top: 15px;
@@ -128,7 +129,5 @@
   @include mobile {
     align-self: center;
     width: 95%;
-    // margin-inline: 10px;
-    // max-width: 100;
   }
 }

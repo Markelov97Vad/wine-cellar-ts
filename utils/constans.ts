@@ -7,7 +7,7 @@ export const API = {
       data: '/wines',
       myWines: '/wines/my',
       currentWine: '/wines/current/',
-      addFavorite: '/wines/favorite/'
+      favorite: '/wines/favorite'
     },
     user : {
       register: '/signup',
@@ -19,12 +19,12 @@ export const API = {
 
 export const navItemsHeader = [
   {
-    label: 'Главная',
+    label: 'Библиотека',
     href: '/'
   },
   {
-    label: 'Библиотека',
-    href: '/new-wine'
+    label: 'Моя коллекция',
+    href: '/my-collection'
   }
 ]
 

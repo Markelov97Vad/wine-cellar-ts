@@ -1,4 +1,5 @@
-@import '../../globals.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .add-wine {
   background-color: $color-background;
@@ -62,14 +63,14 @@
     transform: translateX(-50%);
     background-color: $color-background;
     margin: 0;
-  
+
     @include show-font(
       $color: $color-fonts,
       $size: 36px,
       $line-heigth: 54px,
       $weight: 500
     );
-  
+
     &::after {
       content: '';
       position: absolute;

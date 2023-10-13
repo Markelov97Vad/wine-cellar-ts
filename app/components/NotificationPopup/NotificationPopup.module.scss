@@ -1,4 +1,5 @@
-@import '../../globals.scss';
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .notification-popup {
   position: fixed;
@@ -14,6 +15,7 @@
   opacity: 0;
   background: rgba(0, 0, 0, 0.567);
   transition: visibility .3s, opacity .3s ease-in;
+  z-index: 2;
 
   &_opened {
     opacity: 1;

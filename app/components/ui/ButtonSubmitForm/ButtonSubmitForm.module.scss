@@ -1,4 +1,5 @@
-@import "../../../globals.scss";
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
 
 .button-submit-form {
   border: none;
@@ -7,7 +8,6 @@
   min-height: 50px;
   background-color: $color-background;
   color: $color-fonts;
-  cursor: pointer;
   @include show-font(
     $weight: 500,
     $size: 16px,
