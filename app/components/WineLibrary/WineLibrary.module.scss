@@ -48,11 +48,11 @@
   //INPUT SEARCH
   &__search {
     width: 100%;
+    position: relative;
   }
 
   &__search-input {
     box-sizing: border-box;
-
     border: none;
     width: 100%;
     height: 48px;
@@ -62,20 +62,23 @@
     border-bottom: 1px solid $main-color-black-opacity;
     border-left: 0;
     transition: all .6s ease;
-    background-image: url('../../../public/images/icon-search.svg');
-    background-repeat: no-repeat;
-    background-size: 45px 45px;
     padding-inline: 60px 30px;
 
     &:focus {
       outline: none;
       border: 1px solid $main-color-black;
-      // border-right: 1px solid $main-color-black;
-      // box-shadow: 2px 1px 1px 1px $color-background-olive;
       -webkit-box-shadow: 0px 26px 30px -19px rgba(34, 60, 80,0.78);
       -moz-box-shadow: 0px 26px 30px -19px rgba(34, 60, 80,0.78);
       box-shadow: 0px 26px 30px -19px rgba(34, 60, 80,0.78);
     }
+  }
+
+  &__submit-button {
+    border: none;
+    background-color: inherit;
+    position: absolute;
+    top: 2px;
+    left: 1px;
   }
 
   // SIDEBAR

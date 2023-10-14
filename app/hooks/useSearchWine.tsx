@@ -1,50 +1,77 @@
-import { CheckboxsType } from "@/types/allTypes.types";
-import { Wine } from "@/types/wine.type";
-import { useState } from "react";
+import { Wine } from '@/types/wine.type';
 
 function useSearchWine() {
-  const [filteredWine, setFilteredWine] = useState();
-
-  const handleWineFilter = (wines: Wine[], keywords: string, types: string[]) => {
-    let result = wines
-    // console.log('keyword',keywords);
-
+  const handleWineFilter = (
+    wines: Wine[],
+    keywords: string,
+    types: string[],
+    colors: string[]
+  ) => {
+    let result = wines;
 
     if (types.length > 0) {
-      result = wines.filter(wine => {
-        // console.log(wine.name?.toLowerCase() === keywords.toLowerCase());
-        // console.log(wine.name?.toLowerCase());
-        // console.log(keywords.toLowerCase());
+      console.log('ТИП');
+      result = wines.filter((wine) => {
         console.log(types);
-
-        // console.log(types.includes(wine.colorWine as string) && types.includes(wine.typeWine as string));
-
-        // return wine.name?.toLowerCase().includes(keywords.toLowerCase())
-        // return types.includes(wine.colorWine as string) || types.includes(wine.typeWine as string) ||  wine.name?.toLowerCase().includes(keywords.toLowerCase())
-        return types.includes(wine.colorWine as string) || types.includes(wine.typeWine as string)
-      })
-
+        return types.includes(wine.typeWine as string);
+      });
     }
-    // if (keywords) {
-    //   result = wines.filter(wine => {
-    //     // console.log(wine.name?.toLowerCase() === keywords.toLowerCase());
-    //     // console.log(wine.name?.toLowerCase());
-    //     // console.log(keywords.toLowerCase());
-    //     // console.log(types);
-
-    //     // console.log(types.includes(wine.colorWine as string) && types.includes(wine.typeWine as string));
-
-    //     return wine.name?.toLowerCase().includes(keywords.toLowerCase())
-    //     // return types.includes(wine.colorWine as string) || types.includes(wine.typeWine as string) ||  wine.name?.toLowerCase().includes(keywords.toLowerCase())
-    //     // return types.includes(wine.colorWine as string) || types.includes(wine.typeWine as string)
-    //   })
-
-    // }
+    if (colors.length > 0) {
+      console.log('ЦВЕТ');
+      result = wines.filter((wine) => {
+        console.log(colors);
+        return colors.includes(wine.colorWine as string);
+      });
+    }
+    if (types.length > 0 && colors.length > 0) {
+      console.log('Два типа');
+      result = wines.filter((wine) => {
+        console.log(types);
+        return (
+          types.includes(wine.typeWine as string) &&
+          colors.includes(wine.colorWine as string)
+        );
+      });
+    }
+    if (keywords) {
+      console.log('слова');
+      result = wines.filter((wine) => {
+        return wine.name?.toLowerCase().includes(keywords.toLowerCase());
+      });
+    }
+    if (types.length > 0 && keywords) {
+      console.log('типы и слова');
+      result = wines.filter((wine) => {
+        return (
+          wine.name?.toLowerCase().includes(keywords.toLowerCase()) &&
+          types.includes(wine.typeWine as string)
+        );
+      });
+    }
+    if (colors.length > 0 && keywords) {
+      console.log('цвета и слова');
+      result = wines.filter((wine) => {
+        return (
+          wine.name?.toLowerCase().includes(keywords.toLowerCase()) &&
+          colors.includes(wine.colorWine as string)
+        );
+      });
+    }
+    if (types.length > 0 && colors.length > 0 && keywords) {
+      console.log('типы и цвета и слова');
+      result = wines.filter((wine) => {
+        return (
+          wine.name?.toLowerCase().includes(keywords.toLowerCase()) &&
+          types.includes(wine.typeWine as string) &&
+          colors.includes(wine.colorWine as string)
+        );
+      });
+    }
 
     return result;
-  }
+  };
 
-  return {handleWineFilter};
+  return { handleWineFilter };
 }
 
 export default useSearchWine;

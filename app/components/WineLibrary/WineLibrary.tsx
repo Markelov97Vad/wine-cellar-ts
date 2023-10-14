@@ -8,46 +8,25 @@ import { useDebounce } from '@/app/hooks/useDebounce';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { CheckboxsType } from '@/types/allTypes.types';
 import useSearchWine from '@/app/hooks/useSearchWine';
-import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
-import { getWines } from '@/app/store/wine/wineApi';
+import { Wine } from '@/types/wine.type';
+import SearchIcon from '../Icons/SearchIcon';
 
-type SearchType = {
-  search?: string
-}
-
-function WineLibrary() {
+function WineLibrary({wines} : {wines?: Wine[]}) {
   const [search, setSearch] = useState<string | null>(null);
   const [types, setTypes] = useState<string[]>([])
+  const [colors, setColors] = useState<string[]>([])
   const [searchInputValue, setSearchInputValue] = useState<string>('');
-  // const [checkboxValue, setCheckboxValue] = useState<CheckboxsType | null>(null);
   const [checkboxValue, setCheckboxValue] = useState<CheckboxsType | null>(null);
   const debounce = useDebounce(searchInputValue, 1000);
   const { handleWineFilter } = useSearchWine();
-  const dispatch = useAppDispatch();
-  const { wines } = useAppSelector((state) => state.wines);
-  // const [inputValues, setInputValues] = useState({});
-
-  // const handleInputValue
 
   const handleSearch = (evt: ChangeEvent<HTMLInputElement>) => {
     const { name ,value } = evt.target;
-
-    // console.log(debounce);
-
     setSearchInputValue(value)
-    // const handler = setTimeout(() => {
-    //   setSearch(() => ({
-    //     ...search,
-    //     [name]: value
-    //   }));
-    // }, 1000)
-    // return () => clearTimeout(handler)
-
   };
 
-  const handleChangeCheckbox = (evt: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeCheckboxType = (evt: ChangeEvent<HTMLInputElement>) => {
     const { value, id , checked} = evt.target;
-    console.log(checked);
     setCheckboxValue(() => ({
       ...checkboxValue,
       [id]: value
@@ -59,56 +38,31 @@ function WineLibrary() {
         return types.filter(type => type !== value)
       })
     }
+  };
 
-
-    console.log(value);
-    // setCheckboxValue(checkboxValue => [...checkboxValue, value])
+  const handleChangeCheckboxColor = (evt: ChangeEvent<HTMLInputElement>) => {
+    const { value, id , checked} = evt.target;
+    setCheckboxValue(() => ({
+      ...checkboxValue,
+      [id]: value
+    }));
+    if(checked) {
+      setColors(types => [...types, value])
+    } else {
+      setColors(types => {
+        return types.filter(type => type !== value)
+      })
+    }
   };
 
   useEffect(() => {
-    // setTypes(types => [...types, checkboxValue?.dry])
-    console.log(types);
-
-  }, [types]);
-
-  // useEffect(() => {
-  //   console.log(debounce);
-  // }, [debounce]);
-
-  // useEffect(() => {
-  //   console.log(search);
-  //   console.log(checkboxValue);
-
-  //   console.log('debounce',debounce);
-
-  // }, [search, checkboxValue, debounce]);
-
-  useEffect(() => {
     setSearch(debounce)
-    // console.log(search);
 
   }, [debounce]);
 
-  // useEffect(() => {
-  //   setTypes(types => [...types, ])
-  // }, []);
-  // useEffect(() => {
-
-  //   console.log(wines);
-
-  // }, [wines]);
-
-  useEffect(() => {
-    dispatch(getWines());
-  }, [dispatch]);
-
-  // useEffect(() => {
-  //   console.log(search);
-
-  // }, [search]);
 
   const renderWine = () => {
-    return handleWineFilter(wines, search!, types);
+    return handleWineFilter(wines as Wine[], search!, types, colors);
   }
 
   const handleSubmit = (evt: ChangeEvent<HTMLFormElement>) => {
@@ -129,10 +83,10 @@ function WineLibrary() {
               value={searchInputValue!}
               onChange={handleSearch}
             />
+            <button type="submit" className={style['wine-library__submit-button']}>
+              <SearchIcon/>
+            </button>
           </div>
-          <button type="submit"></button>
-          {/* <div>filter</div>
-          <div>volume</div> */}
         </div>
         <div className={style['wine-library__side-bar']}>
           <div className={style['wine-library__type-block']}>
@@ -141,7 +95,7 @@ function WineLibrary() {
               {TypeData.map((type, i) => {
                 const { id, text } = type;
                 return (
-                  <CheckboxType key={i} id={id} text={text} name="typeWine" handleChangeCheckbox={handleChangeCheckbox}/>
+                  <CheckboxType key={i} id={id} text={text} name="typeWine" handleChangeCheckbox={handleChangeCheckboxType}/>
                 );
               })}
             </div>
@@ -152,7 +106,7 @@ function WineLibrary() {
               {ColorData.map((type, i) => {
                 const { id, text } = type;
                 return (
-                  <CheckboxType key={i} id={id} text={text} name="colorWine"  handleChangeCheckbox={handleChangeCheckbox}/>
+                  <CheckboxType key={i} id={id} text={text} name="colorWine"  handleChangeCheckbox={handleChangeCheckboxColor}/>
                 );
               })}
             </div>

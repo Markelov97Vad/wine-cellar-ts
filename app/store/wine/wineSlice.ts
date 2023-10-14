@@ -7,7 +7,6 @@ import { Wine } from '@/types/wine.type';
 const initialState: WineState = {
   wines: [],
   currentWine: {},
-  favoriteWines: [],
   loading: false,
   isSuccess: false,
   error: null,
@@ -17,14 +16,6 @@ const wineSlice = createSlice({
   name: 'wines',
   initialState,
   reducers: {
-    addFavorite(state, action) {
-      state.favoriteWines.push(action.payload);
-    },
-    deleteFavorite(state, action) {
-      state.favoriteWines = state.favoriteWines.filter( wine => {
-        return wine._id !== action.payload
-      })
-    }
   },
   extraReducers: (builder) => {
     builder
@@ -78,4 +69,4 @@ function isError(action: AnyAction) {
 }
 
 export default wineSlice.reducer;
-export const {addFavorite, deleteFavorite} = wineSlice.actions;
+// export const {addFavorite, deleteFavorite} = wineSlice.actions;

@@ -20,7 +20,7 @@ function WineCardList({wines} : {wines : Wine[]}) {
 
   return (
     <div className={style['wine-card-list']}>
-      {wines.map((wineElem, id) => (
+      {wines?.map((wineElem, id) => (
         <WineCard key={id} wineElem={wineElem} />
       ))}
     </div>
