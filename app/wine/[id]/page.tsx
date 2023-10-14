@@ -87,12 +87,16 @@ function AboutWine({ params }: { params: { id: string } }) {
           <StarRaitingDisabled rating={rating} />
           <div className={style.details}>
             <div className={style.details__wrapper}>
-              <span className={`${style.details__about} ${montserrat.className}`}>ТИП</span>
+              <span className={`${style.details__about} ${montserrat.className}`}>ЦВЕТ</span>
               <span className={`${style.details__value} ${playfairDisplay.className}`}>{colorWine}</span>
             </div>
             <div className={style.details__wrapper}>
               <span className={`${style.details__about} ${montserrat.className}`}>БРЭНД</span>
               <span className={`${style.details__value} ${playfairDisplay.className}`}>{brand}</span>
+            </div>
+            <div className={style.details__wrapper}>
+              <span className={`${style.details__about} ${montserrat.className}`}>ТИП</span>
+              <span className={`${style.details__value} ${playfairDisplay.className}`}>{typeWine}</span>
             </div>
             <div className={style.details__wrapper}>
               <span className={`${style.details__about} ${montserrat.className}`}>ГОД</span>
@@ -108,7 +112,7 @@ function AboutWine({ params }: { params: { id: string } }) {
             </div>
             <div className={style.details__wrapper}>
               <span className={`${style.details__about} ${montserrat.className}`}>ВИНОГРАД</span>
-              <span className={`${style.details__value} ${playfairDisplay.className}`}>	Bordeaux Blend, Cabernet Franc,</span>
+              <span className={`${style.details__value} ${playfairDisplay.className}`}>{grapeVariety}</span>
             </div>
           </div>
 

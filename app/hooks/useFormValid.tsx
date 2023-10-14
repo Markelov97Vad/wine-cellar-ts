@@ -69,9 +69,14 @@ export function useFormValid () {
   const handleCustomValidation = (name: validationConfigKeyProps, value: string) => {
     const { pattern, validationError, emptyError } = validationConfig[name];
 
-    
+    if (name === 'image') {
+      value.length === 0 ? value = 'https://p0.pxfuel.com/preview/569/587/724/bottle-wine-red-drink.jpg' : value
+    }
     const match = pattern.test(value);
+    console.log(value);
+
     const message = !value ? emptyError : match ? '' : validationError;
+    console.log(message);
     handleErrorMessage(name, message);
     if (name === 'year') {
       return Number(value) < 1900 || Number(value) > new Date().getFullYear() ? handleErrorMessage(name, validationError) : null

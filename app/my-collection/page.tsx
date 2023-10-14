@@ -1,24 +1,10 @@
-import Header from "../components/Header/Header";
-import AddWineComp from '../components/AddWineComp/AddWineComp'
-import { Metadata } from "next";
-import WineLibrary from "../components/WineLibrary/WineLibrary";
-import ProtectedRoute from "../hoc/ProtectedRoute";
+'use client';
+import WineLibrary from '../components/WineLibrary/WineLibrary';
+import { useFetchUserWinesQuery } from '../store/currentUserWine/reducer';
 
-export const metadata: Metadata = {
-  title: 'Library',
-  description: 'Add new wine in library',
-};
-
-function AddNewWine () {
-  return (
-      <ProtectedRoute>
-        <Header/>
-        <main>
-          <AddWineComp />
-          <WineLibrary/>
-        </main>
-      </ProtectedRoute>
-  )
+function MyCollection() {
+  const { data } = useFetchUserWinesQuery('');
+  return <WineLibrary wines={data} />;
 }
 
-export default AddNewWine;
+export default MyCollection;

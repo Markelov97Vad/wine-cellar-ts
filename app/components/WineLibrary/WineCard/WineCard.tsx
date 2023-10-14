@@ -46,7 +46,7 @@ function WineCard({ wineElem }: WineCardProps) {
   }, [likes]);
 
   useEffect(() => {
-    dispatch(getWines());
+    // dispatch(getWines());
   }, [isSuccessAdd, isSuccessDel]);
 
   return (

@@ -1,17 +1,18 @@
 'use client';
 import Image from 'next/image';
+import { useEffect } from 'react';
 import Header from '../Header/Header';
 import Promo from '../Promo/Promo';
 import WineLibrary from '../WineLibrary/WineLibrary';
-import AddWineComp from '@/app/components/AddWineComp/AddWineComp';
 import glass from '@/public/images/wine-glass.jpeg';
 import style from './Home.module.scss';
-import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { checkAuthUser } from '@/app/store/user/userApi';
+import { useFetchWinesQuery } from '@/app/store/currentUserWine/reducer';
 
 function Home() {
   const dispatch = useAppDispatch();
+  const { data } = useFetchWinesQuery('')
   const { isLoggedIn } = useAppSelector(state => state.user)
 
   useEffect(() => {
@@ -31,7 +32,7 @@ function Home() {
           className={style.root__video}
         />
         <Promo />
-        <WineLibrary />
+        <WineLibrary wines={data}/>
       </main>
     </>
   );

@@ -72,3 +72,10 @@ export type CrossIconProps = {
   dark?: boolean;
   light?: boolean;
 }
+
+export type CheckboxTypeProps = {
+  id: string;
+  name: string;
+  text: string;
+  handleChangeCheckbox: (evt: ChangeEvent<HTMLInputElement>) => void;
+}
