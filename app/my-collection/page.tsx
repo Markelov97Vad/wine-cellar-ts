@@ -1,6 +1,6 @@
 'use client';
 import WineLibrary from '../components/WineLibrary/WineLibrary';
-import { useFetchUserWinesQuery } from '../store/currentUserWine/reducer';
+import { useFetchUserWinesQuery } from '../store/wine-query/reducer';
 
 function MyCollection() {
   const { data } = useFetchUserWinesQuery('');

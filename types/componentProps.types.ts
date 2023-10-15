@@ -40,11 +40,17 @@ export type validationConfigKeyProps = 'name' |
   'email' |
   'password' |
   'nameUser' |
+  'surname' |
   'region' |
   'brand' |
   'country' |
   'year' |
   'image';
+
+export type validationConfigModificationKeyProps =
+  'email' |
+  'nameUser' |
+  'surname';
 
 export type validationConfigDataProps = {
   pattern: RegExp;

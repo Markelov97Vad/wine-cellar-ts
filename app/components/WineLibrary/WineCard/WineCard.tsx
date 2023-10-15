@@ -1,20 +1,12 @@
 import style from './WineCard.module.scss';
 import { Wine } from '../../../../types/wine.type';
-import Image from 'next/image';
-import LikeIcon from '@/app/components/Icons/LikeIcon';
 import Link from 'next/link';
-import { montserrat, playfairDisplay } from '@/app/fonts';
-import {
-  useAddFavoriteWineMutation,
-  useDeleteFavoriteWineMutation,
-  useLazyGetFavoriteWineQuery,
-} from '@/app/store/currentUserWine/reducer';
-import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
+import { montserrat } from '@/app/fonts';
+import { useAppSelector } from '@/app/hooks/redux';
 import { useEffect, useState } from 'react';
-import Dislike from '../../Icons/Dislike';
 import StarRaitingDisabled from '../../StarRaitingDisabled/StarRaitingDisabled';
-import { getWines } from '@/app/store/wine/wineApi';
 import ButtonLike from '../../ui/ButtonLike/ButtonLike';
+import { useAddFavoriteWineMutation, useDeleteFavoriteWineMutation } from '@/app/store/wine-query/reducer';
 
 type WineCardProps = {
   wineElem: Wine;
@@ -28,8 +20,6 @@ function WineCard({ wineElem }: WineCardProps) {
     useDeleteFavoriteWineMutation();
   const { isLoggedIn } = useAppSelector((state) => state.user);
   const [isLiked, setIsLiked] = useState<boolean | undefined>(false);
-  const dispatch = useAppDispatch();
-  // const [getFavorites, {}] = useLazyGetFavoriteWineQuery()
 
   const handleClick = async () => {
     if (isLoggedIn) {
@@ -44,10 +34,6 @@ function WineCard({ wineElem }: WineCardProps) {
   useEffect(() => {
     setIsLiked(likes?.some((user) => user._id === user._id));
   }, [likes]);
-
-  useEffect(() => {
-    // dispatch(getWines());
-  }, [isSuccessAdd, isSuccessDel]);
 
   return (
     <article className={`${style['wine-card']} ${montserrat.className}`}>

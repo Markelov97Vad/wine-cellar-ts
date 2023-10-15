@@ -1,5 +1,9 @@
 export const MAIN_API_URL = 'http://localhost:3005';
 
+export const headersData = {
+  "Content-Type": "application/json"
+}
+
 export const API = {
   baseUrl: 'http://localhost:3005',
   endpoints: {
@@ -12,7 +16,7 @@ export const API = {
     user : {
       register: '/signup',
       login: '/signin',
-      auth: '/users/me'
+      user: '/users/me'
     }
   }
 }
