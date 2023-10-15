@@ -1,4 +1,4 @@
-import { validationConfigDataProps, validationConfigKeyProps } from "@/types/componentProps.types";
+import { validationConfigDataProps, validationConfigKeyProps, validationConfigModificationKeyProps } from "@/types/componentProps.types";
 
 export const validationConfig: Record<validationConfigKeyProps, validationConfigDataProps> = {
   'nameUser': {
@@ -7,6 +7,11 @@ export const validationConfig: Record<validationConfigKeyProps, validationConfig
       emptyError: 'Заполните это поле',
   },
   'name': {
+    pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})*$/,
+    validationError: 'Некорректные данные',
+    emptyError: 'Заполните это поле',
+  },
+  'surname': {
     pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})*$/,
     validationError: 'Некорректные данные',
     emptyError: 'Заполните это поле',
@@ -47,4 +52,22 @@ export const validationConfig: Record<validationConfigKeyProps, validationConfig
       validationError: 'Пароль должен содержать хотя бы одну цифру и минимум 2 символа',
       emptyError: 'Заполните это поле',
   }
+}
+
+export const validationConfigModification:Record<validationConfigModificationKeyProps, validationConfigDataProps> = {
+  'nameUser': {
+    pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})*$/,
+    validationError: 'Некорректные данные',
+    emptyError: 'Заполните это поле',
+  },
+  'surname': {
+    pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})*$/,
+    validationError: 'Некорректные данные',
+    emptyError: 'Заполните это поле',
+  },
+  'email': {
+    pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    validationError: 'Email введен некорректно',
+    emptyError: 'Заполните это поле',
+},
 }

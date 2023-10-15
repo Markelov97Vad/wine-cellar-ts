@@ -64,7 +64,7 @@ function FormComponent() {
             type="text"
             value={inputValues?.name}
             error={errorMessages?.name}
-            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
             min={2}
             max={30}
             required={true}
@@ -76,7 +76,7 @@ function FormComponent() {
             type="text"
             value={inputValues?.brand}
             error={errorMessages?.brand}
-            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
             required={true}
           />
           <InputForm
@@ -86,7 +86,7 @@ function FormComponent() {
             type="text"
             value={inputValues?.country}
             error={errorMessages.country}
-            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
             required={true}
           />
           <InputForm
@@ -98,7 +98,7 @@ function FormComponent() {
             max={new Date().getFullYear()}
             value={inputValues?.year}
             error={errorMessages?.year}
-            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
             required={true}
           />
         </div>
@@ -110,7 +110,7 @@ function FormComponent() {
             type="text"
             value={inputValues?.region}
             error={errorMessages.region}
-            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+            handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
             min={2}
             max={30}
             required={true}
@@ -149,7 +149,7 @@ function FormComponent() {
         margin={true}
         value={inputValues?.image}
         error={errorMessages?.image}
-        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true , modification: false})}
         required={false}
       />
       <textarea

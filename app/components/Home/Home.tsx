@@ -8,7 +8,7 @@ import glass from '@/public/images/wine-glass.jpeg';
 import style from './Home.module.scss';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { checkAuthUser } from '@/app/store/user/userApi';
-import { useFetchWinesQuery } from '@/app/store/currentUserWine/reducer';
+import { useFetchWinesQuery } from '@/app/store/wine-query/reducer';
 
 function Home() {
   const dispatch = useAppDispatch();

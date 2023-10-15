@@ -1,20 +1,19 @@
 'use client';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AnyAction, ThunkDispatch, createAsyncThunk } from '@reduxjs/toolkit';
 import { UserType } from '../../../types/user.type';
-import { API } from '../../../utils/constans';
+import { API, headersData } from '../../../utils/constans';
 
 export const registerUser = createAsyncThunk<
   UserType,
   UserType,
   { rejectValue: string }
 >('user/register', async (data, { rejectWithValue }) => {
-  // return Promise.reject(new Error('Ошииииибка'))
   try {
     const response: Response = await fetch(
       `${API.baseUrl}${API.endpoints.user.register}`,
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: headersData,
         body: JSON.stringify(data),
       },
     );
@@ -37,12 +36,10 @@ export const loginUser = createAsyncThunk<UserType, UserType,{ rejectValue: stri
       {
         method: 'POST',
         credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
+        headers: headersData,
         body: JSON.stringify(data),
       },
     );
-    console.log(response.ok);
-
     if (!response.ok) {
       return await Promise.reject(new Error(`Status ${response.status}`));
     }
@@ -53,21 +50,41 @@ export const loginUser = createAsyncThunk<UserType, UserType,{ rejectValue: stri
 });
 
 export const checkAuthUser = createAsyncThunk<UserType, undefined, { rejectValue: string}>(
-  'use/auth',
+  'user/auth',
   async (_, { rejectWithValue}) => {
     try {
-      const response: Response = await fetch(`${API.baseUrl}${API.endpoints.user.auth}`,{
+      const response: Response = await fetch(`${API.baseUrl}${API.endpoints.user.user}`,{
         method: "GET",
         credentials: "include"
       })
-
       if(!response.ok) {
         return await Promise.reject(new Error(`Status ${response.status}`))
       }
-
       return (await response.json()) as UserType;
     } catch (error) {
       return rejectWithValue(`Ошибка при аутентификации пользователя ${error}`);
+    }
+  }
+)
+
+export const setUserInfo = createAsyncThunk<UserType, UserType, {rejectValue: string, dispatch: ThunkDispatch<unknown, unknown, AnyAction>}>(
+  'user/setInfo',
+  async (userData, {rejectWithValue}) => {
+    console.log(userData);
+
+    try {
+      const response = await fetch(`${API.baseUrl}${API.endpoints.user.user}`, {
+        method: "PATCH",
+        credentials: 'include',
+        headers: headersData,
+        body: JSON.stringify(userData)
+      })
+      if (!response.ok) {
+        return await Promise.reject(new Error(`Status ${response.status}`))
+      }
+      return response.json() as UserType
+    } catch (error) {
+      return rejectWithValue(`Ошибка при изменении данных пользователя ${error}`)
     }
   }
 )

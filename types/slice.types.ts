@@ -1,3 +1,4 @@
+import { SerializedError } from "@reduxjs/toolkit";
 import { UserType } from "./user.type";
 import { Wine } from "./wine.type";
 
@@ -10,10 +11,10 @@ export type WineState = {
 };
 
 export type UserState = {
-  user: UserType | null;
+  currentUser: UserType | null;
   isLoggedIn: boolean;
   loading: boolean;
-  error: string | null;
+  error?: string | null;
 };
 
 export type currentUserWineState = {

@@ -21,7 +21,7 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
   const { handleWineFilter } = useSearchWine();
 
   const handleSearch = (evt: ChangeEvent<HTMLInputElement>) => {
-    const { name ,value } = evt.target;
+    const { value } = evt.target;
     setSearchInputValue(value)
   };
 

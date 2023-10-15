@@ -1,6 +1,6 @@
 import { ErrorMessageType, InputValuesType, OptionType } from "@/types/allTypes.types";
-import { validationConfigKeyProps } from "@/types/componentProps.types";
-import { validationConfig } from "@/utils/validation";
+import { validationConfigKeyProps, validationConfigModificationKeyProps } from "@/types/componentProps.types";
+import { validationConfig, validationConfigModification } from "@/utils/validation";
 import { ChangeEvent, useCallback, useLayoutEffect, useRef, useState } from "react";
 
 export function useFormValid () {
@@ -32,14 +32,21 @@ export function useFormValid () {
 
   const handleInputChange = (evt: ChangeEvent<
         HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-      >, config = { customValidation: false }) => {
+      >, config = { customValidation: false, modification: false }) => {
     const { name, value, validationMessage } = evt.target;
+    // console.log('Modification',config.modification);
+
 
     handleStoreValue(name, value);
     handleSaveFormRef(evt);
 
-    if (config.customValidation) {
+    if (config.customValidation && !config.modification) {
       handleCustomValidation(name as unknown as validationConfigKeyProps, value)
+      // console.log('1');
+
+    } else if (config.customValidation && config.modification) {
+      // console.log('2');
+      handleCustomValidationModification(name as unknown as validationConfigModificationKeyProps, value)
     } else {
       handleDefaultValidation(name, validationMessage);
     }
@@ -73,14 +80,18 @@ export function useFormValid () {
       value.length === 0 ? value = 'https://p0.pxfuel.com/preview/569/587/724/bottle-wine-red-drink.jpg' : value
     }
     const match = pattern.test(value);
-    console.log(value);
-
     const message = !value ? emptyError : match ? '' : validationError;
-    console.log(message);
     handleErrorMessage(name, message);
     if (name === 'year') {
       return Number(value) < 1900 || Number(value) > new Date().getFullYear() ? handleErrorMessage(name, validationError) : null
     }
+  }
+
+  const handleCustomValidationModification = (name: validationConfigModificationKeyProps, value: string,) => {
+    const { pattern, validationError, emptyError } = validationConfigModification[name];
+    const match = pattern.test(value);
+    const message = !value ? "" : match ? '' : validationError;
+    handleErrorMessage(name, message);
   }
 
   function handleSaveFormRef(evt: ChangeEvent<
