@@ -85,3 +85,9 @@ export type CheckboxTypeProps = {
   text: string;
   handleChangeCheckbox: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
+
+export type ButtonTypeProps = {
+  text: string;
+  extraClass?: string;
+  onClick?: () => void;
+}

@@ -7,7 +7,8 @@ import { Wine } from '@/types/wine.type';
 const initialState: WineState = {
   wines: [],
   currentWine: {},
-  loading: false,
+  isLoadingCurrentWine: false,
+  isLoadingAddWine: false,
   isSuccess: false,
   error: null,
 };
@@ -36,28 +37,28 @@ const wineSlice = createSlice({
       //   state.error = action.payload as string;
       // })
       .addCase(addNewWine.pending, (state, action) => {
-        state.loading = true;
+        state.isLoadingAddWine = true;
         state.isSuccess = false;
         state.error = null;
       })
       .addCase(addNewWine.fulfilled, (state, action) => {
         state.isSuccess = true;
-        state.loading = false;
+        state.isLoadingAddWine = false;
         state.wines.push(action.payload);
       })
       .addCase(addNewWine.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoadingAddWine = false;
         state.error = action.payload as string;
       })
       .addCase(getCurrentWine.pending, (state, action) => {
-        state.loading = true;
+        state.isLoadingCurrentWine = true;
         state.error = null;
       })
       .addCase(getCurrentWine.fulfilled, (state, action) => {
         state.currentWine = action.payload;
       })
       .addCase(getCurrentWine.rejected, (state, action) => {
-        state.loading = false;
+        state.isLoadingCurrentWine = false;
         state.error = action.payload as string;
       })
       .addDefaultCase((state) => state);

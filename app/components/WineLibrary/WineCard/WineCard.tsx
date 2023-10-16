@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import StarRaitingDisabled from '../../StarRaitingDisabled/StarRaitingDisabled';
 import ButtonLike from '../../ui/ButtonLike/ButtonLike';
 import { useAddFavoriteWineMutation, useDeleteFavoriteWineMutation } from '@/app/store/wine-query/reducer';
+import Button from '../../ui/Button/Button';
 
 type WineCardProps = {
   wineElem: Wine;
@@ -47,7 +48,8 @@ function WineCard({ wineElem }: WineCardProps) {
         <span className={style['wine-card__year']}>{year}</span>
         <div className={style['wine-card__container']}>
           <StarRaitingDisabled rating={rating} />
-          <button className={style['wine-card__button-info']}>Подробнее</button>
+          <Button extraClass={style['wine-card__button-info']} text='Подробнее'/>
+          {/* // <button className={style['wine-card__button-info']}>Подробнее</button> */}
         </div>
       </Link>
     </article>

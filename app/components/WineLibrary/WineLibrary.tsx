@@ -57,7 +57,6 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
 
   useEffect(() => {
     setSearch(debounce)
-
   }, [debounce]);
 
 
