@@ -26,7 +26,7 @@ function FormComponent() {
   } =
     useFormValid();
   const dispatch = useAppDispatch();
-  const { loading, error } = useAppSelector(state => state.wines);
+  const { isLoadingAddWine, isLoadingCurrentWine, error } = useAppSelector(state => state.wines);
   const isSubmitBattonDisabled = formIsValid &&
   (inputValues?.typeWine !== undefined) &&
   (inputValues?.colorWine !== undefined) &&
@@ -36,6 +36,10 @@ function FormComponent() {
     evt.preventDefault();
     dispatch(addNewWine(inputValues!));
   };
+
+  useEffect(() => {
+    
+  }, [isLoadingAddWine]);
 
   // useEffect(() => {
   //   console.log(errorMessages.name);
@@ -66,7 +70,7 @@ function FormComponent() {
             error={errorMessages?.name}
             handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
             min={2}
-            max={30}
+            max={70}
             required={true}
           />
           <InputForm
@@ -76,6 +80,8 @@ function FormComponent() {
             type="text"
             value={inputValues?.brand}
             error={errorMessages?.brand}
+            min={2}
+            max={70}
             handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
             required={true}
           />
@@ -86,6 +92,8 @@ function FormComponent() {
             type="text"
             value={inputValues?.country}
             error={errorMessages.country}
+            min={2}
+            max={70}
             handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
             required={true}
           />
@@ -112,7 +120,7 @@ function FormComponent() {
             error={errorMessages.region}
             handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
             min={2}
-            max={30}
+            max={70}
             required={true}
           />
           <InputSelect
@@ -159,6 +167,7 @@ function FormComponent() {
         value={inputValues?.comment}
         onChange={handleInputChange}
         placeholder="Комментарии к напитку"
+        maxLength={1000}
       ></textarea>
       <div className={style['form__rating-wrapper']}>
         <span className={style['form__span-rating']}>Рейтинг</span>
@@ -173,7 +182,7 @@ function FormComponent() {
       <ButtonSubmitForm
         extraClass={style['form__button-form']}
         disabled={!isSubmitBattonDisabled}
-        text={loading ? 'Добавление..' : 'Добавить'}
+        text={isLoadingAddWine ? 'Добавление..' : 'Добавить'}
       />
     </form>
     <NotificationPopup/>

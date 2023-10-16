@@ -5,7 +5,8 @@ import { Wine } from "./wine.type";
 export type WineState = {
   wines: Wine[];
   currentWine: Wine;
-  loading: boolean;
+  isLoadingCurrentWine: boolean,
+  isLoadingAddWine: boolean,
   isSuccess: boolean;
   error: string | null;
 };

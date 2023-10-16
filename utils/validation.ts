@@ -6,28 +6,38 @@ export const validationConfig: Record<validationConfigKeyProps, validationConfig
       validationError: 'Имя должно быть от 2 до 30 символов, может содержать пробел или дефис',
       emptyError: 'Заполните это поле',
   },
-  'name': {
-    pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})*$/,
-    validationError: 'Некорректные данные',
-    emptyError: 'Заполните это поле',
-  },
   'surname': {
     pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})*$/,
     validationError: 'Некорректные данные',
     emptyError: 'Заполните это поле',
   },
+  'email': {
+    pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+    validationError: 'Email введен некорректно',
+    emptyError: 'Заполните это поле',
+  },
+  'password': {
+    pattern: /^(?=.*?[a-z])(?=.*?[0-9]).{2,}$/,
+    validationError: 'Пароль должен содержать хотя бы одну цифру и минимум 2 символа',
+    emptyError: 'Заполните это поле',
+  },
+  'name': {
+    pattern: /^([a-zA-Zа-яА-ЯёЁ -]{2,30})*$/,
+    validationError: 'Некорректные данные',
+    emptyError: 'Заполните это поле',
+  },
   'region': {
-    pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})*$/,
+    pattern: /^([a-zA-Zа-яА-ЯёЁ -]{2,30})*$/,
     validationError: 'Некорректные данные',
     emptyError: 'Заполните это поле',
   },
   'brand': {
-    pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})*$/,
+    pattern: /^([a-zA-Zа-яА-ЯёЁ -]{2,30})*$/,
     validationError: 'Некорректные данные',
     emptyError: 'Заполните это поле',
   },
   'country' : {
-    pattern: /^([a-zA-Zа-яА-ЯёЁ-]{2,30})*$/,
+    pattern: /^([a-zA-Zа-яА-ЯёЁ -]{2,30})*$/,
     validationError: 'Некорректные данные',
     emptyError: 'Заполните это поле',
   },
@@ -42,16 +52,6 @@ export const validationConfig: Record<validationConfigKeyProps, validationConfig
     validationError: 'Некорректный URL адресс, он должен оканчиваться на .jpeg | jpg | gif | png',
     emptyError: 'Заполните это поле',
   },
-  'email': {
-      pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      validationError: 'Email введен некорректно',
-      emptyError: 'Заполните это поле',
-  },
-  'password': {
-      pattern: /^(?=.*?[a-z])(?=.*?[0-9]).{2,}$/,
-      validationError: 'Пароль должен содержать хотя бы одну цифру и минимум 2 символа',
-      emptyError: 'Заполните это поле',
-  }
 }
 
 export const validationConfigModification:Record<validationConfigModificationKeyProps, validationConfigDataProps> = {

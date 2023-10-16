@@ -44,12 +44,21 @@ export const WinesQuery = createApi({
       }),
       invalidatesTags: ['UserWine', 'Wine']
     }),
-    getFavoriteWine: build.query({
+    getFavoriteWine: build.query<Wine[], string>({
       query: () => ({
         url: `${API.endpoints.wine.favorite}`,
         credentials: 'include'
       }),
       providesTags: ['UserWine']
+    }),
+    deleteWine: build.mutation<Wine[], string>({
+      query: (id) => ({
+        url: `${API.endpoints.wine.data}/${id}`,
+        headers: headersData,
+        method: "DELETE",
+        credentials: 'include'
+      }),
+      invalidatesTags: ['Wine']
     })
   })
 })
@@ -61,5 +70,6 @@ export const {
   useAddFavoriteWineMutation,
   useDeleteFavoriteWineMutation,
   useGetFavoriteWineQuery,
-  useLazyGetFavoriteWineQuery
+  useLazyGetFavoriteWineQuery,
+  useDeleteWineMutation
 } = WinesQuery
