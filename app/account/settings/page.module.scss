@@ -1,4 +1,5 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .settings {
   grid-area: info;
@@ -22,6 +23,29 @@
     justify-content: center;
     width: 100%;
     gap: 40px;
+  }
+
+  &__submit-wrapper {
+    border: none;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &__notification-message {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+
+    @include show-font(
+      $color: $color-fonts-error,
+      $size: 15px,
+      $line-heigth: 20px,
+      $weight: 500,
+    );
   }
 
   &__button-form {

@@ -5,20 +5,12 @@ import Image from 'next/image';
 import ButtonCross from '../ui/ButtonCross/ButtonCross';
 import { useEffect, useState } from 'react';
 import { useAppSelector } from '@/app/hooks/redux';
+import { NotificationPopupTypeProps } from '@/types/componentProps.types';
 
-function NotificationPopup() {
-  const { isSuccess } = useAppSelector(state => state.wines);
-  const [isNotificationPopupOpen, setIsNotificationPopupOpen] = useState(false);
-
+function NotificationPopup({isNotificationPopupOpen, setIsNotificationPopupOpen } : NotificationPopupTypeProps) {
   const handleClick = () => {
     setIsNotificationPopupOpen(false)
   }
-
-  useEffect(() => {
-    if (isSuccess) {
-      setIsNotificationPopupOpen(true);
-    }
-  }, [isSuccess]);
 
   return (
     <div className={`${styles['notification-popup']} ${isNotificationPopupOpen ? styles['notification-popup_opened'] : ''}`}>

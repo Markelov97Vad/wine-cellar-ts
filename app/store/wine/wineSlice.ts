@@ -1,6 +1,6 @@
 'use client';
 import { AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { addNewWine, getCurrentWine, getWines } from './wineApi';
+import { getCurrentWine } from './wineApi';
 import { WineState } from '@/types/slice.types';
 import { Wine } from '@/types/wine.type';
 
@@ -36,20 +36,20 @@ const wineSlice = createSlice({
       //   state.loading = false;
       //   state.error = action.payload as string;
       // })
-      .addCase(addNewWine.pending, (state, action) => {
-        state.isLoadingAddWine = true;
-        state.isSuccess = false;
-        state.error = null;
-      })
-      .addCase(addNewWine.fulfilled, (state, action) => {
-        state.isSuccess = true;
-        state.isLoadingAddWine = false;
-        state.wines.push(action.payload);
-      })
-      .addCase(addNewWine.rejected, (state, action) => {
-        state.isLoadingAddWine = false;
-        state.error = action.payload as string;
-      })
+      // .addCase(addNewWine.pending, (state, action) => {
+      //   state.isLoadingAddWine = true;
+      //   state.isSuccess = false;
+      //   state.error = null;
+      // })
+      // .addCase(addNewWine.fulfilled, (state, action) => {
+      //   state.isSuccess = true;
+      //   state.isLoadingAddWine = false;
+      //   state.wines.push(action.payload);
+      // })
+      // .addCase(addNewWine.rejected, (state, action) => {
+      //   state.isLoadingAddWine = false;
+      //   state.error = action.payload as string;
+      // })
       .addCase(getCurrentWine.pending, (state, action) => {
         state.isLoadingCurrentWine = true;
         state.error = null;
@@ -65,9 +65,9 @@ const wineSlice = createSlice({
   },
 });
 
-function isError(action: AnyAction) {
-  return action.type.endsWith('rejected');
-}
+// function isError(action: AnyAction) {
+//   return action.type.endsWith('rejected');
+// }
 
 export default wineSlice.reducer;
 // export const {addFavorite, deleteFavorite} = wineSlice.actions;

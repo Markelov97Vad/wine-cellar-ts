@@ -1,5 +1,5 @@
 'use client';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState} from 'react';
 
 import style from './FormComponent.module.scss';
 
@@ -7,13 +7,14 @@ import StarReiting from '../StarRating/StarRating';
 import { optionsGrapeVariety } from '../../../utils/grapeVariety';
 import { optionsColorWine, optionsTypeWine } from '../../../utils/optionsWine';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { addNewWine } from '../../store/wine/wineApi';
+// import { addNewWine } from '../../store/wine/wineApi';
 import InputSelect from '../ui/InputSelect/InputSelect';
 import InputForm from '../ui/InputForm/InputForm';
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import { useFormValid } from '@/app/hooks/useFormValid';
 import { montserrat } from '@/app/fonts';
 import NotificationPopup from '../NotificationPopup/NotificationPopup';
+import { useAddNewWineMutation } from '@/app/store/wine-query/reducer';
 
 function FormComponent() {
   const {
@@ -25,8 +26,10 @@ function FormComponent() {
     formIsValid
   } =
     useFormValid();
-  const dispatch = useAppDispatch();
-  const { isLoadingAddWine, isLoadingCurrentWine, error } = useAppSelector(state => state.wines);
+  // const dispatch = useAppDispatch();
+  const { isLoadingAddWine, error } = useAppSelector(state => state.wines);
+  const [addNewWine, { isLoading , isError, isSuccess }] = useAddNewWineMutation();
+  const [isNotificationPopupOpen, setIsNotificationPopupOpen] = useState(false);
   const isSubmitBattonDisabled = formIsValid &&
   (inputValues?.typeWine !== undefined) &&
   (inputValues?.colorWine !== undefined) &&
@@ -34,12 +37,14 @@ function FormComponent() {
 
   const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    dispatch(addNewWine(inputValues!));
+    addNewWine(inputValues!)
+
+    // dispatch(addNewWine(inputValues!));
   };
 
-  useEffect(() => {
-    
-  }, [isLoadingAddWine]);
+  // useEffect(() => {
+
+  // }, [isLoadingAddWine]);
 
   // useEffect(() => {
   //   console.log(errorMessages.name);
@@ -49,6 +54,12 @@ function FormComponent() {
 
 
   // }, [inputValues, errorMessages]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setIsNotificationPopupOpen(true);
+    }
+  }, [isSuccess]);
 
   return (
     <>
@@ -174,7 +185,7 @@ function FormComponent() {
         <StarReiting handleReiting={handleReiting} />
       </div>
       {
-        error &&
+        isError &&
         <span className={style['form__error-message']}>
           Что то пошло не так..
         </span>
@@ -182,10 +193,10 @@ function FormComponent() {
       <ButtonSubmitForm
         extraClass={style['form__button-form']}
         disabled={!isSubmitBattonDisabled}
-        text={isLoadingAddWine ? 'Добавление..' : 'Добавить'}
+        text={isLoading ? 'Добавление..' : 'Добавить'}
       />
     </form>
-    <NotificationPopup/>
+    <NotificationPopup isNotificationPopupOpen={isNotificationPopupOpen} setIsNotificationPopupOpen={setIsNotificationPopupOpen}/>
     </>
   );
 }

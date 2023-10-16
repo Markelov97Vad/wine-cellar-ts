@@ -2,6 +2,7 @@
 import { AnyAction, ThunkDispatch, createAsyncThunk } from '@reduxjs/toolkit';
 import { UserType } from '../../../types/user.type';
 import { API, headersData } from '../../../utils/constans';
+import { useParams } from 'next/navigation';
 
 export const registerUser = createAsyncThunk<
   UserType,
@@ -70,7 +71,6 @@ export const checkAuthUser = createAsyncThunk<UserType, undefined, { rejectValue
 export const setUserInfo = createAsyncThunk<UserType, UserType, {rejectValue: string, dispatch: ThunkDispatch<unknown, unknown, AnyAction>}>(
   'user/setInfo',
   async (userData, {rejectWithValue}) => {
-    console.log(userData);
 
     try {
       const response = await fetch(`${API.baseUrl}${API.endpoints.user.user}`, {
@@ -85,6 +85,25 @@ export const setUserInfo = createAsyncThunk<UserType, UserType, {rejectValue: st
       return response.json() as UserType
     } catch (error) {
       return rejectWithValue(`Ошибка при изменении данных пользователя ${error}`)
+    }
+  }
+)
+
+export const logout = createAsyncThunk<string, undefined, {rejectValue: string}>(
+  'user/logout',
+  async (_, {rejectWithValue}) => {
+    try {
+      const response: Response = await fetch(`${API.baseUrl}${API.endpoints.user.logout}`, {
+        method: "POST",
+        headers: headersData,
+        credentials: 'include'
+      })
+      if (!response.ok) {
+        return await Promise.reject(new Error(`Status ${response.statusText}`))
+      }
+      return response.json()
+    } catch (error) {
+      return rejectWithValue(`Ошибка при попытки выхода из аккаунта ${error}`)
     }
   }
 )

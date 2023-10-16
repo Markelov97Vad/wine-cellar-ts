@@ -205,7 +205,7 @@ function AboutWine({ params }: { params: { id: string } }) {
               <span
                 className={`${style['aboutWine__review-owner']} ${montserrat.className}`}
               >
-                {owner?.nameUser?.toUpperCase()} {owner?.surname?.toLowerCase()}
+                {owner?.nameUser?.toUpperCase()} {owner?.surname?.toUpperCase()}
               </span>
               <p
                 className={`${style.aboutWine__rewiew} ${playfairDisplay.className}`}

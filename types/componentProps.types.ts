@@ -91,3 +91,8 @@ export type ButtonTypeProps = {
   extraClass?: string;
   onClick?: () => void;
 }
+
+export type NotificationPopupTypeProps  = {
+  isNotificationPopupOpen: boolean;
+  setIsNotificationPopupOpen: (value: boolean) => void;
+}
