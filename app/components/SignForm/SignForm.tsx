@@ -42,11 +42,6 @@ function SignForm({ register = false }: SignFormType) {
           password: inputValues?.password,
         })
       );
-      // if (error === null) {
-      //       console.log('вход разрешен', isLoggedIn);
-            
-      //       back();
-      //     }
     }
   };
   useEffect(() => {
@@ -54,7 +49,7 @@ function SignForm({ register = false }: SignFormType) {
       back();
       console.log('isLoggetIn',isLoggedIn);
     }
-    
+
   }, [isLoggedIn]);
 
   return (
@@ -66,7 +61,7 @@ function SignForm({ register = false }: SignFormType) {
           type="text"
           placeholder="Имя"
           value={inputValues?.nameUser}
-          handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+          handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
           required={true}
         />
       )}
@@ -76,7 +71,7 @@ function SignForm({ register = false }: SignFormType) {
         type="email"
         placeholder="Email"
         value={inputValues?.email}
-        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false  })}
         required={true}
       />
       <InputForm
@@ -85,7 +80,7 @@ function SignForm({ register = false }: SignFormType) {
         type="password"
         placeholder="Пароль"
         value={inputValues?.password}
-        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true })}
+        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false  })}
         required={true}
       />
       <ButtonSubmitForm

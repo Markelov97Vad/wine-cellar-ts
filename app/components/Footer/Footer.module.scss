@@ -1,0 +1,54 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  width: 100%;
+  // min-height: 200px;
+  background-color: $color-font-olive;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+
+  &__wrapper {
+    width: 100%;
+    max-width: 1110px;
+  }
+
+  &__tabs-wrapper {
+    border-bottom: 1px solid $main-color-white;
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    &:first-of-type {
+      border-top: 1px solid $main-color-white;
+    }
+  }
+
+  &__tab {
+    @include show-font(
+      $size: 15px,
+      $weight: 400,
+      $line-heigth: 20px,
+      $color: $color-fonts
+    );
+
+    &_type_bold {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-weight: 600;
+      height: 60px;
+
+      &:first-of-type {
+        border-right: 1px solid $main-color-white;
+      }
+      &:last-of-type {
+        border-left: 1px solid $main-color-white;
+      }
+    }
+  }
+}

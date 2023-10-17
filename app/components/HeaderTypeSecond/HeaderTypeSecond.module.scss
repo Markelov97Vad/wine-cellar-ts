@@ -3,6 +3,7 @@
 
 .header-type-second {
   background-color: $color-background-white;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,6 +28,57 @@
     );
     &:hover {
       color: $color-fonts-black;
+      -webkit-text-shadow: 2px 2px 2px #00000021;
+      -moz-text-shadow: 2px 2px 2px #00000028;
+      text-shadow: 2px 2px 2px #00000029;
+    }
+  }
+
+  &__user-info {
+    position: absolute;
+    top: 40px;
+    right: 50px;
+  }
+
+  &__link-user {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    @include show-font(
+      $size: 14px,
+      $weight: 500,
+      $line-heigth: 21px,
+      $color: $color-font-olive
+    );
+
+    &:hover {
+      -webkit-text-shadow: 2px 2px 2px #00000021;
+      -moz-text-shadow: 2px 2px 2px #00000028;
+      text-shadow: 2px 2px 2px #00000029;
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    min-width: 97px;
+    top: 35px;
+    border: 1px solid $main-color-black-opacity;
+    padding: 7px 3px;
+  }
+
+  &__dropdown-button {
+    border: none;
+    background-color: inherit;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    @include show-font(
+      $size: 14px,
+      $weight: 500,
+      $line-heigth: 21px,
+      $color: $color-font-olive
+    );
+
+    &:hover {
+      opacity: .6;
       -webkit-text-shadow: 2px 2px 2px #00000021;
       -moz-text-shadow: 2px 2px 2px #00000028;
       text-shadow: 2px 2px 2px #00000029;

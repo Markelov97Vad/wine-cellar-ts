@@ -1,9 +1,7 @@
 'use client';
 import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { stat } from 'fs';
 import { UserType } from '../../../types/user.type';
-import { checkAuthUser, loginUser, registerUser, setUserInfo } from './userApi';
-import { useRouter } from 'next/router';
+import { checkAuthUser, loginUser, logout, registerUser, setUserInfo } from './userApi';
 import { UserState } from '@/types/slice.types';
 
 const initialState: UserState = {
@@ -63,7 +61,7 @@ const userSlice = createSlice({
         state.error = action.payload;
         state.isLoggedIn = false
       })
-      .addCase(setUserInfo.pending,(state, action) => {
+      .addCase(setUserInfo.pending,(state) => {
         state.loading = true;
         state.error = null;
       })
@@ -74,6 +72,20 @@ const userSlice = createSlice({
         state.currentUser = action.payload;
       })
       .addCase(setUserInfo.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(logout.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.loading = false;
+        state.currentUser = null;
+        state.isLoggedIn = false;
+      })
+      .addCase(logout.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.payload;
       })
       .addDefaultCase((state) => state);

@@ -16,6 +16,8 @@ import {
   useDeleteWineMutation,
 } from '@/app/store/wine-query/reducer';
 import Button from '@/app/components/ui/Button/Button';
+import ImgIcon from '@/app/components/Icons/ImgIcon';
+import NotificationPopupImage from '@/app/components/NotificationPopupImage/NotificationPopupImage';
 
 function AboutWine({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
@@ -27,7 +29,8 @@ function AboutWine({ params }: { params: { id: string } }) {
   const [deleteWine, { isSuccess: isSuccessDelWine }] = useDeleteWineMutation();
   const { back, push } = useRouter();
   const [isLiked, setIsLiked] = useState<boolean | undefined>(false);
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [isNotificationDeleteOpen, setIsNotificationDeleteOpen] = useState(false);
+  const [isNotificationSetImageOpen, setIsNotificationSetImageOpen] = useState(false);
   const {
     _id,
     name,
@@ -44,6 +47,7 @@ function AboutWine({ params }: { params: { id: string } }) {
     likes,
     owner,
   } = useAppSelector((state) => state.wines.currentWine);
+  const isOwner = owner?._id === currentUser?._id;
 
   useEffect(() => {
     dispatch(getCurrentWine(params.id));
@@ -80,8 +84,12 @@ function AboutWine({ params }: { params: { id: string } }) {
   };
 
   const handleOpenNotification = () => {
-    setIsNotificationOpen(!isNotificationOpen);
+    setIsNotificationDeleteOpen(!isNotificationDeleteOpen);
   };
+
+  const handleOpenNotificationSetImage = () => {
+    setIsNotificationSetImageOpen(!isNotificationSetImageOpen);
+  }
 
   return (
     <>
@@ -97,6 +105,10 @@ function AboutWine({ params }: { params: { id: string } }) {
             alt="бутылка вина"
           />
           <ButtonLike handleClick={handleClick} isLiked={isLiked} />
+          {
+            isOwner &&
+            <button onClick={handleOpenNotificationSetImage} className={style['aboutWine__button-confirm']} type="button"><ImgIcon/></button>
+          }
         </div>
 
         <div className={style['aboutWine__info-wrapper']}>
@@ -205,21 +217,21 @@ function AboutWine({ params }: { params: { id: string } }) {
               <span
                 className={`${style['aboutWine__review-owner']} ${montserrat.className}`}
               >
-                {owner?.nameUser?.toUpperCase()} {owner?.surname?.toLowerCase()}
+                {owner?.nameUser?.toUpperCase()} {owner?.surname?.toUpperCase()}
               </span>
               <p
                 className={`${style.aboutWine__rewiew} ${playfairDisplay.className}`}
               >
                 {comment}
               </p>
-              {owner?._id === currentUser?._id && !isNotificationOpen && (
+              {isOwner && !isNotificationDeleteOpen && (
                 <Button
                   onClick={handleOpenNotification}
                   extraClass={`${montserrat.className} ${style['details__button-delete']}`}
                   text={'Удалить вино'}
                 />
               )}
-              {isNotificationOpen && (
+              {isNotificationDeleteOpen && (
                 <>
                   <span
                     className={`${style.details__span} ${montserrat.className}`}
@@ -243,6 +255,7 @@ function AboutWine({ params }: { params: { id: string } }) {
             </>
           )}
         </div>
+        <NotificationPopupImage id={_id as string} isNotificationSetImageOpen={isNotificationSetImageOpen} setIsNotificationSetImageOpen={setIsNotificationSetImageOpen}/>
       </main>
     </>
   );

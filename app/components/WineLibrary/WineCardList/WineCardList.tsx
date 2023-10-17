@@ -6,10 +6,6 @@ import { Wine } from '@/types/wine.type';
 import { useFetchUserWinesQuery } from '@/app/store/wine-query/reducer';
 
 function WineCardList({wines} : {wines : Wine[]}) {
-  const { isLoading , data, isError, error } = useFetchUserWinesQuery('', {
-    // refetchOnFocus: true
-  });
-
   return (
     <div className={style['wine-card-list']}>
       {wines?.map((wineElem, id) => (

@@ -67,6 +67,8 @@ export type ButtonSubmitFormProps = {
 export type ButtonCrossProps = {
   extraClass?: string;
   handleClick: () => void;
+  light?: boolean;
+  dark?: boolean;
 }
 
 export type ButtonLikeProps = {
@@ -90,4 +92,15 @@ export type ButtonTypeProps = {
   text: string;
   extraClass?: string;
   onClick?: () => void;
+}
+
+export type NotificationPopupTypeProps  = {
+  isNotificationPopupOpen: boolean;
+  setIsNotificationPopupOpen: (value: boolean) => void;
+}
+
+export type NotificationPopupImageTypeProps = {
+  id: string;
+  isNotificationSetImageOpen: boolean;
+  setIsNotificationSetImageOpen: (el : boolean) => void;
 }

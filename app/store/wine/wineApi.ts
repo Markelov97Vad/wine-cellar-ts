@@ -1,58 +1,79 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AnyAction, ThunkDispatch, createAsyncThunk } from '@reduxjs/toolkit';
 import { API, headersData } from '../../../utils/constans';
 import { Wine } from '../../../types/wine.type';
 
-export const getWines = createAsyncThunk<
-  Wine[],
-  undefined,
-  { rejectValue: string }
->('wines', async function (_, { rejectWithValue }) {
-  const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`);
+// export const getWines = createAsyncThunk<
+//   Wine[],
+//   undefined,
+//   { rejectValue: string }
+// >('wines', async function (_, { rejectWithValue }) {
+//   const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`);
 
-  if (!response.ok) {
-    throw rejectWithValue('Не удалось получить список вин');
-  }
-  return await response.json();
-});
+//   if (!response.ok) {
+//     throw rejectWithValue('Не удалось получить список вин');
+//   }
+//   return await response.json();
+// });
 // <То что ожидаю вернуть, параметр который передаю, определенные значения конфига>
-export const addNewWine = createAsyncThunk<Wine, Wine, { rejectValue: string }>(
-  'wines/addWines',
-  async function (wine, { rejectWithValue }) {
-    try {
+// export const addNewWine = createAsyncThunk<Wine, Wine, { rejectValue: string }>(
+//   'wines/addWines',
+//   async function (wine, { rejectWithValue }) {
+//     try {
 
-      if (wine.image === '') {
-        wine.image = 'https://p0.pxfuel.com/preview/569/587/724/bottle-wine-red-drink.jpg'
-      }
+//       if (wine.image === '') {
+//         wine.image = 'https://p0.pxfuel.com/preview/569/587/724/bottle-wine-red-drink.jpg'
+//       }
 
-      const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`, {
-        method: 'POST',
-        credentials: 'include',
-        headers: headersData,
-        body: JSON.stringify({ ...wine }),
-      });
+//       const response = await fetch(`${API.baseUrl}${API.endpoints.wine.data}`, {
+//         method: 'POST',
+//         credentials: 'include',
+//         headers: headersData,
+//         body: JSON.stringify({ ...wine }),
+//       });
 
-      if (!response.ok) {
-        return rejectWithValue('Не удалось добавить вино');
-      }
-      return (await response.json()) as Wine;
-    } catch (err) {
-      return rejectWithValue(`Не удалось добавить вино ${err}`);
-    }
-  },
-);
+//       if (!response.ok) {
+//         return rejectWithValue('Не удалось добавить вино');
+//       }
+//       return (await response.json()) as Wine;
+//     } catch (err) {
+//       return rejectWithValue(`Не удалось добавить вино ${err}`);
+//     }
+//   },
+// );
 
-export const getCurrentWine = createAsyncThunk<
-  Wine,
-  string,
-  { rejectValue: string }
->('wines/getCurrentWine', async function (id, { rejectWithValue }) {
+export const getCurrentWine = createAsyncThunk<Wine, string, { rejectValue: string }>('wines/getCurrentWine', async function (id, { rejectWithValue }) {
   const response = await fetch(
     `${API.baseUrl}${API.endpoints.wine.currentWine}${id}`,
   );
+  try {
+    if (!response.ok) {
+      // return rejectWithValue('Не удалось найти вино');
+      return await Promise.reject(new Error(`Status ${response.status}`))
+    }
+    return (await response.json()) as Wine;
 
-  if (!response.ok) {
-    return rejectWithValue('Не удалось найти вино');
+  } catch (error) {
+    return rejectWithValue(`Не удалось найти вино ${error}`)
   }
-  return (await response.json()) as Wine;
 });
+
+export const setWineInfo = createAsyncThunk<undefined, Wine, { rejectValue: string, dispatch: ThunkDispatch<unknown, unknown, AnyAction> }>(
+  'wines/setWineInfo', async (data, { rejectWithValue, dispatch }) => {
+    const { _id, image } = data;
+    try {
+      const response = await fetch(`${API.baseUrl}${API.endpoints.wine.currentWine}${_id}`, {
+        method: "PATCH",
+        headers: headersData,
+        credentials: 'include',
+        body: JSON.stringify({image})
+      })
+      if (!response.ok) {
+        return await Promise.reject(new Error(`Status ${response.status}`))
+      }
+      dispatch(getCurrentWine(_id as string));
+    } catch(error) {
+      return rejectWithValue(`Не удалось обновить данные ${error}`)
+    }
+  }
+)
 

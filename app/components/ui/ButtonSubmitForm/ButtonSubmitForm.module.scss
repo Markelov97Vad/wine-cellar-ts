@@ -3,17 +3,20 @@
 
 .button-submit-form {
   border: none;
-  border: 1px solid $color-fonts;
-  width: 100%;
-  min-height: 50px;
+  padding: 12px 30px;
   background-color: $color-background;
   color: $color-fonts;
+  transition: all .4s ease;
   @include show-font(
-    $weight: 500,
+    $weight: 300,
     $size: 16px,
-    $line-heigth: 19.5px,
+    $line-heigth: 1.1,
     $color: $color-fonts
   );
+
+  &:hover {
+    opacity: .6;
+  }
 
   &_disabled {
     opacity: .2;

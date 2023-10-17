@@ -12,7 +12,7 @@ export const WinesQuery = createApi({
   endpoints: (build) => ({
     // GET запрос //           ответ от сервера, параметр который передаем
     fetchWines: build.query<Wine[], string>({
-      query: () => ({
+      query: (_) => ({
         url: `${API.endpoints.wine.data}`,
         headers: headersData,
       }),
@@ -27,7 +27,7 @@ export const WinesQuery = createApi({
       providesTags: ['UserWine']
     }),
     addFavoriteWine: build.mutation<Wine, string>({
-      query: (id: string) => ({
+      query: (id) => ({
         url: `${API.endpoints.wine.favorite}/${id}`,
         headers: headersData,
         method: 'PUT',
@@ -36,7 +36,7 @@ export const WinesQuery = createApi({
       invalidatesTags: ['UserWine', 'Wine']
     }),
     deleteFavoriteWine: build.mutation<Wine, string>({
-      query: (id: string) => ({
+      query: (id) => ({
         url: `${API.endpoints.wine.favorite}/${id}`,
         headers: headersData,
         method: 'DELETE',
@@ -45,7 +45,7 @@ export const WinesQuery = createApi({
       invalidatesTags: ['UserWine', 'Wine']
     }),
     getFavoriteWine: build.query<Wine[], string>({
-      query: () => ({
+      query: (_) => ({
         url: `${API.endpoints.wine.favorite}`,
         credentials: 'include'
       }),
@@ -54,11 +54,21 @@ export const WinesQuery = createApi({
     deleteWine: build.mutation<Wine[], string>({
       query: (id) => ({
         url: `${API.endpoints.wine.data}/${id}`,
-        headers: headersData,
         method: "DELETE",
+        headers: headersData,
         credentials: 'include'
       }),
       invalidatesTags: ['Wine']
+    }),
+    addNewWine: build.mutation<Wine, Wine>({
+      query: (wine) => ({
+        url: `${API.endpoints.wine.data}`,
+        method: 'POST',
+        headers: headersData,
+        credentials: 'include',
+        body: JSON.stringify({...wine})
+      }),
+      invalidatesTags: ['UserWine', 'Wine']
     })
   })
 })
@@ -71,5 +81,6 @@ export const {
   useDeleteFavoriteWineMutation,
   useGetFavoriteWineQuery,
   useLazyGetFavoriteWineQuery,
-  useDeleteWineMutation
+  useDeleteWineMutation,
+  useAddNewWineMutation
 } = WinesQuery

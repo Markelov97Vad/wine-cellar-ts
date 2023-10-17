@@ -34,18 +34,13 @@ export function useFormValid () {
         HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
       >, config = { customValidation: false, modification: false }) => {
     const { name, value, validationMessage } = evt.target;
-    // console.log('Modification',config.modification);
-
-
     handleStoreValue(name, value);
     handleSaveFormRef(evt);
 
     if (config.customValidation && !config.modification) {
       handleCustomValidation(name as unknown as validationConfigKeyProps, value)
-      // console.log('1');
 
     } else if (config.customValidation && config.modification) {
-      // console.log('2');
       handleCustomValidationModification(name as unknown as validationConfigModificationKeyProps, value)
     } else {
       handleDefaultValidation(name, validationMessage);

@@ -16,7 +16,8 @@ export const API = {
     user : {
       register: '/signup',
       login: '/signin',
-      user: '/users/me'
+      user: '/users/me',
+      logout: '/users/signout'
     }
   }
 }
