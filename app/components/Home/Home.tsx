@@ -22,9 +22,6 @@ function Home() {
   return (
     <>
       <main>
-        {/* <video  className={style.root__video} autoPlay playsInline preload='auto' data-video='0' loop muted>
-          <source src={require('@/public/video/background-video.mp4')} type="video/mp4"/>
-        </video> */}
         <div className={style.root__wrapper}>
         <Header />
           <Image

@@ -3,6 +3,7 @@ import 'normalize.css';
 import type { Metadata } from 'next';
 import { Providers } from '@/app/store/provider';
 import Header from '@/app/components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 export const metadata: Metadata = {
   title: 'Wine cellar',
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Providers>
           {children}
         </Providers>
+        <Footer/>
       </body>
     </html>
   );

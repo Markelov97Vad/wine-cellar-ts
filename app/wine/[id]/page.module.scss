@@ -4,7 +4,7 @@
 .aboutWine {
   display: flex;
   justify-content: center;
-  padding: 40px 0 0;
+  padding: 40px 0 80px;
   margin: 0 auto;
   max-width: 1140px;
   background-color: $color-background-white;
@@ -54,7 +54,7 @@
   &__info-wrapper {
     border-left: 1px solid $color-fonts-black-opacity;
     max-width: 500px;
-    padding: 20px 40px 20px;
+    padding: 20px 40px 60px;
   }
 
   &__title {
