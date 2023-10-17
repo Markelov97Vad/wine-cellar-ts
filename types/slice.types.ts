@@ -5,9 +5,11 @@ import { Wine } from "./wine.type";
 export type WineState = {
   wines: Wine[];
   currentWine: Wine;
-  isLoadingCurrentWine: boolean,
-  isLoadingAddWine: boolean,
-  isSuccess: boolean;
+  isLoadingCurrentWine: boolean;
+  isLoadingSetInfo: boolean;
+  isLoadingAddWine: boolean;
+  isSuccessCurrentWine: boolean;
+  isSuccessSetInfo: boolean;
   error: string | null;
 };
 

@@ -3,38 +3,51 @@
 
 .promo {
   display: flex;
+  position: relative;
+  // margin: 30% 0 0 !important;
+  // text-align: ;
+  // top: 0;
+  // left: 0;
   flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  height: 100%;
 
-  align-items: center;
-  min-height: 100vh;
-
-  &__spanText {
-    @include show-font(
-      $size: 22px,
-      $weight: 400,
-      $line-heigth: 21px,
-      $color: $color-fonts
-    )
-  }
 
   &__title {
-    margin-top: 40vh;
+    // margin: 30vw 0 0 !important;
+    margin: 0 !important;
+    padding-top: 20%;
+    // position: absolute;
+    align-self: center;
+    // top: 0;
+    // left: 0;
     @include show-font(
       $size: 3em,
       $weight: 700,
       $line-heigth: 60px,
       $color: $color-fonts
-    );
+      );
 
-    @include mobile {
-      font-size: 2em;
-      line-height: 30px;
+      @include mobile {
+        font-size: 2em;
+        line-height: 30px;
+      }
     }
-  }
+    // &__spanText {
+    //   z-index: 10;
+    //   @include show-font(
+    //     $size: 22px,
+    //     $weight: 400,
+    //     $line-heigth: 21px,
+    //     $color: $color-fonts
+    //   )
+    // }
 
   &__span-line {
     display: inline-block;
-    margin-top: 30px;
+    align-self: center;
+    margin: 0;
     width: 30vw;
     border-bottom: 1px solid white;
   }

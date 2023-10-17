@@ -38,22 +38,7 @@ function FormComponent() {
   const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     addNewWine(inputValues!)
-
-    // dispatch(addNewWine(inputValues!));
   };
-
-  // useEffect(() => {
-
-  // }, [isLoadingAddWine]);
-
-  // useEffect(() => {
-  //   console.log(errorMessages.name);
-  //   console.log(inputValues?.name);
-  //   console.log('formisvalid',formIsValid);
-  //   console.log(isSubmitBattonDisabled);
-
-
-  // }, [inputValues, errorMessages]);
 
   useEffect(() => {
     if (isSuccess) {

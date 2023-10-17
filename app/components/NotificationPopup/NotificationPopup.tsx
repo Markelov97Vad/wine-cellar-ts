@@ -15,7 +15,7 @@ function NotificationPopup({isNotificationPopupOpen, setIsNotificationPopupOpen 
   return (
     <div className={`${styles['notification-popup']} ${isNotificationPopupOpen ? styles['notification-popup_opened'] : ''}`}>
       <div className={styles['notification-popup__wrapper']}>
-        <ButtonCross handleClick={handleClick} extraClass={styles['notification-popup__cross-button']}/>
+        <ButtonCross light handleClick={handleClick} extraClass={styles['notification-popup__cross-button']}/>
         <h1 className={`${styles['notification-popup__title']} ${playfairDisplay.className}`}>Вино было успешно добавленно</h1>
         <p className={`${montserrat.className} ${styles['notification-popup__subtitle']}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Feugiat enim tortor in hac id imperdiet adipiscing.</p>
         <Image width={undefined} className={styles['notification-popup__img']} src={imgGlass} alt="glass" />
