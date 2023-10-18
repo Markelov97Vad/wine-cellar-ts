@@ -37,7 +37,7 @@ function Footer() {
           >
             {iconData.map((el, i) => (
               <li key={i}>
-                <a className={styles.footer__tab_type_icon} href={el.href} target='_blank'>
+                <a href={el.href} target='_blank'>
                   {el.logo}
                 </a>
               </li>

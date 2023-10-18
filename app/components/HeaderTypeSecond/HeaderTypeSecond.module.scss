@@ -3,12 +3,27 @@
 
 .header-type-second {
   background-color: $color-background-white;
-  position: relative;
+  // position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 10px 0 0;
   border-bottom: 1px solid $main-color-black;
+  top: 0;
+  z-index: 10;
+
+  &_type_fix {
+    position: sticky;
+  }
+
+  &__logo {
+    @include show-font(
+      $size: 20px,
+      $weight: 500,
+      $line-heigth: 21px,
+      $color: $color-fonts-black
+    );
+  }
 
   &__wrapper {
     margin-top: 20px;
@@ -83,5 +98,9 @@
       -moz-text-shadow: 2px 2px 2px #00000028;
       text-shadow: 2px 2px 2px #00000029;
     }
+  }
+
+  @include mobile {
+    padding: 25px 10px 25px;
   }
 }

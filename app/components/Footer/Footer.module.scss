@@ -50,24 +50,7 @@
       display: flex;
       justify-content: center;
       gap: 10px;
-
-      // &:hover {
-      //   -webkit-text-shadow: 2px 4px 3px #00000078;
-      //   -moz-text-shadow: 2px 4px 3px #00000078;
-      //   box-shadow: 2px 4px 3px #00000078;
-      // }
-
     }
-    &_type_icon {
-      width: 24px;
-      // &:hover {
-      //   -webkit-text-shadow: 1px 1px 1px #00000078;
-      //   -moz-text-shadow: 1px 1px 1px #00000078;
-      //   box-shadow: 1px 1px 1px #00000078;
-      // }
-
-    }
-
 
     &_type_text {
       @include show-font(

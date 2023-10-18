@@ -25,13 +25,17 @@
         line-height: 30px;
       }
     }
-    
+
   &__span-line {
     display: inline-block;
     align-self: center;
     margin: 0;
     width: 30vw;
     border-bottom: 1px solid white;
+
+    @include mobile {
+      width: 50vw;
+    }
   }
 }
 

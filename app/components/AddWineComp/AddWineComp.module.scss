@@ -5,8 +5,9 @@
   background-color: $color-background;
   width: 100%;
   padding: 190px 0 100px;
+  // position: relative;
   // тень блока
-  box-shadow: 0 0 10vh 25vh $color-background;
+  // box-shadow: 0 0 10vh 25vh $color-background;
 
   &__wrapper {
     display: flex;

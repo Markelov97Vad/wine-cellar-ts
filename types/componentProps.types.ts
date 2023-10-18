@@ -104,3 +104,13 @@ export type NotificationPopupImageTypeProps = {
   isNotificationSetImageOpen: boolean;
   setIsNotificationSetImageOpen: (el : boolean) => void;
 }
+
+export type BurgerMenuTypePops = {
+  handleOpenDropdownMenu: () => void ;
+  isDropdownMenuOpen: boolean;
+  light?: boolean;
+}
+
+export type DropdownMenuTypeProps = {
+  isDropdownMenuOpen: boolean;
+}

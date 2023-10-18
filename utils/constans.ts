@@ -92,3 +92,6 @@ export const ColorData = [
     text: 'Игристое',
   }
 ];
+
+export const SCREEN_TABLET = 635;
+export const SCREEN_LAPTOP = 768;
