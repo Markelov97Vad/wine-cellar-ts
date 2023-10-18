@@ -13,7 +13,7 @@ const Promo = () => {
     gsap.fromTo(spanRef.current, { opacity: 0}, { opacity: 1, duration: 8, delay: 2.5})
   },[])
 
-  gsap.to(titleRef, { scale: 77})
+  // gsap.to(titleRef, { scale: 77})
 
   return (
     <section className={style.promo}>

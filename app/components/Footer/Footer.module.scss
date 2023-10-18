@@ -3,7 +3,6 @@
 
 .footer {
   width: 100%;
-  // min-height: 200px;
   background-color: $color-font-olive;
   display: flex;
   justify-content: center;
@@ -22,18 +21,14 @@
     align-items: center;
     justify-content: space-around;
 
-    &:first-of-type {
+    &:nth-child(1) {
       border-top: 1px solid $main-color-white;
     }
   }
 
   &__tab {
-    @include show-font(
-      $size: 15px,
-      $weight: 400,
-      $line-heigth: 20px,
-      $color: $color-fonts
-    );
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 
     &_type_bold {
       display: flex;
@@ -43,12 +38,50 @@
       font-weight: 600;
       height: 60px;
 
-      &:first-of-type {
+      &:nth-child(1) {
         border-right: 1px solid $main-color-white;
       }
-      &:last-of-type {
+      &:nth-child(3) {
         border-left: 1px solid $main-color-white;
       }
+    }
+
+    &_type_icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+      // &:hover {
+      //   -webkit-text-shadow: 2px 4px 3px #00000078;
+      //   -moz-text-shadow: 2px 4px 3px #00000078;
+      //   box-shadow: 2px 4px 3px #00000078;
+      // }
+
+    }
+    &_type_icon {
+      width: 24px;
+      // &:hover {
+      //   -webkit-text-shadow: 1px 1px 1px #00000078;
+      //   -moz-text-shadow: 1px 1px 1px #00000078;
+      //   box-shadow: 1px 1px 1px #00000078;
+      // }
+
+    }
+
+
+    &_type_text {
+      @include show-font(
+        $size: 15px,
+        $weight: 400,
+        $line-heigth: 20px,
+        $color: $color-fonts
+      );
+    }
+
+    &:hover {
+      -webkit-text-shadow: 2px 4px 3px #00000078;
+      -moz-text-shadow: 2px 4px 3px #00000078;
+      text-shadow: 2px 4px 3px #00000078;
     }
   }
 }
