@@ -3,7 +3,7 @@
 .account {
   background-color: $color-background-milk;
   padding: 20px 30px 50px;
-  min-height: 100vh;
+  box-sizing: border-box;
 
   &__wrapper {
     max-width: 1140px;

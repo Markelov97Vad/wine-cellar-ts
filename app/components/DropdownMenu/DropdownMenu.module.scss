@@ -1,0 +1,81 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.gropdown-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 62px;
+  width: 100%;
+  visibility: hidden;
+  height: 0;
+  transition: all 0.5s ease;
+  z-index: 20;
+  opacity: 0;
+  background-color: $color-background-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &_open {
+    visibility: visible;
+    opacity: 1;
+    height: calc(100vh - 62px);
+  }
+
+  &_location_library {
+    top: 100px;
+  }
+
+  &__list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__list {
+
+  }
+
+  &__link {
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+
+    &_active {
+      border-bottom: 1px solid $main-color-black-opacity;
+    }
+
+    &_type_route {
+      @include show-font(
+      $size: 15px,
+      $weight: 500,
+      $line-heigth: 20px,
+      $color: $color-fonts-black
+    );
+    &:hover {
+      color: $color-fonts-black;
+      -webkit-text-shadow: 2px 2px 2px #0000007c;
+      -moz-text-shadow: 2px 2px 2px #0000007c;
+      text-shadow: 2px 2px 2px #0000007c;
+    }
+    }
+
+    &_type_auth {
+      color: $color-background-olive;
+      &:hover {
+        -webkit-text-shadow: 2px 2px 2px #ffffff7c;
+        -moz-text-shadow: 2px 2px 2px #ffffff7c;
+        text-shadow: 2px 2px 2px #cec485cc !important;
+      }
+      @include show-font(
+      $size: 15px,
+      $weight: 500,
+      $line-heigth: 20px,
+      $color: $color-font-olive
+    );
+    }
+  }
+}

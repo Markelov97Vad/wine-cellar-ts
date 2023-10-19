@@ -1,3 +1,11 @@
 @forward './variables.scss';
 @forward './mixins.scss';
 @forward './globals.scss';
+
+.html {
+  background-color: #282828;
+  scroll-behavior: smooth;
+}
+// .root {
+//   width: 100%;
+// }

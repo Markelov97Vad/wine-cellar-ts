@@ -2,7 +2,6 @@
 import style from './WineLibrary.module.scss';
 import WineCardList from './WineCardList/WineCardList';
 import { montserrat } from '@/app/fonts';
-import CheckboxType from '../ui/CheckboxType/CheckboxType';
 import { ColorData, TypeData } from '@/utils/constans';
 import { useDebounce } from '@/app/hooks/useDebounce';
 import { ChangeEvent, useEffect, useState } from 'react';
@@ -10,6 +9,7 @@ import { CheckboxsType } from '@/types/allTypes.types';
 import useSearchWine from '@/app/hooks/useSearchWine';
 import { Wine } from '@/types/wine.type';
 import SearchIcon from '../Icons/SearchIcon';
+import Filter from '../Filter/Filter';
 
 function WineLibrary({wines} : {wines?: Wine[]}) {
   const [search, setSearch] = useState<string | null>(null);
@@ -88,28 +88,8 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
           </div>
         </div>
         <div className={style['wine-library__side-bar']}>
-          <div className={style['wine-library__type-block']}>
-            <span className={style['wine-library__type-name']}>ТИП</span>
-            <div className={style['wine-library__type-wrapper']}>
-              {TypeData.map((type, i) => {
-                const { id, text } = type;
-                return (
-                  <CheckboxType key={i} id={id} text={text} name="typeWine" handleChangeCheckbox={handleChangeCheckboxType}/>
-                );
-              })}
-            </div>
-          </div>
-          <div className={style['wine-library__type-block']}>
-            <span className={style['wine-library__type-name']}>ЦВЕТ</span>
-            <div className={style['wine-library__type-wrapper']}>
-              {ColorData.map((type, i) => {
-                const { id, text } = type;
-                return (
-                  <CheckboxType key={i} id={id} text={text} name="colorWine"  handleChangeCheckbox={handleChangeCheckboxColor}/>
-                );
-              })}
-            </div>
-          </div>
+          <Filter data={TypeData} name='ТИП' handleChangeCheckbox={handleChangeCheckboxType}/>
+          <Filter data={ColorData} name='ЦВЕТ' handleChangeCheckbox={handleChangeCheckboxColor}/>
         </div>
         <WineCardList wines={renderWine()}/>
       </form>

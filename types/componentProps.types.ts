@@ -1,8 +1,12 @@
-import { ChangeEvent, MouseEventHandler } from "react";
+import { ChangeEvent, MouseEventHandler, ReactNode } from "react";
 import { Wine } from "./wine.type";
 
 export type NavigationLinkProfileType = {
   to: string;
+}
+
+export type RootTypeProps = {
+  children: ReactNode
 }
 
 export type InputFormType = {
@@ -103,4 +107,31 @@ export type NotificationPopupImageTypeProps = {
   id: string;
   isNotificationSetImageOpen: boolean;
   setIsNotificationSetImageOpen: (el : boolean) => void;
+}
+
+export type BurgerMenuTypePops = {
+  handleOpenDropdownMenu: () => void ;
+  light?: boolean;
+}
+
+export type FilterTypeProps = {
+  data: {
+    id: string;
+    text: string
+  }[];
+  name: string;
+  handleChangeCheckbox: (evt: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export type FooterForLaptopTypeProps = {
+  data: {
+    logo: ReactNode;
+    href: string;
+  }[]
+}
+export type FooterForMobileTypeProps = {
+  data: {
+    logo: ReactNode;
+    href: string;
+  }[]
 }

@@ -8,9 +8,9 @@
   top: 18px;
   right: 18px;
   padding: 0;
-  transition: transform .2s ease-in-out;
+  transition: transform .5s ease-in-out;
 
   &:hover {
-    transform: scale(1.2,1.2);
+    transform: scale(1.1,1.1);
   }
 }

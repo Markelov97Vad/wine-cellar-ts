@@ -1,0 +1,50 @@
+@use '../../../styles/variables' as *;
+.burger-menu {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  gap: 4px;
+  top: 10px;
+  right: 20px;
+
+  &__span {
+    width: 20px;
+    height: 1px;
+    background-color: $main-color-black;
+    border: 1px solid $main-color-black;
+    transition: all .5s ease-in-out;
+
+    &_type_light {
+      background-color: $main-color-white;
+      border: 1px solid $main-color-white;
+    }
+  }
+
+}
+
+/* ANIMATION */
+.burger-menu_open .burger-menu__span_center {
+  translate: -50px;
+  opacity: 0;
+  background-color: $main-color-black;
+  box-shadow: none;
+  transition: all .2s ease-in-out;
+}
+.burger-menu_open .burger-menu__span_type_light {
+  background-color: $main-color-white;
+}
+
+.burger-menu_open .burger-menu__span_top {
+  transform: rotate(45deg);
+  translate: 0 7px;
+}
+
+.burger-menu_open .burger-menu__span_bottom {
+  transform: rotate(-45deg) ;
+  translate: 0 -7px;
+}
+

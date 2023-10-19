@@ -1,0 +1,14 @@
+.root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+  display: flex;
+  // justify-content: ;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &_noscroll {
+    overflow: hidden;
+  }
+}

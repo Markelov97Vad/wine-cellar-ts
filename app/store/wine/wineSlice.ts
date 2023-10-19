@@ -12,6 +12,7 @@ const initialState: WineState = {
   isLoadingAddWine: false,
   isSuccessCurrentWine: false,
   isSuccessSetInfo: false,
+  isDropdownMenuOpen: false,
   error: null,
 };
 
@@ -19,6 +20,9 @@ const wineSlice = createSlice({
   name: 'wines',
   initialState,
   reducers: {
+    toggleDropdown(state) {
+      state.isDropdownMenuOpen = !state.isDropdownMenuOpen;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -89,4 +93,4 @@ const wineSlice = createSlice({
 // }
 
 export default wineSlice.reducer;
-// export const {addFavorite, deleteFavorite} = wineSlice.actions;
+export const { toggleDropdown } = wineSlice.actions;

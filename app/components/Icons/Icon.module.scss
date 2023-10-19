@@ -1,0 +1,9 @@
+.icon {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  &:hover {
+    filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+  }
+}
+

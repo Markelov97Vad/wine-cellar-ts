@@ -18,7 +18,7 @@
     "div sort"
     "side-bar card-list";
 
-    @media screen and (max-width: 768px) {
+    @include mobile {
       gap: 0;
       display: flex;
       flex-direction: column;
@@ -29,8 +29,7 @@
   &__block {
     grid-area: div;
 
-    @media screen and (max-width: 768px) {
-      // grid-area: none;
+    @include mobile {
       display: none;
     }
   }
@@ -39,9 +38,15 @@
     grid-area: sort;
     border-bottom: 1px solid $color-background;
 
+    @media screen and (max-width: 1280px){
+      padding-inline: 30px;
+    }
+
     @media screen and (max-width: 768px) {
       display: flex;
       justify-content: space-between;
+      border-bottom: 0;
+      padding: 20px;
     }
   }
 
@@ -64,6 +69,13 @@
     transition: all .6s ease;
     padding-inline: 60px 30px;
 
+    @include show-font(
+      $color: $color-fonts-black,
+      $size: 16px,
+      $line-heigth: 20px,
+      $weight: 500,
+    );
+
     &:focus {
       outline: none;
       border: 1px solid $main-color-black;
@@ -85,31 +97,5 @@
 
   &__side-bar {
     grid-area: side-bar;
-
-    @media screen and (max-width: 768px) {
-      display: none;
-    }
-  }
-
-  &__type-name {
-    display: inline-block;
-    margin-bottom: 20px;
-    @include show-font(
-      $color: $color-fonts-black,
-      $size: 16px,
-      $line-heigth: 20px,
-      $weight: 500,
-    )
-  }
-
-  &__type-block {
-    padding: 23px 10px;
-    border-top: 1px solid $main-color-black;
-  }
-
-  &__type-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
   }
 }

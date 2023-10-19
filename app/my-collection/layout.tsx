@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import AddWineComp from '../components/AddWineComp/AddWineComp';
 import Header from '../components/Header/Header';
 import ProtectedRoute from '../hoc/ProtectedRoute';
+import HeaderTypeSecond from '../components/HeaderTypeSecond/HeaderTypeSecond';
 
 export const metadata: Metadata = {
   title: 'Library',
@@ -16,7 +17,7 @@ export default function MyCollectionLayout({
 }) {
   return (
     <ProtectedRoute>
-      <Header />
+      <HeaderTypeSecond/>
       <main>
         <AddWineComp />
         {children}

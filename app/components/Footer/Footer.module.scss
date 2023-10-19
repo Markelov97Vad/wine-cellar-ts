@@ -1,13 +1,21 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+.root__footer {
+  margin-top: auto;
+}
+
 .footer {
   width: 100%;
-  // min-height: 200px;
   background-color: $color-font-olive;
   display: flex;
   justify-content: center;
   padding: 50px 0;
+
+  @include mobile {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 
   &__wrapper {
     width: 100%;
@@ -22,18 +30,14 @@
     align-items: center;
     justify-content: space-around;
 
-    &:first-of-type {
+    &:nth-child(1) {
       border-top: 1px solid $main-color-white;
     }
   }
 
   &__tab {
-    @include show-font(
-      $size: 15px,
-      $weight: 400,
-      $line-heigth: 20px,
-      $color: $color-fonts
-    );
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 
     &_type_bold {
       display: flex;
@@ -43,12 +47,33 @@
       font-weight: 600;
       height: 60px;
 
-      &:first-of-type {
+      &:nth-child(1) {
         border-right: 1px solid $main-color-white;
       }
-      &:last-of-type {
+      &:nth-child(3) {
         border-left: 1px solid $main-color-white;
       }
+    }
+
+    &_type_icons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    &_type_text {
+      @include show-font(
+        $size: 15px,
+        $weight: 400,
+        $line-heigth: 20px,
+        $color: $color-fonts
+      );
+    }
+
+    &:hover {
+      -webkit-text-shadow: 2px 4px 3px #00000078;
+      -moz-text-shadow: 2px 4px 3px #00000078;
+      text-shadow: 2px 4px 3px #00000078;
     }
   }
 }

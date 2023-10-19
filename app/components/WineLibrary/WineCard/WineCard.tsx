@@ -49,7 +49,6 @@ function WineCard({ wineElem }: WineCardProps) {
         <div className={style['wine-card__container']}>
           <StarRaitingDisabled rating={rating} />
           <Button extraClass={style['wine-card__button-info']} text='Подробнее'/>
-          {/* // <button className={style['wine-card__button-info']}>Подробнее</button> */}
         </div>
       </Link>
     </article>
