@@ -5,12 +5,9 @@ import styles from './HeaderTypeSecond.module.scss';
 import { montserrat, playfairDisplay } from '@/app/fonts';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import DropIcon from '../Icons/DropIcon';
-import { useEffect, useState } from 'react';
-import { logout } from '@/app/store/user/userApi';
-import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import useResize from '@/app/hooks/useResize';
 import BurgerMenu from '../ui/BurgerMenu/BurgerMenu';
-import { routeData } from '@/utils/constans';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import { toggleDropdown } from '@/app/store/wine/wineSlice';
 import ButtonLogout from '../ui/ButtonLogout/ButtonLogout';
@@ -20,7 +17,7 @@ function HeaderTypeSecond() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { isLaptop, isMobile } = useResize();
   const dispatch = useAppDispatch();
-  const { isDropdownMenuOpen } = useAppSelector(state => state.wines);
+
   const handleOpenDropdownMenu = () => {
     dispatch(toggleDropdown());
   };
@@ -34,7 +31,9 @@ function HeaderTypeSecond() {
 
   return (
     <header
-      className={`${styles['header-type-second']} ${isMobile && styles['header-type-second_type_fix']} ${montserrat.className}`}
+      className={`${styles['header-type-second']} ${
+        isMobile && styles['header-type-second_type_fix']
+      } ${montserrat.className}`}
       onMouseLeave={handleCloseDropdown}
     >
       {isLaptop ? (
@@ -49,9 +48,7 @@ function HeaderTypeSecond() {
       )}
 
       {!isLaptop && (
-        <BurgerMenu
-          handleOpenDropdownMenu={handleOpenDropdownMenu}
-        />
+        <BurgerMenu handleOpenDropdownMenu={handleOpenDropdownMenu} />
       )}
 
       {isLaptop && (
@@ -96,12 +93,12 @@ function HeaderTypeSecond() {
               onMouseLeave={handleCloseDropdown}
               className={styles['header-type-second__dropdown']}
             >
-              <ButtonLogout/>
+              <ButtonLogout />
             </div>
           )}
         </div>
       )}
-      <DropdownMenu/>
+      <DropdownMenu />
     </header>
   );
 }

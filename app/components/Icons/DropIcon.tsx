@@ -1,3 +1,4 @@
+import styles from './Icon.module.scss';
 function DropIcon() {
   return (
     <svg
@@ -6,6 +7,7 @@ function DropIcon() {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
+      className={styles.icon}
     >
       <g clipPath="url(#clip0_149_107)">
         <path d="M4 12L12 20L20 12H4Z" fill="#998431" />

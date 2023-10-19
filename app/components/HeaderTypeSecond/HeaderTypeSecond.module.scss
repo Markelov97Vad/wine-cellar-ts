@@ -3,7 +3,6 @@
 
 .header-type-second {
   background-color: $color-background-white;
-  // position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,6 +80,6 @@
   }
 
   @include mobile {
-    padding: 25px 10px 25px;
+    padding: 20px 10px 20px;
   }
 }

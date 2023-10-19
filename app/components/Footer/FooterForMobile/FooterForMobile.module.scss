@@ -1,0 +1,78 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.footer-for-mobile {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  @include mobile {
+    display: flex;
+  }
+
+  &__link {
+    align-self: center;
+    margin-bottom: 20px;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    @include show-font(
+      $size: 15px,
+      $weight: 500,
+      $line-heigth: 20px,
+      $color: $color-fonts
+    );
+
+    &:hover {
+      &:hover {
+        -webkit-text-shadow: 2px 4px 3px #00000078;
+        -moz-text-shadow: 2px 4px 3px #00000078;
+        text-shadow: 2px 4px 3px #00000078;
+      }
+    }
+  }
+
+  &__routes {
+    display: flex;
+    align-self: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    width: 100%;
+    max-width: 490px;
+
+    @media screen and (max-width: 500px) {
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      gap: 5px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    width: 100%;
+    max-width: 130px;
+    justify-content: space-between;
+    align-self: center;
+    margin-bottom: 10px;
+  }
+
+  &__copy {
+    border-top: 1px solid $color-background;
+    text-align: center;
+    width: 90vw;
+    padding-top: 30px;
+    @include show-font(
+      $size: 15px,
+      $weight: 400,
+      $line-heigth: 20px,
+      $color: $color-fonts
+    );
+
+    @media screen and (max-width: 500px) {
+      padding-top: 10px;
+    }
+  }
+}

@@ -114,3 +114,24 @@ export type BurgerMenuTypePops = {
   light?: boolean;
 }
 
+export type FilterTypeProps = {
+  data: {
+    id: string;
+    text: string
+  }[];
+  name: string;
+  handleChangeCheckbox: (evt: ChangeEvent<HTMLInputElement>) => void;
+}
+
+export type FooterForLaptopTypeProps = {
+  data: {
+    logo: ReactNode;
+    href: string;
+  }[]
+}
+export type FooterForMobileTypeProps = {
+  data: {
+    logo: ReactNode;
+    href: string;
+  }[]
+}
