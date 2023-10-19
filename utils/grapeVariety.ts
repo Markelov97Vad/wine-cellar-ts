@@ -40,6 +40,7 @@ export const optionsGrapeVariety: optionsWineType[] = [
   },
   { value: "Вранац", label: "Вранац", name: "grapeVariety" },
   { value: "Гаме", label: "Гаме", name: "grapeVariety" },
+  { value: "Гарнача Тинторера", label: "Гарнача Тинторера", name: "grapeVariety" },
   { value: "Гренаш", label: "Гренаш", name: "grapeVariety" },
   { value: "Добричич", label: "Добричич", name: "grapeVariety" },
   { value: "Дольчетто", label: "Дольчетто", name: "grapeVariety" },
@@ -87,6 +88,7 @@ export const optionsGrapeVariety: optionsWineType[] = [
   { value: "Марселан", label: "Марселан", name: "grapeVariety" },
   { value: "Менсия", label: "Менсия", name: "grapeVariety" },
   { value: "Мерло", label: "Мерло", name: "grapeVariety" },
+  { value: "Монастрель", label: "Монастрель", name: "grapeVariety" },
   {
     value: "Монтепульчано",
     label: "Монтепульчано",
@@ -149,6 +151,7 @@ export const optionsGrapeVariety: optionsWineType[] = [
   },
   { value: "Фраппато", label: "Фраппато", name: "grapeVariety" },
   { value: "Цвайгельт", label: "Цвайгельт", name: "grapeVariety" },
+  { value: "Цвайгельт Таманский", label: "Цвайгельт Таманский", name: "grapeVariety" },
   {
     value: "Цимлянский чёрный",
     label: "Цимлянский чёрный",
@@ -294,6 +297,7 @@ export const optionsGrapeVariety: optionsWineType[] = [
   { value: "Фурминт", label: "Фурминт", name: "grapeVariety" },
   { value: "Хихви", label: "Хихви", name: "grapeVariety" },
   { value: "Цереза", label: "Цереза", name: "grapeVariety" },
+  { value: "Цитронный Магарача", label: "Цитронный Магарача", name: "grapeVariety" },
   { value: "Цоликоури", label: "Цоликоури", name: "grapeVariety" },
   { value: "Чауш", label: "Чауш", name: "grapeVariety" },
   { value: "Чинури", label: "Чинури", name: "grapeVariety" },

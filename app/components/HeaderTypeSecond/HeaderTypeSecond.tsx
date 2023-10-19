@@ -12,26 +12,24 @@ import useResize from '@/app/hooks/useResize';
 import BurgerMenu from '../ui/BurgerMenu/BurgerMenu';
 import { routeData } from '@/utils/constans';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import { toggleDropdown } from '@/app/store/wine/wineSlice';
+import ButtonLogout from '../ui/ButtonLogout/ButtonLogout';
 
 function HeaderTypeSecond() {
   const { currentUser, isLoggedIn } = useAppSelector((state) => state.user);
-  const [isDropdpwnOpen, setisDropdpwnOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { isLaptop, isMobile } = useResize();
   const dispatch = useAppDispatch();
-  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
+  const { isDropdownMenuOpen } = useAppSelector(state => state.wines);
   const handleOpenDropdownMenu = () => {
-    setIsDropdownMenuOpen(!isDropdownMenuOpen);
+    dispatch(toggleDropdown());
   };
 
   const handleOpenDropdown = () => {
-    setisDropdpwnOpen(true);
+    setIsDropdownOpen(true);
   };
   const handleCloseDropdown = () => {
-    setisDropdpwnOpen(false);
-  };
-
-  const handlelogout = () => {
-    dispatch(logout());
+    setIsDropdownOpen(false);
   };
 
   return (
@@ -53,7 +51,6 @@ function HeaderTypeSecond() {
       {!isLaptop && (
         <BurgerMenu
           handleOpenDropdownMenu={handleOpenDropdownMenu}
-          isDropdownMenuOpen={isDropdownMenuOpen}
         />
       )}
 
@@ -94,23 +91,17 @@ function HeaderTypeSecond() {
               ВОЙТИ
             </Link>
           )}
-          {isDropdpwnOpen && (
+          {isDropdownOpen && (
             <div
               onMouseLeave={handleCloseDropdown}
               className={styles['header-type-second__dropdown']}
             >
-              <button
-                type="button"
-                className={styles['header-type-second__dropdown-button']}
-                onClick={handlelogout}
-              >
-                Выйти
-              </button>
+              <ButtonLogout/>
             </div>
           )}
         </div>
       )}
-      <DropdownMenu isDropdownMenuOpen={isDropdownMenuOpen}/>
+      <DropdownMenu/>
     </header>
   );
 }

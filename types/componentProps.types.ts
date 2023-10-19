@@ -1,8 +1,12 @@
-import { ChangeEvent, MouseEventHandler } from "react";
+import { ChangeEvent, MouseEventHandler, ReactNode } from "react";
 import { Wine } from "./wine.type";
 
 export type NavigationLinkProfileType = {
   to: string;
+}
+
+export type RootTypeProps = {
+  children: ReactNode
 }
 
 export type InputFormType = {
@@ -107,10 +111,6 @@ export type NotificationPopupImageTypeProps = {
 
 export type BurgerMenuTypePops = {
   handleOpenDropdownMenu: () => void ;
-  isDropdownMenuOpen: boolean;
   light?: boolean;
 }
 
-export type DropdownMenuTypeProps = {
-  isDropdownMenuOpen: boolean;
-}

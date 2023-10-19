@@ -10,6 +10,7 @@ export type WineState = {
   isLoadingAddWine: boolean;
   isSuccessCurrentWine: boolean;
   isSuccessSetInfo: boolean;
+  isDropdownMenuOpen: boolean;
   error: string | null;
 };
 

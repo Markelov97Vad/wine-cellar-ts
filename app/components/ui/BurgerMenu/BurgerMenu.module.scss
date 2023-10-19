@@ -7,13 +7,13 @@
   justify-content: center;
   align-items: center;
   position: absolute;
+  gap: 4px;
   top: 15px;
-  right: 8px;
+  right: 20px;
 
   &__span {
     width: 20px;
     height: 1px;
-    font-weight: 500;
     background-color: $main-color-black;
     border: 1px solid $main-color-black;
     transition: all .5s ease-in-out;
@@ -24,48 +24,27 @@
     }
   }
 
-  &__span::before, &__span::after {
-    content: '';
-    width: 20px;
-    position: absolute;
-    height: 1px;
-    background-color: $main-color-black;
-    border: 1px solid $main-color-black;
-    transition: all .5s ease-in-out;
-  }
-
-  &__span_type_light::before, &__span_type_light::after {
-    background-color: $main-color-white;
-    border: 1px solid $main-color-white;
-  }
-
-  &__span::before {
-    transform: translate(-1px, -10px);
-  }
-
-  &__span::after {
-    transform: translate(-1px, 8px);
-  }
-
 }
 
 /* ANIMATION */
-.burger-menu_open .burger-menu__span {
-  transform: translateX(50px);
+.burger-menu_open .burger-menu__span_center {
+  translate: -50px;
+  opacity: 0;
   background-color: $main-color-black;
   box-shadow: none;
+  transition: all .2s ease-in-out;
 }
-
 .burger-menu_open .burger-menu__span_type_light {
   background-color: $main-color-white;
 }
 
-.burger-menu_open .burger-menu__span::before {
-  transform: rotate(45deg) translate(-35px, 35px);
-  // transform: rotate(45deg) translate(35px, -35px);
+.burger-menu_open .burger-menu__span_top {
+  transform: rotate(45deg);
+  translate: 0 7px;
 }
 
-.burger-menu_open .burger-menu__span::after {
-  transform: rotate(-45deg) translate(-35px, -35px);
-  // transform: rotate(-45deg) translate(35px, 35px);
+.burger-menu_open .burger-menu__span_bottom {
+  transform: rotate(-45deg) ;
+  translate: 0 -7px;
 }
+

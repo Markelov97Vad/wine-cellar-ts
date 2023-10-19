@@ -28,3 +28,7 @@ ul,
 ol {
   list-style-type: none;
 }
+
+input {
+  touch-action: none;
+}

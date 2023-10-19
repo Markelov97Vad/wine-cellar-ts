@@ -12,7 +12,7 @@ import {
 function useResize() {
   const [cardsCount, setCardsCount] = useState<number>(12);
   const [newCardsCount, setNewCardsCount] = useState<number>(3);
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [width, setWidth] = useState<number>(global.innerWidth);
   const [isLaptop, setIsLaptop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   // let isLaptop
@@ -37,7 +37,7 @@ function useResize() {
       // isLaptop = width >= SCREEN_LAPTOP ? true : false;
       // isMobile = width < SCREEN_LAPTOP ? true : false;
 
-      setWidth(window.innerWidth);
+      setWidth(global.innerWidth);
     };
 
 

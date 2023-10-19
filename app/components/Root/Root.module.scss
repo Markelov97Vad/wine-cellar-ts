@@ -1,0 +1,9 @@
+.root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: thin;
+
+  &_noscroll {
+    overflow: hidden;
+  }
+}

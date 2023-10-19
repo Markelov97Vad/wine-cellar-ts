@@ -2,12 +2,11 @@
 @use '../../styles/mixins' as *;
 
 .gropdown-menu {
-  // position: fixed;
   position: absolute;
   left: 0;
   right: 0;
   top: 72px;
-  width: 100vw;
+  width: 100%;
   visibility: hidden;
   height: 0;
   transition: all 0.5s ease;
@@ -19,12 +18,13 @@
   align-items: center;
 
   &_open {
-    // border-top: 1px solid $main-color-black;
     visibility: visible;
     opacity: 1;
-    height: 100vh;
-    // margin-top: 24px;
-    position: absolute;
+    height: calc(100vh - 72px);
+  }
+
+  &_location_library {
+    top: 100px;
   }
 
   &__list-wrapper {
@@ -34,36 +34,48 @@
   }
 
   &__list {
-    // display: flex;
-    // flex-direction: column;
-    // gap: 10px;
-    -webkit-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-
-    &:hover {
-      color: $color-fonts-black;
-      -webkit-text-shadow: 2px 2px 2px #00000021;
-      -moz-text-shadow: 2px 2px 2px #00000028;
-      text-shadow: 2px 2px 2px #00000029;
-    }
 
   }
 
   &__link {
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
 
+    &_active {
+      border-bottom: 1px solid $main-color-black-opacity;
+    }
+
+    &_type_route {
+      @include show-font(
+      $size: 15px,
+      $weight: 500,
+      $line-heigth: 20px,
+      $color: $color-fonts-black
+    );
     &:hover {
       color: $color-fonts-black;
       -webkit-text-shadow: 2px 2px 2px #0000007c;
       -moz-text-shadow: 2px 2px 2px #0000007c;
       text-shadow: 2px 2px 2px #0000007c;
     }
-    @include show-font(
+    }
+
+    &_type_auth {
+      color: $color-background-olive;
+      &:hover {
+        -webkit-text-shadow: 2px 2px 2px #ffffff7c;
+        -moz-text-shadow: 2px 2px 2px #ffffff7c;
+        text-shadow: 2px 2px 2px #cec485cc !important;
+      }
+      @include show-font(
       $size: 15px,
       $weight: 500,
       $line-heigth: 20px,
-      $color: $color-fonts-black
-    )
+      $color: $color-font-olive
+    );
+    }
   }
 }

@@ -4,7 +4,13 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding-inline: 80px;
+  padding: 20px 80px 20px;
+  transition: background-color .5s ease;
+
+  &_active {
+    background-color: $main-color-white;
+    border-bottom: $main-color-black;
+  }
 
   @include mobile {
     padding-inline: 20px;

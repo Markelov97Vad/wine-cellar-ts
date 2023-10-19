@@ -17,7 +17,6 @@ export default function MyCollectionLayout({
 }) {
   return (
     <ProtectedRoute>
-      {/* <Header /> */}
       <HeaderTypeSecond/>
       <main>
         <AddWineComp />

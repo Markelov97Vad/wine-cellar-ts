@@ -7,29 +7,39 @@ import Logo from '../Logo/Logo';
 import BurgerMenu from '../ui/BurgerMenu/BurgerMenu';
 import { useState } from 'react';
 import useResize from '@/app/hooks/useResize';
+import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
+import { toggleDropdown } from '@/app/store/wine/wineSlice';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
 
 function Header() {
-  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const { isLaptop } = useResize();
+  const dispatch = useAppDispatch();
+  const { isDropdownMenuOpen } = useAppSelector(state => state.wines)
 
   const handleOpenDropdownMenu = () => {
-    setIsDropdownMenuOpen(!isDropdownMenuOpen);
+    dispatch(toggleDropdown());
   };
 
   return (
-    <header className={style.header}>
+    <header className={`${style.header} ${isDropdownMenuOpen ? style.header_active : ""}`}>
+      {
+        isDropdownMenuOpen ?
+        <Logo dark /> :
       <Logo />
+      }
       {isLaptop ? (
         <>
           <Navigation items={navItemsHeader} />
           <NavigationLinkProfile to="/account/favorites" />
         </>
       ) : (
-        <BurgerMenu
-          light
-          handleOpenDropdownMenu={handleOpenDropdownMenu}
-          isDropdownMenuOpen={isDropdownMenuOpen}
-        />
+        <>
+          <BurgerMenu
+            light
+            handleOpenDropdownMenu={handleOpenDropdownMenu}
+          />
+          <DropdownMenu library/>
+        </>
       )}
     </header>
   );
