@@ -9,6 +9,7 @@ import { ChangeEvent, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { setWineInfo } from '@/app/store/wine/wineApi';
 import { NotificationPopupImageTypeProps } from '@/types/componentProps.types';
+import { useLazyFetchUserWinesQuery, useLazyFetchWinesQuery } from '@/app/store/wine-query/reducer';
 
 function NotificationPopupImage({
     id,
@@ -18,10 +19,12 @@ function NotificationPopupImage({
 
   const dispatch = useAppDispatch();
   const {isSuccessSetInfo} = useAppSelector(state => state.wines);
+  const [getWines] = useLazyFetchWinesQuery();
+  const [getUserWines] = useLazyFetchUserWinesQuery();
   const {inputValues, errorMessages, handleInputChange} = useFormValid();
 
   const handleClick = () => {
-    setIsNotificationSetImageOpen(!isNotificationSetImageOpen)
+    setIsNotificationSetImageOpen(false);
   }
 
   const habdleSubmit = (evt: ChangeEvent<HTMLFormElement>) => {
@@ -34,7 +37,9 @@ function NotificationPopupImage({
 
   useEffect(() => {
     if (isSuccessSetInfo) {
-      setIsNotificationSetImageOpen(!isNotificationSetImageOpen)
+      setIsNotificationSetImageOpen(false);
+      getWines('');
+      getUserWines('');
     }
   }, [isSuccessSetInfo])
 

@@ -19,6 +19,7 @@ import Button from '@/app/components/ui/Button/Button';
 import ImgIcon from '@/app/components/Icons/ImgIcon';
 import NotificationPopupImage from '@/app/components/NotificationPopupImage/NotificationPopupImage';
 import useResize from '@/app/hooks/useResize';
+import Comment from '@/app/components/Comment/Comment';
 
 function AboutWine({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
@@ -95,6 +96,15 @@ function AboutWine({ params }: { params: { id: string } }) {
     setIsNotificationSetImageOpen(!isNotificationSetImageOpen);
   };
 
+  const wineData = [
+    { text: colorWine, type: 'ЦВЕТ' },
+    { text: brand, type: 'БРЭНД' },
+    { text: typeWine, type: 'ТИП' },
+    { text: year, type: 'ГОД' },
+    { text: country, type: 'СТРАНА' },
+    { text: region, type: 'РЕГИОН' },
+  ];
+
   return (
     <>
       <HeaderTypeSecond />
@@ -110,7 +120,11 @@ function AboutWine({ params }: { params: { id: string } }) {
                 src={image!}
                 alt="бутылка вина"
               />
-              <ButtonLike extraClass={style['aboutWine__button-like']} handleClick={handleClick} isLiked={isLiked} />
+              <ButtonLike
+                extraClass={style['aboutWine__button-like']}
+                handleClick={handleClick}
+                isLiked={isLiked}
+              />
               {isOwner && (
                 <button
                   onClick={handleOpenNotificationSetImage}
@@ -133,78 +147,20 @@ function AboutWine({ params }: { params: { id: string } }) {
               </p>
               <StarRaitingDisabled rating={rating} />
               <div className={style.details}>
-                <div className={style.details__wrapper}>
-                  <span
-                    className={`${style.details__about} ${montserrat.className}`}
-                  >
-                    ЦВЕТ
-                  </span>
-                  <span
-                    className={`${style.details__value} ${playfairDisplay.className}`}
-                  >
-                    {colorWine}
-                  </span>
-                </div>
-                <div className={style.details__wrapper}>
-                  <span
-                    className={`${style.details__about} ${montserrat.className}`}
-                  >
-                    БРЭНД
-                  </span>
-                  <span
-                    className={`${style.details__value} ${playfairDisplay.className}`}
-                  >
-                    {brand}
-                  </span>
-                </div>
-                <div className={style.details__wrapper}>
-                  <span
-                    className={`${style.details__about} ${montserrat.className}`}
-                  >
-                    ТИП
-                  </span>
-                  <span
-                    className={`${style.details__value} ${playfairDisplay.className}`}
-                  >
-                    {typeWine}
-                  </span>
-                </div>
-                <div className={style.details__wrapper}>
-                  <span
-                    className={`${style.details__about} ${montserrat.className}`}
-                  >
-                    ГОД
-                  </span>
-                  <span
-                    className={`${style.details__value} ${playfairDisplay.className}`}
-                  >
-                    {year}
-                  </span>
-                </div>
-                <div className={style.details__wrapper}>
-                  <span
-                    className={`${style.details__about} ${montserrat.className}`}
-                  >
-                    СТРАНА
-                  </span>
-                  <span
-                    className={`${style.details__value} ${playfairDisplay.className}`}
-                  >
-                    {country}
-                  </span>
-                </div>
-                <div className={style.details__wrapper}>
-                  <span
-                    className={`${style.details__about} ${montserrat.className}`}
-                  >
-                    РЕГИОН
-                  </span>
-                  <span
-                    className={`${style.details__value} ${playfairDisplay.className}`}
-                  >
-                    {region}
-                  </span>
-                </div>
+                {wineData.map((data, i) => (
+                  <div key={i} className={style.details__wrapper}>
+                    <span
+                      className={`${style.details__about} ${montserrat.className}`}
+                    >
+                      {data.type}
+                    </span>
+                    <span
+                      className={`${style.details__value} ${playfairDisplay.className}`}
+                    >
+                      {data.text}
+                    </span>
+                  </div>
+                ))}
                 <div className={style.details__wrapper}>
                   <span
                     className={`${style.details__about} ${montserrat.className}`}
@@ -212,39 +168,20 @@ function AboutWine({ params }: { params: { id: string } }) {
                     ВИНОГРАД
                   </span>
                   <div className={style['details__value-container']}>
-                    {
-                      grapeVariety?.map((el, i) => (
-                        <span
-                          key={i}
-                          className={`${style.details__value} ${playfairDisplay.className}`}
-                        >
-                          {` ${el}`}
-                        </span>
-                      ))
-                    }
+                    {grapeVariety?.map((el, i) => (
+                      <span
+                        key={i}
+                        className={`${style.details__value} ${playfairDisplay.className}`}
+                      >
+                        {el}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </div>
-              {comment !== undefined && (
-                <>
-                  <p
-                    className={`${style['aboutWine__reviwe-title']} ${playfairDisplay.className}`}
-                  >
-                    Отзыв
-                  </p>
-                  <span
-                    className={`${style['aboutWine__review-owner']} ${montserrat.className}`}
-                  >
-                    {owner?.nameUser?.toUpperCase()}{' '}
-                    {owner?.surname?.toUpperCase()}
-                  </span>
-                  <p
-                    className={`${style.aboutWine__rewiew} ${playfairDisplay.className}`}
-                  >
-                    {comment}
-                  </p>
-                </>
-              )}
+              {comment !== undefined &&
+                <Comment owner={owner} comment={comment}/>
+              }
               {isOwner && !isNotificationDeleteOpen && (
                 <Button
                   onClick={handleOpenNotification}
@@ -274,11 +211,6 @@ function AboutWine({ params }: { params: { id: string } }) {
                 </>
               )}
             </div>
-            <NotificationPopupImage
-              id={_id as string}
-              isNotificationSetImageOpen={isNotificationSetImageOpen}
-              setIsNotificationSetImageOpen={setIsNotificationSetImageOpen}
-            />
           </article>
         ) : (
           <article className={style.aboutWine}>
@@ -318,78 +250,20 @@ function AboutWine({ params }: { params: { id: string } }) {
             </div>
 
             <div className={style.details}>
-              <div className={style.details__wrapper}>
-                <span
-                  className={`${style.details__about} ${montserrat.className}`}
-                >
-                  ЦВЕТ
-                </span>
-                <span
-                  className={`${style.details__value} ${playfairDisplay.className}`}
-                >
-                  {colorWine}
-                </span>
-              </div>
-              <div className={style.details__wrapper}>
-                <span
-                  className={`${style.details__about} ${montserrat.className}`}
-                >
-                  БРЭНД
-                </span>
-                <span
-                  className={`${style.details__value} ${playfairDisplay.className}`}
-                >
-                  {brand}
-                </span>
-              </div>
-              <div className={style.details__wrapper}>
-                <span
-                  className={`${style.details__about} ${montserrat.className}`}
-                >
-                  ТИП
-                </span>
-                <span
-                  className={`${style.details__value} ${playfairDisplay.className}`}
-                >
-                  {typeWine}
-                </span>
-              </div>
-              <div className={style.details__wrapper}>
-                <span
-                  className={`${style.details__about} ${montserrat.className}`}
-                >
-                  ГОД
-                </span>
-                <span
-                  className={`${style.details__value} ${playfairDisplay.className}`}
-                >
-                  {year}
-                </span>
-              </div>
-              <div className={style.details__wrapper}>
-                <span
-                  className={`${style.details__about} ${montserrat.className}`}
-                >
-                  СТРАНА
-                </span>
-                <span
-                  className={`${style.details__value} ${playfairDisplay.className}`}
-                >
-                  {country}
-                </span>
-              </div>
-              <div className={style.details__wrapper}>
-                <span
-                  className={`${style.details__about} ${montserrat.className}`}
-                >
-                  РЕГИОН
-                </span>
-                <span
-                  className={`${style.details__value} ${playfairDisplay.className}`}
-                >
-                  {region}
-                </span>
-              </div>
+              {wineData.map((data, i) => (
+                <div key={i} className={style.details__wrapper}>
+                  <span
+                    className={`${style.details__about} ${montserrat.className}`}
+                  >
+                    {data.type}
+                  </span>
+                  <span
+                    className={`${style.details__value} ${playfairDisplay.className}`}
+                  >
+                    {data.text}
+                  </span>
+                </div>
+              ))}
               <div className={style.details__wrapper}>
                 <span
                   className={`${style.details__about} ${montserrat.className}`}
@@ -397,40 +271,21 @@ function AboutWine({ params }: { params: { id: string } }) {
                   ВИНОГРАД
                 </span>
                 <div className={style['details__value-container']}>
-                    {
-                      grapeVariety?.map((el, i) => (
-                        <span
-                          key={i}
-                          className={`${style.details__value} ${playfairDisplay.className}`}
-                        >
-                          {` ${el}`}
-                        </span>
-                      ))
-                    }
-                  </div>
+                  {grapeVariety?.map((el, i) => (
+                    <span
+                      key={i}
+                      className={`${style.details__value} ${playfairDisplay.className}`}
+                    >
+                      {` ${el}`}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {comment !== undefined && (
-              <>
-                <p
-                  className={`${style['aboutWine__reviwe-title']} ${playfairDisplay.className}`}
-                >
-                  Отзыв
-                </p>
-                <span
-                  className={`${style['aboutWine__review-owner']} ${montserrat.className}`}
-                >
-                  {owner?.nameUser?.toUpperCase()}{' '}
-                  {owner?.surname?.toUpperCase()}
-                </span>
-                <p
-                  className={`${style.aboutWine__rewiew} ${playfairDisplay.className}`}
-                >
-                  {comment}
-                </p>
-              </>
-            )}
+            {comment !== undefined &&
+            <Comment owner={owner} comment={comment} />
+            }
 
             {isOwner && !isNotificationDeleteOpen && (
               <Button
@@ -462,6 +317,11 @@ function AboutWine({ params }: { params: { id: string } }) {
             )}
           </article>
         )}
+        <NotificationPopupImage
+          id={_id as string}
+          isNotificationSetImageOpen={isNotificationSetImageOpen}
+          setIsNotificationSetImageOpen={setIsNotificationSetImageOpen}
+        />
       </main>
     </>
   );

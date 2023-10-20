@@ -1,4 +1,5 @@
-import styles from './Icon.module.scss'
+import styles from './Icon.module.scss';
+
 function ImgIcon() {
   return (
     <svg

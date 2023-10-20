@@ -8,6 +8,11 @@
   align-items: center;
   position: absolute;
   gap: 4px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .6;
+  }
 
   &__span {
     width: 20px;

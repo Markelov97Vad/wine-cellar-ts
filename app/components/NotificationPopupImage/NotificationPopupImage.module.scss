@@ -22,12 +22,15 @@
   }
   &__container {
     background-color: $color-background-white;
-    width: 600px;
-    height: 200px;
+    width: 100%;
+    max-width: 600px;
     position: relative;
     box-sizing: border-box;
     padding: 10px 40px;
     border: 1px solid $main-color-black;
+
+    @include mobile {
+    }
   }
 
   &__title {
@@ -38,6 +41,10 @@
       $line-heigth: 20px,
       $color: $color-fonts-black
     );
+
+    @include mobile {
+     padding-top: 20px;
+    }
   }
 
   &__button-cross {
@@ -52,18 +59,20 @@
       opacity: .6;
     }
 
+    @include mobile {
+      right: 25px;
+    }
+
   }
   &__fieldest {
     margin-top: 30px;
     border: none;
     display: flex;
     gap: 30px;
-    // align-items: center;
     justify-content: center;
   }
   &__button-form {
     opacity: 1;
-    tr
 
     &:hover {
       opacity: .6;

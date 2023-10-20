@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styles from './BurgerMenu.module.scss'
 import { BurgerMenuTypePops } from '@/types/componentProps.types';
 import { useAppSelector } from '@/app/hooks/redux';

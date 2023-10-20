@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import WineCard from '@/app/components/WineLibrary/WineCard/WineCard';
-import { useAppSelector } from '@/app/hooks/redux';
 import { Wine } from '@/types/wine.type';
 import { playfairDisplay } from '@/app/fonts';
 import { useGetFavoriteWineQuery } from '@/app/store/wine-query/reducer';
@@ -16,9 +15,7 @@ function Favorites() {
   }, [data]);
 
   return (
-    // <div className={styles.favorites}>
     <>
-
       <div className={`${styles.favorites__info} ${playfairDisplay.className}`}>
         <h3 className={styles.favorites__title}>My favorites</h3>
         <p className={styles.favorites__subtitle}>
@@ -34,7 +31,6 @@ function Favorites() {
         ))}
       </div>
     </>
-    // </div>
   );
 }
 
