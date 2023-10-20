@@ -4,7 +4,7 @@ export type Wine = {
   _id?: string;
   name?: string;
   region?: string;
-  grapeVariety?: string;
+  grapeVariety?: string[];
   colorWine?: string
   country?: string;
   typeWine?: string;
@@ -17,7 +17,7 @@ export type Wine = {
   likes?: UserType[]
 }
 
-export type optionsWineType = {
+export type OptionsWineType = {
   value: string;
   label: string;
   name?: string;

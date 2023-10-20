@@ -1,8 +1,10 @@
+import { OptionsWineType } from "./wine.type";
+
 export type InputValuesType = {
   name?: string;
   surname?: string
   colorWine?: string;
-  grapeVariety?: string;
+  grapeVariety?: string[];
   country?: string;
   typeWine?: string;
   year?: string;
@@ -14,6 +16,17 @@ export type InputValuesType = {
   brand?: string;
   region?: string;
 }
+
+export type InputSelectType = {
+  value?: string | string[];
+  onChange?: any;
+  onChangeMulti?: (selectedOption: OptionsWineType[]) => void ;
+  options: any;
+  placeholder: string;
+  name: string;
+  classNamePrefix: string;
+  isMulti?: boolean;
+};
 
 export type ErrorMessageType = {
   [index: string]: string;

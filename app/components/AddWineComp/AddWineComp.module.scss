@@ -5,9 +5,6 @@
   background-color: $color-background;
   width: 100%;
   padding: 190px 0 100px;
-  // position: relative;
-  // тень блока
-  // box-shadow: 0 0 10vh 25vh $color-background;
 
   &__wrapper {
     display: flex;
@@ -19,6 +16,13 @@
     max-width: 1110px;
     box-sizing: border-box;
     padding-bottom: 80px;
+
+    @media screen and (max-width: 1190px) {
+      max-width: 868px;
+    }
+    @media screen and (max-width: 946px) {
+      border: 0;
+    }
 
     @include mobile{
       padding-inline: 20px;
@@ -34,12 +38,26 @@
     top: -30px;
     left: -28px;
 
-    @media screen and (max-width: 768px) {
-      top: -270px;
+    @media screen and (max-width: 1190px) {
+      width: 190px;
+      height: 190px;
+    }
+
+    @media screen and (max-width: 946px) {
+      top: -190px;
       left: 50%;
       transform: translateX(-50%);
       align-self: center;
     }
+
+    // @include mobile {
+    //   top: -190px;
+    //   left: 50%;
+    //   transform: translateX(-50%);
+    //   align-self: center;
+    //   // width: 190px;
+    //   // height: 190px;
+    // }
   }
 
   &__img-barrel {
@@ -50,9 +68,15 @@
     top: -30px;
     right: -28px;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1190px) {
+      width: 190px;
+      height: 190px;
+    }
+
+    @media screen and (max-width: 946px) {
       display: none;
     }
+
   }
 
   &__title {
@@ -84,9 +108,9 @@
     };
 
     @include mobile {
-      font-size: 20px;
+      font-size: 25px;
       line-height: 30px;
-      min-width: 225px;
+      min-width: 283px;
     }
   }
 

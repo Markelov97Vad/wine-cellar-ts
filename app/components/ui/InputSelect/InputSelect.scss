@@ -2,6 +2,7 @@
 @use '../../../styles/mixins' as *;
 
 .input-select {
+
   &__span {
     display: inline-block;
     opacity: 0;
@@ -18,9 +19,14 @@
       opacity: 0.5;
     }
   }
+
+  // @include mobile {
+  //   padding-left: 10px;
+  // }
 }
 
 // REACT-SELECT
+
 .custom-select {
   margin: 0;
   // сам контейнер
@@ -31,8 +37,7 @@
     box-shadow: none;
 
     &__value-container {
-      // color: $color-fonts !important;
-      // padding-bottom: 5px !important;
+
     }
     &:hover {
       border-color: $color-border-wrapper !important;
@@ -56,11 +61,15 @@
     top: 6px !important;
     @include show-font(
       $weight: 500 !important,
-      $size: 13px !important,
+      $size: 15px !important,
       $line-heigth: 19.5px !important,
       $color: $color-fonts-opacity !important
     );
     order: 2;
+
+    @include mobile {
+      font-size: 16px !important;
+    }
   }
 
   // место инпута
@@ -70,20 +79,29 @@
     border-bottom: 1px solid $color-fonts;
   }
 
+  &__input {
+    @include mobile {
+      font-size: 16px !important;
+    }
+  }
+
   &__single-value {
     order: 1;
     @include show-font(
       $weight: 500 !important,
-      $size: 13px !important,
+      $size: 15px !important,
       $line-heigth: 19.5px !important,
       $color: $color-fonts !important
     );
+    @include mobile {
+      font-size: 16px !important;
+    }
   }
 
   &__input-container {
     @include show-font(
       $weight: 500 !important,
-      $size: 13px !important,
+      $size: 15px !important,
       $line-heigth: 19.5px !important,
       $color: $color-fonts !important
     );

@@ -90,6 +90,8 @@ function AboutWine({ params }: { params: { id: string } }) {
   const handleOpenNotificationSetImage = () => {
     setIsNotificationSetImageOpen(!isNotificationSetImageOpen);
   }
+  console.log(grapeVariety?.join(', '));
+
 
   return (
     <>
@@ -203,7 +205,7 @@ function AboutWine({ params }: { params: { id: string } }) {
               <span
                 className={`${style.details__value} ${playfairDisplay.className}`}
               >
-                {grapeVariety}
+                {grapeVariety?.join(', ')}
               </span>
             </div>
           </div>

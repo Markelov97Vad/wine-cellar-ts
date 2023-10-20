@@ -1,6 +1,6 @@
-import { optionsWineType } from "../types/wine.type";
+import { OptionsWineType} from "../types/wine.type";
 
-export const optionsGrapeVariety: optionsWineType[] = [
+export const optionsGrapeVariety: OptionsWineType[] = [
   { value: "Абруско", label: "Абруско", name: "grapeVariety" },
   { value: "Агат Донской", label: "Агат Донской", name: "grapeVariety" },
   { value: "Агиоргитико", label: "Агиоргитико", name: "grapeVariety" },
