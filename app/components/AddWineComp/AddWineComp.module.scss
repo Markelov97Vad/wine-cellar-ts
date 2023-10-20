@@ -126,4 +126,8 @@
       $weight: 400
     )
   }
+
+  @include mobile {
+    padding-top: 230px;
+  }
 }

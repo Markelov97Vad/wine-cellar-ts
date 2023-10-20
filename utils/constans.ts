@@ -7,8 +7,8 @@ export const headersData = {
 export const routeData = [
   { route: '/', text: 'Библиотека' },
   { route: '/my-collection', text: 'Моя коллекция' },
-  { route: '/account/settings', text: 'Избранное' },
-  { route: '/account/favorites', text: 'Мои данные' },
+  { route: '/account/favorites', text: 'Избранное' },
+  { route: '/account/settings', text: 'Мои данные' },
 ];
 
 

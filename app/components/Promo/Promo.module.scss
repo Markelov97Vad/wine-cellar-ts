@@ -30,11 +30,11 @@
     display: inline-block;
     align-self: center;
     margin: 0;
-    width: 30vw;
+    width: 40vw;
     border-bottom: 1px solid white;
 
     @include mobile {
-      width: 50vw;
+      width: 58vw;
     }
   }
 }

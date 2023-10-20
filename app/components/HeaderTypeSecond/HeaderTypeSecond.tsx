@@ -31,9 +31,7 @@ function HeaderTypeSecond() {
 
   return (
     <header
-      className={`${styles['header-type-second']} ${
-        isMobile && styles['header-type-second_type_fix']
-      } ${montserrat.className}`}
+      className={`${styles['header-type-second']} ${montserrat.className}`}
       onMouseLeave={handleCloseDropdown}
     >
       {isLaptop ? (
@@ -48,7 +46,7 @@ function HeaderTypeSecond() {
       )}
 
       {!isLaptop && (
-        <BurgerMenu handleOpenDropdownMenu={handleOpenDropdownMenu} />
+        <BurgerMenu extraClass={styles['header-type-second__burger']} handleOpenDropdownMenu={handleOpenDropdownMenu} />
       )}
 
       {isLaptop && (
@@ -93,6 +91,8 @@ function HeaderTypeSecond() {
               onMouseLeave={handleCloseDropdown}
               className={styles['header-type-second__dropdown']}
             >
+              <Link className={styles['header-type-second__link-user']} href={'/account/favorites'}>Избранное</Link>
+              <Link className={styles['header-type-second__link-user']} href={'/account/settings'}>Мои данные</Link>
               <ButtonLogout />
             </div>
           )}

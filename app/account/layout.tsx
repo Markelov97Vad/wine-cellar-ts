@@ -13,12 +13,14 @@ export default function AboutLayout({ children }: { children: ReactNode }) {
   return (
     <ProtectedRoute>
       <HeaderTypeSecond/>
-      <section className={style.account}>
-        <div className={style.account__wrapper}>
-          <NavigationTab/>
-          {children}
-        </div>
-      </section>
+      <main>
+        <section className={style.account}>
+          <div className={style.account__wrapper}>
+            <NavigationTab/>
+            {children}
+          </div>
+        </section>
+      </main>
     </ProtectedRoute>
   );
 }

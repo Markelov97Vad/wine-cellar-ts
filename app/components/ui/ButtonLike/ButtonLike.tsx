@@ -3,9 +3,9 @@ import Dislike from '../../Icons/Dislike';
 import LikeIcon from '../../Icons/LikeIcon';
 import styles from './ButtonLike.module.scss';
 
-function ButtonLike({ handleClick, isLiked }: ButtonLikeProps) {
+function ButtonLike({ handleClick, isLiked, extraClass}: ButtonLikeProps) {
   return (
-    <button onClick={handleClick} className={styles['button-like']}>
+    <button onClick={handleClick} className={`${styles['button-like']} ${extraClass}`}>
       {!isLiked ? <LikeIcon /> : <Dislike />}
     </button>
   );

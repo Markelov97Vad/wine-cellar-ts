@@ -1,3 +1,4 @@
+import styles from './Icon.module.scss'
 function ImgIcon() {
   return (
     <svg
@@ -6,6 +7,7 @@ function ImgIcon() {
       height="28"
       viewBox="0 0 28 28"
       fill="none"
+      className={styles.icon}
     >
       <path
         d="M13.9999 18.6667L9.33325 15.1667L2.33325 24.5H25.6666L20.9999 10.5L13.9999 18.6667Z"

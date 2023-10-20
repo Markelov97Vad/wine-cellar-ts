@@ -39,7 +39,7 @@ function WineCard({ wineElem }: WineCardProps) {
 
   return (
     <article className={`${style['wine-card']} ${montserrat.className}`}>
-      <ButtonLike handleClick={handleClick} isLiked={isLiked} />
+      <ButtonLike extraClass={style['wine-card__button-like']} handleClick={handleClick} isLiked={isLiked} />
       <Link className={style['wine-card__link']} href={`/wine/${_id}/`}>
         <div className={style['wine-card__container']}>
           <span className={style['wine-card__brand']}>{brand}</span>

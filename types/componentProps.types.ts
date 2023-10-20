@@ -78,6 +78,7 @@ export type ButtonCrossProps = {
 export type ButtonLikeProps = {
   handleClick: () => void;
   isLiked?: boolean;
+  extraClass?: string;
 }
 
 export type CrossIconProps = {
@@ -112,6 +113,7 @@ export type NotificationPopupImageTypeProps = {
 export type BurgerMenuTypePops = {
   handleOpenDropdownMenu: () => void ;
   light?: boolean;
+  extraClass?: string;
 }
 
 export type FilterTypeProps = {

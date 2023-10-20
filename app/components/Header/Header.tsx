@@ -35,6 +35,7 @@ function Header() {
       ) : (
         <>
           <BurgerMenu
+            extraClass={style.header__burger}
             light
             handleOpenDropdownMenu={handleOpenDropdownMenu}
           />

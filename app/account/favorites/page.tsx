@@ -9,14 +9,16 @@ import { useGetFavoriteWineQuery } from '@/app/store/wine-query/reducer';
 
 function Favorites() {
   const { data } = useGetFavoriteWineQuery('');
-  const [favoriteWines, setFavoritesWines] = useState<Wine[]>([]);
+  const [favoriteWines, setFavoritesWines] = useState<Wine[] | undefined>([]);
 
   useEffect(() => {
     setFavoritesWines(data);
   }, [data]);
 
   return (
+    // <div className={styles.favorites}>
     <>
+
       <div className={`${styles.favorites__info} ${playfairDisplay.className}`}>
         <h3 className={styles.favorites__title}>My favorites</h3>
         <p className={styles.favorites__subtitle}>
@@ -32,6 +34,7 @@ function Favorites() {
         ))}
       </div>
     </>
+    // </div>
   );
 }
 

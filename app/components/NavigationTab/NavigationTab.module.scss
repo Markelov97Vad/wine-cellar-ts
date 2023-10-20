@@ -42,4 +42,10 @@
       color: $color-background-olive;
     }
   }
+
+  @include mobile {
+    padding: 20px;
+    width: 100%;
+    align-self: center;
+  }
 }
