@@ -1,26 +1,18 @@
 import Select from 'react-select';
 import './InputSelect.scss';
-import { OptionType } from '../../../../types/allTypes.types';
-import { optionsWineType } from '../../../../types/wine.type';
-
-type InputSelectType = {
-  value?: string;
-  onChange: (selectedOption: OptionType | null) => void;
-  options: optionsWineType[];
-  placeholder: string;
-  name: string;
-  classNamePrefix: string;
-};
+import { InputSelectType } from '../../../../types/allTypes.types';
 
 function InputSelect({
   value,
   onChange,
+  onChangeMulti,
   options,
   placeholder,
   name,
+  isMulti
 }: InputSelectType) {
   return (
-    <div>
+    <div className='input-select'>
       <span
         className={`input-select__span ${
           value?.length! > 0 ? 'input-select__span_active' : ''
@@ -30,11 +22,12 @@ function InputSelect({
       </span>
       <Select
         instanceId={'1'}
-        onChange={onChange}
+        onChange={isMulti ? onChangeMulti : onChange }
         classNamePrefix="custom-select"
         options={options}
         placeholder={placeholder}
         name={name}
+        isMulti={isMulti}
       />
     </div>
   );

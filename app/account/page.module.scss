@@ -1,4 +1,5 @@
 @use '../styles/variables' as *;
+@use '../styles/mixins' as *;
 
 .account {
   background-color: $color-background-milk;
@@ -14,9 +15,19 @@
     grid-template-areas:
       "nav-bar info"
       "list list";
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
-  &__layout {
-    background-color: $color-background-white;
+  @include mobile {
+    padding-inline: 20px;
+    padding-top: 100px;
+  }
+
+  @media screen and (max-width: 414px) {
+    padding-inline: 0;
   }
 }

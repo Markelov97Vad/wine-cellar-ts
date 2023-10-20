@@ -18,6 +18,8 @@ import {
 import Button from '@/app/components/ui/Button/Button';
 import ImgIcon from '@/app/components/Icons/ImgIcon';
 import NotificationPopupImage from '@/app/components/NotificationPopupImage/NotificationPopupImage';
+import useResize from '@/app/hooks/useResize';
+import Comment from '@/app/components/Comment/Comment';
 
 function AboutWine({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
@@ -29,8 +31,11 @@ function AboutWine({ params }: { params: { id: string } }) {
   const [deleteWine, { isSuccess: isSuccessDelWine }] = useDeleteWineMutation();
   const { back, push } = useRouter();
   const [isLiked, setIsLiked] = useState<boolean | undefined>(false);
-  const [isNotificationDeleteOpen, setIsNotificationDeleteOpen] = useState(false);
-  const [isNotificationSetImageOpen, setIsNotificationSetImageOpen] = useState(false);
+  const [isNotificationDeleteOpen, setIsNotificationDeleteOpen] =
+    useState(false);
+  const [isNotificationSetImageOpen, setIsNotificationSetImageOpen] =
+    useState(false);
+  const { isLaptop } = useResize();
   const {
     _id,
     name,
@@ -89,141 +94,94 @@ function AboutWine({ params }: { params: { id: string } }) {
 
   const handleOpenNotificationSetImage = () => {
     setIsNotificationSetImageOpen(!isNotificationSetImageOpen);
-  }
+  };
+
+  const wineData = [
+    { text: colorWine, type: 'ЦВЕТ' },
+    { text: brand, type: 'БРЭНД' },
+    { text: typeWine, type: 'ТИП' },
+    { text: year, type: 'ГОД' },
+    { text: country, type: 'СТРАНА' },
+    { text: region, type: 'РЕГИОН' },
+  ];
 
   return (
     <>
       <HeaderTypeSecond />
       <main className={style.aboutWine}>
-        <button onClick={back} className={style['aboutWine__button-back']}>
-          <CrossIcon dark />
-        </button>
-        <div className={style.aboutWine__imgContainer}>
-          <img
-            className={style.aboutWine__image}
-            src={image!}
-            alt="бутылка вина"
-          />
-          <ButtonLike handleClick={handleClick} isLiked={isLiked} />
-          {
-            isOwner &&
-            <button onClick={handleOpenNotificationSetImage} className={style['aboutWine__button-confirm']} type="button"><ImgIcon/></button>
-          }
-        </div>
+        {isLaptop ? (
+          <article className={style.aboutWine__wrapper}>
+            <button onClick={back} className={style['aboutWine__button-back']}>
+              <CrossIcon dark />
+            </button>
+            <div className={style.aboutWine__imgContainer}>
+              <img
+                className={style.aboutWine__image}
+                src={image!}
+                alt="бутылка вина"
+              />
+              <ButtonLike
+                extraClass={style['aboutWine__button-like']}
+                handleClick={handleClick}
+                isLiked={isLiked}
+              />
+              {isOwner && (
+                <button
+                  onClick={handleOpenNotificationSetImage}
+                  className={style['aboutWine__button-confirm']}
+                  type="button"
+                >
+                  <ImgIcon />
+                </button>
+              )}
+            </div>
 
-        <div className={style['aboutWine__info-wrapper']}>
-          <h1
-            className={`${style.aboutWine__title} ${playfairDisplay.className}`}
-          >
-            {name}
-          </h1>
-          <p className={style.aboutWine__subtitle}>
-            {brand?.toLocaleUpperCase()}
-          </p>
-          <StarRaitingDisabled rating={rating} />
-          <div className={style.details}>
-            <div className={style.details__wrapper}>
-              <span
-                className={`${style.details__about} ${montserrat.className}`}
+            <div className={style['aboutWine__info-wrapper']}>
+              <h1
+                className={`${style.aboutWine__title} ${playfairDisplay.className}`}
               >
-                ЦВЕТ
-              </span>
-              <span
-                className={`${style.details__value} ${playfairDisplay.className}`}
-              >
-                {colorWine}
-              </span>
-            </div>
-            <div className={style.details__wrapper}>
-              <span
-                className={`${style.details__about} ${montserrat.className}`}
-              >
-                БРЭНД
-              </span>
-              <span
-                className={`${style.details__value} ${playfairDisplay.className}`}
-              >
-                {brand}
-              </span>
-            </div>
-            <div className={style.details__wrapper}>
-              <span
-                className={`${style.details__about} ${montserrat.className}`}
-              >
-                ТИП
-              </span>
-              <span
-                className={`${style.details__value} ${playfairDisplay.className}`}
-              >
-                {typeWine}
-              </span>
-            </div>
-            <div className={style.details__wrapper}>
-              <span
-                className={`${style.details__about} ${montserrat.className}`}
-              >
-                ГОД
-              </span>
-              <span
-                className={`${style.details__value} ${playfairDisplay.className}`}
-              >
-                {year}
-              </span>
-            </div>
-            <div className={style.details__wrapper}>
-              <span
-                className={`${style.details__about} ${montserrat.className}`}
-              >
-                СТРАНА
-              </span>
-              <span
-                className={`${style.details__value} ${playfairDisplay.className}`}
-              >
-                {country}
-              </span>
-            </div>
-            <div className={style.details__wrapper}>
-              <span
-                className={`${style.details__about} ${montserrat.className}`}
-              >
-                РЕГИОН
-              </span>
-              <span
-                className={`${style.details__value} ${playfairDisplay.className}`}
-              >
-                {region}
-              </span>
-            </div>
-            <div className={style.details__wrapper}>
-              <span
-                className={`${style.details__about} ${montserrat.className}`}
-              >
-                ВИНОГРАД
-              </span>
-              <span
-                className={`${style.details__value} ${playfairDisplay.className}`}
-              >
-                {grapeVariety}
-              </span>
-            </div>
-          </div>
-          {comment !== undefined && (
-            <>
-              <p
-                className={`${style['aboutWine__reviwe-title']} ${playfairDisplay.className}`}
-              >
-                Отзыв
+                {name}
+              </h1>
+              <p className={style.aboutWine__subtitle}>
+                {brand?.toLocaleUpperCase()}
               </p>
-              <span
-                className={`${style['aboutWine__review-owner']} ${montserrat.className}`}
-              >
-                {owner?.nameUser?.toUpperCase()} {owner?.surname?.toUpperCase()}
-              </span>
-              <p
-                className={`${style.aboutWine__rewiew} ${playfairDisplay.className}`}
-              >
-                {comment}
-              </p>
+              <StarRaitingDisabled rating={rating} />
+              <div className={style.details}>
+                {wineData.map((data, i) => (
+                  <div key={i} className={style.details__wrapper}>
+                    <span
+                      className={`${style.details__about} ${montserrat.className}`}
+                    >
+                      {data.type}
+                    </span>
+                    <span
+                      className={`${style.details__value} ${playfairDisplay.className}`}
+                    >
+                      {data.text}
+                    </span>
+                  </div>
+                ))}
+                <div className={style.details__wrapper}>
+                  <span
+                    className={`${style.details__about} ${montserrat.className}`}
+                  >
+                    ВИНОГРАД
+                  </span>
+                  <div className={style['details__value-container']}>
+                    {grapeVariety?.map((el, i) => (
+                      <span
+                        key={i}
+                        className={`${style.details__value} ${playfairDisplay.className}`}
+                      >
+                        {el}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              {comment !== undefined &&
+                <Comment owner={owner} comment={comment}/>
+              }
               {isOwner && !isNotificationDeleteOpen && (
                 <Button
                   onClick={handleOpenNotification}
@@ -252,10 +210,118 @@ function AboutWine({ params }: { params: { id: string } }) {
                   </div>
                 </>
               )}
-            </>
-          )}
-        </div>
-        <NotificationPopupImage id={_id as string} isNotificationSetImageOpen={isNotificationSetImageOpen} setIsNotificationSetImageOpen={setIsNotificationSetImageOpen}/>
+            </div>
+          </article>
+        ) : (
+          <article className={style.aboutWine}>
+            <button onClick={back} className={style['aboutWine__button-back']}>
+              <CrossIcon dark />
+            </button>
+            <h1
+              className={`${style.aboutWine__title} ${playfairDisplay.className}`}
+            >
+              {name}
+            </h1>
+            <p className={style.aboutWine__subtitle}>
+              {brand?.toLocaleUpperCase()}
+            </p>
+            <StarRaitingDisabled rating={rating} />
+
+            <div className={style.aboutWine__imgContainer}>
+              <img
+                className={style.aboutWine__image}
+                src={image!}
+                alt="бутылка вина"
+              />
+              <ButtonLike
+                extraClass={style['aboutWine__button-like']}
+                handleClick={handleClick}
+                isLiked={isLiked}
+              />
+              {isOwner && (
+                <button
+                  onClick={handleOpenNotificationSetImage}
+                  className={style['aboutWine__button-confirm']}
+                  type="button"
+                >
+                  <ImgIcon />
+                </button>
+              )}
+            </div>
+
+            <div className={style.details}>
+              {wineData.map((data, i) => (
+                <div key={i} className={style.details__wrapper}>
+                  <span
+                    className={`${style.details__about} ${montserrat.className}`}
+                  >
+                    {data.type}
+                  </span>
+                  <span
+                    className={`${style.details__value} ${playfairDisplay.className}`}
+                  >
+                    {data.text}
+                  </span>
+                </div>
+              ))}
+              <div className={style.details__wrapper}>
+                <span
+                  className={`${style.details__about} ${montserrat.className}`}
+                >
+                  ВИНОГРАД
+                </span>
+                <div className={style['details__value-container']}>
+                  {grapeVariety?.map((el, i) => (
+                    <span
+                      key={i}
+                      className={`${style.details__value} ${playfairDisplay.className}`}
+                    >
+                      {` ${el}`}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {comment !== undefined &&
+            <Comment owner={owner} comment={comment} />
+            }
+
+            {isOwner && !isNotificationDeleteOpen && (
+              <Button
+                onClick={handleOpenNotification}
+                extraClass={`${montserrat.className} ${style['details__button-delete']}`}
+                text={'Удалить вино'}
+              />
+            )}
+            {isNotificationDeleteOpen && (
+              <>
+                <span
+                  className={`${style.details__span} ${montserrat.className}`}
+                >
+                  Вы точно хотите удалить это вино?
+                </span>
+                <div className={style.details__notification}>
+                  <Button
+                    onClick={handleOpenNotification}
+                    extraClass={`${montserrat.className} ${style['details__button-delete']}`}
+                    text={'Отмена'}
+                  />
+                  <Button
+                    onClick={handleDeleteWine}
+                    extraClass={`${montserrat.className} ${style['details__button-delete']}`}
+                    text={'Подтвердить'}
+                  />
+                </div>
+              </>
+            )}
+          </article>
+        )}
+        <NotificationPopupImage
+          id={_id as string}
+          isNotificationSetImageOpen={isNotificationSetImageOpen}
+          setIsNotificationSetImageOpen={setIsNotificationSetImageOpen}
+        />
       </main>
     </>
   );

@@ -1,7 +1,5 @@
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
-import AddWineComp from '../components/AddWineComp/AddWineComp';
-import Header from '../components/Header/Header';
 import ProtectedRoute from '../hoc/ProtectedRoute';
 import HeaderTypeSecond from '../components/HeaderTypeSecond/HeaderTypeSecond';
 
@@ -19,7 +17,6 @@ export default function MyCollectionLayout({
     <ProtectedRoute>
       <HeaderTypeSecond/>
       <main>
-        <AddWineComp />
         {children}
       </main>
     </ProtectedRoute>

@@ -19,7 +19,7 @@ type SignFormType = {
 
 function SignForm({ register = false }: SignFormType) {
   // const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
-  const { inputValues, handleInputChange} = useFormValid();
+  const { inputValues, handleInputChange, errorMessages} = useFormValid();
   const dispatch = useAppDispatch();
   const { isLoggedIn, error } = useAppSelector( state => state.user);
   const { back } = useRouter();
@@ -58,10 +58,11 @@ function SignForm({ register = false }: SignFormType) {
         <InputForm
           location="sign"
           name="nameUser"
-          type="text"
+          type='text'
           placeholder="Имя"
           value={inputValues?.nameUser}
           handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
+          error={errorMessages.nameUser}
           required={true}
         />
       )}
@@ -72,6 +73,7 @@ function SignForm({ register = false }: SignFormType) {
         placeholder="Email"
         value={inputValues?.email}
         handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false  })}
+        error={errorMessages.email}
         required={true}
       />
       <InputForm
@@ -81,6 +83,7 @@ function SignForm({ register = false }: SignFormType) {
         placeholder="Пароль"
         value={inputValues?.password}
         handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false  })}
+        error={errorMessages.password}
         required={true}
       />
       <ButtonSubmitForm

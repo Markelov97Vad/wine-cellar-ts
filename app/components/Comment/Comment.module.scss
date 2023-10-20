@@ -1,0 +1,58 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.comment {
+  &__reviwe-title {
+    font-size: 35px;
+    letter-spacing: 0.14rem;
+    line-height: 1.3;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    @include show-font(
+      $color: $color-fonts-black,
+      $size: 30px,
+      $line-heigth: 150%,
+      $weight: 400,
+    );
+
+    @include mobile {
+      margin-top: 30px;
+    }
+
+    @include mobile_s {
+      margin-top: 15px;
+      font-size: 20px;
+    }
+  }
+
+  &__review-owner {
+    display: inline-block;
+    letter-spacing: 0.14rem;
+    margin-top: 15px;
+
+    @include show-font(
+      $color: $color-fonts-black,
+      $size: 15px,
+      $line-heigth: 150%,
+      $weight: 400,
+    );
+
+    @include mobile {
+      font-size: 13px;
+    }
+  }
+
+  &__rewiew {
+    text-align: justify;
+    letter-spacing: 0.14rem;
+    margin-top: 15px;
+
+    @include show-font(
+      $color: $color-fonts-black,
+      $size: 15px,
+      $line-heigth: 150%,
+      $weight: 400,
+    );
+  }
+}

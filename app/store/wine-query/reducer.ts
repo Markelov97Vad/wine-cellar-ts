@@ -75,6 +75,7 @@ export const WinesQuery = createApi({
 
 export const {
   useFetchWinesQuery,
+  useLazyFetchWinesQuery,
   useFetchUserWinesQuery,
   useLazyFetchUserWinesQuery,
   useAddFavoriteWineMutation,

@@ -13,6 +13,9 @@ import { useFormValid } from '@/app/hooks/useFormValid';
 import { montserrat } from '@/app/fonts';
 import NotificationPopup from '../NotificationPopup/NotificationPopup';
 import { useAddNewWineMutation } from '@/app/store/wine-query/reducer';
+import { OnChangeValue, SingleValue } from 'react-select';
+// import { optionsWineType } from '@/types/wine.type';
+import { OptionType } from '@/types/allTypes.types';
 
 function FormComponent() {
   const {
@@ -20,6 +23,7 @@ function FormComponent() {
     errorMessages,
     handleInputChange,
     handleChangeSelector,
+    handleChangeSelectorMulti,
     handleReiting,
     formIsValid,
   } = useFormValid();
@@ -42,6 +46,11 @@ function FormComponent() {
       setIsNotificationPopupOpen(true);
     }
   }, [isSuccess]);
+
+  useEffect(() => {
+    console.log(inputValues);
+
+  }, [inputValues]);
 
   return (
     <>
@@ -159,9 +168,10 @@ function FormComponent() {
             />
             <InputSelect
               value={inputValues?.grapeVariety}
-              onChange={handleChangeSelector}
+              onChangeMulti={handleChangeSelectorMulti}
               classNamePrefix="custom-select"
               options={optionsGrapeVariety}
+              isMulti
               placeholder="Сорт винограда"
               name="colorWine"
             />

@@ -3,17 +3,24 @@
 
 .register {
   background-color: $color-background-milk;
-  width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
+  padding: 40px 20px 80px;
 
   &__wrapper {
-    width: 400px;
-    height: 400px;
+    width: 100%;
+    max-width: 400px;
+    max-height: 500px;
     border: 2px solid #28282835;
     padding: 20px 40px;
     margin-top: 40px;
+
+    @media screen and (max-width: 414px) {
+      padding: 10px 20px;
+      margin-top: 20px;
+      border:0;
+    }
   }
 
   &__title {
@@ -31,5 +38,9 @@
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
+  }
+
+  @media screen and (max-width: 414px) {
+    padding: 60px 20px;
   }
 }

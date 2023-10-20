@@ -6,7 +6,10 @@ import { useAppSelector } from '@/app/hooks/redux';
 import { useEffect, useState } from 'react';
 import StarRaitingDisabled from '../../StarRaitingDisabled/StarRaitingDisabled';
 import ButtonLike from '../../ui/ButtonLike/ButtonLike';
-import { useAddFavoriteWineMutation, useDeleteFavoriteWineMutation } from '@/app/store/wine-query/reducer';
+import {
+  useAddFavoriteWineMutation,
+  useDeleteFavoriteWineMutation,
+} from '@/app/store/wine-query/reducer';
 import Button from '../../ui/Button/Button';
 
 type WineCardProps = {
@@ -15,10 +18,8 @@ type WineCardProps = {
 
 function WineCard({ wineElem }: WineCardProps) {
   const { rating, brand, image, name, year, _id, likes } = wineElem;
-  const [addFavorite, { isSuccess: isSuccessAdd }] =
-    useAddFavoriteWineMutation();
-  const [deleteFavorite, { isSuccess: isSuccessDel }] =
-    useDeleteFavoriteWineMutation();
+  const [addFavorite] = useAddFavoriteWineMutation();
+  const [deleteFavorite] = useDeleteFavoriteWineMutation();
   const { isLoggedIn } = useAppSelector((state) => state.user);
   const [isLiked, setIsLiked] = useState<boolean | undefined>(false);
 
@@ -38,7 +39,7 @@ function WineCard({ wineElem }: WineCardProps) {
 
   return (
     <article className={`${style['wine-card']} ${montserrat.className}`}>
-      <ButtonLike handleClick={handleClick} isLiked={isLiked} />
+      <ButtonLike extraClass={style['wine-card__button-like']} handleClick={handleClick} isLiked={isLiked} />
       <Link className={style['wine-card__link']} href={`/wine/${_id}/`}>
         <div className={style['wine-card__container']}>
           <span className={style['wine-card__brand']}>{brand}</span>
@@ -48,7 +49,10 @@ function WineCard({ wineElem }: WineCardProps) {
         <span className={style['wine-card__year']}>{year}</span>
         <div className={style['wine-card__container']}>
           <StarRaitingDisabled rating={rating} />
-          <Button extraClass={style['wine-card__button-info']} text='Подробнее'/>
+          <Button
+            extraClass={style['wine-card__button-info']}
+            text="Подробнее"
+          />
         </div>
       </Link>
     </article>

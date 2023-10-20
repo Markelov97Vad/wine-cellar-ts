@@ -4,7 +4,9 @@
 .wine-library {
   padding: 140px 0 100px ;
   background-color: $color-background-milk;
+  // height: 100%;
   min-height: 300px;
+  box-sizing: border-box;
 
 
   &__wrapper {

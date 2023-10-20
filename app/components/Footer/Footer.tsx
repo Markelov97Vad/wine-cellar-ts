@@ -1,7 +1,5 @@
 import { montserrat } from '@/app/fonts';
 import styles from './Footer.module.scss';
-import Link from 'next/link';
-import { routeData } from '@/utils/constans';
 import VkIcon from '../Icons/VkIcon';
 import TelegramIcon from '../Icons/TelegramIcon';
 import GithubIcon from '../Icons/GitgubIcon';

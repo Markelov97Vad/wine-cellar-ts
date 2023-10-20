@@ -11,8 +11,12 @@
   top: 0;
   z-index: 10;
 
-  &_type_fix {
-    position: sticky;
+  @include mobile {
+    position: fixed;
+    width: 100%;
+    -webkit-box-shadow: 0px 8px 6px -4px rgba(34, 60, 80, 0.28);
+    -moz-box-shadow: 0px 8px 6px -4px rgba(34, 60, 80, 0.28);
+    box-shadow: 0px 8px 6px -4px rgba(34, 60, 80, 0.28);
   }
 
   &__logo {
@@ -22,6 +26,11 @@
       $line-heigth: 21px,
       $color: $color-fonts-black
     );
+  }
+
+  &__burger {
+    top: 10px;
+    right: 30px;
   }
 
   &__wrapper {
@@ -77,6 +86,9 @@
     top: 35px;
     border: 1px solid $main-color-black-opacity;
     padding: 7px 3px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
 
   @include mobile {

@@ -7,6 +7,8 @@
   padding: 40px;
   width: 100%;
   box-sizing: border-box;
+  height: 100%;
+  max-height: 320px;
 
   &__form {
     display: flex;
@@ -23,6 +25,11 @@
     justify-content: center;
     width: 100%;
     gap: 40px;
+
+    @include mobile {
+      flex-direction: column;
+      gap: 0;
+    }
   }
 
   &__submit-wrapper {
@@ -52,5 +59,10 @@
     margin-top: 50px;
     align-self: center;
     max-width: 150px;
+  }
+
+  @include mobile {
+    padding: 10px;
+
   }
 }

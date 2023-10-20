@@ -1,5 +1,6 @@
-import { ChangeEvent, MouseEventHandler, ReactNode } from "react";
+import { ChangeEvent, ReactNode } from "react";
 import { Wine } from "./wine.type";
+import { UserType } from "./user.type";
 
 export type NavigationLinkProfileType = {
   to: string;
@@ -78,6 +79,7 @@ export type ButtonCrossProps = {
 export type ButtonLikeProps = {
   handleClick: () => void;
   isLiked?: boolean;
+  extraClass?: string;
 }
 
 export type CrossIconProps = {
@@ -106,12 +108,13 @@ export type NotificationPopupTypeProps  = {
 export type NotificationPopupImageTypeProps = {
   id: string;
   isNotificationSetImageOpen: boolean;
-  setIsNotificationSetImageOpen: (el : boolean) => void;
+  setIsNotificationSetImageOpen: (value: boolean) => void;
 }
 
 export type BurgerMenuTypePops = {
   handleOpenDropdownMenu: () => void ;
   light?: boolean;
+  extraClass?: string;
 }
 
 export type FilterTypeProps = {
@@ -134,4 +137,9 @@ export type FooterForMobileTypeProps = {
     logo: ReactNode;
     href: string;
   }[]
+}
+
+export type CommentTypeProps = {
+  comment: string;
+  owner?: UserType;
 }

@@ -2,14 +2,13 @@
 import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import WineCard from '@/app/components/WineLibrary/WineCard/WineCard';
-import { useAppSelector } from '@/app/hooks/redux';
 import { Wine } from '@/types/wine.type';
 import { playfairDisplay } from '@/app/fonts';
 import { useGetFavoriteWineQuery } from '@/app/store/wine-query/reducer';
 
 function Favorites() {
   const { data } = useGetFavoriteWineQuery('');
-  const [favoriteWines, setFavoritesWines] = useState<Wine[]>([]);
+  const [favoriteWines, setFavoritesWines] = useState<Wine[] | undefined>([]);
 
   useEffect(() => {
     setFavoritesWines(data);

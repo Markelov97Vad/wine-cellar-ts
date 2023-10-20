@@ -9,6 +9,11 @@
   position: relative;
   z-index: 1;
 
+  &__button-like {
+    top: 15px;
+    right: 15px;
+  }
+
   &__link {
     box-sizing: border-box;
     padding: 10px 20px 20px;

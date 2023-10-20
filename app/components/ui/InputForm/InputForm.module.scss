@@ -10,6 +10,9 @@
 
   &_size_b {
     margin-top: 30px;
+    @include mobile {
+     margin-top: 10px;
+    }
   }
 
   &__label {
@@ -32,7 +35,7 @@
     &_sign {
       @include show-font(
         $weight: 500,
-        $size: 13px,
+        $size: 15px,
         $line-heigth: 19.5px,
         $color: $color-fonts-black
       );
@@ -44,7 +47,7 @@
     &_add-wine {
       @include show-font(
         $weight: 500,
-        $size: 13px,
+        $size: 15px,
         $line-heigth: 19.5px,
         $color: $color-fonts
       );
@@ -81,7 +84,7 @@
       &::placeholder {
         @include show-font(
           $weight: 500,
-          $size: 13px,
+          $size: 15px,
           $line-heigth: 19.5px,
           $color: $color-fonts-black-opacity
         );
@@ -99,7 +102,7 @@
       border-bottom: 1px solid $color-fonts;
       @include show-font(
         $weight: 500,
-        $size: 13px,
+        $size: 15px,
         $line-heigth: 19.5px,
         $color: $color-fonts
       );
@@ -107,7 +110,7 @@
       &::placeholder {
         @include show-font(
           $weight: 500,
-          $size: 13px,
+          $size: 15px,
           $line-heigth: 19.5px,
           $color: $color-fonts-opacity
         );
@@ -148,18 +151,11 @@
   }
 
   &__error {
-    position: absolute;
-    bottom: -18px;
     @include show-font(
       $weight: 500,
       $size: 13px,
       $line-heigth: 19.5px,
       $color: $color-fonts-error
     );
-  }
-
-  @include mobile {
-    align-self: center;
-    width: 95%;
   }
 }

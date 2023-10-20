@@ -2,7 +2,6 @@
 @use '../../styles/mixins' as *;
 
 .favorites {
-
   &__info {
     padding: 40px;
     grid-area: info;
@@ -30,9 +29,12 @@
 
   &__list-container {
     grid-area: list;
+    width: 100%;
     display: grid;
     justify-content: center;
+    flex-direction: column;
     grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
     gap: 25px;
+    padding-bottom: 30px;
   }
 }
