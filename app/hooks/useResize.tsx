@@ -12,7 +12,7 @@ import {
 function useResize() {
   const [cardsCount, setCardsCount] = useState<number>(12);
   const [newCardsCount, setNewCardsCount] = useState<number>(3);
-  const [width, setWidth] = useState<number>(global.innerWidth);
+  const [width, setWidth] = useState<number>(globalThis.innerWidth);
   const [isLaptop, setIsLaptop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   // let isLaptop
@@ -20,14 +20,12 @@ function useResize() {
 
   useEffect(() => {
     const handleResize = () => {
-      // const renderCount = width > SCREEN_DESKTOP ?
-      //   NUMBER_OF_MOVIES_FOR_DESKTOP : width > SCREEN_TABLET ?
-      //   NUMBER_OF_MOVIES_FOR_TABLET : NUMBER_OF_MOVIES_FOR_MOBILE;
+      const renderCount = width > SCREEN_LAPTOP ? 12 : 6;
 
       // const downloadCount = width > SCREEN_DESKTOP ?
       //   NUMBER_OF_MOVIES_FOR_DESKTOP_ADD : NUMBER_OF_MOVIES_FOR_MOBILE_ADD;
 
-      // setCardsCount(renderCount);
+      setCardsCount(renderCount);
       // setNewCardsCount(downloadCount);
 
       setIsLaptop(() => width >= SCREEN_LAPTOP ? true : false);
@@ -39,7 +37,6 @@ function useResize() {
 
       setWidth(global.innerWidth);
     };
-
 
     window.addEventListener('resize', handleResize);
 

@@ -1,8 +1,40 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
 .wine-card-list {
-  padding: 40px 10px 0;
-  grid-area: card-list;
-  display: grid;
-  gap: 25px;
-  justify-content: center;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    padding: 40px 10px 0;
+    grid-area: card-list;
+    display: grid;
+    gap: 25px;
+    justify-content: center;
+    // margin: 0 auto;
+    // align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    @include mobile_s {
+      margin: 0 auto;
+    }
+  }
+
+  &__add-button {
+    background-color: $color-background;
+    color: $color-fonts;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 200px;
+    align-self: center;
+
+    @include show-font(
+      $weight: 500, $size: 16px, $line-heigth: 20px, $color: $color-fonts
+    );
+
+    &:hover {
+      background-color: $color-background-white;
+      color: $color-fonts-black;
+    }
+  }
 }

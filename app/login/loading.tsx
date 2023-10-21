@@ -1,6 +1,12 @@
 function LoadingLoginPage() {
   return (
-    <h1>Loading</h1>
+    <div className="spinner">
+    <div className="spinner__pulse-container">
+      <div className="spinner__pulse-bubble spinner__pulse-bubble_type_1"></div>
+      <div className="spinner__pulse-bubble spinner__pulse-bubble_type_2"></div>
+      <div className="spinner__pulse-bubble spinner__pulse-bubble_type_3"></div>
+    </div>
+  </div>
   );
 }
 

@@ -10,7 +10,7 @@ import { InputValuesType } from '../../../types/allTypes.types';
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import InputForm from '../ui/InputForm/InputForm';
 import { useRouter } from 'next/navigation';
-import { error } from 'console';
+import { error, log } from 'console';
 import { useFormValid } from '@/app/hooks/useFormValid';
 
 type SignFormType = {
@@ -20,8 +20,9 @@ type SignFormType = {
 function SignForm({ register = false }: SignFormType) {
   // const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
   const { inputValues, handleInputChange, errorMessages} = useFormValid();
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const { isLoggedIn, error } = useAppSelector( state => state.user);
+  const { isLoggedIn, error, loading } = useAppSelector( state => state.user);
   const { back } = useRouter();
 
 
@@ -43,7 +44,9 @@ function SignForm({ register = false }: SignFormType) {
         })
       );
     }
+    setIsInfoOpen(true);
   };
+
   useEffect(() => {
     if (isLoggedIn) {
       back();
@@ -51,6 +54,21 @@ function SignForm({ register = false }: SignFormType) {
     }
 
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    // console.log(error?.includes('Status 409'));
+  }, [error]);
+
+  const renderErorrText = (error: string | null | undefined) => {
+    switch (error) {
+      case 'Error: Status 409':
+        return 'Пользователь с таким email уже существует';
+      case 'Error: Status 401':
+        return 'Неправильный email или пароль';
+      default:
+        return 'Произошла ошибка';
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit} className={style.form} noValidate>
@@ -63,6 +81,7 @@ function SignForm({ register = false }: SignFormType) {
           value={inputValues?.nameUser}
           handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
           error={errorMessages.nameUser}
+          max={30}
           required={true}
         />
       )}
@@ -86,10 +105,19 @@ function SignForm({ register = false }: SignFormType) {
         error={errorMessages.password}
         required={true}
       />
+      <div className={style['form__info-wrapper']}>
+
+        {
+          (isInfoOpen && error) &&
+          <span className={style['form__span-error-email']}>
+            {renderErorrText(error)}
+          </span>
+        }
       <ButtonSubmitForm
         extraClass={style.form__button}
-        text={`${register ? 'Зарегистрироваться' : 'Войти'}`}
+        text={`${register ? loading ? 'Регистрация..': 'Зарегистрироваться' : loading ? 'Вход..': 'Войти'}`}
       />
+      </div>
       {register ? (
         <span className={style.form__span}>
           Уже есть профиль?{' '}

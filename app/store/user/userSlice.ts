@@ -27,7 +27,6 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(registerUser.rejected, (state, action) => {
-        console.log(action.payload);
         state.loading = false;
         state.error = action.payload;
       })
@@ -67,8 +66,6 @@ const userSlice = createSlice({
       })
       .addCase(setUserInfo.fulfilled,(state, action) => {
         state.loading = false;
-        console.log(action.payload);
-
         state.currentUser = action.payload;
       })
       .addCase(setUserInfo.rejected, (state, action) => {

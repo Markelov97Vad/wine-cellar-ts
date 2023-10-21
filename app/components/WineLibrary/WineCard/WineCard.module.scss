@@ -4,10 +4,15 @@
 .wine-card {
   background-color: $color-background-white;
   width: 100%;
+  // max-width: 360px;
   height: 510px;
   border-radius: 4px;
   position: relative;
   z-index: 1;
+
+  @include mobile_s {
+    max-width: 100%;
+  }
 
   &__button-like {
     top: 15px;
