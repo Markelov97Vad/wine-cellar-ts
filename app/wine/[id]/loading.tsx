@@ -1,6 +1,8 @@
+import Spinner from "@/app/components/Spinner/Spinner";
+
 function LoadingWine() {
-  return ( 
-    <h1>Loading...</h1>
+  return (
+    <Spinner/>
    );
 }
 

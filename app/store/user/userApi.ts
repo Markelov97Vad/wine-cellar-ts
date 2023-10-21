@@ -2,7 +2,6 @@
 import { AnyAction, ThunkDispatch, createAsyncThunk } from '@reduxjs/toolkit';
 import { UserType } from '../../../types/user.type';
 import { API, headersData } from '../../../utils/constans';
-import { useParams } from 'next/navigation';
 
 export const registerUser = createAsyncThunk<
   UserType,
@@ -23,7 +22,7 @@ export const registerUser = createAsyncThunk<
     }
     return (await response.json()) as UserType;
   } catch (err) {
-    return rejectWithValue(`Ошибка при регистрации пользователя ${err}`);
+    return rejectWithValue(`${err}`);
   }
 });
 
@@ -46,7 +45,7 @@ export const loginUser = createAsyncThunk<UserType, UserType,{ rejectValue: stri
     }
     return (await response.json()) as UserType;
   } catch (err) {
-    return rejectWithValue(`Ошибка при авторизации пользователя ${err}`);
+    return rejectWithValue(`${err}`);
   }
 });
 

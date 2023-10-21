@@ -1,5 +1,5 @@
 'use client';
-import { AnyAction, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { UserType } from '../../../types/user.type';
 import { checkAuthUser, loginUser, logout, registerUser, setUserInfo } from './userApi';
 import { UserState } from '@/types/slice.types';
@@ -9,27 +9,34 @@ const initialState: UserState = {
   isLoggedIn: false,
   loading: false,
   error: null,
+  isSuccessRegister: false,
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    toggleSuccess(state) {
+      state.isSuccessRegister = !state.isSuccessRegister;
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(registerUser.pending, (state) => {
         state.loading = true;
         state.error = null;
+        state.isSuccessRegister = false;
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.currentUser = action.payload;
         state.loading = false;
         state.error = null;
+        state.isSuccessRegister = true;
       })
       .addCase(registerUser.rejected, (state, action) => {
-        console.log(action.payload);
         state.loading = false;
         state.error = action.payload;
+        state.isSuccessRegister = false;
       })
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
@@ -49,6 +56,7 @@ const userSlice = createSlice({
       .addCase(checkAuthUser.pending, (state, action) => {
         state.loading = true;
         state.error = null;
+        state.isSuccessRegister = false;
       })
       .addCase(checkAuthUser.fulfilled, (state, action) => {
         state.currentUser = (action.payload as unknown as UserType);
@@ -67,8 +75,6 @@ const userSlice = createSlice({
       })
       .addCase(setUserInfo.fulfilled,(state, action) => {
         state.loading = false;
-        console.log(action.payload);
-
         state.currentUser = action.payload;
       })
       .addCase(setUserInfo.rejected, (state, action) => {
@@ -91,8 +97,6 @@ const userSlice = createSlice({
       .addDefaultCase((state) => state);
   },
 });
-// function isError(action: AnyAction) {
-//   return action.type.endsWith('rejected');
-// }
 
 export default userSlice.reducer;
+export const { toggleSuccess } = userSlice.actions;

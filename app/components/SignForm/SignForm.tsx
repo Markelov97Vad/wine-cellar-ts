@@ -6,24 +6,22 @@ import style from './SignForm.module.scss';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { loginUser, registerUser } from '../../store/user/userApi';
-import { InputValuesType } from '../../../types/allTypes.types';
 import ButtonSubmitForm from '../ui/ButtonSubmitForm/ButtonSubmitForm';
 import InputForm from '../ui/InputForm/InputForm';
 import { useRouter } from 'next/navigation';
-import { error } from 'console';
 import { useFormValid } from '@/app/hooks/useFormValid';
+import { SignFormTypeProps } from '@/types/componentProps.types';
+import { toggleSuccess } from '@/app/store/user/userSlice';
 
-type SignFormType = {
-  register?: boolean;
-};
-
-function SignForm({ register = false }: SignFormType) {
-  // const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
-  const { inputValues, handleInputChange, errorMessages} = useFormValid();
+function SignForm({ register = false }: SignFormTypeProps) {
+  const { inputValues, handleInputChange, errorMessages, formIsValid } =
+    useFormValid();
+  const [isInfoOpen, setIsInfoOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const { isLoggedIn, error } = useAppSelector( state => state.user);
-  const { back } = useRouter();
-
+  const { isLoggedIn, error, loading, isSuccessRegister } = useAppSelector(
+    (state) => state.user
+  );
+  const { back, push } = useRouter();
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -33,7 +31,7 @@ function SignForm({ register = false }: SignFormType) {
           nameUser: inputValues?.nameUser,
           email: inputValues?.email,
           password: inputValues?.password,
-        }),
+        })
       );
     } else {
       dispatch(
@@ -43,14 +41,32 @@ function SignForm({ register = false }: SignFormType) {
         })
       );
     }
+    setIsInfoOpen(true);
   };
+
   useEffect(() => {
     if (isLoggedIn) {
       back();
-      console.log('isLoggetIn',isLoggedIn);
     }
-
   }, [isLoggedIn]);
+
+  useEffect(() => {
+    if (isSuccessRegister) {
+      push('login');
+      dispatch(toggleSuccess());
+    }
+  }, [isSuccessRegister]);
+
+  const renderErorrText = (error: string | null | undefined) => {
+    switch (error) {
+      case 'Error: Status 409':
+        return 'Пользователь с таким email уже существует';
+      case 'Error: Status 401':
+        return 'Неправильный email или пароль';
+      default:
+        return 'Произошла ошибка';
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit} className={style.form} noValidate>
@@ -58,11 +74,17 @@ function SignForm({ register = false }: SignFormType) {
         <InputForm
           location="sign"
           name="nameUser"
-          type='text'
+          type="text"
           placeholder="Имя"
           value={inputValues?.nameUser}
-          handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false })}
+          handleChange={(evt: ChangeEvent<HTMLInputElement>) =>
+            handleInputChange(evt, {
+              customValidation: true,
+              modification: false,
+            })
+          }
           error={errorMessages.nameUser}
+          max={30}
           required={true}
         />
       )}
@@ -72,7 +94,12 @@ function SignForm({ register = false }: SignFormType) {
         type="email"
         placeholder="Email"
         value={inputValues?.email}
-        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false  })}
+        handleChange={(evt: ChangeEvent<HTMLInputElement>) =>
+          handleInputChange(evt, {
+            customValidation: true,
+            modification: false,
+          })
+        }
         error={errorMessages.email}
         required={true}
       />
@@ -82,14 +109,35 @@ function SignForm({ register = false }: SignFormType) {
         type="password"
         placeholder="Пароль"
         value={inputValues?.password}
-        handleChange={(evt: ChangeEvent<HTMLInputElement>) => handleInputChange(evt, { customValidation: true, modification: false  })}
+        handleChange={(evt: ChangeEvent<HTMLInputElement>) =>
+          handleInputChange(evt, {
+            customValidation: true,
+            modification: false,
+          })
+        }
         error={errorMessages.password}
         required={true}
       />
-      <ButtonSubmitForm
-        extraClass={style.form__button}
-        text={`${register ? 'Зарегистрироваться' : 'Войти'}`}
-      />
+      <div className={style['form__info-wrapper']}>
+        {isInfoOpen && error && (
+          <span className={style['form__span-error-email']}>
+            {renderErorrText(error)}
+          </span>
+        )}
+        <ButtonSubmitForm
+          extraClass={style.form__button}
+          disabled={!formIsValid}
+          text={`${
+            register
+              ? loading
+                ? 'Регистрация..'
+                : 'Зарегистрироваться'
+              : loading
+              ? 'Вход..'
+              : 'Войти'
+          }`}
+        />
+      </div>
       {register ? (
         <span className={style.form__span}>
           Уже есть профиль?{' '}

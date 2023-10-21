@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import style from './Promo.module.scss';
+import ScrollDown from '../ui/ScrollDown/ScrollDown';
 
 
 const Promo = () => {
@@ -19,6 +20,7 @@ const Promo = () => {
     <section className={style.promo}>
       <h1 ref={titleRef} className={style.promo__title}>WINE CELLAR</h1>
       <span ref={spanRef} className={style['promo__span-line']}></span>
+      <ScrollDown/>
     </section>
   );
 }

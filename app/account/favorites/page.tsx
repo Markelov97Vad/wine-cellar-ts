@@ -17,11 +17,11 @@ function Favorites() {
   return (
     <>
       <div className={`${styles.favorites__info} ${playfairDisplay.className}`}>
-        <h3 className={styles.favorites__title}>My favorites</h3>
+        <h3 className={styles.favorites__title}>Избранное</h3>
         <p className={styles.favorites__subtitle}>
-          Your list of your favourite wines or whiskies. Click on the heart
-          symbol of a wine anywhere on the website to add a wine to this list
-          and click again to remove it.
+          Здесь вы можете хранить понравившиеся вам вина. Нажмите на символ в
+          виде сердца в любом месте веб-сайта, чтобы добавить вино в этот
+          список, и нажмите еще раз, чтобы удалить его.
         </p>
       </div>
 

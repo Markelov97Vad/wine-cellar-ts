@@ -13,9 +13,6 @@ import { useFormValid } from '@/app/hooks/useFormValid';
 import { montserrat } from '@/app/fonts';
 import NotificationPopup from '../NotificationPopup/NotificationPopup';
 import { useAddNewWineMutation } from '@/app/store/wine-query/reducer';
-import { OnChangeValue, SingleValue } from 'react-select';
-// import { optionsWineType } from '@/types/wine.type';
-import { OptionType } from '@/types/allTypes.types';
 
 function FormComponent() {
   const {
@@ -46,11 +43,6 @@ function FormComponent() {
       setIsNotificationPopupOpen(true);
     }
   }, [isSuccess]);
-
-  useEffect(() => {
-    console.log(inputValues);
-
-  }, [inputValues]);
 
   return (
     <>

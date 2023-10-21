@@ -2,7 +2,6 @@ import './styles/_index.scss';
 import 'normalize.css';
 import type { Metadata } from 'next';
 import { Providers } from '@/app/store/provider';
-import Header from '@/app/components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Root from './components/Root/Root';
 

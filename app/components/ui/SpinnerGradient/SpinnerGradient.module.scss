@@ -1,0 +1,51 @@
+@use '../../../styles/variables' as *;
+
+.spinner-gradient {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &__spinner-container {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__circle-border {
+    width: 100px;
+    height: 100px;
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: $color-background-milk;
+    background: linear-gradient(0deg, $main-color-white 33%, $color-background-olive 100%);
+    animation: spin .8s linear 0s infinite;
+  }
+
+  &__circle-core {
+    width: 100%;
+    height: 100%;
+    background-color: $color-background-milk;
+    border-radius: 50%;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(359deg);
+  }
+}
