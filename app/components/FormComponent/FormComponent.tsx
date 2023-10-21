@@ -44,11 +44,6 @@ function FormComponent() {
     }
   }, [isSuccess]);
 
-  useEffect(() => {
-    console.log(inputValues);
-
-  }, [inputValues]);
-
   return (
     <>
       <form

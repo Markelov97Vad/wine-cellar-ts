@@ -1,6 +1,6 @@
-import { optionsWineType } from "../types/wine.type";
+import { OptionsWineType } from "../types/wine.type";
 
-export const optionsColorWine : optionsWineType[] = [{
+export const optionsColorWine : OptionsWineType[] = [{
   value: 'Красное',
   label: 'Красное',
   name: 'colorWine',
@@ -18,7 +18,7 @@ export const optionsColorWine : optionsWineType[] = [{
   name: 'colorWine',
 }];
 
-export const optionsTypeWine : optionsWineType[] = [{
+export const optionsTypeWine : OptionsWineType[] = [{
   value: 'Сухое',
   label: 'Сухое',
   name: 'typeWine',
