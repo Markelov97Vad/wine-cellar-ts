@@ -1,4 +1,5 @@
-export const MAIN_API_URL = 'http://localhost:3005';
+// export const MAIN_API_URL = 'http://localhost:3005';
+export const MAIN_API_URL = 'https://api-my-wine-cellar.space';
 
 export const headersData = {
   "Content-Type": "application/json"
@@ -13,7 +14,7 @@ export const routeData = [
 
 
 export const API = {
-  baseUrl: 'http://localhost:3005',
+  baseUrl: MAIN_API_URL,
   endpoints: {
     wine: {
       data: '/wines',
