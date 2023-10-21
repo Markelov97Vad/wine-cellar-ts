@@ -1,9 +1,9 @@
 import Spinner from "../components/Spinner/Spinner";
 
-function LoadingLoginPage() {
+function LoadingMyCollectionPage() {
   return (
     <Spinner/>
   );
 }
 
-export default LoadingLoginPage;
+export default LoadingMyCollectionPage;

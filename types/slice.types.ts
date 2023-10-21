@@ -1,4 +1,3 @@
-import { SerializedError } from "@reduxjs/toolkit";
 import { UserType } from "./user.type";
 import { Wine } from "./wine.type";
 
@@ -7,7 +6,6 @@ export type WineState = {
   currentWine: Wine;
   isLoadingCurrentWine: boolean;
   isLoadingSetInfo: boolean;
-  isLoadingAddWine: boolean;
   isSuccessCurrentWine: boolean;
   isSuccessSetInfo: boolean;
   isDropdownMenuOpen: boolean;
@@ -19,6 +17,7 @@ export type UserState = {
   isLoggedIn: boolean;
   loading: boolean;
   error?: string | null;
+  isSuccessRegister: boolean;
 };
 
 export type currentUserWineState = {

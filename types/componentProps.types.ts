@@ -143,3 +143,7 @@ export type CommentTypeProps = {
   comment: string;
   owner?: UserType;
 }
+
+export  type SignFormTypeProps = {
+  register?: boolean;
+};

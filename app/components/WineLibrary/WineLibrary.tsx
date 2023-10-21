@@ -10,7 +10,6 @@ import useSearchWine from '@/app/hooks/useSearchWine';
 import { Wine } from '@/types/wine.type';
 import SearchIcon from '../Icons/SearchIcon';
 import Filter from '../Filter/Filter';
-import Button from '../ui/Button/Button';
 
 function WineLibrary({wines} : {wines?: Wine[]}) {
   const [search, setSearch] = useState<string | null>(null);
@@ -93,7 +92,6 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
           <Filter data={ColorData} name='ЦВЕТ' handleChangeCheckbox={handleChangeCheckboxColor}/>
         </div>
         <WineCardList wines={renderWine()}/>
-        {/* <Button text={'Ещё'}/> */}
       </form>
     </section>
   );

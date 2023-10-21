@@ -3,8 +3,8 @@
 
 .wine-card {
   background-color: $color-background-white;
+  max-width: 500px;
   width: 100%;
-  // max-width: 360px;
   height: 510px;
   border-radius: 4px;
   position: relative;
@@ -65,7 +65,6 @@
   &__title {
     margin: 0;
     text-align: center;
-    // max-height: 62px;
     max-width: 211px;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -2,67 +2,9 @@
 @forward './mixins.scss';
 @forward './globals.scss';
 
-@keyframes pulse {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: .25;
-    transform: scale(.75);
-  }
-}
-
 .html {
   background-color: #E6E3C4;
   scroll-behavior: smooth;
   height: 100%;
-}
-
-.spinner {
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.567);
-  z-index: 20;
-
-
-  &__pulse-container {
-    width: 200px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    @media screen and (max-width: 500px) {
-      width: 200px;
-    }
-  }
-
-  &__pulse-bubble {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #998431;
-
-    @media screen and (max-width: 500px) {
-      width: 30px;
-      height: 30px;
-    }
-  }
-
-  &__pulse-bubble_type_1 {
-    animation: pulse .4s ease 0s infinite alternate;
-  }
-
-  &__pulse-bubble_type_2 {
-    animation: pulse .4s ease .2s infinite alternate;
-  }
-
-  &__pulse-bubble_type_3 {
-    animation: pulse .4s ease .4s infinite alternate;
-  }
 }
 

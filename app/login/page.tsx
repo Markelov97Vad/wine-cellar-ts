@@ -1,4 +1,3 @@
-import Header from '@/app/components/Header/Header';
 import style from './page.module.scss';
 import SignForm from '@/app/components/SignForm/SignForm';
 import { montserrat } from '../fonts';

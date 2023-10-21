@@ -62,15 +62,33 @@
     @include mobile {
       right: 25px;
     }
-
   }
+  
   &__fieldest {
-    margin-top: 30px;
+    margin: 30px 0 0;
+    padding: 0;
     border: none;
     display: flex;
-    gap: 30px;
-    justify-content: center;
+    flex-direction: column;
   }
+
+  &__span-error {
+    text-align: center;
+    margin-bottom: 10px;
+    @include show-font(
+      $weight: 400,
+      $size: 16px,
+      $line-heigth: 20px,
+      $color: $color-fonts-error
+    );
+  }
+
+  &__confirm {
+    justify-content: center;
+    gap: 30px;
+    display: flex;
+  }
+
   &__button-form {
     opacity: 1;
 

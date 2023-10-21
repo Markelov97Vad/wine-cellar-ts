@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import {
-  // NUMBER_OF_MOVIES_FOR_DESKTOP,
-  // NUMBER_OF_MOVIES_FOR_DESKTOP_ADD,
-  // NUMBER_OF_MOVIES_FOR_MOBILE,
-  // NUMBER_OF_MOVIES_FOR_MOBILE_ADD,
-  // NUMBER_OF_MOVIES_FOR_TABLET,
   SCREEN_LAPTOP,
-  SCREEN_TABLET
 } from "../../utils/constans";
 
 function useResize() {
@@ -15,27 +9,17 @@ function useResize() {
   const [width, setWidth] = useState<number>(globalThis.innerWidth);
   const [isLaptop, setIsLaptop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  // let isLaptop
-  // let isMobile
 
   useEffect(() => {
     const handleResize = () => {
       const renderCount = width > SCREEN_LAPTOP ? 12 : 6;
 
-      // const downloadCount = width > SCREEN_DESKTOP ?
-      //   NUMBER_OF_MOVIES_FOR_DESKTOP_ADD : NUMBER_OF_MOVIES_FOR_MOBILE_ADD;
-
       setCardsCount(renderCount);
-      // setNewCardsCount(downloadCount);
 
       setIsLaptop(() => width >= SCREEN_LAPTOP ? true : false);
       setIsMobile(() => width < SCREEN_LAPTOP ? true : false);
 
-
-      // isLaptop = width >= SCREEN_LAPTOP ? true : false;
-      // isMobile = width < SCREEN_LAPTOP ? true : false;
-
-      setWidth(global.innerWidth);
+      setWidth(globalThis.innerWidth);
     };
 
     window.addEventListener('resize', handleResize);

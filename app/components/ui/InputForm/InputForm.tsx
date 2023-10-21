@@ -1,5 +1,7 @@
 import style from './InputForm.module.scss';
 import { InputFormType } from '../../../../types/componentProps.types';
+import EyeIcon from '../../Icons/EyeIcon';
+import { useState } from 'react';
 
 function InputForm({
   name,
@@ -14,6 +16,7 @@ function InputForm({
   location,
   required = false
 }: InputFormType) {
+  const [isTypePassword, setisTypePassword] = useState(false);
   const handleLicationTypeLabel = (value: string) => {
     switch (value) {
       case 'sign':
@@ -39,6 +42,10 @@ function InputForm({
     }
   };
 
+  const handleInputToggle = () => {
+    setisTypePassword(!isTypePassword)
+  }
+
   return (
     <div
       className={`${style['input-from']} ${
@@ -57,7 +64,7 @@ function InputForm({
         name={name}
         value={value || ''}
         onChange={handleChange}
-        type={type}
+        type={type === 'password' ? !isTypePassword ? type : 'text' : type}
         placeholder={placeholder}
         className={`${style['input-from__input']} ${handleLicationTypeInput(
           location,
@@ -66,6 +73,10 @@ function InputForm({
         maxLength={max}
         required={required}
       />
+      {
+        name === 'password' &&
+      <span onClick={handleInputToggle} className={style['input-from__span-eye']}><EyeIcon/></span>
+      }
       <span className={style['input-from__error']}>
         {error}
       </span>

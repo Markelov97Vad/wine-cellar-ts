@@ -18,7 +18,7 @@ function NotificationPopupImage({
   } : NotificationPopupImageTypeProps) {
 
   const dispatch = useAppDispatch();
-  const {isSuccessSetInfo} = useAppSelector(state => state.wines);
+  const {isSuccessSetInfo, error} = useAppSelector(state => state.wines);
   const [getWines] = useLazyFetchWinesQuery();
   const [getUserWines] = useLazyFetchUserWinesQuery();
   const {inputValues, errorMessages, handleInputChange} = useFormValid();
@@ -59,8 +59,14 @@ function NotificationPopupImage({
           required={false}
         />
         <fieldset className={styles['notification-popup-image__fieldest']}>
-          <Button onClick={handleClick} extraClass={`${montserrat.className}`} text='Отмена'/>
-          <ButtonSubmitForm extraClass={`${montserrat.className}`} text='Заменить'/>
+            {
+              error &&
+              <span className={styles['notification-popup-image__span-error']}>Произошла ошибка</span>
+            }
+          <div className={styles['notification-popup-image__confirm']}>
+            <Button onClick={handleClick} extraClass={`${montserrat.className}`} text='Отмена'/>
+            <ButtonSubmitForm extraClass={`${montserrat.className}`} text='Заменить'/>
+          </div>
         </fieldset>
       </form>
     </div>

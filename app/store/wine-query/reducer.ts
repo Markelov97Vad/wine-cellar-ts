@@ -58,7 +58,7 @@ export const WinesQuery = createApi({
         headers: headersData,
         credentials: 'include'
       }),
-      invalidatesTags: ['Wine']
+      invalidatesTags: ['Wine', 'UserWine']
     }),
     addNewWine: build.mutation<Wine, Wine>({
       query: (wine) => ({

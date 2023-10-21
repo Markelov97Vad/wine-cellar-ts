@@ -5,14 +5,32 @@
   display: flex;
   flex-direction: column;
 
+  &__confirm-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    @include mobile {
+      min-height: 300px;
+    }
+    @include mobile_s {
+      min-height: 150px;
+    }
+  }
+
+  &__confirm-text {
+    @include show-font(
+      $weight: 500, $size: 16px, $line-heigth: 20px, $color: $color-fonts-black
+    );
+  }
+
   &__container {
     padding: 40px 10px 0;
     grid-area: card-list;
     display: grid;
     gap: 25px;
     justify-content: center;
-    // margin: 0 auto;
-    // align-items: center;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
     @include mobile_s {
