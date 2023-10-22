@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { UserType } from '../../../types/user.type';
 import { checkAuthUser, loginUser, logout, registerUser, setUserInfo } from './userApi';
 import { UserState } from '@/types/slice.types';
+import Cookies from 'universal-cookie';
 
 const initialState: UserState = {
   currentUser: null,
@@ -11,6 +12,8 @@ const initialState: UserState = {
   error: null,
   isSuccessRegister: false,
 };
+
+const cookies = new Cookies();
 
 const userSlice = createSlice({
   name: 'user',
@@ -43,10 +46,11 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.currentUser = action.payload;
+        state.currentUser = action.payload.newUser;
         state.loading = false;
         state.error = null;
         state.isLoggedIn = true;
+        cookies.set("jwt", action.payload.token)
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

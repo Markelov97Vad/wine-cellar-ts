@@ -26,7 +26,12 @@ export const registerUser = createAsyncThunk<
   }
 });
 
-export const loginUser = createAsyncThunk<UserType, UserType,{ rejectValue: string }>(
+type ResponseLoginType = {
+  newUser: UserType,
+  token: string
+}
+
+export const loginUser = createAsyncThunk<ResponseLoginType, UserType,{ rejectValue: string }>(
   'user/login',
   async (data, { rejectWithValue }) => {
 
@@ -43,7 +48,8 @@ export const loginUser = createAsyncThunk<UserType, UserType,{ rejectValue: stri
     if (!response.ok) {
       return await Promise.reject(new Error(`Status ${response.status}`));
     }
-    return (await response.json()) as UserType;
+
+    return (await response.json()) as ResponseLoginType;
   } catch (err) {
     return rejectWithValue(`${err}`);
   }
