@@ -1,10 +1,9 @@
-import { ErrorMessageType, InputValuesType, OptionType } from "@/types/allTypes.types";
+import { ErrorMessageType, InputValuesType } from "@/types/allTypes.types";
 import { validationConfigKeyProps, validationConfigModificationKeyProps } from "@/types/componentProps.types";
 import { OptionsWineType } from "@/types/wine.type";
 import { validationConfig, validationConfigModification } from "@/utils/validation";
 import { ChangeEvent, useCallback, useLayoutEffect, useRef, useState } from "react";
-import { SingleValueProps } from "react-select";
-import { MultiValue, OnChangeValue, SingleValue } from "react-select";
+import { OnChangeValue } from "react-select";
 
 export function useFormValid () {
   const [inputValues, setInputValues] = useState<InputValuesType | null>(null);
@@ -31,16 +30,13 @@ export function useFormValid () {
       ...current,
       [selectedOption?.name!]: selectedOption?.value ,
     }));
-    console.log(selectedOption);
   };
 
   const handleChangeSelectorMulti = (selectedOption:  OnChangeValue<OptionsWineType[], boolean>) => {
     setInputValues((current) => ({
       ...current,
-      // [selectedOption![0].name!]: selectedOption?.value ,
       grapeVariety: (selectedOption as OptionsWineType[])?.map((el) => el.value)
     }));
-    console.log(selectedOption);
   };
 
   const handleInputChange = (evt: ChangeEvent<

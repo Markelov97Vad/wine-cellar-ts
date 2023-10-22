@@ -2,7 +2,7 @@ export const MAIN_API_URL = 'http://localhost:3005';
 // export const MAIN_API_URL = 'https://api-my-wine-cellar.space';
 
 export const headersData = {
-  "Content-Type": "application/json"
+  'Content-type': 'application/json; charset=UTF-8'
 }
 
 export const routeData = [

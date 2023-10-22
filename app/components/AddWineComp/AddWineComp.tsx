@@ -11,8 +11,8 @@ function addWineComp() {
       <div className={style['add-wine__wrapper']}>
         <Image className={style['add-wine__img-grapes']} src={grapes} alt="виноград" />
         <Image className={style['add-wine__img-barrel']} src={barrel} alt="бочка" />
-        <h2 className={`${style['add-wine__title']} ${playfairDisplay.className}`}>Добавить в библиотеку</h2>
-        <p className={`${style['add-wine__subtitle']} ${playfairDisplay.className}`}>Здесь вы можете добавить свое вино в библиотеку, указав подробную информацию о нем. Также дополнительно можете добавить изображение вина, оценить его вкусовые качества и прокомментировать.</p>
+        <h2 className={`${style['add-wine__title']} ${playfairDisplay.className}`}>Добавить вино</h2>
+        <p className={`${style['add-wine__subtitle']} ${playfairDisplay.className}`}>Здесь вы можете добавить свое вино в библиотеку, указав подробную информацию о нем. Также дополнительно можете указать ссылку на изображение вина, оценить его вкусовые качества и прокомментировать.</p>
         <FormComponent />
       </div>
     </section>

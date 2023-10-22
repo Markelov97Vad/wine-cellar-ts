@@ -13,7 +13,7 @@ const initialState: UserState = {
   isSuccessRegister: false,
 };
 
-const cookies = new Cookies();
+// const cookies = new Cookies();
 
 const userSlice = createSlice({
   name: 'user',
@@ -50,18 +50,14 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.isLoggedIn = true;
-        console.log(action.payload.token);
-        console.log('action.payload.token');
-
-        cookies.set("jwt", action.payload.token, {
-          // httpOnly: true,
-          sameSite: 'none',
-          // secure: true,
-          maxAge: 3600000 * 24 * 7,
-        })
-        let cookieFake = cookies.get("jwt")
-        console.log('cookieFake', cookieFake);
-
+        // cookies.set("jwt", action.payload.token, {
+        //   // httpOnly: true,
+        //   sameSite: 'none',
+        //   // secure: true,
+        //   maxAge: 3600000 * 24 * 7,
+        // })
+        // let cookieFake = cookies.get("jwt")
+        // console.log('cookieFake', cookieFake);
 
       })
       .addCase(loginUser.rejected, (state, action) => {
@@ -105,7 +101,7 @@ const userSlice = createSlice({
         state.loading = false;
         state.currentUser = null;
         state.isLoggedIn = false;
-        cookies.remove("jwt")
+        // cookies.remove("jwt")
       })
       .addCase(logout.rejected, (state, action) => {
         state.loading = false;

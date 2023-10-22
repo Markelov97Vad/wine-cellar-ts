@@ -7,7 +7,9 @@ import { playfairDisplay } from '@/app/fonts';
 import { useGetFavoriteWineQuery } from '@/app/store/wine-query/reducer';
 
 function Favorites() {
-  const { data } = useGetFavoriteWineQuery('');
+  const { data } = useGetFavoriteWineQuery('', {
+    refetchOnMountOrArgChange: true
+  });
   const [favoriteWines, setFavoritesWines] = useState<Wine[] | undefined>([]);
 
   useEffect(() => {

@@ -46,6 +46,7 @@ function SignForm({ register = false }: SignFormTypeProps) {
 
   useEffect(() => {
     if (isLoggedIn) {
+
       back();
     }
   }, [isLoggedIn]);
