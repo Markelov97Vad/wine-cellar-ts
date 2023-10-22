@@ -50,7 +50,10 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.isLoggedIn = true;
-        cookies.set("jwt", action.payload.token)
+        cookies.set("jwt", action.payload.token, {
+          expires: new Date(Date.now()),
+          maxAge: 2678400000000
+        })
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
@@ -93,6 +96,7 @@ const userSlice = createSlice({
         state.loading = false;
         state.currentUser = null;
         state.isLoggedIn = false;
+        cookies.remove("jwt")
       })
       .addCase(logout.rejected, (state, action) => {
         state.loading = false;
