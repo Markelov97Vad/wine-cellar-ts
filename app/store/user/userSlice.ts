@@ -50,10 +50,19 @@ const userSlice = createSlice({
         state.loading = false;
         state.error = null;
         state.isLoggedIn = true;
+        console.log(action.payload.token);
+        console.log('action.payload.token');
+
         cookies.set("jwt", action.payload.token, {
-          expires: new Date(Date.now()),
-          maxAge: 2678400000000
+          // httpOnly: true,
+          sameSite: 'none',
+          // secure: true,
+          maxAge: 3600000 * 24 * 7,
         })
+        let cookieFake = cookies.get("jwt")
+        console.log('cookieFake', cookieFake);
+
+
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
