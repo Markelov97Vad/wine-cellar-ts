@@ -1,8 +1,12 @@
 export const MAIN_API_URL = 'http://localhost:3005';
 // export const MAIN_API_URL = 'https://api-my-wine-cellar.space';
 
-export const headersData = {
-  'Content-type': 'application/json; charset=UTF-8'
+export const headersData = (token?: string) => {
+  return {
+    'Content-type': 'application/json; charset=UTF-8',
+    'Authorization': `Bearer ${token}`
+  }
+
 }
 
 export const routeData = [
@@ -56,7 +60,7 @@ export const navItemAccount = [
 export const TypeData = [
   {
     id: 'dry',
-    text: 'Cухое',
+    text: 'Сухое',
   },
   {
     id: 'semisweet',

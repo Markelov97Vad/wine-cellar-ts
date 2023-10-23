@@ -13,7 +13,7 @@ export const registerUser = createAsyncThunk<
       `${API.baseUrl}${API.endpoints.user.register}`,
       {
         method: 'POST',
-        headers: headersData,
+        headers: {'Content-type': 'application/json'},
         body: JSON.stringify(data),
       },
     );
@@ -40,8 +40,8 @@ export const loginUser = createAsyncThunk<ResponseLoginType, UserType,{ rejectVa
       `${API.baseUrl}${API.endpoints.user.login}`,
       {
         method: 'POST',
-        credentials: 'include',
-        headers: headersData,
+        // credentials: 'include',
+        headers: {'Content-type': 'application/json'},
         body: JSON.stringify(data),
       },
     );
@@ -55,13 +55,14 @@ export const loginUser = createAsyncThunk<ResponseLoginType, UserType,{ rejectVa
   }
 });
 
-export const checkAuthUser = createAsyncThunk<UserType, undefined, { rejectValue: string}>(
+export const checkAuthUser = createAsyncThunk<UserType, string, { rejectValue: string}>(
   'user/auth',
-  async (_, { rejectWithValue}) => {
+  async (token, { rejectWithValue}) => {
     try {
       const response: Response = await fetch(`${API.baseUrl}${API.endpoints.user.user}`,{
         method: "GET",
-        credentials: "include"
+        credentials: "include",
+        headers: headersData(token)
       })
       if(!response.ok) {
         return await Promise.reject(new Error(`Status ${response.status}`))
@@ -81,7 +82,7 @@ export const setUserInfo = createAsyncThunk<UserType, UserType, {rejectValue: st
       const response = await fetch(`${API.baseUrl}${API.endpoints.user.user}`, {
         method: "PATCH",
         credentials: 'include',
-        headers: headersData,
+        headers: headersData(),
         body: JSON.stringify(userData)
       })
       if (!response.ok) {
@@ -94,14 +95,13 @@ export const setUserInfo = createAsyncThunk<UserType, UserType, {rejectValue: st
   }
 )
 
-export const logout = createAsyncThunk<string, undefined, {rejectValue: string}>(
+export const logout = createAsyncThunk<string, string, {rejectValue: string}>(
   'user/logout',
-  async (_, {rejectWithValue}) => {
+  async (token, {rejectWithValue}) => {
     try {
       const response: Response = await fetch(`${API.baseUrl}${API.endpoints.user.logout}`, {
         method: "POST",
-        headers: headersData,
-        credentials: 'include'
+        headers: headersData(token),
       })
       if (!response.ok) {
         return await Promise.reject(new Error(`Status ${response.statusText}`))

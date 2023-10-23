@@ -24,7 +24,7 @@ export const setWineInfo = createAsyncThunk<undefined, Wine, { rejectValue: stri
     try {
       const response = await fetch(`${API.baseUrl}${API.endpoints.wine.currentWine}${_id}`, {
         method: "PATCH",
-        headers: headersData,
+        headers: headersData(),
         credentials: 'include',
         body: JSON.stringify({image})
       })

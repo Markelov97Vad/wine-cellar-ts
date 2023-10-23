@@ -20,21 +20,25 @@ function WineCard({ wineElem }: WineCardProps) {
   const { rating, brand, image, name, year, _id, likes } = wineElem;
   const [addFavorite] = useAddFavoriteWineMutation();
   const [deleteFavorite] = useDeleteFavoriteWineMutation();
-  const { isLoggedIn } = useAppSelector((state) => state.user);
+  const { isLoggedIn, currentUser } = useAppSelector((state) => state.user);
   const [isLiked, setIsLiked] = useState<boolean | undefined>(false);
 
   const handleClick = async () => {
+    const token = localStorage.getItem('jwt');
     if (isLoggedIn) {
+
       if (!isLiked) {
-        await addFavorite(_id!).unwrap(); // корректная работа пропсов (isError, isLoading..)
+        await addFavorite({id: _id!, token: token!}).unwrap(); // корректная работа пропсов (isError, isLoading..)
       } else {
-        await deleteFavorite(_id!).unwrap();
+        await deleteFavorite({id: _id!, token: token!}).unwrap();
       }
     }
   };
 
   useEffect(() => {
-    setIsLiked(likes?.some((user) => user._id === user._id));
+    setIsLiked(likes?.some((user) => {
+      return user === currentUser?._id
+    }));
   }, [likes]);
 
   return (

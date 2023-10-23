@@ -1,6 +1,16 @@
 import { Wine } from '@/types/wine.type'
 import { API, headersData } from '@/utils/constans'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react';
+
+type Data = {
+  id: string;
+  token: string;
+}
+
+type DataWine = {
+  wine: Wine,
+  token: string
+}
 
 export const WinesQuery = createApi({
   // уникальный ключ текущего сервиса
@@ -14,59 +24,54 @@ export const WinesQuery = createApi({
     fetchWines: build.query<Wine[], string>({
       query: (_) => ({
         url: `${API.endpoints.wine.data}`,
-        headers: headersData,
+        headers: headersData(),
       }),
       providesTags: ['Wine']
     }),
     fetchUserWines: build.query<Wine[], string>({
-      query: () => ({
+      query: (token) => ({
         url: `${API.endpoints.wine.myWines}`,
-        headers: headersData,
-        credentials: 'include'
+        headers: headersData(token),
       }),
       providesTags: ['UserWine']
     }),
-    addFavoriteWine: build.mutation<Wine, string>({
-      query: (id) => ({
-        url: `${API.endpoints.wine.favorite}/${id}`,
-        headers: headersData,
-        method: 'PUT',
-        credentials: 'include'
+    addFavoriteWine: build.mutation<Wine, Data>({
+      query: (data) => ({
+        url: `${API.endpoints.wine.favorite}/${data.id}`,
+        headers: headersData(data.token),
+        method: 'PUT'
       }),
       invalidatesTags: ['UserWine', 'Wine']
     }),
-    deleteFavoriteWine: build.mutation<Wine, string>({
-      query: (id) => ({
-        url: `${API.endpoints.wine.favorite}/${id}`,
-        headers: headersData,
+    deleteFavoriteWine: build.mutation<Wine, Data>({
+      query: (data) => ({
+        url: `${API.endpoints.wine.favorite}/${data.id}`,
+        headers: headersData(data.token),
         method: 'DELETE',
-        credentials: 'include'
       }),
       invalidatesTags: ['UserWine', 'Wine']
     }),
     getFavoriteWine: build.query<Wine[], string>({
-      query: (_) => ({
+      query: (token) => ({
         url: `${API.endpoints.wine.favorite}`,
-        credentials: 'include'
+        headers: headersData(token)
       }),
       providesTags: ['UserWine']
     }),
-    deleteWine: build.mutation<Wine[], string>({
-      query: (id) => ({
-        url: `${API.endpoints.wine.data}/${id}`,
+    deleteWine: build.mutation<Wine[], Data>({
+      query: (data) => ({
+        url: `${API.endpoints.wine.data}/${data.id}`,
         method: "DELETE",
-        headers: headersData,
-        credentials: 'include'
+        headers: headersData(data.token),
       }),
       invalidatesTags: ['Wine', 'UserWine']
     }),
-    addNewWine: build.mutation<Wine, Wine>({
-      query: (wine) => ({
+    addNewWine: build.mutation<Wine, DataWine>({
+      query: (data) => ({
         url: `${API.endpoints.wine.data}`,
         method: 'POST',
-        headers: headersData,
-        credentials: 'include',
-        body: JSON.stringify({...wine})
+        headers: headersData(data.token),
+        body: JSON.stringify(data.wine)
       }),
       invalidatesTags: ['UserWine', 'Wine']
     })

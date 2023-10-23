@@ -35,7 +35,8 @@ function FormComponent() {
 
   const onSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    addNewWine(inputValues!);
+    const token = localStorage.getItem('jwt');
+    addNewWine({wine: inputValues!, token: token!});
   };
 
   useEffect(() => {

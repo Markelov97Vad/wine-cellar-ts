@@ -59,7 +59,8 @@ function AboutWine({ params }: { params: { id: string } }) {
   }, [isSuccessAdd, isSuccessDel]);
 
   useEffect(() => {
-    dispatch(checkAuthUser());
+    const token = localStorage.getItem('jwt');
+    dispatch(checkAuthUser(token!));
   }, []);
 
   useEffect(() => {
@@ -67,11 +68,12 @@ function AboutWine({ params }: { params: { id: string } }) {
   }, [likes]);
 
   const handleClick = async () => {
+    const token = localStorage.getItem('jwt');
     if (isLoggedIn) {
       if (!isLiked) {
-        await addFavorite(_id!).unwrap(); // корректная работа пропсов (isError, isLoading..)
+        await addFavorite({id: _id!, token: token!}).unwrap(); // корректная работа пропсов (isError, isLoading..)
       } else {
-        await deleteFavorite(_id!).unwrap();
+        await deleteFavorite({id: _id!, token: token!}).unwrap();
       }
     } else {
       push('/login');
@@ -85,7 +87,8 @@ function AboutWine({ params }: { params: { id: string } }) {
   }, [isSuccessDelWine]);
 
   const handleDeleteWine = () => {
-    deleteWine(_id as string);
+    const token = localStorage.getItem('jwt');
+    deleteWine({id: _id!, token: token!});
   };
 
   const handleOpenNotification = () => {

@@ -25,8 +25,7 @@
     "react-redux": "^8.1.2",
     "react-select": "^5.7.4",
     "sass": "^1.68.0",
-    "typescript": "5.2.2",
-    "universal-cookie": "^6.1.1"
+    "typescript": "5.2.2"
   },
   "devDependencies": {
     "sass": "^1.68.0",

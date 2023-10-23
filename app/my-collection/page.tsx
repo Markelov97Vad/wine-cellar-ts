@@ -4,7 +4,8 @@ import { useFetchUserWinesQuery } from '../store/wine-query/reducer';
 import AddWineComp from '../components/AddWineComp/AddWineComp';
 
 function MyCollection() {
-  const { data } = useFetchUserWinesQuery('', {
+  const token = localStorage.getItem('jwt')
+  const { data } = useFetchUserWinesQuery(token!, {
     refetchOnMountOrArgChange: true
   });
   return (

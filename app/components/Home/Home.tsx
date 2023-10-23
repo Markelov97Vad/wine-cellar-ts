@@ -19,7 +19,8 @@ function Home() {
   const { isLoggedIn } = useAppSelector(state => state.user)
 
   useEffect(() => {
-    dispatch(checkAuthUser());
+    const token = localStorage.getItem('jwt')
+    dispatch(checkAuthUser(token!));
   },[isLoggedIn])
   return (
     <>
