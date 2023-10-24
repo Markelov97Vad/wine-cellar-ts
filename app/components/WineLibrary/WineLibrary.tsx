@@ -2,7 +2,7 @@
 import style from './WineLibrary.module.scss';
 import WineCardList from './WineCardList/WineCardList';
 import { montserrat } from '@/app/fonts';
-import { ColorData, TypeData } from '@/utils/constans';
+import { ColorData, SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR, SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE, SESSION_STORAGE_LIBRARY_SEARCH, SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR, SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE, SESSION_STORAGE_MYCOLLECTION_SEARCH, TypeData } from '@/utils/constans';
 import { useDebounce } from '@/app/hooks/useDebounce';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { CheckboxsType } from '@/types/allTypes.types';
@@ -29,6 +29,8 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
   const { handleWineFilter } = useSearchWine();
   const { setResultCache, getResultCache } = useResultCache();
   const pathname = usePathname();
+  const isLibraryPage = pathname === '/'
+  const isMyCollectionPage = pathname === '/my-collection'
 
   const handleChangeCheckboxType = (evt: ChangeEvent<HTMLInputElement>) => {
     const { value, id , checked} = evt.target;
@@ -39,13 +41,26 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
     if(checked) {
       setTypes(types => [...types, value]);
       // const current = JSON.parse(sessionStorage.getItem("checkboxValueType")!)
-      sessionStorage.setItem('checkboxValueType', JSON.stringify([...types, value]))
+      if (isLibraryPage) {
+        sessionStorage.setItem(SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE, JSON.stringify([...types, value]))
+      }
+      if (isMyCollectionPage) {
+        sessionStorage.setItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE, JSON.stringify([...types, value]))
+      }
     } else {
       setTypes(types => {
         return types.filter(type => type !== value)
       })
-      const current = JSON.parse(sessionStorage.getItem("checkboxValueType")!)
-      sessionStorage.setItem('checkboxValueType', JSON.stringify(current.filter((type: string) => type !== value)))
+      if (isLibraryPage) {
+        const current = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE)!)
+        sessionStorage.setItem(SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE, JSON.stringify(current.filter((type: string) => type !== value)))
+      }
+      if (isMyCollectionPage) {
+        const current = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE)!)
+        sessionStorage.setItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE, JSON.stringify(current.filter((type: string) => type !== value)))
+      }
+      // const current = JSON.parse(sessionStorage.getItem("checkboxValueType")!)
+      // sessionStorage.setItem('checkboxValueType', JSON.stringify(current.filter((type: string) => type !== value)))
     }
   };
 
@@ -60,13 +75,29 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
     if(checked) {
       // const current = JSON.parse(sessionStorage.getItem("checkboxValueColor")!)
       setColors(types => [...types, value])
-      sessionStorage.setItem('checkboxValueColor', JSON.stringify([...colors, value]))
+      // sessionStorage.setItem('checkboxValueColor', JSON.stringify([...colors, value]))
+
+      if (isLibraryPage) {
+        sessionStorage.setItem(SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR, JSON.stringify([...colors, value]))
+      }
+      if (isMyCollectionPage) {
+        sessionStorage.setItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR, JSON.stringify([...colors, value]))
+      }
     } else {
       setColors(types => {
         return types.filter(type => type !== value)
       })
-      const current = JSON.parse(sessionStorage.getItem("checkboxValueColor")!)
-      sessionStorage.setItem('checkboxValueColor', JSON.stringify(current.filter((type: string) => type !== value)))
+
+      if (isLibraryPage) {
+        const current = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR)!)
+        sessionStorage.setItem(SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR, JSON.stringify(current.filter((type: string) => type !== value)))
+      }
+      if (isMyCollectionPage) {
+        const current = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR)!)
+        sessionStorage.setItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR, JSON.stringify(current.filter((type: string) => type !== value)))
+      }
+      // const current = JSON.parse(sessionStorage.getItem("checkboxValueColor")!)
+      // sessionStorage.setItem('checkboxValueColor', JSON.stringify(current.filter((type: string) => type !== value)))
     }
   };
 
@@ -80,21 +111,21 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
 
 
   function handleCache() {
-    if (pathname === '/') {
-      setResultCache('librarySearchValue',{ search: inputValues?.search});
+    if (isLibraryPage) {
+      setResultCache(SESSION_STORAGE_LIBRARY_SEARCH,{ search: inputValues?.search});
     }
-    if (pathname === '/my-collection') {
-      setResultCache('myCollSearchValue',{ search: inputValues?.search});
+    if (isMyCollectionPage) {
+      setResultCache(SESSION_STORAGE_MYCOLLECTION_SEARCH,{ search: inputValues?.search});
     }
   }
 
   useEffect(() => {
-    if (pathname === '/') {
-      const cache = getResultCache('librarySearchValue');
+    if (isLibraryPage) {
+      const cache = getResultCache(SESSION_STORAGE_LIBRARY_SEARCH);
       cache && resetFormValues({search: cache.search});
     }
-    if (pathname === '/my-collection') {
-      const cache = getResultCache('myCollSearchValue');
+    if (isMyCollectionPage) {
+      const cache = getResultCache(SESSION_STORAGE_MYCOLLECTION_SEARCH);
       cache && resetFormValues({search: cache.search});
     }
 
@@ -102,15 +133,12 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
 
 
   const renderWine = () => {
-    // console.log(`wine ${wines}`, `search ${search}`, `types ${types}`, `colors ${colors}`);
-
     return handleWineFilter(wines as Wine[], search!, types, colors);
   }
 
   const handleSubmit = (evt: ChangeEvent<HTMLFormElement>) => {
     evt.preventDefault();
     setSearch(inputValues?.search)
-    // setResultCache('searchValue', inputValues?.search);
     handleCache();
   }
 
@@ -130,19 +158,27 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
   }, []);
 
   useEffect(() => {
-    setTypes(() => {
-      const current = JSON.parse(sessionStorage?.getItem('checkboxValueType')!)
-      return current ? current : [];
-    })
-    setColors(() => {
-      const current = JSON.parse(sessionStorage?.getItem('checkboxValueColor')!)
-      return current ? current : [];
-    })
+    if (isLibraryPage) {
+      setTypes(() => {
+        const current = JSON.parse(sessionStorage?.getItem(SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE)!)
+        return current ? current : [];
+      })
+      setColors(() => {
+        const current = JSON.parse(sessionStorage?.getItem(SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR)!)
+        return current ? current : [];
+      })
+    }
+    if (isMyCollectionPage) {
+      setTypes(() => {
+        const current = JSON.parse(sessionStorage?.getItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE)!)
+        return current ? current : [];
+      })
+      setColors(() => {
+        const current = JSON.parse(sessionStorage?.getItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR)!)
+        return current ? current : [];
+      })
+    }
   }, []);
-
-  // const handleChecked = () => {
-  //   return false
-  // }
 
   return (
     <section className={`${style['wine-library']} ${montserrat.className}`}>
@@ -164,8 +200,8 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
           </div>
         </div>
         <div className={style['wine-library__side-bar']}>
-          <Filter data={TypeData} name='ТИП' handleChangeCheckbox={handleChangeCheckboxType}/>
-          <Filter data={ColorData} name='ЦВЕТ' handleChangeCheckbox={handleChangeCheckboxColor}/>
+          <Filter isLibraryPage={isLibraryPage} isMyCollectionPage={isMyCollectionPage} data={TypeData} name='ТИП' handleChangeCheckbox={handleChangeCheckboxType}/>
+          <Filter isLibraryPage={isLibraryPage} isMyCollectionPage={isMyCollectionPage} data={ColorData} name='ЦВЕТ' handleChangeCheckbox={handleChangeCheckboxColor}/>
         </div>
         <WineCardList wines={renderWine()}/>
       </form>

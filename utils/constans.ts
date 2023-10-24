@@ -100,3 +100,10 @@ export const ColorData = [
 
 export const SCREEN_TABLET = 635;
 export const SCREEN_LAPTOP = 768;
+
+export const SESSION_STORAGE_LIBRARY_SEARCH = 'librarySearchValue'
+export const SESSION_STORAGE_MYCOLLECTION_SEARCH = 'myCollSearchValue'
+export const SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE = 'LibraryCheckboxValueType'
+export const SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR = 'LibraryCheckboxValueColor'
+export const SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE = 'MyCollectionCheckboxValueType'
+export const SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR = 'MyCollectionCheckboxValueColor'

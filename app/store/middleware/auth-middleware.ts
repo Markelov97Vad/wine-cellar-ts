@@ -8,6 +8,7 @@ const authMiddleware: Middleware<
   }
   if (action.type === 'user/logout/fulfilled') {
     localStorage.removeItem('jwt')
+    sessionStorage.clear();
   }
   return next(action)
 }

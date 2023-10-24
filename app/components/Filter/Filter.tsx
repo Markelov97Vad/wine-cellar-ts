@@ -4,14 +4,14 @@ import CheckboxType from "../ui/CheckboxType/CheckboxType";
 import DropIcon from "../Icons/DropIcon";
 import { useEffect, useState } from "react";
 import useResize from "@/app/hooks/useResize";
+import { SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR, SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE, SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR, SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE } from "@/utils/constans";
 
-function Filter({ data, name, handleChangeCheckbox} : FilterTypeProps) {
-  const [isOpen, setIsOpen] = useState(false);
+function Filter({ data, name, handleChangeCheckbox, isLibraryPage, isMyCollectionPage} : FilterTypeProps) {
   const { isLaptop } = useResize();
-  const [colorCheckbox, setColorCheckbox] = useState([]);
-  const [typeCkeckbox, settypeCkeckbox] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [checkboxColorValue, setCheckboxColorValue] = useState([]);
+  const [checkboxTypeValue, setCheckboxTypeValue] = useState([]);
 
-  const [datadata, setdatadata] = useState<string[]>([]);
   const handleToggleOpen = () => {
     setIsOpen(!isOpen);
   }
@@ -24,21 +24,27 @@ function Filter({ data, name, handleChangeCheckbox} : FilterTypeProps) {
   },[isLaptop])
 
   useEffect(() => {
-    const currentType = JSON.parse(sessionStorage.getItem('checkboxValueType')!)
-    const currentColor = JSON.parse(sessionStorage.getItem('checkboxValueColor')!)
-    if (name === 'ТИП' && currentType) {
-      settypeCkeckbox(() => currentType)
-    }
-    if (name === 'ЦВЕТ' && currentColor) {
-      setColorCheckbox(() => currentColor)
+    if (isLibraryPage) {
+      const currentType = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE)!)
+      const currentColor = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR)!)
+      if (name === 'ТИП' && currentType) {
+        setCheckboxTypeValue(() => currentType)
+      }
+      if (name === 'ЦВЕТ' && currentColor) {
+        setCheckboxColorValue(() => currentColor)
 
+      }
     }
-    // if (colorCheckbox || typeCkeckbox) {
-    //   setdatadata(() => {
-    //     // return JSON.parse(sessionStorage.getItem('checkboxValue')!)
-    //     return current
-    //   })
-    // }
+    if (isMyCollectionPage) {
+      const currentType = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE)!)
+      const currentColor = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR)!)
+      if (name === 'ТИП' && currentType) {
+        setCheckboxTypeValue(() => currentType)
+      }
+      if (name === 'ЦВЕТ' && currentColor) {
+        setCheckboxColorValue(() => currentColor)
+      }
+    }
     else {
       return
     }
@@ -54,30 +60,20 @@ function Filter({ data, name, handleChangeCheckbox} : FilterTypeProps) {
           const { id, text } = type;
           function handleChacked () {
             if(name === 'ТИП') {
-              return typeCkeckbox?.some(type => {
-                // console.log('type',type, 'text',text);
-
+              return checkboxTypeValue?.some(type => {
                 return type === text;
               })
             }
             if(name === 'ЦВЕТ') {
-              return colorCheckbox?.some(color => {
-                // console.log('color',color, 'text',text);
-
+              return checkboxColorValue?.some(color => {
                 return color === text;
               })
             }
             return false
-            // return datadata?.some(type => {
-            //   // console.log('type',type, 'text',text);
-
-            //   return type === text
-            // })
           }
 
           return (
             <CheckboxType checked={handleChacked()} key={i} id={id} text={text} name="typeWine" handleChangeCheckbox={handleChangeCheckbox}/>
-            // <CheckboxType checked={false} key={i} id={id} text={text} name="typeWine" handleChangeCheckbox={handleChangeCheckbox}/>
           );
         })}
       </div>

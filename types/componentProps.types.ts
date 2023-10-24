@@ -124,6 +124,8 @@ export type FilterTypeProps = {
     text: string
   }[];
   name: string;
+  isLibraryPage: boolean;
+  isMyCollectionPage: boolean;
   handleChangeCheckbox: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
