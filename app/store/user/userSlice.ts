@@ -59,8 +59,6 @@ const userSlice = createSlice({
         state.isSuccessRegister = false;
       })
       .addCase(checkAuthUser.fulfilled, (state, action) => {
-        console.log('auth', action.payload);
-
         state.currentUser = (action.payload as unknown as UserType);
         state.isLoggedIn = true;
         state.error = null;

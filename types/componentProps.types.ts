@@ -88,6 +88,7 @@ export type CrossIconProps = {
 }
 
 export type CheckboxTypeProps = {
+  checked: boolean;
   id: string;
   name: string;
   text: string;

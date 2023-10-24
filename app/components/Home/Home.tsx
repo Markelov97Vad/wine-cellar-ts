@@ -14,7 +14,7 @@ import { useFetchWinesQuery } from '@/app/store/wine-query/reducer';
 function Home() {
   const dispatch = useAppDispatch();
   const { data } = useFetchWinesQuery('', {
-    refetchOnMountOrArgChange: true
+    // refetchOnMountOrArgChange: true
   })
   const { isLoggedIn } = useAppSelector(state => state.user)
 

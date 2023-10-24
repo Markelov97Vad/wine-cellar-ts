@@ -15,6 +15,7 @@ export type InputValuesType = {
   password?: string;
   brand?: string;
   region?: string;
+  search?: string;
 }
 
 export type InputSelectType = {
