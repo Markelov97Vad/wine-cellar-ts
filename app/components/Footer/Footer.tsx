@@ -14,7 +14,7 @@ const iconData = [
 
 function Footer() {
   return (
-    <footer className={`${styles.root__footer} ${styles.footer} ${montserrat.className}`}>
+    <footer className={`${styles.root__footer} ${styles.footer} `}>
       <FooterForLaptop data={iconData}/>
       <FooterForMobile data={iconData} />
     </footer>

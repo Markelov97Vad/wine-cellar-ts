@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 import { NavigationType } from '@/types/componentProps.types';
 import { montserrat } from '@/app/fonts';
 
-
 function Navigation({ items }: NavigationType) {
   const pathname = usePathname();
 

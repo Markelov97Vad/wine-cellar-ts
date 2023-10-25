@@ -11,6 +11,7 @@ import {
   useDeleteFavoriteWineMutation,
 } from '@/app/store/wine-query/reducer';
 import Button from '../../ui/Button/Button';
+import Image from 'next/image';
 
 type WineCardProps = {
   wineElem: Wine;
@@ -42,12 +43,13 @@ function WineCard({ wineElem }: WineCardProps) {
   }, [likes]);
 
   return (
-    <article className={`${style['wine-card']} ${montserrat.className}`}>
+    // <article className={`${style['wine-card']} ${montserrat.className}`}>
+    <article className={`${style['wine-card']}`}>
       <ButtonLike extraClass={style['wine-card__button-like']} handleClick={handleClick} isLiked={isLiked} />
       <Link className={style['wine-card__link']} href={`/wine/${_id}/`}>
         <div className={style['wine-card__container']}>
           <span className={style['wine-card__brand']}>{brand}</span>
-          <img className={style['wine-card__image']} src={image!} />
+          <Image alt='Бутылка вина' width={800} height={800} className={style['wine-card__image']} src={image!} />
         </div>
         <h3 className={`${style['wine-card__title']}`}>{name}</h3>
         <span className={style['wine-card__year']}>{year}</span>

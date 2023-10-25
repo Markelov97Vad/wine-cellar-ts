@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
@@ -19,7 +18,7 @@ function StarRating({ handleReiting } : StarRatingType ) {
   useEffect(() => {
     handleReiting(rating)
   }, [rating])
-  
+
 
   return (
     <div>
@@ -27,7 +26,7 @@ function StarRating({ handleReiting } : StarRatingType ) {
         const ratingVal = i + 1;
         return (
           <label key={i}>
-            <input 
+            <input
               className={style['star-rating__input']}
               onClick={() => setRating(ratingVal)}
               value={ratingVal}
@@ -36,7 +35,7 @@ function StarRating({ handleReiting } : StarRatingType ) {
             />
             <Image
               className={style['star-rating__img']}
-              src={ratingVal > ( hover || rating ) ? starOff : starOn} 
+              src={ratingVal > ( hover || rating ) ? starOff : starOn}
               alt="звезда"
               onMouseEnter={() => setHover(ratingVal)}
               onMouseLeave={() => setHover(0)}

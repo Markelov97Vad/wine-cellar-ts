@@ -6,7 +6,6 @@
  align-items: center;
  width: 100%;
  margin-top: 10vh;
-//  height: 100vh;
 
   &__chevron {
     position: absolute;
@@ -45,23 +44,22 @@
     width: 50%;
     transform: skewY(-30deg);
   }
-
 }
 
 @keyframes move-chevron {
- 25% {
-  opacity: 1;
-	}
- 33.3% {
-  opacity: 1;
-  transform: translateY($base * 3.8);
- }
- 66.6% {
-  opacity: 1;
-  transform: translateY($base * 5.2);
- }
- 100% {
-  opacity: 0;
-  transform: translateY($base * 8) scale(0.5);
- }
+  25% {
+    opacity: 1;
+    }
+  33.3% {
+    opacity: 1;
+    transform: translateY($base * 3.8);
+  }
+  66.6% {
+    opacity: 1;
+    transform: translateY($base * 5.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY($base * 8) scale(0.5);
+  }
 }

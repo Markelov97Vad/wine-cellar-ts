@@ -3,23 +3,18 @@ import { useEffect, useState } from 'react';
 import styles from './page.module.scss';
 import WineCard from '@/app/components/WineLibrary/WineCard/WineCard';
 import { Wine } from '@/types/wine.type';
-import { playfairDisplay } from '@/app/fonts';
+import { montserrat, playfairDisplay } from '@/app/fonts';
 import { useGetFavoriteWineQuery, useLazyGetFavoriteWineQuery } from '@/app/store/wine-query/reducer';
 
 function Favorites() {
   const [getFavoriteWine, { data }] = useLazyGetFavoriteWineQuery({
     refetchOnReconnect: true
   });
-  // const [favoriteWines, setFavoritesWines] = useState<Wine[] | undefined>([]);
 
   useEffect(() => {
     const token = localStorage.getItem('jwt')
     getFavoriteWine(token!);
   }, []);
-
-  // useEffect(() => {
-  //   setFavoritesWines(data);
-  // }, [data]);
 
   return (
     <>
@@ -32,7 +27,7 @@ function Favorites() {
         </p>
       </div>
 
-      <div className={styles['favorites__list-container']}>
+      <div className={`${styles['favorites__list-container']} ${montserrat.className}`}>
         {data?.map((wine: Wine) => (
           <WineCard key={wine._id} wineElem={wine} />
         ))}

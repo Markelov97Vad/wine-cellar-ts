@@ -12,29 +12,30 @@ import { useFetchWinesQuery } from '@/app/store/wine-query/reducer';
 
 function Home() {
   const dispatch = useAppDispatch();
-  const { data } = useFetchWinesQuery('', {
+  const { data , isLoading } = useFetchWinesQuery('', {
     refetchOnMountOrArgChange: true
   })
-  const { isLoggedIn } = useAppSelector(state => state.user)
+  const { isLoggedIn } = useAppSelector(state => state.user);
 
   useEffect(() => {
     const token = localStorage.getItem('jwt')
     dispatch(checkAuthUser(token!));
   },[isLoggedIn])
+
   return (
     <>
       <main>
         <div className={style.root__wrapper}>
         <Header />
           <Image
-            priority
+            priority={true}
             src={gif}
             alt="Бокал вина"
             className={style.root__video}
           />
           <Promo />
         </div>
-        <WineLibrary wines={data}/>
+        <WineLibrary wines={data} isLoading={isLoading}/>
       </main>
     </>
   );

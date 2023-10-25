@@ -5,6 +5,13 @@
   display: flex;
   flex-direction: column;
 
+  &__preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
   &__confirm-container {
     display: flex;
     align-items: center;

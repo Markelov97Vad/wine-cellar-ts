@@ -32,7 +32,6 @@ function Filter({ data, name, handleChangeCheckbox, isLibraryPage, isMyCollectio
       }
       if (name === 'ЦВЕТ' && currentColor) {
         setCheckboxColorValue(() => currentColor)
-
       }
     }
     if (isMyCollectionPage) {

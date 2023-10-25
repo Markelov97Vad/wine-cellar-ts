@@ -1,12 +1,11 @@
-export const MAIN_API_URL = 'http://localhost:3005';
-// export const MAIN_API_URL = 'https://api-my-wine-cellar.space';
+// export const MAIN_API_URL = 'http://localhost:3005';
+export const MAIN_API_URL = 'https://api-my-wine-cellar.space';
 
-export const headersData = (token?: string) => {
+export const headersData = (token: string) => {
   return {
     'Content-type': 'application/json; charset=UTF-8',
     'Authorization': `Bearer ${token}`
   }
-
 }
 
 export const routeData = [

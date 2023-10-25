@@ -9,10 +9,10 @@
   transition: all 0.5s ease;
 
   @include show-font(
-      $color: $color-fonts-black,
-      $size: 16px,
-      $line-heigth: 1.1,
-      $weight: 300,
+    $color: $color-fonts-black,
+    $size: 16px,
+    $line-heigth: 1.1,
+    $weight: 300,
   );
 
   &:hover {

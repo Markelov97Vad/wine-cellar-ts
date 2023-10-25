@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import style from './Promo.module.scss';
 import ScrollDown from '../ui/ScrollDown/ScrollDown';
-
+import { playfairDisplay } from '@/app/fonts';
 
 const Promo = () => {
   const titleRef = useRef(null);
@@ -14,11 +14,9 @@ const Promo = () => {
     gsap.fromTo(spanRef.current, { opacity: 0}, { opacity: 1, duration: 8, delay: 2.5})
   },[])
 
-  // gsap.to(titleRef, { scale: 77})
-
   return (
     <section className={style.promo}>
-      <h1 ref={titleRef} className={style.promo__title}>WINE CELLAR</h1>
+      <h1 ref={titleRef} className={`${style.promo__title} ${playfairDisplay.className}`}>WINE CELLAR</h1>
       <span ref={spanRef} className={style['promo__span-line']}></span>
       <ScrollDown/>
     </section>

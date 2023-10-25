@@ -150,3 +150,13 @@ export type CommentTypeProps = {
 export  type SignFormTypeProps = {
   register?: boolean;
 };
+
+export type WineCardListProps = {
+  wines: Wine[];
+  isLoading: boolean;
+}
+
+export type WineLibraryProps = {
+  wines?: Wine[];
+  isLoading: boolean;
+}

@@ -40,7 +40,6 @@ export const loginUser = createAsyncThunk<ResponseLoginType, UserType,{ rejectVa
       `${API.baseUrl}${API.endpoints.user.login}`,
       {
         method: 'POST',
-        // credentials: 'include',
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify(data),
       },
@@ -61,7 +60,6 @@ export const checkAuthUser = createAsyncThunk<UserType, string, { rejectValue: s
     try {
       const response: Response = await fetch(`${API.baseUrl}${API.endpoints.user.user}`,{
         method: "GET",
-        credentials: "include",
         headers: headersData(token)
       })
       if(!response.ok) {
@@ -74,15 +72,19 @@ export const checkAuthUser = createAsyncThunk<UserType, string, { rejectValue: s
   }
 )
 
-export const setUserInfo = createAsyncThunk<UserType, UserType, {rejectValue: string, dispatch: ThunkDispatch<unknown, unknown, AnyAction>}>(
+type setUserInfoType = {
+  userData: UserType;
+  token: string;
+}
+
+export const setUserInfo = createAsyncThunk<UserType, setUserInfoType, {rejectValue: string, dispatch: ThunkDispatch<unknown, unknown, AnyAction>}>(
   'user/setInfo',
-  async (userData, {rejectWithValue}) => {
+  async ({userData, token}, {rejectWithValue}) => {
 
     try {
       const response = await fetch(`${API.baseUrl}${API.endpoints.user.user}`, {
         method: "PATCH",
-        credentials: 'include',
-        headers: headersData(),
+        headers: headersData(token),
         body: JSON.stringify(userData)
       })
       if (!response.ok) {

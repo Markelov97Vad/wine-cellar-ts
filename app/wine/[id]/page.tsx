@@ -20,6 +20,8 @@ import ImgIcon from '@/app/components/Icons/ImgIcon';
 import NotificationPopupImage from '@/app/components/NotificationPopupImage/NotificationPopupImage';
 import useResize from '@/app/hooks/useResize';
 import Comment from '@/app/components/Comment/Comment';
+import Image from 'next/image';
+import defultImg from '@/public/images/defultBottle.webp';
 
 function AboutWine({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
@@ -118,9 +120,12 @@ function AboutWine({ params }: { params: { id: string } }) {
               <CrossIcon dark />
             </button>
             <div className={style.aboutWine__imgContainer}>
-              <img
+              <Image
+                priority={true}
                 className={style.aboutWine__image}
-                src={image!}
+                width={400}
+                height={400}
+                src={image! ? image! : defultImg}
                 alt="бутылка вина"
               />
               <ButtonLike
@@ -231,9 +236,12 @@ function AboutWine({ params }: { params: { id: string } }) {
             <StarRaitingDisabled rating={rating} />
 
             <div className={style.aboutWine__imgContainer}>
-              <img
+              <Image
+                priority={true}
+                width={400}
+                height={400}
                 className={style.aboutWine__image}
-                src={image!}
+                src={image! ? image! : defultImg}
                 alt="бутылка вина"
               />
               <ButtonLike

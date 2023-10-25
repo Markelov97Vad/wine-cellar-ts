@@ -20,9 +20,6 @@
     }
   }
 
-  // @include mobile {
-  //   padding-left: 10px;
-  // }
 }
 
 // REACT-SELECT
@@ -55,8 +52,6 @@
     }
   }
   &__placeholder {
-    // color: #d9d6d667 !important;
-    // margin-bottom: 8px;
     position: absolute;
     top: 6px !important;
     @include show-font(

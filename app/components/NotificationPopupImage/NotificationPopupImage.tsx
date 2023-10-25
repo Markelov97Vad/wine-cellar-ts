@@ -29,17 +29,20 @@ function NotificationPopupImage({
 
   const habdleSubmit = (evt: ChangeEvent<HTMLFormElement>) => {
     evt.preventDefault();
+    const token = localStorage.getItem('jwt')
     dispatch(setWineInfo({
       _id: id,
-      image: inputValues?.image
+      image: inputValues?.image,
+      token: token!
     }))
   }
 
   useEffect(() => {
+    const token = localStorage.getItem('jwt')
     if (isSuccessSetInfo) {
       setIsNotificationSetImageOpen(false);
       getWines('');
-      getUserWines('');
+      getUserWines(token!);
     }
   }, [isSuccessSetInfo])
 

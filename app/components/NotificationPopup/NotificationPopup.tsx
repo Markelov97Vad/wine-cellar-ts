@@ -3,8 +3,6 @@ import styles from './NotificationPopup.module.scss';
 import imgGlass from '../../../public/images/image-glass.png'
 import Image from 'next/image';
 import ButtonCross from '../ui/ButtonCross/ButtonCross';
-import { useEffect, useState } from 'react';
-import { useAppSelector } from '@/app/hooks/redux';
 import { NotificationPopupTypeProps } from '@/types/componentProps.types';
 
 function NotificationPopup({isNotificationPopupOpen, setIsNotificationPopupOpen } : NotificationPopupTypeProps) {

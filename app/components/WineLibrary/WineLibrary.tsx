@@ -13,19 +13,14 @@ import Filter from '../Filter/Filter';
 import { useFormValid } from '@/app/hooks/useFormValid';
 import useResultCache from '@/app/hooks/useResultCache';
 import { usePathname } from 'next/navigation';
+import { WineLibraryProps } from '@/types/componentProps.types';
 
-type Storage = {
-  value: string | null
-}
-
-function WineLibrary({wines} : {wines?: Wine[]}) {
+function WineLibrary({wines, isLoading} : WineLibraryProps) {
   const [search, setSearch] = useState<string | undefined>('');
   const [types, setTypes] = useState<string[]>([]);
   const [colors, setColors] = useState<string[]>([]);
   const {inputValues, handleInputChange, resetFormValues} = useFormValid();
-  // const [searchInputValue, setSearchInputValue] = useState<string | undefined>('');
   const [checkboxValue, setCheckboxValue] = useState<CheckboxsType | null>(null);
-  // const debounce = useDebounce(inputValues?.search, 1000)
   const { handleWineFilter } = useSearchWine();
   const { setResultCache, getResultCache } = useResultCache();
   const pathname = usePathname();
@@ -40,7 +35,6 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
     }));
     if(checked) {
       setTypes(types => [...types, value]);
-      // const current = JSON.parse(sessionStorage.getItem("checkboxValueType")!)
       if (isLibraryPage) {
         sessionStorage.setItem(SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE, JSON.stringify([...types, value]))
       }
@@ -59,24 +53,17 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
         const current = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE)!)
         sessionStorage.setItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE, JSON.stringify(current.filter((type: string) => type !== value)))
       }
-      // const current = JSON.parse(sessionStorage.getItem("checkboxValueType")!)
-      // sessionStorage.setItem('checkboxValueType', JSON.stringify(current.filter((type: string) => type !== value)))
     }
   };
 
   const handleChangeCheckboxColor = (evt: ChangeEvent<HTMLInputElement>) => {
     const { value, id , checked} = evt.target;
-    console.log('color', value, checked);
-
     setCheckboxValue(() => ({
       ...checkboxValue,
       [id]: value
     }));
     if(checked) {
-      // const current = JSON.parse(sessionStorage.getItem("checkboxValueColor")!)
       setColors(types => [...types, value])
-      // sessionStorage.setItem('checkboxValueColor', JSON.stringify([...colors, value]))
-
       if (isLibraryPage) {
         sessionStorage.setItem(SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR, JSON.stringify([...colors, value]))
       }
@@ -96,19 +83,8 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
         const current = JSON.parse(sessionStorage.getItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR)!)
         sessionStorage.setItem(SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR, JSON.stringify(current.filter((type: string) => type !== value)))
       }
-      // const current = JSON.parse(sessionStorage.getItem("checkboxValueColor")!)
-      // sessionStorage.setItem('checkboxValueColor', JSON.stringify(current.filter((type: string) => type !== value)))
     }
   };
-
-  // useEffect(() => {
-  //   console.log('debounce', debounce);
-
-  //   setSearch(debounce)
-  //   handleCache();
-  //   // handleSubmit()
-  // }, [debounce]);
-
 
   function handleCache() {
     if (isLibraryPage) {
@@ -203,7 +179,7 @@ function WineLibrary({wines} : {wines?: Wine[]}) {
           <Filter isLibraryPage={isLibraryPage} isMyCollectionPage={isMyCollectionPage} data={TypeData} name='ТИП' handleChangeCheckbox={handleChangeCheckboxType}/>
           <Filter isLibraryPage={isLibraryPage} isMyCollectionPage={isMyCollectionPage} data={ColorData} name='ЦВЕТ' handleChangeCheckbox={handleChangeCheckboxColor}/>
         </div>
-        <WineCardList wines={renderWine()}/>
+        <WineCardList wines={renderWine()} isLoading={isLoading}/>
       </form>
     </section>
   );

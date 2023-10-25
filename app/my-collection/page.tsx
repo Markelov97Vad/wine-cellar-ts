@@ -1,11 +1,11 @@
 'use client';
 import WineLibrary from '../components/WineLibrary/WineLibrary';
-import { useFetchUserWinesQuery, useLazyFetchUserWinesQuery } from '../store/wine-query/reducer';
+import { useLazyFetchUserWinesQuery } from '../store/wine-query/reducer';
 import AddWineComp from '../components/AddWineComp/AddWineComp';
 import { useEffect } from 'react';
 
 function MyCollection() {
-  const [getUserWines, { data }] = useLazyFetchUserWinesQuery();
+  const [getUserWines, { data , isLoading: isLoadingGetUserWines }] = useLazyFetchUserWinesQuery();
 
   useEffect(() => {
     const token = localStorage.getItem('jwt')
@@ -14,7 +14,7 @@ function MyCollection() {
   return (
     <>
       <AddWineComp />
-      <WineLibrary wines={data} />;
+      <WineLibrary wines={data} isLoading={isLoadingGetUserWines}/>;
     </>
   )
 }
