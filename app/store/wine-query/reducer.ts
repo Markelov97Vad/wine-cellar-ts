@@ -24,7 +24,7 @@ export const WinesQuery = createApi({
     fetchWines: build.query<Wine[], string>({
       query: (_) => ({
         url: `${API.endpoints.wine.data}`,
-        headers: headersData(),
+        headers: {'Content-type': 'application/json'},
       }),
       providesTags: ['Wine']
     }),
