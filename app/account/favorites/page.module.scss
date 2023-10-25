@@ -36,5 +36,15 @@
     grid-template-columns: repeat(auto-fit, minmax(200px, 260px));
     gap: 25px;
     padding-bottom: 30px;
+
+    @include mobile {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 290px));
+    }
+
+    @include mobile_s {
+      display: flex;
+      width: auto;
+      padding-inline: 10px;
+    }
   }
 }

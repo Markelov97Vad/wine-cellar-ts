@@ -41,6 +41,7 @@
   }
 
   &__link {
+    letter-spacing: 1px;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
     @include show-font(

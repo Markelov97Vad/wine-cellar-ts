@@ -1,9 +1,8 @@
 'use client';
 import style from './WineLibrary.module.scss';
 import WineCardList from './WineCardList/WineCardList';
-import { montserrat } from '@/app/fonts';
+import { montserrat, playfairDisplay } from '@/app/fonts';
 import { ColorData, SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR, SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE, SESSION_STORAGE_LIBRARY_SEARCH, SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR, SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE, SESSION_STORAGE_MYCOLLECTION_SEARCH, TypeData } from '@/utils/constans';
-import { useDebounce } from '@/app/hooks/useDebounce';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { CheckboxsType } from '@/types/allTypes.types';
 import useSearchWine from '@/app/hooks/useSearchWine';
@@ -158,6 +157,7 @@ function WineLibrary({wines, isLoading} : WineLibraryProps) {
 
   return (
     <section className={`${style['wine-library']} ${montserrat.className}`}>
+      <h2 className={`${style['wine-library__title']} ${playfairDisplay.className}`}>{isLibraryPage ? 'Винотека' : ' Коллекция моих вин'}</h2>
       <form className={style['wine-library__wrapper']} onSubmit={handleSubmit}>
         <div className={style['wine-library__block']}></div>
         <div className={style['wine-library__filter-headers']}>

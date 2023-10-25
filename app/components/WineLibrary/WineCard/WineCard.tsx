@@ -1,7 +1,6 @@
 import style from './WineCard.module.scss';
 import { Wine } from '../../../../types/wine.type';
 import Link from 'next/link';
-import { montserrat } from '@/app/fonts';
 import { useAppSelector } from '@/app/hooks/redux';
 import { useEffect, useState } from 'react';
 import StarRaitingDisabled from '../../StarRaitingDisabled/StarRaitingDisabled';

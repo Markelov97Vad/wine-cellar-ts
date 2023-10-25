@@ -2,9 +2,7 @@
 import useRenderCards from '@/app/hooks/useRenderCards';
 import WineCard from '../WineCard/WineCard';
 import style from './WineCardList.module.scss';
-import { Wine } from '@/types/wine.type';
 import Button from '../../ui/Button/Button';
-import { useGetFavoriteWineQuery } from '@/app/store/wine-query/reducer';
 import { WineCardListProps } from '@/types/componentProps.types';
 import SpinnerGradient from '../../ui/SpinnerGradient/SpinnerGradient';
 

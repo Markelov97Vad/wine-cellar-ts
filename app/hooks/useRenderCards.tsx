@@ -9,7 +9,7 @@ function useRenderCards( wineCards : Wine[]) {
 
   useEffect(() => {
     sessionStorage.setItem('countCard', JSON.stringify(cardsCount))
-  }, []);
+  }, [cardsCount]);
 
   useEffect(() => {
     const count = sessionStorage.getItem('countCard')
