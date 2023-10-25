@@ -238,8 +238,8 @@ function AboutWine({ params }: { params: { id: string } }) {
             <div className={style.aboutWine__imgContainer}>
               <Image
                 priority={true}
-                width={400}
-                height={400}
+                width={200}
+                height={200}
                 className={style.aboutWine__image}
                 src={image! ? image! : defultImg}
                 alt="бутылка вина"

@@ -31,7 +31,7 @@ function useResize() {
     };
   }, [width]);
 
-  return { cardsCount, newCardsCount, isLaptop, isMobile};
+  return { cardsCount, newCardsCount, isLaptop, isMobile, width};
 };
 
 export default useResize;

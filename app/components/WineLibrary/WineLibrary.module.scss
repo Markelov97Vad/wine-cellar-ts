@@ -2,12 +2,33 @@
 @use '../../styles/mixins' as *;
 
 .wine-library {
-  padding: 140px 0 100px ;
+  padding: 110px 0 100px ;
   background-color: $color-background-milk;
-  // height: 100%;
   min-height: 300px;
   box-sizing: border-box;
 
+  @include mobile {
+    padding-top: 80px;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 80px;
+    @include show-font(
+      $color: $color-fonts-black,
+      $size: 35px,
+      $line-heigth: 40px,
+      $weight: 600,
+    );
+
+    @include mobile {
+      margin-bottom: 30px;
+      font-size: 25px;
+    }
+  }
 
   &__wrapper {
     max-width: 1270px;

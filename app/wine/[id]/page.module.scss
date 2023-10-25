@@ -12,6 +12,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-top: 50px;
   }
 
   &__wrapper {
@@ -37,8 +38,8 @@
     }
 
     @include mobile {
-      top: 50px;
-      right: 20px;
+      top: 45px;
+      right: 30px;
     }
   }
 
@@ -57,6 +58,7 @@
       margin-top: 20px;
       padding-inline: 0;
       width: 100%;
+      max-height: 500px;
     }
 
   }
@@ -67,7 +69,7 @@
 
     @include mobile {
       top: 0;
-      right: 10px;
+      right: 30px;
 
     }
   }
@@ -103,7 +105,7 @@
     }
 
     @include mobile {
-      left: 20px;
+      left: 30px;
       top: 0;
     }
   }

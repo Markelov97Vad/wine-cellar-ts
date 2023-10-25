@@ -9,7 +9,7 @@ export const headersData = (token: string) => {
 }
 
 export const routeData = [
-  { route: '/', text: 'Библиотека' },
+  { route: '/', text: 'Главная' },
   { route: '/my-collection', text: 'Моя коллекция' },
   { route: '/account/favorites', text: 'Избранное' },
   { route: '/account/settings', text: 'Мои данные' },
@@ -36,7 +36,7 @@ export const API = {
 
 export const navItemsHeader = [
   {
-    label: 'Библиотека',
+    label: 'Главная',
     href: '/'
   },
   {

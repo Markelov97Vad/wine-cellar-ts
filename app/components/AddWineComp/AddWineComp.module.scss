@@ -6,6 +6,11 @@
   width: 100%;
   padding: 190px 0 100px;
 
+  @include mobile {
+    padding-top: 230px;
+    padding-bottom: 50px;
+  }
+
   &__wrapper {
     display: flex;
     align-items: center;
@@ -26,7 +31,8 @@
 
     @include mobile{
       padding-inline: 20px;
-      border: none
+      border: none;
+      padding-bottom: 30px;
     }
 
   }
@@ -67,7 +73,6 @@
     @media screen and (max-width: 946px) {
       display: none;
     }
-
   }
 
   &__title {
@@ -101,7 +106,12 @@
     @include mobile {
       font-size: 25px;
       line-height: 30px;
-      min-width: 283px;
+      min-width: 340px;
+      top: 10px;
+
+      &::after {
+        content: none;
+      }
     }
   }
 
@@ -116,10 +126,12 @@
       $size: 16px,
       $line-heigth: 24px,
       $weight: 400
-    )
+    );
+
+    @include mobile {
+      margin-top: 65px;
+      margin-bottom: 50px;
+    }
   }
 
-  @include mobile {
-    padding-top: 230px;
-  }
 }

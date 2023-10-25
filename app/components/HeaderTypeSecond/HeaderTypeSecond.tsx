@@ -15,7 +15,7 @@ import ButtonLogout from '../ui/ButtonLogout/ButtonLogout';
 function HeaderTypeSecond() {
   const { currentUser, isLoggedIn } = useAppSelector((state) => state.user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { isLaptop, isMobile } = useResize();
+  const { isLaptop } = useResize();
   const dispatch = useAppDispatch();
 
   const handleOpenDropdownMenu = () => {
@@ -54,7 +54,7 @@ function HeaderTypeSecond() {
           className={`${styles['header-type-second__wrapper']} ${montserrat.className}`}
         >
           <Link href={'/'} className={styles['header-type-second__link']}>
-            Библиотека
+            Главная
           </Link>
           <Link
             href={'/my-collection'}

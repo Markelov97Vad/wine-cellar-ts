@@ -62,7 +62,10 @@
   }
 
   @include mobile {
-    padding: 10px;
+    padding: 20px;
+  }
 
+  @include mobile_s {
+    padding: 10px;
   }
 }
