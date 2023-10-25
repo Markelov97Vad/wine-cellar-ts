@@ -3,6 +3,7 @@ import styles from './Comment.module.scss';
 import { montserrat, playfairDisplay } from "@/app/fonts";
 
 function Comment({ owner, comment } : CommentTypeProps) {
+
   return (
     <>
       <p

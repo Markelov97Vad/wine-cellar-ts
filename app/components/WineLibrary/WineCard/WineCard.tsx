@@ -11,6 +11,7 @@ import {
   useDeleteFavoriteWineMutation,
 } from '@/app/store/wine-query/reducer';
 import Button from '../../ui/Button/Button';
+import Image from 'next/image';
 
 type WineCardProps = {
   wineElem: Wine;
@@ -20,30 +21,35 @@ function WineCard({ wineElem }: WineCardProps) {
   const { rating, brand, image, name, year, _id, likes } = wineElem;
   const [addFavorite] = useAddFavoriteWineMutation();
   const [deleteFavorite] = useDeleteFavoriteWineMutation();
-  const { isLoggedIn } = useAppSelector((state) => state.user);
+  const { isLoggedIn, currentUser } = useAppSelector((state) => state.user);
   const [isLiked, setIsLiked] = useState<boolean | undefined>(false);
 
   const handleClick = async () => {
+    const token = localStorage.getItem('jwt');
     if (isLoggedIn) {
+
       if (!isLiked) {
-        await addFavorite(_id!).unwrap(); // корректная работа пропсов (isError, isLoading..)
+        await addFavorite({id: _id!, token: token!}).unwrap(); // корректная работа пропсов (isError, isLoading..)
       } else {
-        await deleteFavorite(_id!).unwrap();
+        await deleteFavorite({id: _id!, token: token!}).unwrap();
       }
     }
   };
 
   useEffect(() => {
-    setIsLiked(likes?.some((user) => user._id === user._id));
+    setIsLiked(likes?.some((user) => {
+      return user === currentUser?._id
+    }));
   }, [likes]);
 
   return (
-    <article className={`${style['wine-card']} ${montserrat.className}`}>
+    // <article className={`${style['wine-card']} ${montserrat.className}`}>
+    <article className={`${style['wine-card']}`}>
       <ButtonLike extraClass={style['wine-card__button-like']} handleClick={handleClick} isLiked={isLiked} />
       <Link className={style['wine-card__link']} href={`/wine/${_id}/`}>
         <div className={style['wine-card__container']}>
           <span className={style['wine-card__brand']}>{brand}</span>
-          <img className={style['wine-card__image']} src={image!} />
+          <Image alt='Бутылка вина' width={800} height={800} className={style['wine-card__image']} src={image!} />
         </div>
         <h3 className={`${style['wine-card__title']}`}>{name}</h3>
         <span className={style['wine-card__year']}>{year}</span>

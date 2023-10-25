@@ -88,6 +88,7 @@ export type CrossIconProps = {
 }
 
 export type CheckboxTypeProps = {
+  checked: boolean;
   id: string;
   name: string;
   text: string;
@@ -123,6 +124,8 @@ export type FilterTypeProps = {
     text: string
   }[];
   name: string;
+  isLibraryPage: boolean;
+  isMyCollectionPage: boolean;
   handleChangeCheckbox: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -147,3 +150,13 @@ export type CommentTypeProps = {
 export  type SignFormTypeProps = {
   register?: boolean;
 };
+
+export type WineCardListProps = {
+  wines: Wine[];
+  isLoading: boolean;
+}
+
+export type WineLibraryProps = {
+  wines?: Wine[];
+  isLoading: boolean;
+}

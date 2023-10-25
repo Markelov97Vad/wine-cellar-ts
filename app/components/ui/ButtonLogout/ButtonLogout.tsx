@@ -7,7 +7,8 @@ function ButtonLogout() {
   const dispatch = useAppDispatch();
   const {isDropdownMenuOpen} = useAppSelector(state => state.wines)
   const handleLogout = () => {
-    dispatch(logout());
+    const token = localStorage.getItem('jwt');
+    dispatch(logout(token!));
     if (isDropdownMenuOpen) {
       dispatch(toggleDropdown());
     }

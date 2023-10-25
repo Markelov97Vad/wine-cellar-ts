@@ -52,7 +52,12 @@ function SignForm({ register = false }: SignFormTypeProps) {
 
   useEffect(() => {
     if (isSuccessRegister) {
-      push('login');
+      dispatch(
+        loginUser({
+          email: inputValues?.email,
+          password: inputValues?.password,
+        })
+      );
       dispatch(toggleSuccess());
     }
   }, [isSuccessRegister]);

@@ -10,23 +10,23 @@ function useSearchWine() {
     let result = wines;
 
     if (types.length > 0) {
-      console.log('ТИП');
-      result = wines.filter((wine) => {
-        console.log(types);
+
+      result = wines?.filter((wine) => {
+        (types);
         return types.includes(wine.typeWine as string);
       });
     }
     if (colors.length > 0) {
-      console.log('ЦВЕТ');
-      result = wines.filter((wine) => {
-        console.log(colors);
+
+      result = wines?.filter((wine) => {
+        (colors);
         return colors.includes(wine.colorWine as string);
       });
     }
     if (types.length > 0 && colors.length > 0) {
-      console.log('Два типа');
-      result = wines.filter((wine) => {
-        console.log(types);
+
+      result = wines?.filter((wine) => {
+        (types);
         return (
           types.includes(wine.typeWine as string) &&
           colors.includes(wine.colorWine as string)
@@ -34,14 +34,14 @@ function useSearchWine() {
       });
     }
     if (keywords) {
-      console.log('слова');
-      result = wines.filter((wine) => {
+
+      result = wines?.filter((wine) => {
         return wine.name?.toLowerCase().includes(keywords.toLowerCase());
       });
     }
     if (types.length > 0 && keywords) {
-      console.log('типы и слова');
-      result = wines.filter((wine) => {
+
+      result = wines?.filter((wine) => {
         return (
           wine.name?.toLowerCase().includes(keywords.toLowerCase()) &&
           types.includes(wine.typeWine as string)
@@ -49,8 +49,8 @@ function useSearchWine() {
       });
     }
     if (colors.length > 0 && keywords) {
-      console.log('цвета и слова');
-      result = wines.filter((wine) => {
+
+      result = wines?.filter((wine) => {
         return (
           wine.name?.toLowerCase().includes(keywords.toLowerCase()) &&
           colors.includes(wine.colorWine as string)
@@ -58,8 +58,8 @@ function useSearchWine() {
       });
     }
     if (types.length > 0 && colors.length > 0 && keywords) {
-      console.log('типы и цвета и слова');
-      result = wines.filter((wine) => {
+
+      result = wines?.filter((wine) => {
         return (
           wine.name?.toLowerCase().includes(keywords.toLowerCase()) &&
           types.includes(wine.typeWine as string) &&

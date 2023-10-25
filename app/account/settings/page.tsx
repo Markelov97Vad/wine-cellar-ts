@@ -42,25 +42,30 @@ function Settings() {
 
   useEffect(() => {
     if (error) {
-      setisNotificationOpen(true)
+      setisNotificationOpen(true);
     }
   }, [error]);
 
   useEffect(() => {
-    setisNotificationOpen(false)
+    setisNotificationOpen(false);
   }, []);
 
   const handleSubmit = (evt: ChangeEvent<HTMLFormElement>) => {
     evt.preventDefault();
+    const userData = {
+      nameUser:
+        inputValues?.nameUser === ''
+          ? currentUser?.nameUser
+          : inputValues?.nameUser,
+      surname: inputValues?.surname,
+      email:
+        inputValues?.email === '' ? currentUser?.email : inputValues?.email,
+    };
+    const token = localStorage.getItem('jwt')!;
     dispatch(
       setUserInfo({
-        nameUser:
-          inputValues?.nameUser === ''
-            ? currentUser?.nameUser
-            : inputValues?.nameUser,
-        surname: inputValues?.surname,
-        email:
-          inputValues?.email === '' ? currentUser?.email : inputValues?.email,
+        userData,
+        token,
       })
     );
   };
@@ -117,15 +122,16 @@ function Settings() {
           required={false}
         />
         <fieldset className={style['settings__submit-wrapper']}>
-        {
-          isNotificationOpen &&
-          <span className={style['settings__notification-message']}>Пользователь с таким email уже существует.</span>
-        }
-        <ButtonSubmitForm
-          text={loading ? "Сохранение.." : "Сохранить"}
-          extraClass={style['settings__button-form']}
-          disabled={isDataMatch() || !formIsValid}
-        />
+          {isNotificationOpen && (
+            <span className={style['settings__notification-message']}>
+              Пользователь с таким email уже существует.
+            </span>
+          )}
+          <ButtonSubmitForm
+            text={loading ? 'Сохранение..' : 'Сохранить'}
+            extraClass={style['settings__button-form']}
+            disabled={isDataMatch() || !formIsValid}
+          />
         </fieldset>
       </form>
     </div>

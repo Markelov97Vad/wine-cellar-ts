@@ -1,7 +1,11 @@
-export const MAIN_API_URL = 'http://localhost:3005';
+// export const MAIN_API_URL = 'http://localhost:3005';
+export const MAIN_API_URL = 'https://api-my-wine-cellar.space';
 
-export const headersData = {
-  "Content-Type": "application/json"
+export const headersData = (token: string) => {
+  return {
+    'Content-type': 'application/json; charset=UTF-8',
+    'Authorization': `Bearer ${token}`
+  }
 }
 
 export const routeData = [
@@ -13,7 +17,7 @@ export const routeData = [
 
 
 export const API = {
-  baseUrl: 'http://localhost:3005',
+  baseUrl: MAIN_API_URL,
   endpoints: {
     wine: {
       data: '/wines',
@@ -55,7 +59,7 @@ export const navItemAccount = [
 export const TypeData = [
   {
     id: 'dry',
-    text: 'Cухое',
+    text: 'Сухое',
   },
   {
     id: 'semisweet',
@@ -95,3 +99,10 @@ export const ColorData = [
 
 export const SCREEN_TABLET = 635;
 export const SCREEN_LAPTOP = 768;
+
+export const SESSION_STORAGE_LIBRARY_SEARCH = 'librarySearchValue'
+export const SESSION_STORAGE_MYCOLLECTION_SEARCH = 'myCollSearchValue'
+export const SESSION_STORAGE_LIBRARY_CHECKBOX_TYPE = 'LibraryCheckboxValueType'
+export const SESSION_STORAGE_LIBRARY_CHECKBOX_COLOR = 'LibraryCheckboxValueColor'
+export const SESSION_STORAGE_MYCOLLECTION_CHECKBOX_TYPE = 'MyCollectionCheckboxValueType'
+export const SESSION_STORAGE_MYCOLLECTION_CHECKBOX_COLOR = 'MyCollectionCheckboxValueColor'

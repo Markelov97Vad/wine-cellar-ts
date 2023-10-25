@@ -7,11 +7,11 @@
   flex-direction: column;
   height: calc(100vh - 84px);
 
-
   &__title {
     margin: 0 !important;
     padding-top: 33vh;
     align-self: center;
+    opacity: 0;
 
     @include show-font(
       $size: 3em,
@@ -32,6 +32,7 @@
     margin: 0;
     width: 40vw;
     border-bottom: 1px solid white;
+    opacity: 0;
 
     @include mobile {
       width: 58vw;

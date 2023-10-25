@@ -5,7 +5,18 @@ const nextConfig = {
   optimizeFonts: true,
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')]
-  }
+  },
+  experimental: {
+    appDir: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
 }
 
 module.exports = nextConfig

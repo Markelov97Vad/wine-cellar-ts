@@ -1,3 +1,4 @@
+import { montserrat } from '@/app/fonts';
 import styles from './FooterForMobile.module.scss'
 import { FooterForMobileTypeProps } from "@/types/componentProps.types";
 import { routeData } from '@/utils/constans';
@@ -5,7 +6,7 @@ import Link from "next/link";
 
 function FooterForMobile({ data } : FooterForMobileTypeProps) {
   return (
-    <div className={styles['footer-for-mobile']}>
+    <div className={`${styles['footer-for-mobile']} ${montserrat.className}`}>
           <Link
               href={'/'}
               className={styles['footer-for-mobile__link']}

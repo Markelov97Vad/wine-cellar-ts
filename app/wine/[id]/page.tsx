@@ -20,6 +20,8 @@ import ImgIcon from '@/app/components/Icons/ImgIcon';
 import NotificationPopupImage from '@/app/components/NotificationPopupImage/NotificationPopupImage';
 import useResize from '@/app/hooks/useResize';
 import Comment from '@/app/components/Comment/Comment';
+import Image from 'next/image';
+import defultImg from '@/public/images/defultBottle.webp';
 
 function AboutWine({ params }: { params: { id: string } }) {
   const dispatch = useAppDispatch();
@@ -59,7 +61,8 @@ function AboutWine({ params }: { params: { id: string } }) {
   }, [isSuccessAdd, isSuccessDel]);
 
   useEffect(() => {
-    dispatch(checkAuthUser());
+    const token = localStorage.getItem('jwt');
+    dispatch(checkAuthUser(token!));
   }, []);
 
   useEffect(() => {
@@ -67,11 +70,12 @@ function AboutWine({ params }: { params: { id: string } }) {
   }, [likes]);
 
   const handleClick = async () => {
+    const token = localStorage.getItem('jwt');
     if (isLoggedIn) {
       if (!isLiked) {
-        await addFavorite(_id!).unwrap(); // корректная работа пропсов (isError, isLoading..)
+        await addFavorite({id: _id!, token: token!}).unwrap(); // корректная работа пропсов (isError, isLoading..)
       } else {
-        await deleteFavorite(_id!).unwrap();
+        await deleteFavorite({id: _id!, token: token!}).unwrap();
       }
     } else {
       push('/login');
@@ -85,7 +89,8 @@ function AboutWine({ params }: { params: { id: string } }) {
   }, [isSuccessDelWine]);
 
   const handleDeleteWine = () => {
-    deleteWine(_id as string);
+    const token = localStorage.getItem('jwt');
+    deleteWine({id: _id!, token: token!});
   };
 
   const handleOpenNotification = () => {
@@ -115,9 +120,12 @@ function AboutWine({ params }: { params: { id: string } }) {
               <CrossIcon dark />
             </button>
             <div className={style.aboutWine__imgContainer}>
-              <img
+              <Image
+                priority={true}
                 className={style.aboutWine__image}
-                src={image!}
+                width={400}
+                height={400}
+                src={image! ? image! : defultImg}
                 alt="бутылка вина"
               />
               <ButtonLike
@@ -228,9 +236,12 @@ function AboutWine({ params }: { params: { id: string } }) {
             <StarRaitingDisabled rating={rating} />
 
             <div className={style.aboutWine__imgContainer}>
-              <img
+              <Image
+                priority={true}
+                width={400}
+                height={400}
                 className={style.aboutWine__image}
-                src={image!}
+                src={image! ? image! : defultImg}
                 alt="бутылка вина"
               />
               <ButtonLike

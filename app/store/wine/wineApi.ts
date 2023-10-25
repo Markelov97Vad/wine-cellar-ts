@@ -8,7 +8,6 @@ export const getCurrentWine = createAsyncThunk<Wine, string, { rejectValue: stri
   );
   try {
     if (!response.ok) {
-      // return rejectWithValue('Не удалось найти вино');
       return await Promise.reject(new Error(`Status ${response.status}`))
     }
     return (await response.json()) as Wine;
@@ -18,14 +17,19 @@ export const getCurrentWine = createAsyncThunk<Wine, string, { rejectValue: stri
   }
 });
 
-export const setWineInfo = createAsyncThunk<undefined, Wine, { rejectValue: string, dispatch: ThunkDispatch<unknown, unknown, AnyAction> }>(
+type setWineInfoData = {
+  _id: string,
+  image?: string,
+  token: string
+}
+
+export const setWineInfo = createAsyncThunk<undefined, setWineInfoData, { rejectValue: string, dispatch: ThunkDispatch<unknown, unknown, AnyAction> }>(
   'wines/setWineInfo', async (data, { rejectWithValue, dispatch }) => {
-    const { _id, image } = data;
+    const { _id, image, token } = data;
     try {
       const response = await fetch(`${API.baseUrl}${API.endpoints.wine.currentWine}${_id}`, {
         method: "PATCH",
-        headers: headersData,
-        credentials: 'include',
+        headers: headersData(token),
         body: JSON.stringify({image})
       })
       if (!response.ok) {

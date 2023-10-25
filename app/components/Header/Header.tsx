@@ -5,7 +5,6 @@ import Navigation from '../Navigation/Navigation';
 import { navItemsHeader } from '@/utils/constans';
 import Logo from '../Logo/Logo';
 import BurgerMenu from '../ui/BurgerMenu/BurgerMenu';
-import { useState } from 'react';
 import useResize from '@/app/hooks/useResize';
 import { useAppDispatch, useAppSelector } from '@/app/hooks/redux';
 import { toggleDropdown } from '@/app/store/wine/wineSlice';

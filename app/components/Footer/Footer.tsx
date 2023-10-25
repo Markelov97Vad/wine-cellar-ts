@@ -9,12 +9,12 @@ import FooterForMobile from './FooterForMobile/FooterForMobile';
 const iconData = [
   { logo: <VkIcon />, href: 'https://vk.com/maarsello' },
   { logo: <TelegramIcon />, href: 'https://t.me/maarsello' },
-  { logo: <GithubIcon />, href: 'https://github.com/Markelov97Vad' },
+  { logo: <GithubIcon />, href: 'https://github.com/Markelov97Vad/wine-cellar-ts' },
 ];
 
 function Footer() {
   return (
-    <footer className={`${styles.root__footer} ${styles.footer} ${montserrat.className}`}>
+    <footer className={`${styles.root__footer} ${styles.footer} `}>
       <FooterForLaptop data={iconData}/>
       <FooterForMobile data={iconData} />
     </footer>

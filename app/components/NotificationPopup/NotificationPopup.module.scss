@@ -29,9 +29,14 @@
     align-items: center;
     background-color: $color-background;
     border: 2px solid $color-border-wrapper;
-    width: 600px;
-    height: 400px;
+    max-width: 600px;
+    padding: 20px;
+    // height: 400px;
     box-sizing: border-box;
+
+    @include mobile {
+      padding: 15px;
+    }
   }
 
   &__cross-button {
@@ -67,6 +72,10 @@
       left: 50%;
       transform: translateX(-50%);
     };
+
+    @include mobile {
+      font-size: 17px;
+    }
   }
 
   &__subtitle {
@@ -80,6 +89,10 @@
       $line-heigth: 24px,
       $color: $color-fonts
     );
+
+    @include mobile {
+      font-size: 15px;
+    }
   }
 
   &__img {

@@ -43,7 +43,7 @@ const userSlice = createSlice({
         state.error = null;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.currentUser = action.payload;
+        state.currentUser = action.payload.newUser;
         state.loading = false;
         state.error = null;
         state.isLoggedIn = true;

@@ -10,11 +10,13 @@ function ProtectedRoute({children} : {children: ReactNode}) {
   const { push } = useRouter();
 
   useEffect(() => {
-    dispatch(checkAuthUser());
+    const token = localStorage.getItem('jwt')
+    dispatch(checkAuthUser(token!));
   },[])
+  
   useEffect(() => {
     if (!isLoggedIn) {
-       return push('/login')
+      return push('/login')
     }
   }, [isLoggedIn]);
 
