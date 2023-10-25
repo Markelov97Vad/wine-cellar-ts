@@ -66,7 +66,7 @@ function AboutWine({ params }: { params: { id: string } }) {
   }, []);
 
   useEffect(() => {
-    setIsLiked(likes?.some((user) => user._id === user._id));
+    setIsLiked(likes?.some((user) => user === currentUser?._id));
   }, [likes]);
 
   const handleClick = async () => {
