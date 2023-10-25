@@ -2,9 +2,18 @@ import { OptionsWineType} from "../types/wine.type";
 
 export const optionsGrapeVariety: OptionsWineType[] = [
   { value: "Абруско", label: "Абруско", name: "grapeVariety" },
+  { value: "Абовяни", label: "Абовяни", name: "grapeVariety" },
+  { value: "Абондо", label: "Абондо", name: "grapeVariety" },
+  { value: "Абуриу", label: "Абуриу", name: "grapeVariety" },
+  { value: "Абхазура тетри", label: "Абхазура тетри", name: "grapeVariety" },
+  { value: "Абхазура шави", label: "Абхазура шави", name: "grapeVariety" },
+  { value: "Авана", label: "Авана", name: "grapeVariety" },
+  { value: "Аваренго", label: "Аваренго", name: "grapeVariety" },
+  { value: "Авасирхва", label: "Авасирхва", name: "grapeVariety" },
   { value: "Агат Донской", label: "Агат Донской", name: "grapeVariety" },
   { value: "Агиоргитико", label: "Агиоргитико", name: "grapeVariety" },
   { value: "Алеатико", label: "Алеатико", name: "grapeVariety" },
+  { value: "Ани", label: "Ани", name: "grapeVariety" },
   {
     value: "Александроули",
     label: "Александроули",
@@ -303,6 +312,7 @@ export const optionsGrapeVariety: OptionsWineType[] = [
   { value: "Чинури", label: "Чинури", name: "grapeVariety" },
   { value: "Шаани белый", label: "Шаани белый", name: "grapeVariety" },
   { value: "Шардоне", label: "Шардоне", name: "grapeVariety" },
+  { value: "Шавкапито", label: "Шавкапито", name: "grapeVariety" },
   { value: "Шенен", label: "Шенен", name: "grapeVariety" },
   { value: "Юбилейный", label: "Юбилейный", name: "grapeVariety" },
   {
@@ -311,3 +321,4 @@ export const optionsGrapeVariety: OptionsWineType[] = [
     name: "grapeVariety",
   },
 ];
+

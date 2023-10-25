@@ -48,8 +48,8 @@ export const validationConfig: Record<validationConfigKeyProps, validationConfig
   },
   'image': {
     // pattern: /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/,
-    pattern: /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?.(jpeg|jpg|gif|png)$/,
-    validationError: 'Некорректный URL адресс, он должен оканчиваться на .jpeg | jpg | gif | png',
+    pattern: /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?.(jpeg|jpg|gif|png|webp)$/,
+    validationError: 'Некорректный URL адресс, он должен оканчиваться на .jpeg | jpg | gif | png | webp',
     emptyError: 'Заполните это поле',
   },
 }
