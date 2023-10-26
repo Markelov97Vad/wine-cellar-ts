@@ -11,6 +11,7 @@ import {
 } from '@/app/store/wine-query/reducer';
 import Button from '../../ui/Button/Button';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 type WineCardProps = {
   wineElem: Wine;
@@ -22,16 +23,18 @@ function WineCard({ wineElem }: WineCardProps) {
   const [deleteFavorite] = useDeleteFavoriteWineMutation();
   const { isLoggedIn, currentUser } = useAppSelector((state) => state.user);
   const [isLiked, setIsLiked] = useState<boolean | undefined>(false);
+  const { push } = useRouter()
 
   const handleClick = async () => {
     const token = localStorage.getItem('jwt');
     if (isLoggedIn) {
-
       if (!isLiked) {
         await addFavorite({id: _id!, token: token!}).unwrap(); // корректная работа пропсов (isError, isLoading..)
       } else {
         await deleteFavorite({id: _id!, token: token!}).unwrap();
       }
+    } else {
+      push('login');
     }
   };
 
