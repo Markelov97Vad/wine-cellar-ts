@@ -2,7 +2,7 @@
 
 <div align="center">
   <a href="https://my-wine-cellar.space/">
-    <img width="575" alt="Основной функционал приложения" src="./src/public/images/wine-cellar.gif">
+    <img width="650" alt="Основной функционал приложения" src="./public/images/wine-cellar.gif">
   </a>
 </div>
 
