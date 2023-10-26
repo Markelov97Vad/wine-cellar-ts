@@ -1,6 +1,5 @@
 <h1 align="center">Веб-сайт: "Wine cellar" (Frontend)</h1>
 
-
 <div align="center">
   <a href="https://my-wine-cellar.space/">
     <img width="575" alt="Основной функционал приложения" src="./src/public/images/wine-cellar.gif">
