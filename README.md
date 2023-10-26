@@ -1,6 +1,8 @@
 <h1 align="center">Веб-сайт: "Wine cellar" (Frontend)</h1>
 
-https://disk.yandex.com.am/client/disk?idApp=client&dialog=slider&idDialog=%2Fdisk%2Fwine-cellar.mp4
+<div align="center">
+  <video width="630" height="300" src="https://disk.yandex.com.am/client/disk?idApp=client&dialog=slider&idDialog=%2Fdisk%2Fwine-cellar.mp4"></video>
+</div>
 
 _____
 
