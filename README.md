@@ -1,7 +1,10 @@
 <h1 align="center">Веб-сайт: "Wine cellar" (Frontend)</h1>
 
+
 <div align="center">
-  <video width="630" height="300" src="https://disk.yandex.com.am/client/disk?idApp=client&dialog=slider&idDialog=%2Fdisk%2Fwine-cellar.mp4"></video>
+  <a href="https://my-wine-cellar.space/">
+    <img width="600" alt="Основной функционал приложения" src="./src/public/images/wine-cellar.gif">
+  </a>
 </div>
 
 _____
