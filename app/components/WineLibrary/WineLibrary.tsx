@@ -158,29 +158,31 @@ function WineLibrary({wines, isLoading} : WineLibraryProps) {
   return (
     <section className={`${style['wine-library']} ${montserrat.className}`}>
       <h2 className={`${style['wine-library__title']} ${playfairDisplay.className}`}>{isLibraryPage ? 'Винотека' : ' Коллекция моих вин'}</h2>
-      <form className={style['wine-library__wrapper']} onSubmit={handleSubmit}>
-        <div className={style['wine-library__block']}></div>
-        <div className={style['wine-library__filter-headers']}>
-          <div className={style['wine-library__search']}>
-            <input
-              className={style['wine-library__search-input']}
-              type="text"
-              name="search"
-              placeholder="Поиск по названию вина"
-              value={inputValues?.search || ''}
-              onChange={handleInputChange}
-            />
-            <button type="submit" className={style['wine-library__submit-button']}>
-              <SearchIcon/>
-            </button>
+      <search role='search'>
+        <form className={style['wine-library__wrapper']} onSubmit={handleSubmit}>
+          <div className={style['wine-library__block']}></div>
+          <div className={style['wine-library__filter-headers']}>
+            <div className={style['wine-library__search']}>
+              <input
+                className={style['wine-library__search-input']}
+                type="text"
+                name="search"
+                placeholder="Поиск по названию вина"
+                value={inputValues?.search || ''}
+                onChange={handleInputChange}
+              />
+              <button type="submit" className={style['wine-library__submit-button']}>
+                <SearchIcon/>
+              </button>
+            </div>
           </div>
-        </div>
-        <div className={style['wine-library__side-bar']}>
-          <Filter isLibraryPage={isLibraryPage} isMyCollectionPage={isMyCollectionPage} data={TypeData} name='ТИП' handleChangeCheckbox={handleChangeCheckboxType}/>
-          <Filter isLibraryPage={isLibraryPage} isMyCollectionPage={isMyCollectionPage} data={ColorData} name='ЦВЕТ' handleChangeCheckbox={handleChangeCheckboxColor}/>
-        </div>
-        <WineCardList wines={renderWine()} isLoading={isLoading}/>
-      </form>
+          <div className={style['wine-library__side-bar']}>
+            <Filter isLibraryPage={isLibraryPage} isMyCollectionPage={isMyCollectionPage} data={TypeData} name='ТИП' handleChangeCheckbox={handleChangeCheckboxType}/>
+            <Filter isLibraryPage={isLibraryPage} isMyCollectionPage={isMyCollectionPage} data={ColorData} name='ЦВЕТ' handleChangeCheckbox={handleChangeCheckboxColor}/>
+          </div>
+          <WineCardList wines={renderWine()} isLoading={isLoading}/>
+        </form>
+      </search>
     </section>
   );
 }
