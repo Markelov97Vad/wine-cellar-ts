@@ -42,6 +42,29 @@ function InputForm({
     }
   };
 
+  const handleAutoComplite = (value: string) => {
+    switch (value) {
+      case 'nameUser':
+        return 'given-name'
+      case 'email':
+        return 'email'
+      case 'password':
+        return 'current-password'
+      case 'name':
+        return 'organization'
+      case 'image':
+        return 'photo'
+      case 'brand':
+        return 'organization'
+      case 'country':
+        return 'country-name'
+      case 'region':
+        return 'country-name'
+      default:
+        return 'new-password'
+    }
+  }
+
   const handleInputToggle = () => {
     setisTypePassword(!isTypePassword)
   }
@@ -72,6 +95,7 @@ function InputForm({
         minLength={min}
         maxLength={max}
         required={required}
+        autoComplete={handleAutoComplite(name)}
       />
       {
         name === 'password' &&

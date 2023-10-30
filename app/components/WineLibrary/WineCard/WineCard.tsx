@@ -50,7 +50,7 @@ function WineCard({ wineElem }: WineCardProps) {
       <Link className={style['wine-card__link']} href={`/wine/${_id}/`}>
         <div className={style['wine-card__container']}>
           <span className={style['wine-card__brand']}>{brand}</span>
-          <Image alt='Бутылка вина' width={800} height={800} className={style['wine-card__image']} src={image!} />
+          <Image loading='lazy' alt='Бутылка вина' width={800} height={800} className={style['wine-card__image']} src={image!} />
         </div>
         <h3 className={`${style['wine-card__title']}`}>{name}</h3>
         <span className={style['wine-card__year']}>{year}</span>
