@@ -28,6 +28,7 @@ function Home() {
         <div className={style.root__wrapper}>
         <Header />
           <Image
+            fetchPriority='high'
             priority={true}
             src={gif}
             alt="Бокал вина"
